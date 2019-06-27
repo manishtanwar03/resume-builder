@@ -1,0 +1,39 @@
+/* body{
+    margin: 0 auto;
+    background-image: url('https://cdn-images.zety.com/images/zety/landings/home/jumbotron-1140@1_25x.jpg');
+} */
+ /* background-image: url('https://cdn-images.zety.com/images/zety/landings/home/jumbotron-1140@1_25x.jpg'); */
+.container{
+    background-image: url('https://cdn-images.zety.com/images/zety/landings/home/jumbotron-1140@1_25x.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color:white;
+}
+.content{
+    background-color:rgba(0,0,0,0.6);
+    padding:30px 20px;
+}
+ .btn{
+    background-color: #e44747;
+    border-radius: 100px;
+    color: white;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    overflow: hidden;
+    border: .3rem solid;
+    -webkit-appearance: none;
+    font-weight: 600;
+    outline: 0;
+    text-align: center;
+    text-transform: uppercase;
+    /* transition: background-color .25s cubic-bezier(.45,.05,.55,.95) 0ms,border-color .25s cubic-bezier(.45,.05,.55,.95) 0ms,box-shadow .25s cubic-bezier(.45,.05,.55,.95) 0ms,color .25s cubic-bezier(.45,.05,.55,.95) 0ms,opacity .25s cubic-bezier(.45,.05,.55,.95) 0ms; */
+}
