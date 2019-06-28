@@ -1,0 +1,110 @@
+.head-info {
+    background-color: #673ab7;
+    width: 100%;
+    color: #FFF;
+    padding-bottom: 2.5rem;
+    overflow: hidden;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.content {
+    text-align: center;
+    padding: 25px;
+}
+
+.content h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.content p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.offer {
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    margin: 20px 15px;
+    background-color: white;
+    padding: 8px 15px;
+    color: black;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.offer span b {
+    background-color: teal;
+    color: black;
+    border-radius: 10px;
+    padding: 5px 10px;
+    text-align: center;
+    letter-spacing: 2px;
+    color: white;
+}
+
+
+/* filters */
+
+.template-filters .filters {
+    width: 100%;
+    height: 200px;
+    background-color: #b71c1c;
+    border: 1px solid #b71c1c;
+    margin-bottom: 50px;
+}
+
+
+/* resume templates */
+
+
+/* .resume-template {
+    margin: 0 auto;
+}
+
+.resume-template .template-container {
+    position: relative;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    max-width: 300px;
+    margin: 20px 30px;
+    background-color: black;
+    border-right: 1px solid grey;
+    border-left: 1px solid grey;
+}
+
+.resume-template .template-container .template {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.resume-template .template-container button {
+    position: absolute;
+    z-index: 100;
+    background-color: #242d33;
+    border-radius: 100px;
+    color: white;
+    border-radius: 3px;
+    display: none;
+}
+
+.resume-template .template-container .template:hover {
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.resume-template .template-container:hover button {
+    display: block;
+} */
