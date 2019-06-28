@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { FooterComponent } from './footer/footer.component';
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
@@ -18,6 +19,8 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     DashboardModule,
+    AuthModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
