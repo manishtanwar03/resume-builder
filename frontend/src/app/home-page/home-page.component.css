@@ -1,0 +1,44 @@
+.head
+{
+    text-align: center;
+    height: 300px   ;
+}
+.btn{
+    text-transform: inherit;
+    background-color: #1DBFAF;
+}
+.btn:hover
+{
+    background-color: white;
+    color: #1DBFAF;
+    border: solid 1px #1DBFAF;
+}
+.cards
+{   
+    padding: 20px;
+    text-align: center;
+    background-color: #1DBFAF;
+    height: 550px;
+    color: white;
+}
+img{
+    height: 300px;
+    width: 250px;
+    
+}
+.get{
+    text-transform: inherit;
+    background-color: white;
+    color: #1dbfaf;
+    border-radius: 5px;
+}
+.get:hover{
+    background-color: #1DBFAF;
+    color: white;
+    border: solid 1px white;
+    cursor: pointer;
+}
+.benefits{
+    background-color: #f4f4f4;
+    height:500px;
+}
