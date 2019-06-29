@@ -4,10 +4,12 @@ import { RouterModule } from '@angular/router';
 import { DashboardModuleRouting } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { MzButtonModule, MzInputModule } from 'ngx-materialize';
+import { SharedModule } from '../shared/shared.module';
+
 
 @NgModule({
     declarations:[
-        DashboardComponent
+        DashboardComponent,
     ],
     imports:[
         CommonModule,
@@ -15,6 +17,7 @@ import { MzButtonModule, MzInputModule } from 'ngx-materialize';
         MzButtonModule,
         MzInputModule,
         DashboardModuleRouting,
+        SharedModule,
     ]
 })
 export class DashboardModule {

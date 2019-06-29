@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cabin&display=swap');
 
 /* head */
 
@@ -7,11 +8,11 @@
     background-size: cover;
     background-attachment: fixed;
     height: 600px;
+    /* height: 100vh; */
 }
 
 .head {
     text-align: center;
-    /* height: 300px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,34 +48,95 @@
     border: solid 1px #1DBFAF;
 }
 
+
+/* cards */
+
 .cards {
-    padding: 20px;
+    padding: 50px 0;
     text-align: center;
-    background-color: #1DBFAF;
-    height: 550px;
+    background: linear-gradient(to right, #303D46, #1DBFAF);
     color: white;
+}
+
+.row {
+    margin-bottom: 50px;
+    width: 90%;
 }
 
 img {
-    height: 300px;
-    width: 250px;
+    width: 350px;
+    height: 500px;
 }
 
-.get {
-    text-transform: inherit;
-    background-color: white;
-    color: #1dbfaf;
-    border-radius: 5px;
+.cards p {
+    width: 35%;
+    margin: 50px auto;
+    margin-bottom: 80px;
+    line-height: 1.4em;
+    font-size: 21px;
 }
 
-.get:hover {
-    background-color: #1DBFAF;
-    color: white;
-    border: solid 1px white;
-    cursor: pointer;
+.col {
+    margin: 20px 0;
+}
+
+
+/* try template */
+
+.try-template {
+    height: 200px;
+    background: url('../../assets/home/home_p.png');
+    background-size: cover;
+    background-attachment: fixed;
+    height: 350px;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .benefits {
-    background-color: #f4f4f4;
-    height: 500px;
+    padding: 50px 0 55px;
+    font-family: 'Cabin', sans-serif;
+}
+
+.benefits .col {
+    padding: 0 30px;
+}
+
+.benefits h3 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #303D46;
+    letter-spacing: 1px;
+}
+
+.benefits i {
+    font-size: 5em;
+    color: #1DBFAF;
+}
+
+.benefits h4 {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    /* text-align: center; */
+}
+
+.benefits hr {
+    width: 100px;
+    margin: 0;
+    height: 5px;
+    background-color: #1DBFAF;
+    border: 0;
+}
+
+.benefits p {
+    font-size: 21px;
+    padding: 0 30px;
 }

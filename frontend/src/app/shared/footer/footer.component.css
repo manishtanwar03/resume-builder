@@ -1,0 +1,23 @@
+footer {
+    /* height: 80px; */
+    background-color: #3c4d58;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.links a {
+    text-decoration: none;
+    margin: 0 40px 0 0;
+}
+
+.links i {
+    font-size: 2em;
+    font-weight: 800;
+    color: white;
+    padding: 10px;
+}
+
+.links a:hover i {
+    cursor: pointer;
+    color: #4267b2;
+}

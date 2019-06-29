@@ -7,7 +7,6 @@ import { MzButtonModule, MzInputModule } from 'ngx-materialize';
 
 import { DashboardModule } from './dashboard/dashboard.module';
 import { HomePageComponent } from './home-page/home-page.component';
-import { FooterComponent } from './footer/footer.component';
 import { AuthModule } from './auth/auth.module';
 
 
@@ -15,7 +14,7 @@ import { AuthModule } from './auth/auth.module';
   declarations: [
     AppComponent,
     HomePageComponent,
-    FooterComponent,
+    // FooterComponent,
     
   ],
   imports: [
