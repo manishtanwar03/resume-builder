@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MzButtonModule, MzInputModule } from 'ngx-materialize';
+
 import { DashboardModule } from './dashboard/dashboard.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { FooterComponent } from './footer/footer.component';
@@ -14,12 +16,15 @@ import { AuthModule } from './auth/auth.module';
     AppComponent,
     HomePageComponent,
     FooterComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DashboardModule,
     AuthModule,
+    MzButtonModule,
+    MzInputModule,
     
   ],
   providers: [],

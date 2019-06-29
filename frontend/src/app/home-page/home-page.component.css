@@ -2,6 +2,13 @@
 
 /* head */
 
+.parrallex {
+    background: url('../../assets/home/home_p.png');
+    background-size: cover;
+    background-attachment: fixed;
+    height: 600px;
+}
+
 .head {
     text-align: center;
     /* height: 300px; */
@@ -14,7 +21,7 @@
 
 .head h1 {
     margin: 0;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     font-family: 'Raleway', sans-serif;
     font-size: 30px;
     font-weight: 800;
