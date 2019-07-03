@@ -1,0 +1,313 @@
+.seperator {
+    background-color: white;
+    height: 2px;
+    width: 300px;
+    border: 0;
+    padding: 0 !important;
+}
+
+.row {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.resume {
+    width: 1190px;
+    height: 1644px;
+    margin: 50px auto;
+    padding: 44px 0;
+}
+
+.personal-details {
+    padding: 0 0 0 50px;
+}
+
+.personal-details .image {
+    width: 166px;
+    height: 166px;
+    border-radius: 200%;
+    border: 1px solid #b7b7b7;
+    padding: 10px;
+}
+
+.personal-details .image img {
+    height: 100%;
+    width: 100%;
+    border-radius: 200%;
+}
+
+.personal-details .details * {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    padding: 5px 0;
+}
+
+.personal-details .details {
+    padding: 18px 24px 22px;
+    background-color: #479099;
+    color: white;
+}
+
+.personal-details .details h1 {
+    font-size: 46px;
+    font-weight: 600;
+}
+
+.personal-details .details h3 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.personal-details .details p {
+    font-size: 18px;
+    margin-top: 5px;
+    font-weight: 400;
+}
+
+
+/* details left */
+
+.contact-details * {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.contact-details {
+    margin: 4px 0 10px 50px;
+    padding: 0 0 14px;
+    font-size: 16px;
+    color: #479099;
+}
+
+.contact-details p {
+    color: black;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.contact-details div {
+    padding: 10px 0;
+}
+
+.skills *,
+.languages * {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.skills,
+.languages {
+    margin: 0 0 32px 50px;
+    padding: 0 0 10px;
+}
+
+.skills h1,
+.languages h1 {
+    font-size: 28px;
+    color: #479099;
+    font-weight: 700;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #479099;
+}
+
+.skills .skills_list,
+.languages .languages_list {
+    padding: 10px 0 0 0;
+    margin-left: -15px;
+}
+
+.skills .skills_list .skill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    color: white;
+    font-size: 18px;
+    background-color: #479099;
+    margin: 4px 5px;
+}
+
+.interests * {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.interests {
+    margin: 0 0 32px 50px;
+    padding: 0 0 10px;
+}
+
+.interests h1 {
+    font-size: 28px;
+    color: #479099;
+    font-weight: 700;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #479099;
+}
+
+.interests .interests_list {
+    padding: 10px 0 0 0;
+    margin-left: -15px;
+}
+
+.interests .interests_list .interest {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    color: black;
+    font-size: 18px;
+    margin: 4px 5px;
+    border: 2px solid #b2b2b2;
+}
+
+.languages .languages_list {
+    padding: 20px 0;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+}
+
+.languages .language p {
+    width: 40%;
+    display: inline;
+    padding: 0 10px;
+}
+
+.languages .language .progress {
+    position: absolute;
+    right: 0;
+    margin-top: 8px;
+    width: 60%;
+    display: inline-block;
+    margin-left: 0px;
+    padding-bottom: 10px;
+}
+
+
+/* details-right */
+
+.base * {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.base {
+    margin: 0 0 32px 50px;
+    padding: 0 0 10px;
+}
+
+.base>h1 {
+    font-size: 28px;
+    color: #479099;
+    font-weight: 700;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #479099;
+}
+
+
+/* work */
+
+.work-experience .work {
+    padding: 15px 0 10px 15px;
+}
+
+.work-experience .work h1 {
+    font-size: 24px;
+    color: #479099;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+
+.work-experience .work h3 {
+    font-size: 22px;
+    color: black;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+
+.work-experience .work span {
+    font-size: 16px;
+    color: #479099;
+    line-height: 18px;
+    font-style: italic;
+    padding-right: 5px;
+    padding-top: 5px;
+}
+
+.work-experience .work p {
+    color: #7c7c7c;
+    font-size: 16px;
+    padding-top: 5px;
+}
+
+
+/* school */
+
+.education .school {
+    padding: 15px 0 10px 15px;
+}
+
+.education .school h1 {
+    font-size: 24px;
+    color: #479099;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+
+.education .school h3 {
+    font-size: 22px;
+    color: black;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+
+.education .school span {
+    font-size: 16px;
+    color: #479099;
+    line-height: 18px;
+    font-style: italic;
+    padding-right: 5px;
+    padding-top: 5px;
+}
+
+
+/* projects */
+
+.projects .project {
+    padding: 15px 0 10px 15px;
+}
+
+.projects .project h1 {
+    font-size: 24px;
+    color: #479099;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+
+.projects .project h3 {
+    font-size: 22px;
+    color: black;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+
+.projects .project span {
+    font-size: 16px;
+    color: #479099;
+    line-height: 18px;
+    font-style: italic;
+    padding-right: 5px;
+    padding-top: 5px;
+}
+
+.projects .project p {
+    color: #7c7c7c;
+    font-size: 16px;
+    padding-top: 5px;
+}

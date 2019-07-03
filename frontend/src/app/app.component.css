@@ -1,13 +1,4 @@
-.box{
-    height:100vh;
-    width:100%;
-    overflow: hidden;
-    display:flex;
-    justify-content:center;
-    align-items: center;
-}
-.template{
-    width:400px;
-    height:600px;
-    background-color:red;
+.temp {
+    width: 400px !important;
+    height: 552px !important;
 }

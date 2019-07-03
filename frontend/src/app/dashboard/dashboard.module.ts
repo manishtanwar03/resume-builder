@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { DashboardModuleRouting } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { MzButtonModule, MzInputModule } from 'ngx-materialize';
-import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +16,6 @@ import { SharedModule } from '../shared/shared.module';
         MzButtonModule,
         MzInputModule,
         DashboardModuleRouting,
-        SharedModule,
     ]
 })
 export class DashboardModule {
