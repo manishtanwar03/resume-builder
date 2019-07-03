@@ -107,11 +107,11 @@ const Resume = new mongoose.Schema({
             maxlength: 20
         },
         start_date: {
-            type: Date,
+            type: String,
             required: true,
         },
         end_date: {
-            type: Date,
+            type: String,
             required: false,
             // validator remaining
         },
@@ -164,11 +164,11 @@ const Resume = new mongoose.Schema({
             maxlength: 40
         },
         start_date: {
-            type: Date, // date
+            type: String, // date
             required: true,
         },
         end_date: {
-            type: Date,
+            type: String,
             required: true
         },
         description: {
@@ -178,12 +178,11 @@ const Resume = new mongoose.Schema({
             lowercase: true,
             minlength: 10,
             maxlength: 200
-        }
-        
+        }   
     }],
     template:{
         type:String,
-        default:functional
+        default:"functional"
     }
 });
 
