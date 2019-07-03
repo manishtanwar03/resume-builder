@@ -1,1 +1,74 @@
-<p>basic-information works!</p>
+<section class="base">
+    <div class="container">
+        <h1>Now let's fill out work history.</h1>
+        <p>Start with your most recent job and work backward.</p>
+        <div class="row">
+            <div class="col s8">
+                <div class="row form">
+                    <div class="col s12">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="first_name" type="text" class="validate">
+                                <label for="first_name">First Name</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="last_name" type="text" class="validate">
+                                <label for="last_name">Last Name</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="street_address" type="text" class="validate">
+                                <label for="street_address">Street Address</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="state" type="text" class="validate">
+                                <label for="state">State/Province</label>
+                            </div>
+                            <div class="input-field col s3">
+                                <input id="city" type="text" class="validate">
+                                <label for="city">City</label>
+                            </div>
+                            <div class="input-field col s3">
+                                <input id="pincode" type="text" class="validate">
+                                <label for="pincode">Pincode</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="phone" type="text" class="validate">
+                                <label for="phone">Phone</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="email" type="text" class="validate">
+                                <label for="email">Email Address</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="preview">
+                    <!-- preview template here -->
+                </div>
+                <div class="preview-button">
+                    <button type="button" name="action">Preview
+                        <i class="material-icons left">remove_red_eye</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="buttons">
+                <button class="btn waves-effect waves-light red" type="button" name="action">Back
+                    <i class="material-icons left">arrow_back</i>
+                </button>
+                <button class="btn waves-effect waves-light green" type="button" name="action" routerLink="./work-history">Next
+                    <i class="material-icons right">arrow_forward</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
