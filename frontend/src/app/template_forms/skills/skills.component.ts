@@ -25,7 +25,7 @@ export class SkillsComponent implements OnInit {
   }
 
   onEnter(skill){
-    skill = skill.trim()
+    skill = skill.trim().toLowerCase();
     if(skill && !this.skills.includes(skill)){
       this.skills.push(skill);
       this.setLocalStorageSkills();

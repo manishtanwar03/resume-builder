@@ -52,15 +52,12 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="buttons">
-                <button class="btn waves-effect waves-light red" type="button" name="action">Back
-                            <i class="material-icons left">arrow_back</i>
-                        </button>
-                <button class="btn waves-effect waves-light green" type="button" name="action" [routerLink]="['/resume','projects']">Next
-                            <i class="material-icons right">arrow_forward</i>
-                        </button>
-            </div>
-        </div>
     </div>
 </section>
+<div class="navigation-back">
+    <a class="btn-floating btn-large waves-effect waves-light red" [routerLink]="['/resume','work-history']"><i class="material-icons">arrow_back</i></a>
+</div>
+
+<div class="navigation-next">
+    <a class="waves-effect pulse btn-large green" [routerLink]="['/resume','projects']"><i class="material-icons right">arrow_forward</i>Next</a>
+</div>

@@ -8,23 +8,20 @@
                     <div class="col s12">
                         <div class="row">
                             <div class="input-field col s6 offset-s3">
-                                <input id="skill" type="text" class="validate" #skill (keydown.enter)="onEnter(skill.value)" (keyup.enter)="skill.value = ''">
-                                <label for="skill">Language</label>
+                                <input id="language" type="text" class="validate" (keydown.enter)="onEnter($event.target.value)" (keyup.enter)="$event.target.value = ''">
+                                <label for="language">Language</label>
                             </div>
                         </div>
                         <div class="row">
                             <!-- list here -->
                             <div class="col s6 offset-s3">
-                                <ul style="margin-top:-20px;overflow:auto;max-height:320px" class="collection scrollbar" *ngIf="languages.length">
+                                <ul style="margin-top:-20px;overflow:auto;max-height:500px" class="collection scrollbar" *ngIf="languages.length">
                                     <li class="collection-item" *ngFor='let language of languages;let id=index'>
-                                        <!-- <p class="range-field"> -->
-
-                                        <!-- </p> -->
                                         <div class="buttons">
-                                            {{ language }}
+                                            {{ language.language | titlecase}}
                                             <i class="material-icons" (click)="removeMe(id)">clear</i>
                                         </div>
-                                        <input class='proficiency-slider' type="range" id="proficiency" min="0" max="100" value="100">
+                                        <input type="range" id="proficiency" min="0" max="100" value="100" (change)="setProficiency(id,$event.target.value)">
                                     </li>
                                 </ul>
                             </div>
@@ -38,20 +35,18 @@
                 </div>
                 <div class="preview-button">
                     <button type="button" name="action">Preview
-                                        <i class="material-icons left">remove_red_eye</i>
-                                    </button>
+                        <i class="material-icons left">remove_red_eye</i>
+                    </button>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="buttons">
-                <button class="btn waves-effect waves-light red" type="button" name="action">Back
-                                    <i class="material-icons left">arrow_back</i>
-                                </button>
-                <button class="btn waves-effect waves-light green" type="button" name="action" [routerLink]="['/resume','education']">Next
-                                    <i class="material-icons right">arrow_forward</i>
-                                </button>
             </div>
         </div>
     </div>
 </section>
+
+<div class="navigation-back">
+    <a class="btn-floating btn-large waves-effect waves-light red" [routerLink]="['/resume','skills']"><i class="material-icons">arrow_back</i></a>
+</div>
+
+<div class="navigation-next">
+    <a class="waves-effect pulse btn-large green" [routerLink]="['/resume','interests']"><i class="material-icons right">arrow_forward</i>Next</a>
+</div>

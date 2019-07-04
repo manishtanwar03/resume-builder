@@ -68,11 +68,19 @@
 
 /* navigation buttons */
 
-.base .buttons {
-    margin-top: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 600;
-    letter-spacing: 2px;
+.navigation-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 15px;
+    z-index: 1;
+}
+
+.navigation-next {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 50px;
+    margin-right: 40px;
+    z-index: 1;
 }

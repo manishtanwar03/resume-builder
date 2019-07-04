@@ -13,9 +13,9 @@ export class LanguagesComponent implements OnInit {
   }
 
   onEnter(language){
-    language = language.trim()
-    if(language){
-      this.languages.push(language);
+    language = language.trim().toLowerCase();
+    if(language && !this.languages.find((entry)=>entry.language==language)){
+      this.languages.push({'language':language,'value':100});
     }
   }
 
@@ -23,5 +23,7 @@ export class LanguagesComponent implements OnInit {
     this.languages.splice(id,1);
   }
 
-
+  setProficiency(id,value){
+    this.languages[id].value = Number(value);
+  }
 }
