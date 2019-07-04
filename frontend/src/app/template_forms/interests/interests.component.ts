@@ -13,8 +13,8 @@ export class InterestsComponent implements OnInit {
   }
 
   onEnter(interest){
-    interest = interest.trim()
-    if(interest){
+    interest = interest.trim().toLowerCase();
+    if(interest && !this.interests.includes(interest)){
       this.interests.push(interest);
     }
   }

@@ -8,7 +8,7 @@
                     <div class="col s12">
                         <div class="row">
                             <div class="input-field col s6 offset-s3">
-                                <input id="skill" type="text" class="validate" #skill (keydown.enter)="onEnter(skill.value)" (keyup.enter)="skill.value = ''">
+                                <input id="skill" type="text" class="validate" (keydown.enter)="onEnter($event.target.value)" (keyup.enter)="skill.value = ''">
                                 <label for="skill">Language</label>
                             </div>
                         </div>
@@ -21,10 +21,10 @@
 
                                         <!-- </p> -->
                                         <div class="buttons">
-                                            {{ language }}
+                                            {{ language.language | titlecase}}
                                             <i class="material-icons" (click)="removeMe(id)">clear</i>
                                         </div>
-                                        <input class='proficiency-slider' type="range" id="proficiency" min="0" max="100" value="100">
+                                        <input type="range" id="proficiency" min="0" max="100" value="100" (change)="setProficiency(id,$event.target.value)">
                                     </li>
                                 </ul>
                             </div>
@@ -48,7 +48,7 @@
                 <button class="btn waves-effect waves-light red" type="button" name="action">Back
                                     <i class="material-icons left">arrow_back</i>
                                 </button>
-                <button class="btn waves-effect waves-light green" type="button" name="action" [routerLink]="['/resume','education']">Next
+                <button class="btn waves-effect waves-light green" type="button" name="action" [routerLink]="['/resume','interests']">Next
                                     <i class="material-icons right">arrow_forward</i>
                                 </button>
             </div>

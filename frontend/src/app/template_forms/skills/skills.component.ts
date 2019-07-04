@@ -13,8 +13,8 @@ export class SkillsComponent implements OnInit {
   }
 
   onEnter(skill){
-    skill = skill.trim()
-    if(skill){
+    skill = skill.trim().toLowerCase();
+    if(skill && !this.skills.includes(skill)){
       this.skills.push(skill);
     }
   }
