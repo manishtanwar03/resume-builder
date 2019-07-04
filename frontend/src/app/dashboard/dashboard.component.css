@@ -2,13 +2,12 @@
     background-color: #673ab7;
     width: 100%;
     color: #FFF;
-    padding-bottom: 2.5rem;
     overflow: hidden;
-    height: 40vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    padding: 80px 0;
 }
 
 .content {
@@ -51,24 +50,12 @@
 }
 
 
-/* filters */
-
-.template-filters .filters {
-    width: 100%;
-    height: 150px;
-    background-color: #b71c1c;
-    border: 1px solid #b71c1c;
-    margin-bottom: 50px;
-}
-
-
 /* resume templates */
 
 .row {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    /* max-width: 1800px; */
     padding: 0 50px;
 }
 
@@ -80,7 +67,6 @@
     align-items: center;
     width: 300px;
     height: 400px;
-    background-color: black;
     margin: 50px 40px;
 }
 

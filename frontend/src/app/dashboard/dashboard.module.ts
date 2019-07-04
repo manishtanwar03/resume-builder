@@ -4,11 +4,13 @@ import { RouterModule } from '@angular/router';
 import { DashboardModuleRouting } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { MzButtonModule, MzInputModule } from 'ngx-materialize';
-
+import { TemplateModule } from '../templates/template.module';
+import { FiltersComponent } from './filters/filters.component';
 
 @NgModule({
     declarations:[
         DashboardComponent,
+        FiltersComponent,
     ],
     imports:[
         CommonModule,
@@ -16,6 +18,7 @@ import { MzButtonModule, MzInputModule } from 'ngx-materialize';
         MzButtonModule,
         MzInputModule,
         DashboardModuleRouting,
+        TemplateModule
     ]
 })
 export class DashboardModule {
