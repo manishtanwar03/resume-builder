@@ -1,0 +1,48 @@
+<section class="base">
+    <div class="container">
+        <h1>What skills do you want to highlight?</h1>
+        <p>Start typing and press Enter to save and click it to remove</p>
+        <div class="row">
+            <div class="col s8">
+                <div class="row form">
+                    <div class="col s12">
+                        <div class="row">
+                            <div class="input-field col s6 offset-s3">
+                                <input id="skill" type="text" class="validate" #skill (keydown.enter)="onEnter(skill.value)" (keyup.enter)="skill.value = ''">
+                                <label for="skill">Enter Skill</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- list here -->
+                            <div class="col s6 offset-s3">
+                                <div style="margin-top:-20px;overflow:auto;max-height:320px" class="collection scrollbar" *ngIf="skills.length">
+                                    <a class="collection-item" *ngFor='let skill of skills;let id=index' (click)="removeMe(id)">{{ skill }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="preview">
+                    <!-- preview template here -->
+                </div>
+                <div class="preview-button">
+                    <button type="button" name="action">Preview
+                                <i class="material-icons left">remove_red_eye</i>
+                            </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="buttons">
+                <button class="btn waves-effect waves-light red" type="button" name="action">Back
+                            <i class="material-icons left">arrow_back</i>
+                        </button>
+                <button class="btn waves-effect waves-light green" type="button" name="action" [routerLink]="['/resume','education']">Next
+                            <i class="material-icons right">arrow_forward</i>
+                        </button>
+            </div>
+        </div>
+    </div>
+</section>

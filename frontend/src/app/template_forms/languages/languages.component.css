@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Asap|Roboto+Slab&display=swap');
+.base {
+    padding: 50px 0;
+    font-family: 'Asap', sans-serif;
+    /* border: 1px solid #b7b7b7; */
+}
+
+
+/* heading and hint */
+
+.base h1 {
+    font-size: 26px;
+    color: #277FD9;
+    margin: 0;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 300;
+}
+
+.base p {
+    color: #666666;
+    font-family: 'Asap', sans-serif;
+    font-size: 18px;
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 80px;
+}
+
+
+/* form */
+
+.base .form {
+    margin-left: -20px;
+}
+
+
+/* preview */
+
+.base .preview {
+    border: 1px solid #b7b7b7;
+    height: 415px;
+    width: 300px;
+    margin-left: 50px;
+}
+
+.base .preview-button {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.base .preview-button button {
+    border: 1px solid #64b5f6;
+    border-color: #dddddd;
+    background-color: transparent;
+    padding: 0.4rem 1.6rem;
+    border-radius: 5px;
+    background-color: #fbfcfd;
+    color: #3a96f0;
+}
+
+.base .preview-button button:hover {
+    border: 1px solid #64b5f6;
+    background-color: #64b5f6;
+    color: white;
+}
+
+
+/* navigation buttons */
+
+.base .buttons {
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.base .collection-item .buttons {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.base .collection-item .buttons i {
+    color: #d32f2f;
+    display: none;
+    cursor: pointer;
+}
+
+.base .collection-item:hover .buttons i {
+    display: block;
+}

@@ -8,12 +8,20 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { WorkHistoryComponent } from './work-history/work-history.component';
 import { EducationComponent } from './education/education.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { SkillsComponent } from './skills/skills.component';
+import { InterestsComponent } from './interests/interests.component';
+import { LanguagesComponent } from './languages/languages.component';
 
 @NgModule({
     declarations:[
         BasicInformationComponent,
         WorkHistoryComponent,
-        EducationComponent
+        EducationComponent,
+        ProjectsComponent,
+        SkillsComponent,
+        InterestsComponent,
+        LanguagesComponent
     ],
     imports:[
         CommonModule,
