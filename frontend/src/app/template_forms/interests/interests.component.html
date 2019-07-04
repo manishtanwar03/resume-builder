@@ -1,6 +1,6 @@
 <section class="base">
     <div class="container">
-        <h1>Now the last thing, your interests ?</h1>
+        <h1>Now the last thing, your interests?</h1>
         <p>Start typing and press Enter to save and click it to remove</p>
         <div class="row">
             <div class="col s8">
@@ -16,7 +16,7 @@
                             <!-- list here -->
                             <div class="col s6 offset-s3">
                                 <div style="margin-top:-20px;overflow:auto;max-height:500px" class="collection scrollbar" *ngIf="interests.length">
-                                    <a class="collection-item" *ngFor='let interest of interests;let id=index' (click)="removeMe(id)">{{ interest }}</a>
+                                    <a class="collection-item" *ngFor='let interest of interests;let id=index' (click)="removeMe(id)">{{ interest | titlecase }}</a>
                                 </div>
                             </div>
                         </div>
@@ -29,8 +29,8 @@
                 </div>
                 <div class="preview-button">
                     <button type="button" name="action">Preview
-                                    <i class="material-icons left">remove_red_eye</i>
-                                </button>
+                        <i class="material-icons left">remove_red_eye</i>
+                    </button>
                 </div>
             </div>
         </div>
