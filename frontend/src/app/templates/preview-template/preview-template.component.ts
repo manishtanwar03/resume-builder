@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-preview-template',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./preview-template.component.css']
 })
 export class PreviewTemplateComponent implements OnInit {
+  @Input() filter:String="#479099";
 
   constructor() { }
 

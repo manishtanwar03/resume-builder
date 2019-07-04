@@ -12,6 +12,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { SkillsComponent } from './skills/skills.component';
 import { InterestsComponent } from './interests/interests.component';
 import { LanguagesComponent } from './languages/languages.component';
+import { TemplateModule } from '../templates/template.module';
 
 @NgModule({
     declarations:[
@@ -30,6 +31,7 @@ import { LanguagesComponent } from './languages/languages.component';
     MzSelectModule,
         RouterModule,
         TemplateFormsRoutingModule,
+        TemplateModule,
     ],
     exports:[
         BasicInformationComponent
