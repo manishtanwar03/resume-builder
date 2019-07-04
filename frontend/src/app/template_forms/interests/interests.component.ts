@@ -9,18 +9,30 @@ export class InterestsComponent implements OnInit {
   public interests=[];
   constructor() { }
 
+  private getInterests(){
+    let localStorageItem=JSON.parse(localStorage.getItem('interests'));
+    return localStorageItem==null?[]:localStorageItem;
+  }
+
+  private setInterests(){
+    localStorage.setItem('interests',JSON.stringify(this.interests));
+  }
+
   ngOnInit() {
+    this.interests=this.getInterests();
   }
 
   onEnter(interest){
     interest = interest.trim()
     if(interest){
       this.interests.push(interest);
+      this.setInterests();
     }
   }
 
   removeMe(id){
     this.interests.splice(id,1);
+    this.setInterests();
   }
 
 }
