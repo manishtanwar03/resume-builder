@@ -16,7 +16,7 @@
                             <!-- list here -->
                             <div class="col s6 offset-s3">
                                 <div style="margin-top:-20px;overflow:auto;max-height:500px" class="collection scrollbar" *ngIf="skills.length">
-                                    <a class="collection-item" *ngFor='let skill of skills;let id=index' (click)="removeMe(id)">{{ skill }}</a>
+                                    <a class="collection-item" *ngFor='let skill of skills;let id=index' (click)="removeMe(id)">{{ skill | titlecase }}</a>
                                 </div>
                             </div>
                         </div>
@@ -26,6 +26,7 @@
             <div class="col s4">
                 <div class="preview">
                     <!-- preview template here -->
+                    <app-preview-template></app-preview-template>
                 </div>
                 <div class="preview-button">
                     <button type="button" name="action">Preview

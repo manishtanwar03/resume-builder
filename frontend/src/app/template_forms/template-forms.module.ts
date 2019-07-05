@@ -14,6 +14,7 @@ import { InterestsComponent } from './interests/interests.component';
 import { LanguagesComponent } from './languages/languages.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { TemplateModule } from '../templates/template.module';
 
 @NgModule({
     declarations:[
@@ -32,7 +33,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MzSelectModule,
         RouterModule,
         TemplateFormsRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TemplateModule,
     ],
     exports:[
         BasicInformationComponent

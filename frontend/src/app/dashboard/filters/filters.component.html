@@ -1,0 +1,11 @@
+<div class="container template-filters">
+    <div class="filters z-depth-3 ">
+        <div class="filter_colors">
+            <section *ngFor="let filter of filters_list">
+                <div class="filter" [ngStyle]='{ "background-color" : filter }' (click)="setActive(filter)">
+                    <i class="material-icons" *ngIf="activeFilter==filter">check</i>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

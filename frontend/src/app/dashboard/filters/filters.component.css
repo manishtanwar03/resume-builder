@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Asap|Roboto+Slab&display=swap');
+:host {
+    position: sticky;
+    display: block;
+    top: 0;
+    z-index: 1000;
+}
+
+.template-filters .filters {
+    position: relative;
+    font-family: Asap, 'sans-serif';
+    width: 100%;
+    background-color: #263238;
+    margin-bottom: 50px;
+    z-index: 1000;
+    padding: 25px 0;
+}
+
+.template-filters .filters h1 {
+    font-size: 24px;
+    color: #46464E;
+    text-align: center;
+    margin: 0;
+}
+
+
+/* filters */
+
+.filters .filter_colors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filters .filter_colors .filter {
+    width: 50px;
+    height: 35px;
+    background-color: red;
+    margin: 0 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.filter_colors .filter:hover {
+    outline: 2px solid teal;
+    outline-offset: 3px;
+}
+
+.filter_colors .filter i {
+    font-size: 30px;
+    /* color: white; */
+    font-weight: 800;
+}

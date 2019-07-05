@@ -1,29 +1,25 @@
-.seperator {
-    background-color: white;
-    height: 2px;
-    width: 300px;
-    border: 0;
-    padding: 0 !important;
-}
-
-.row {
+.functional .row {
     padding: 0;
     margin: 0;
     border: 0;
 }
 
-.resume {
+.functional .resume {
     width: 1190px;
     height: 1644px;
     margin: 50px auto;
     padding: 44px 0;
 }
 
-.personal-details {
+
+/* pesonal details part 1 */
+
+.functional .personal-details {
     padding: 0 0 0 50px;
+    margin-bottom: 54px;
 }
 
-.personal-details .image {
+.functional .personal-details .image {
     width: 166px;
     height: 166px;
     border-radius: 200%;
@@ -31,82 +27,103 @@
     padding: 10px;
 }
 
-.personal-details .image img {
+.functional .personal-details .image img {
     height: 100%;
     width: 100%;
     border-radius: 200%;
 }
 
-.personal-details .details * {
+.functional .personal-details .details * {
     padding: 0;
     margin: 0;
     border: 0;
     padding: 5px 0;
 }
 
-.personal-details .details {
+.functional .personal-details .details {
     padding: 18px 24px 22px;
     background-color: #479099;
     color: white;
 }
 
-.personal-details .details h1 {
+.functional .personal-details .details h1 {
     font-size: 46px;
     font-weight: 600;
 }
 
-.personal-details .details h3 {
+.functional .personal-details .details h3 {
     font-size: 24px;
     font-weight: 400;
 }
 
-.personal-details .details p {
+.functional .personal-details .seperator {
+    background-color: white;
+    height: 2px;
+    width: 300px;
+    border: 0;
+    padding: 0 !important;
+}
+
+.functional .personal-details .details p {
     font-size: 18px;
     margin-top: 5px;
     font-weight: 400;
 }
 
 
-/* details left */
+/* details left  part 2*/
 
-.contact-details * {
+
+/* contact details  left part 1*/
+
+.functional .contact-details * {
     padding: 0;
     margin: 0;
     border: 0;
 }
 
-.contact-details {
+.functional .contact-details {
     margin: 4px 0 10px 50px;
     padding: 0 0 14px;
     font-size: 16px;
     color: #479099;
 }
 
-.contact-details p {
+.functional .contact-details p {
     color: black;
     font-weight: 500;
     line-height: 20px;
+    font-size: 18px;
 }
 
-.contact-details div {
+.functional .contact-details div {
     padding: 10px 0;
 }
 
+.functional .contact-details i {
+    font-size: 2em;
+}
+
+
+/* skills interests languages left */
+
 .skills *,
-.languages * {
+.languages *,
+.functional .interests * {
     padding: 0;
     margin: 0;
     border: 0;
 }
 
 .skills,
-.languages {
+.languages,
+.functional .interests {
     margin: 0 0 32px 50px;
     padding: 0 0 10px;
 }
 
 .skills h1,
-.languages h1 {
+.functional .languages h1 {
     font-size: 28px;
     color: #479099;
     font-weight: 700;
@@ -115,13 +132,15 @@
 }
 
 .skills .skills_list,
-.languages .languages_list {
+.functional .interests .interests_list {
     padding: 10px 0 0 0;
     margin-left: -15px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
-.skills .skills_list .skill {
-    display: inline-block;
+.functional .skills .skills_list .skill {
     padding: 3px 10px;
     border-radius: 6px;
     color: white;
@@ -130,18 +149,7 @@
     margin: 4px 5px;
 }
 
-.interests * {
-    padding: 0;
-    margin: 0;
-    border: 0;
-}
-
-.interests {
-    margin: 0 0 32px 50px;
-    padding: 0 0 10px;
-}
-
-.interests h1 {
+.functional .interests h1 {
     font-size: 28px;
     color: #479099;
     font-weight: 700;
@@ -149,13 +157,7 @@
     border-bottom: 2px solid #479099;
 }
 
-.interests .interests_list {
-    padding: 10px 0 0 0;
-    margin-left: -15px;
-}
-
-.interests .interests_list .interest {
-    display: inline-block;
+.functional .interests .interests_list .interest {
     padding: 3px 10px;
     border-radius: 6px;
     color: black;
@@ -164,7 +166,8 @@
     border: 2px solid #b2b2b2;
 }
 
-.languages .languages_list {
+.functional .languages .languages_list {
+    margin-left: -15px;
     padding: 20px 0;
     width: 100%;
     font-size: 16px;
@@ -172,13 +175,13 @@
     position: relative;
 }
 
-.languages .language p {
+.functional .languages .language p {
     width: 40%;
     display: inline;
     padding: 0 10px;
 }
 
-.languages .language .progress {
+.functional .languages .language .progress {
     position: absolute;
     right: 0;
     margin-top: 8px;
@@ -186,23 +189,24 @@
     display: inline-block;
     margin-left: 0px;
     padding-bottom: 10px;
+    border-radius: 0;
 }
 
 
 /* details-right */
 
-.base * {
+.functional .base * {
     padding: 0;
     margin: 0;
     border: 0;
 }
 
-.base {
+.functional .base {
     margin: 0 0 32px 50px;
-    padding: 0 0 10px;
+    padding: 0 20px 10px;
 }
 
-.base>h1 {
+.functional .base>h1 {
     font-size: 28px;
     color: #479099;
     font-weight: 700;
@@ -213,25 +217,25 @@
 
 /* work */
 
-.work-experience .work {
+.functional .work-experience .work {
     padding: 15px 0 10px 15px;
 }
 
-.work-experience .work h1 {
+.functional .work-experience .work h1 {
     font-size: 24px;
     color: #479099;
     font-weight: 700;
     padding-bottom: 5px;
 }
 
-.work-experience .work h3 {
+.functional .work-experience .work h3 {
     font-size: 22px;
     color: black;
     font-weight: 700;
     padding-bottom: 5px;
 }
 
-.work-experience .work span {
+.functional .work-experience .work span {
     font-size: 16px;
     color: #479099;
     line-height: 18px;
@@ -240,7 +244,7 @@
     padding-top: 5px;
 }
 
-.work-experience .work p {
+.functional .work-experience .work p {
     color: #7c7c7c;
     font-size: 16px;
     padding-top: 5px;
@@ -249,25 +253,25 @@
 
 /* school */
 
-.education .school {
+.functional .education .school {
     padding: 15px 0 10px 15px;
 }
 
-.education .school h1 {
+.functional .education .school h1 {
     font-size: 24px;
     color: #479099;
     font-weight: 700;
     padding-bottom: 5px;
 }
 
-.education .school h3 {
+.functional .education .school h3 {
     font-size: 22px;
     color: black;
     font-weight: 700;
     padding-bottom: 5px;
 }
 
-.education .school span {
+.functional .education .school span {
     font-size: 16px;
     color: #479099;
     line-height: 18px;
@@ -279,25 +283,25 @@
 
 /* projects */
 
-.projects .project {
+.functional .projects .project {
     padding: 15px 0 10px 15px;
 }
 
-.projects .project h1 {
+.functional .projects .project h1 {
     font-size: 24px;
     color: #479099;
     font-weight: 700;
     padding-bottom: 5px;
 }
 
-.projects .project h3 {
+.functional .projects .project h3 {
     font-size: 22px;
     color: black;
     font-weight: 700;
     padding-bottom: 5px;
 }
 
-.projects .project span {
+.functional .projects .project p.date {
     font-size: 16px;
     color: #479099;
     line-height: 18px;
@@ -306,7 +310,7 @@
     padding-top: 5px;
 }
 
-.projects .project p {
+.functional .projects .project p.desc {
     color: #7c7c7c;
     font-size: 16px;
     padding-top: 5px;
