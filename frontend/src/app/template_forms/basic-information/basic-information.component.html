@@ -1,72 +1,73 @@
-<section class="base">
-    <div class="container">
-        <h1>Tell me something about yourself?</h1>
-        <p>We suggest including an email and phone number.</p>
-        <div class="row">
-            <div class="col s8">
-                <div class="row form " [formGroup]="basicInfoForm">
-                    <div class="col s12">
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="first_name" type="text" class="validate" formControlName="firstName" (focusout)="focusOutFunction()">
-                                <label for="first_name">First Name</label>
+<form [formGroup]="basicInformationForm" (ngSubmit)="saveData()">
+    <section class="base">
+        <div class="container">
+            <h1>Tell me something about yourself?</h1>
+            <p>We suggest including an email and phone number.</p>
+            <div class="row">
+                <div class="col s8">
+                    <div class="row form ">
+                        <div class="col s12">
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="first_name" type="text" class="validate" formControlName="firstName">
+                                    <label for="first_name">First Name</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="last_name" type="text" class="validate" formControlName="lastName">
+                                    <label for="last_name">Last Name</label>
+                                </div>
                             </div>
-                            <div class="input-field col s6">
-                                <input id="last_name" type="text" class="validate" formControlName="lastName" (focusout)="focusOutFunction()">
-                                <label for="last_name">Last Name</label>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="street_address" type="text" class="validate" formControlName="street">
+                                    <label for="street_address">Street Address</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="street_address" type="text" class="validate" formControlName="street" (focusout)="focusOutFunction()">
-                                <label for="street_address">Street Address</label>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="state" type="text" class="validate" formControlName="state">
+                                    <label for="state">State/Province</label>
+                                </div>
+                                <div class="input-field col s3">
+                                    <input id="city" type="text" class="validate" formControlName="city">
+                                    <label for="city">City</label>
+                                </div>
+                                <div class="input-field col s3">
+                                    <input id="pincode" type="text" class="validate" formControlName="pincode">
+                                    <label for="pincode">Pincode</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="state" type="text" class="validate" formControlName="state" (focusout)="focusOutFunction()">
-                                <label for="state">State/Province</label>
+                            <div class="row">
+                                <div class="input-field col s5">
+                                    <input id="phone" type="text" class="validate" formControlName="phone">
+                                    <label for="phone">Phone</label>
+                                </div>
+                                <div class="input-field col s7">
+                                    <input id="email" type="text" class="validate" formControlName="email">
+                                    <label for="email">Email Address</label>
+                                </div>
                             </div>
-                            <div class="input-field col s3">
-                                <input id="city" type="text" class="validate" formControlName="city" (focusout)="focusOutFunction()">
-                                <label for="city">City</label>
-                            </div>
-                            <div class="input-field col s3">
-                                <input id="pincode" type="text" class="validate" formControlName="pincode" (focusout)="focusOutFunction()">
-                                <label for="pincode">Pincode</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="phone" type="text" class="validate" formControlName="phone" (focusout)="focusOutFunction()">
-                                <label for="phone">Phone</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="email" type="text" class="validate" formControlName="email" (focusout)="focusOutFunction()">
-                                <label for="email">Email Address</label>
-                            </div>
-                            <p>{{basicInfoForm.value|json}}</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col s4">
-                <div class="preview">
-                    <app-preview-template></app-preview-template>
-                </div>
-                <div class="preview-button">
-                    <button type="button" name="action">Preview
+                <div class="col s4">
+                    <div class="preview">
+                        <app-preview-template></app-preview-template>
+                    </div>
+                    <div class="preview-button">
+                        <button type="submit" name="action">Preview
                         <i class="material-icons left">remove_red_eye</i>
                     </button>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
+    <div class="navigation-back">
+        <a class="btn-floating btn-large waves-effect waves-light red" [routerLink]="['/dashboard']"><i class="material-icons">arrow_back</i></a>
     </div>
-</section>
-<div class="navigation-back">
-    <a class="btn-floating btn-large waves-effect waves-light red" [routerLink]="['/dashboard']"><i class="material-icons">arrow_back</i></a>
-</div>
 
-<div class="navigation-next">
-    <a class="waves-effect pulse btn-large green" [routerLink]="['/resume','work-history']"><i class="material-icons right">arrow_forward</i>Next</a>
-</div>
+    <div class="navigation-next">
+        <button type='submit' class="waves-effect pulse btn-large green"><i class="material-icons right">arrow_forward</i>Next</button>
+    </div>
+</form>

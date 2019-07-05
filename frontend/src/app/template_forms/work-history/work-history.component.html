@@ -1,100 +1,106 @@
-<section class="base">
-    <div class="container">
-        <h1>Now let's fill out work history.</h1>
-        <p>Start with your most recent job and work backward.</p>
-        <div class="row">
-            <div class="col s8">
-                <div class="row form" [formGroup]="workForm">
-                    <div class="col s12">
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="job_title" type="text" class="validate" formControlName="job_title" (focusout)="focusOutFunction()" >
-                                <label for="job_title">Job Title</label>
+<form [formGroup]="workHistoryForm" (ngSubmit)="saveData()">
+    <section class="base">
+        <div class="container">
+            <h1>Now let's fill out work history.</h1>
+            <p>Start with your most recent job and work backward.</p>
+            <div class="row">
+                <div class="col s8">
+                    <div class="row form">
+                        <div class="col s12">
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="job_title" type="text" class="validate" formControlName="job_title">
+                                    <label for="job_title">Job Title</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="employer" type="text" class="validate" formControlName="employer">
+                                    <label for="employer">Employer</label>
+                                </div>
                             </div>
-                            <div class="input-field col s6">
-                                <input id="employer" type="text" class="validate" formControlName="employer" (focusout)="focusOutFunction()">
-                                <label for="employer">Employer</label>
+                            <div class="row">
+                                <div class="input-field col s3">
+                                    <!-- <input id="job_title" type="text" class="validate"> -->
+                                    <label for="start_day">Start Date :</label>
+                                </div>
+                                <div class="input-field col s2">
+                                    <input id="start_day" type="number" class="validate" formControlName="start_day">
+                                    <label for="start_day">Day</label>
+                                </div>
+                                <div class="input-field col s1">
+                                    <!-- <input id="job_title" type="number" class="validate"> -->
+                                    <label for="job_title" style="width:100%;text-align: center;">/</label>
+                                </div>
+                                <div class="input-field col s2">
+                                    <input id="start_month" type="number" class="validate" formControlName="start_month">
+                                    <label for="start_month">Month</label>
+                                </div>
+                                <div class="input-field col s1">
+                                    <!-- <input id="job_title" type="number" class="validate"> -->
+                                    <label for="job_title" style="width:100%;text-align: center;">/</label>
+                                </div>
+                                <div class="input-field col s3">
+                                    <input id="start_year" type="number" class="validate" formControlName="start_year">
+                                    <label for="start_year">Year</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s3">
+                                    <!-- <input id="job_title" type="text" class="validate"> -->
+                                    <label for="end_date">End Date :</label>
+                                </div>
+                                <div class="input-field col s2">
+                                    <input id="end__day" type="number" class="validate" formControlName="end_day">
+                                    <label for="end_day">Day</label>
+                                </div>
+                                <div class="input-field col s1">
+                                    <!-- <input id="job_title" type="number" class="validate"> -->
+                                    <label for="job_title" style="width:100%;text-align: center;">/</label>
+                                </div>
+                                <div class="input-field col s2">
+                                    <input id="end_month" type="number" class="validate" formControlName="end_month">
+                                    <label for="end_month">Month</label>
+                                </div>
+                                <div class="input-field col s1">
+                                    <!-- <input id="job_title" type="number" class="validate"> -->
+                                    <label for="job_title" style="width:100%;text-align: center;">/</label>
+                                </div>
+                                <div class="input-field col s3">
+                                    <input id="end_year" type="number" class="validate" formControlName="end_year">
+                                    <label for="end_year">Year</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s9">
+                                    <textarea id="textarea1" class="materialize-textarea" length="120" formControlName="description"></textarea>
+                                    <label for="description">Short Description</label>
+                                </div>
+                                <div class="col s3">
+                                    <div class="preview-button">
+                                        <button type="submit">Save/Add More
+                                    </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s3">
-                                <!-- <input id="job_title" type="text" class="validate"> -->
-                                <label for="start_day">Start Date :</label>
-                            </div>
-                            <div class="input-field col s2">
-                                <input id="start_day" type="number" class="validate" formControlName="sday" (focusout)="focusOutFunction()">
-                                <label for="start_day">Day</label>
-                            </div>
-                            <div class="input-field col s1">
-                                <!-- <input id="job_title" type="number" class="validate"> -->
-                                <label for="job_title" style="width:100%;text-align: center;">/</label>
-                            </div>
-                            <div class="input-field col s2">
-                                <input id="start_month" type="number" class="validate" formControlName="smonth" (focusout)="focusOutFunction()">
-                                <label for="start_month">Month</label>
-                            </div>
-                            <div class="input-field col s1">
-                                <!-- <input id="job_title" type="number" class="validate"> -->
-                                <label for="job_title" style="width:100%;text-align: center;">/</label>
-                            </div>
-                            <div class="input-field col s3">
-                                <input id="start_year" type="number" class="validate" formControlName="syear" (focusout)="focusOutFunction()">
-                                <label for="start_year">Year</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s3">
-                                <!-- <input id="job_title" type="text" class="validate"> -->
-                                <label for="end_date">End Date :</label>
-                            </div>
-                            <div class="input-field col s2">
-                                <input id="end__day" type="number" class="validate" formControlName="eday" (focusout)="focusOutFunction()">
-                                <label for="end_day">Day</label>
-                            </div>
-                            <div class="input-field col s1">
-                                <!-- <input id="job_title" type="number" class="validate"> -->
-                                <label for="job_title" style="width:100%;text-align: center;">/</label>
-                            </div>
-                            <div class="input-field col s2">
-                                <input id="end_month" type="number" class="validate" formControlName="emonth" (focusout)="focusOutFunction()">
-                                <label for="end_month">Month</label>
-                            </div>
-                            <div class="input-field col s1">
-                                <!-- <input id="job_title" type="number" class="validate"> -->
-                                <label for="job_title" style="width:100%;text-align: center;">/</label>
-                            </div>
-                            <div class="input-field col s3">
-                                <input id="end_year" type="number" class="validate" formControlName="eyear" (focusout)="focusOutFunction()">
-                                <label for="end_year">Year</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <textarea id="textarea1" class="materialize-textarea" length="120" formControlName="description" (focusout)="focusOutFunction()"></textarea>
-                                <label for="description">Short Description</label>
-                            </div>
-                        </div>
-                        <p>{{workForm.value|json}}</p>
+                    </div>
+                </div>
+                <div class="col s4">
+                    <div class="preview">
+                        <app-preview-template></app-preview-template>
+                    </div>
+                    <div class="preview-button">
+                        <button type="button" name="action">Preview
+                        <i class="material-icons left">remove_red_eye</i>
+                    </button>
                     </div>
                 </div>
             </div>
-            <div class="col s4">
-                <div class="preview">
-                    <app-preview-template></app-preview-template>
-                </div>
-                <div class="preview-button">
-                    <button type="button" name="action">Preview
-                            <i class="material-icons left">remove_red_eye</i>
-                        </button>
-                </div>
-            </div>
         </div>
+    </section>
+    <div class="navigation-back">
+        <a class="btn-floating btn-large waves-effect waves-light red" [routerLink]="['/resume','basic-information']"><i class="material-icons">arrow_back</i></a>
     </div>
-</section>
-<div class="navigation-back">
-    <a class="btn-floating btn-large waves-effect waves-light red" [routerLink]="['/resume','basic-information']"><i class="material-icons">arrow_back</i></a>
-</div>
 
-<div class="navigation-next">
-    <a class="waves-effect pulse btn-large green" [routerLink]="['/resume','education']"><i class="material-icons right">arrow_forward</i>Next</a>
-</div>
+    <div class="navigation-next">
+        <a class="waves-effect pulse btn-large green" [routerLink]="['/resume','education']"><i class="material-icons right">arrow_forward</i>Next</a>
+    </div>

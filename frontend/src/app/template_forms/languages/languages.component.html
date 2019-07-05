@@ -16,13 +16,14 @@
                             <!-- list here -->
                             <div class="col s6 offset-s3">
                                 <ul style="margin-top:-20px;overflow:auto;max-height:500px" class="collection scrollbar" *ngIf="languages.length">
-                                    <li class="collection-item" *ngFor='let language of languages;let id=index'>
+                                    <li class="collection-item" *ngFor='let language of languages;let id=index' style="position:relative;">
                                         <div class="buttons">
                                             {{ language.language | titlecase}}
                                             <i class="material-icons" (click)="removeMe(id)">clear</i>
                                         </div>
                                         <input type="range" id="proficiency" min="0" max="100" value="100" (change)="setProficiency(id,$event.target.value)">
                                     </li>
+
                                 </ul>
                             </div>
                         </div>
