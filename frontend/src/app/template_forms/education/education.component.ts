@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./education.component.css']
 })
 export class EducationComponent implements OnInit {
+
+
+
   year_list=[];
   constructor() { 
     for(let year=new Date().getFullYear();year!=1950;year--){
@@ -17,6 +20,7 @@ export class EducationComponent implements OnInit {
 
   ngOnInit() {
     
+
   }
 
 }

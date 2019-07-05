@@ -4,29 +4,30 @@
         <p>Include every school, even if you're still there or didn't graduate.</p>
         <div class="row">
             <div class="col s8">
-                <div class="row form">
+                <div class="row form" [formGroup]="educationForm">
                     <div class="col s12">
                         <div class="row">
                             <!-- school name, degree,graduation year,percent/cgpa -->
                             <div class="input-field col s6">
-                                <input id="job_title" type="text" class="validate">
+                                <input id="job_title" type="text" class="validate" formControlName="schoolName">
                                 <label for="job_title">School Name</label>
+
                             </div>
                             <div class="input-field col s6">
-                                <input id="location" type="text" class="validate">
+                                <input id="location" type="text" class="validate" formControlName="location">
                                 <label for="location">Location</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="degree" type="text" class="validate">
+                                <input id="degree" type="text" class="validate" formControlName="degree">
                                 <label for="degree">Degree</label>
                             </div>
                             <mz-select-container>
                                 <div class="input-field col s4">
-                                    <select mz-select [label]="'Graduation Year'">
+                                    <select mz-select [label]="'Graduation Year'" formControlName="year">
                                         <option value="" disabled selected>Select Year</option>
-                                      <option value="{{ year }}" *ngFor="let year of year_list">{{ year }}</option>
+                                      <option value="{{ year }}" *ngFor="let year of year_list" >{{ year }}</option>
                                     </select>
                                     <!-- <label>Materialize Select</label> -->
                                 </div>
@@ -34,7 +35,7 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
+                                <textarea id="textarea1" class="materialize-textarea" length="120" formControlName="description3"></textarea>
                                 <label for="description">Short Description</label>
                             </div>
                         </div>
