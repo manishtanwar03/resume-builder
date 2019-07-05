@@ -9,23 +9,23 @@
                         <div class="row">
                             <!-- school name, degree,graduation year,percent/cgpa -->
                             <div class="input-field col s6">
-                                <input id="job_title" type="text" class="validate" formControlName="schoolName">
+                                <input id="job_title" type="text" class="validate" formControlName="schoolName" (focusout)="focusOutFunction()">
                                 <label for="job_title">School Name</label>
 
                             </div>
                             <div class="input-field col s6">
-                                <input id="location" type="text" class="validate" formControlName="location">
+                                <input id="location" type="text" class="validate" formControlName="location" (focusout)="focusOutFunction()">
                                 <label for="location">Location</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="degree" type="text" class="validate" formControlName="degree">
+                                <input id="degree" type="text" class="validate" formControlName="degree" (focusout)="focusOutFunction()">
                                 <label for="degree">Degree</label>
                             </div>
                             <mz-select-container>
                                 <div class="input-field col s4">
-                                    <select mz-select [label]="'Graduation Year'" formControlName="year">
+                                    <select mz-select [label]="'Graduation Year'" formControlName="year" (focusout)="focusOutFunction()">
                                         <option value="" disabled selected>Select Year</option>
                                       <option value="{{ year }}" *ngFor="let year of year_list" >{{ year }}</option>
                                     </select>
@@ -35,10 +35,11 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="textarea1" class="materialize-textarea" length="120" formControlName="description3"></textarea>
+                                <textarea id="textarea1" class="materialize-textarea" length="120" formControlName="description" (focusout)="focusOutFunction()"></textarea>
                                 <label for="description">Short Description</label>
                             </div>
                         </div>
+                        <p>{{educationForm.value|json}}</p>
                     </div>
                 </div>
             </div>

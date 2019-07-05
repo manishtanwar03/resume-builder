@@ -4,15 +4,15 @@
         <p>Start with your most recent job and work backward.</p>
         <div class="row">
             <div class="col s8">
-                <div class="row form">
+                <div class="row form" [formGroup]="workForm">
                     <div class="col s12">
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="job_title" type="text" class="validate">
+                                <input id="job_title" type="text" class="validate" formControlName="job_title" (focusout)="focusOutFunction()" >
                                 <label for="job_title">Job Title</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="employer" type="text" class="validate">
+                                <input id="employer" type="text" class="validate" formControlName="employer" (focusout)="focusOutFunction()">
                                 <label for="employer">Employer</label>
                             </div>
                         </div>
@@ -22,7 +22,7 @@
                                 <label for="start_day">Start Date :</label>
                             </div>
                             <div class="input-field col s2">
-                                <input id="start_day" type="number" class="validate">
+                                <input id="start_day" type="number" class="validate" formControlName="sday" (focusout)="focusOutFunction()">
                                 <label for="start_day">Day</label>
                             </div>
                             <div class="input-field col s1">
@@ -30,7 +30,7 @@
                                 <label for="job_title" style="width:100%;text-align: center;">/</label>
                             </div>
                             <div class="input-field col s2">
-                                <input id="start_month" type="number" class="validate">
+                                <input id="start_month" type="number" class="validate" formControlName="smonth" (focusout)="focusOutFunction()">
                                 <label for="start_month">Month</label>
                             </div>
                             <div class="input-field col s1">
@@ -38,7 +38,7 @@
                                 <label for="job_title" style="width:100%;text-align: center;">/</label>
                             </div>
                             <div class="input-field col s3">
-                                <input id="start_year" type="number" class="validate">
+                                <input id="start_year" type="number" class="validate" formControlName="syear" (focusout)="focusOutFunction()">
                                 <label for="start_year">Year</label>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                                 <label for="end_date">End Date :</label>
                             </div>
                             <div class="input-field col s2">
-                                <input id="end__day" type="number" class="validate">
+                                <input id="end__day" type="number" class="validate" formControlName="eday" (focusout)="focusOutFunction()">
                                 <label for="end_day">Day</label>
                             </div>
                             <div class="input-field col s1">
@@ -56,7 +56,7 @@
                                 <label for="job_title" style="width:100%;text-align: center;">/</label>
                             </div>
                             <div class="input-field col s2">
-                                <input id="end_month" type="number" class="validate">
+                                <input id="end_month" type="number" class="validate" formControlName="emonth" (focusout)="focusOutFunction()">
                                 <label for="end_month">Month</label>
                             </div>
                             <div class="input-field col s1">
@@ -64,16 +64,17 @@
                                 <label for="job_title" style="width:100%;text-align: center;">/</label>
                             </div>
                             <div class="input-field col s3">
-                                <input id="end_year" type="number" class="validate">
+                                <input id="end_year" type="number" class="validate" formControlName="eyear" (focusout)="focusOutFunction()">
                                 <label for="end_year">Year</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
+                                <textarea id="textarea1" class="materialize-textarea" length="120" formControlName="description" (focusout)="focusOutFunction()"></textarea>
                                 <label for="description">Short Description</label>
                             </div>
                         </div>
+                        <p>{{workForm.value|json}}</p>
                     </div>
                 </div>
             </div>

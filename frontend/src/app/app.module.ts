@@ -10,9 +10,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { TemplateFormsModule } from './template_forms/template-forms.module';
-// import { StorageServiceModule } from ‘ngx-webstorage-service’;
-// import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
-// import { StorageServiceModule} from 'angular-webstorage-service';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -30,7 +29,8 @@ import { TemplateFormsModule } from './template_forms/template-forms.module';
     DashboardModule,
     AuthModule,
     TemplateFormsModule,
-    // StorageServiceModule
+    ReactiveFormsModule
+    
   ],
   providers: [ ],
   bootstrap: [AppComponent]

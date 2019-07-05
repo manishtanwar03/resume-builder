@@ -4,47 +4,48 @@
         <p>We suggest including an email and phone number.</p>
         <div class="row">
             <div class="col s8">
-                <div class="row form">
+                <div class="row form " [formGroup]="basicInfoForm">
                     <div class="col s12">
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="first_name" type="text" class="validate">
+                                <input id="first_name" type="text" class="validate" formControlName="firstName" (focusout)="focusOutFunction()">
                                 <label for="first_name">First Name</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="last_name" type="text" class="validate">
+                                <input id="last_name" type="text" class="validate" formControlName="lastName" (focusout)="focusOutFunction()">
                                 <label for="last_name">Last Name</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="street_address" type="text" class="validate">
+                                <input id="street_address" type="text" class="validate" formControlName="street" (focusout)="focusOutFunction()">
                                 <label for="street_address">Street Address</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="state" type="text" class="validate">
+                                <input id="state" type="text" class="validate" formControlName="state" (focusout)="focusOutFunction()">
                                 <label for="state">State/Province</label>
                             </div>
                             <div class="input-field col s3">
-                                <input id="city" type="text" class="validate">
+                                <input id="city" type="text" class="validate" formControlName="city" (focusout)="focusOutFunction()">
                                 <label for="city">City</label>
                             </div>
                             <div class="input-field col s3">
-                                <input id="pincode" type="text" class="validate">
+                                <input id="pincode" type="text" class="validate" formControlName="pincode" (focusout)="focusOutFunction()">
                                 <label for="pincode">Pincode</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="phone" type="text" class="validate">
+                                <input id="phone" type="text" class="validate" formControlName="phone" (focusout)="focusOutFunction()">
                                 <label for="phone">Phone</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="email" type="text" class="validate">
+                                <input id="email" type="text" class="validate" formControlName="email" (focusout)="focusOutFunction()">
                                 <label for="email">Email Address</label>
                             </div>
+                            <p>{{basicInfoForm.value|json}}</p>
                         </div>
                     </div>
                 </div>

@@ -4,11 +4,11 @@
         <p>Include some of the best things you have built</p>
         <div class="row">
             <div class="col s8">
-                <div class="row form">
+                <div class="row form" [formGroup]="projectForm">
                     <div class="col s12">
                         <div class="row">
                             <div class="input-field col s6 ">
-                                <input id="job_title" type="text" class="validate">
+                                <input id="job_title" type="text" class="validate" formControlName="projectTitle" (focusout)="focusOutFunction()">
                                 <label for="job_title">Project Title</label>
                             </div>
                         </div>
@@ -18,7 +18,7 @@
                                 <label for="start_day">Start Date :</label>
                             </div>
                             <div class="input-field col s2">
-                                <input id="start_day" type="number" class="validate">
+                                <input id="start_day" type="number" class="validate" formControlName="sDay" (focusout)="focusOutFunction()">
                                 <label for="start_day">Day</label>
                             </div>
                             <div class="input-field col s1">
@@ -26,7 +26,7 @@
                                 <label for="job_title" style="width:100%;text-align: center;">/</label>
                             </div>
                             <div class="input-field col s2">
-                                <input id="start_month" type="number" class="validate">
+                                <input id="start_month" type="number" class="validate" formControlName="sMonth" (focusout)="focusOutFunction()">
                                 <label for="start_month">Month</label>
                             </div>
                             <div class="input-field col s1">
@@ -34,7 +34,7 @@
                                 <label for="job_title" style="width:100%;text-align: center;">/</label>
                             </div>
                             <div class="input-field col s3">
-                                <input id="start_year" type="number" class="validate">
+                                <input id="start_year" type="number" class="validate" formControlName="sYear" (focusout)="focusOutFunction()">
                                 <label for="start_year">Year</label>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                                 <label for="end_date">End Date :</label>
                             </div>
                             <div class="input-field col s2">
-                                <input id="end__day" type="number" class="validate">
+                                <input id="end__day" type="number" class="validate" formControlName="eDay" (focusout)="focusOutFunction()">
                                 <label for="end_day">Day</label>
                             </div>
                             <div class="input-field col s1">
@@ -52,7 +52,7 @@
                                 <label for="job_title" style="width:100%;text-align: center;">/</label>
                             </div>
                             <div class="input-field col s2">
-                                <input id="end_month" type="number" class="validate">
+                                <input id="end_month" type="number" class="validate" formControlName="eMonth" (focusout)="focusOutFunction()">
                                 <label for="end_month">Month</label>
                             </div>
                             <div class="input-field col s1">
@@ -60,16 +60,17 @@
                                 <label for="job_title" style="width:100%;text-align: center;">/</label>
                             </div>
                             <div class="input-field col s3">
-                                <input id="end_year" type="number" class="validate">
+                                <input id="end_year" type="number" class="validate" formControlName="eYear" (focusout)="focusOutFunction()">
                                 <label for="end_year">Year</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
+                                <textarea id="textarea1" class="materialize-textarea" length="120" formControlName="description" (focusout)="focusOutFunction()"></textarea>
                                 <label for="description">Short Description</label>
                             </div>
                         </div>
+                        <p>{{projectForm.value|json}}</p>
                     </div>
                 </div>
             </div>
