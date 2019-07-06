@@ -8,7 +8,6 @@
                     <div class="row form">
                         <div class="col s12">
                             <div class="row">
-                                <!-- school name, degree,graduation year,percent/cgpa -->
                                 <div class="input-field col s6">
                                     <input id="job_title" type="text" class="validate" formControlName="schoolName">
                                     <label for="job_title">School Name</label>
@@ -30,7 +29,6 @@
                                         <option value="" disabled selected>Select Year</option>
                                       <option value="{{ year }}" *ngFor="let year of year_list" >{{ year }}</option>
                                     </select>
-                                        <!-- <label>Materialize Select</label> -->
                                     </div>
                                 </mz-select-container>
                             </div>
@@ -42,13 +40,14 @@
                                 <div class="col s3">
                                     <div class="preview-button">
                                         <button type="submit">Save/Add More
-                                        <!-- <i class="material-icons left">add</i> -->
                                     </button>
                                     </div>
                                 </div>
                             </div>
-                            <!-- <p>{{educationForm.value|json}}</p> -->
                         </div>
+                    </div>
+                    <div class="row">
+                        <app-data-slider [storedData]="education"></app-data-slider>
                     </div>
                 </div>
                 <div class="col s4">
@@ -58,7 +57,7 @@
                     <div class="preview-button">
                         <button type="button" name="action">Preview
                                 <i class="material-icons left">remove_red_eye</i>
-                            </button>
+                        </button>
                     </div>
                 </div>
             </div>

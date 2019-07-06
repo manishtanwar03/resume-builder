@@ -15,6 +15,7 @@ import { LanguagesComponent } from './languages/languages.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { TemplateModule } from '../templates/template.module';
+import { DataSliderComponent } from './data-slider/data-slider.component';
 
 @NgModule({
     declarations:[
@@ -24,7 +25,8 @@ import { TemplateModule } from '../templates/template.module';
         ProjectsComponent,
         SkillsComponent,
         InterestsComponent,
-        LanguagesComponent
+        LanguagesComponent,
+        DataSliderComponent
     ],
     imports:[
         CommonModule,
