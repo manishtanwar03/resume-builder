@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-preview-template',
@@ -8,9 +9,21 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PreviewTemplateComponent implements OnInit {
   @Input() filter:String="#479099";
 
+  basicInformation=null;
+  skills=null;
+  languages=null;
+  interests=[];
+
   constructor() { }
 
   ngOnInit() {
+  
   }
-
+ngDoCheck(){
+  this.basicInformation = JSON.parse(localStorage.getItem('basicInformation'));
+  this.skills = JSON.parse(localStorage.getItem('skills'));
+  this.languages = JSON.parse(localStorage.getItem('languages'));
+  this.interests = JSON.parse(localStorage.getItem('interests'));
+  console.log(this.interests)
+}
 }

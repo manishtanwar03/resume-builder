@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup , FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-basic-information',
@@ -11,17 +12,18 @@ export class BasicInformationComponent implements OnInit {
 
   basicInformationForm:FormGroup=null;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private dataService:DataService) { }
 
 
   // local storage methods
   private getBasicInfo()
   {
     let localStorageItem=JSON.parse(localStorage.getItem('basicInformation'));
-    return localStorageItem==null? [] : localStorageItem;
+    return localStorageItem;
   }
 
   private setBasicInfo(data){
+    this.dataService.update('basicInformation',this.basicInformationForm.value);
     localStorage.setItem('basicInformation',JSON.stringify(data));
   }
 
@@ -29,21 +31,20 @@ export class BasicInformationComponent implements OnInit {
     this.basicInformationForm=new FormGroup({
       firstName:new FormControl(''),
         lastName:new FormControl(''),
-        street:new FormControl(''),
-        state:new FormControl(''),
-        city:new FormControl(''),
-        pincode:new FormControl(''),
+        title:new FormControl(''),
+        pitch:new FormControl(''),
         phone:new FormControl(''),
         email:new FormControl(''),
-        index:new FormControl(0)
     });
     // loading previous values if any
-   if(this.getBasicInfo().length>0)
-        this.basicInformationForm.setValue(this.getBasicInfo())
+   if(this.getBasicInfo()){
+        this.basicInformationForm.setValue(this.getBasicInfo());
+        this.dataService.update('basicInformation',this.basicInformationForm.value);
+   }
   }
 
   saveData(){
     this.setBasicInfo(this.basicInformationForm.value);
-    this.router.navigate(['/resume','work-history']);
+    // this.router.navigate(['/resume','work-history']);
   }
 }

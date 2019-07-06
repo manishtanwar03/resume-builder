@@ -19,8 +19,11 @@ export class FiltersComponent implements OnInit {
 
   setActive(filter){
     this.activeFilter=filter;
-    if(filter=='#fff')
+    localStorage.setItem('filter',JSON.stringify(this.activeFilter));
+    if(filter=='#fff'){
+      localStorage.setItem('filter',JSON.stringify("#479099"));
       this.filterValue.emit("#479099");
+    }
     else
       this.filterValue.emit(filter);
   }

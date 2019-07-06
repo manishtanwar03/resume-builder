@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { TemplateFormsModule } from './template_forms/template-forms.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DataService } from './services/data.service';
 
 
 
@@ -32,7 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
     
   ],
-  providers: [ ],
+  providers: [ DataService, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
