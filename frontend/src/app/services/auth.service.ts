@@ -23,41 +23,46 @@ export class AuthService {
   }
 
 
-  createCookie(username,password){
+  loggedIn() {
+    return !!localStorage.getItem('token')    
+  }
+
+
+  // createCookie(username,password){
   
-    this.cookie.set('username',username.trim());
-    this.cookie.set('password',password.trim());
-    this.cookie.set('loggedIn','true');
-  }
+  //   this.cookie.set('username',username.trim());
+  //   this.cookie.set('password',password.trim());
+  //   this.cookie.set('loggedIn','true');
+  // }
 
-  logIn(username,password){
-    let USERNAME:string = this.cookie.get('username');
-    let PASSWORD:string = this.cookie.get('password');
-    if(username.trim()==USERNAME && password.trim()==PASSWORD){
-        this.cookie.set('loggedIn','true');
-        return true;
-    }
-    return false;
-  }
+  // logIn(username,password){
+  //   let USERNAME:string = this.cookie.get('username');
+  //   let PASSWORD:string = this.cookie.get('password');
+  //   if(username.trim()==USERNAME && password.trim()==PASSWORD){
+  //       this.cookie.set('loggedIn','true');
+  //       return true;
+  //   }
+  //   return false;
+  // }
 
-  logOut(){
-    this.cookie.set('loggedIn','false');
-    this.router.navigate(["/login"]);
-  }
+  // logOut(){
+  //   this.cookie.set('loggedIn','false');
+  //   this.router.navigate(["/login"]);
+  // }
 
-  isLoggedIn(){
-    if( this.cookie.get('loggedIn') == 'true')
-        return true;
-    return false;
-  }
+  // isLoggedIn(){
+  //   if( this.cookie.get('loggedIn') == 'true')
+  //       return true;
+  //   return false;
+  // }
 
-  signUp(username,password){
-    this.cookie.deleteAll();
-    this.createCookie(username,password);
-    return true;
-  }
+  // signUp(username,password){
+  //   this.cookie.deleteAll();
+  //   this.createCookie(username,password);
+  //   return true;
+  // }
 
-  getUsername(){
-    return this.cookie.get('username');
-  }
+  // getUsername(){
+  //   return this.cookie.get('username');
+  // }
 }

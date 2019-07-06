@@ -26,9 +26,9 @@ export class SignupComponent implements OnInit {
     }
     );
 
-    if (this.authService.isLoggedIn()){
-      this.router.navigate(['/dashboard']);
-    }
+    // if (this.authService.isLoggedIn()){
+    //   this.router.navigate(['/dashboard']);
+    // }
   }
 
 // confirm password validator

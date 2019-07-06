@@ -7,9 +7,10 @@ import { ProjectsComponent } from './projects/projects.component';
 import { SkillsComponent } from './skills/skills.component';
 import { InterestsComponent } from './interests/interests.component';
 import { LanguagesComponent } from './languages/languages.component';
+import { AuthGuard } from 'src/app/services/auth.guard';
 
 const routes:Routes=[
-    {path:'resume',children:[
+    {path:'resume',canActivate:[AuthGuard],children:[
         { path:'',redirectTo:'basic-information',pathMatch:'full'},
         { path:'basic-information',component:BasicInformationComponent},
         { path:'work-history',component:WorkHistoryComponent},
