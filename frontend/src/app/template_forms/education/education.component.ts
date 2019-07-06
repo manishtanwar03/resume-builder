@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup } from '@angular/forms';
 
-// import * as moment from 'moment'
-
-
 @Component({
   selector: 'app-education',
   templateUrl: './education.component.html',
@@ -13,6 +10,7 @@ export class EducationComponent implements OnInit {
   educationForm:FormGroup;
   education=[];
   year_list=[];
+  isEdit=null;
 
   constructor() { 
     for(let year=new Date().getFullYear();year!=1950;year--){
@@ -28,6 +26,7 @@ export class EducationComponent implements OnInit {
   }
 
   private setEducation(){
+    localStorage.clear()
     localStorage.setItem('education',JSON.stringify(this.education));
   }
 
@@ -38,21 +37,35 @@ export class EducationComponent implements OnInit {
       degree:new FormControl(''),
       year:new FormControl(''),
       description:new FormControl(''),
-      index:new FormControl(0)
     });
+    
     // load existing data if any
     if(this.getEducation()!=[]){
       this.education = this.getEducation();
-      // console.log(this.education);   
     } 
-    this.educationForm.patchValue({'index':this.education.length});
-    // console.log(this.education.length);
+  }
+
+  addData(){
+    this.education.push(this.educationForm.value);
+    this.setEducation();
+    this.educationForm.reset();
   }
 
   saveData(){
-    this.education[this.educationForm.value.index] = this.educationForm.value;
-    this.setEducation();
+    this.education[this.isEdit]=this.educationForm.value;
+    this.isEdit=null;
     this.educationForm.reset();
-    this.educationForm.patchValue({'index':this.education.length});
+    this.setEducation();
   }
+
+  editMe(index){
+    this.educationForm.setValue(this.education[index]);
+    this.isEdit=index;
+  }
+
+  deleteMe(index){
+    this.education.splice(index,1);
+    this.setEducation();
+  }
+
 }

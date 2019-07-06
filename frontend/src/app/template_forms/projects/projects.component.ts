@@ -9,6 +9,7 @@ import {FormGroup,FormControl} from '@angular/forms';
 export class ProjectsComponent implements OnInit {
   projectForm:FormGroup;
   projects=[];
+  isEdit=null;
 
   constructor() { }
 
@@ -40,14 +41,36 @@ export class ProjectsComponent implements OnInit {
     if(this.getProject()!=[]){
       this.projects = this.getProject();
     } 
-    this.projectForm.patchValue({'index':this.projects.length});
+    // this.projectForm.patchValue({'index':this.projects.length});
+  }
+
+  // saveData(){
+  //   this.projects[this.projectForm.value.index] = this.projectForm.value;
+  //   this.setProject();
+  //   this.projectForm.reset();
+  //   this.projectForm.patchValue({'index':this.projects.length});
+  // }
+
+  addData(){
+    this.projects.push(this.projectForm.value);
+    this.setProject();
+    this.projectForm.reset();
   }
 
   saveData(){
-    this.projects[this.projectForm.value.index] = this.projectForm.value;
-    this.setProject();
+    this.projects[this.isEdit]=this.projectForm.value;
+    this.isEdit=null;
     this.projectForm.reset();
-    this.projectForm.patchValue({'index':this.projects.length});
+    this.setProject();
   }
 
+  editMe(index){
+    this.projectForm.setValue(this.projects[index]);
+    this.isEdit=index;
+  }
+
+  deleteMe(index){
+    this.projects.splice(index,1);
+    this.setProject();
+  }
 }

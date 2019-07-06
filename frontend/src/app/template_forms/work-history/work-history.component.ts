@@ -8,6 +8,7 @@ import {FormGroup,FormControl} from '@angular/forms';
 export class WorkHistoryComponent implements OnInit {
   workHistoryForm:FormGroup;
   workHistory=[];
+  isEdit=null;
 
   constructor() { }
 
@@ -32,20 +33,41 @@ export class WorkHistoryComponent implements OnInit {
         end_month:new FormControl(''),
         end_year:new FormControl(''),
         description:new FormControl(''),
-        index:new FormControl('')
     });
     // load existing data if any
     if(this.getWork()!=[]){
       this.workHistory = this.getWork();
       // console.log(this.workHistory);
     }
-    this.workHistoryForm.patchValue({'index':this.workHistory.length});
+  }
+
+  // saveData(){
+  //   this.workHistory[this.workHistoryForm.value.index] = this.workHistoryForm.value;
+  //   this.setWork();
+  //   this.workHistoryForm.reset();
+  //   this.workHistoryForm.patchValue({'index':this.workHistory.length});
+  // }
+
+  addData(){
+    this.workHistory.push(this.workHistoryForm.value);
+    this.setWork();
+    this.workHistoryForm.reset();
   }
 
   saveData(){
-    this.workHistory[this.workHistoryForm.value.index] = this.workHistoryForm.value;
-    this.setWork();
+    this.workHistory[this.isEdit]=this.workHistoryForm.value;
+    this.isEdit=null;
     this.workHistoryForm.reset();
-    this.workHistoryForm.patchValue({'index':this.workHistory.length});
+    this.setWork();
+  }
+
+  editMe(index){
+    this.workHistoryForm.setValue(this.workHistory[index]);
+    this.isEdit=index;
+  }
+
+  deleteMe(index){
+    this.workHistory.splice(index,1);
+    this.setWork();
   }
 }

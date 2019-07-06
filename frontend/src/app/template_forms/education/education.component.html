@@ -1,4 +1,4 @@
-<form [formGroup]="educationForm" (ngSubmit)="saveData()">
+<form [formGroup]="educationForm">
     <section class="base">
         <div class="container">
             <h1>Great, let’s work on your education</h1>
@@ -9,24 +9,23 @@
                         <div class="col s12">
                             <div class="row">
                                 <div class="input-field col s6">
-                                    <input id="job_title" type="text" class="validate" formControlName="schoolName">
-                                    <label for="job_title">School Name</label>
-
+                                    <input id="job_title" type="text" class="validate" formControlName="schoolName" placeholder="School Name">
+                                    <!-- <label for="job_title">School Name</label> -->
                                 </div>
                                 <div class="input-field col s6">
-                                    <input id="location" type="text" class="validate" formControlName="location">
-                                    <label for="location">Location</label>
+                                    <input id="location" type="text" class="validate" formControlName="location" placeholder="Location">
+                                    <!-- <label for="location">Location</label> -->
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s6">
-                                    <input id="degree" type="text" class="validate" formControlName="degree">
-                                    <label for="degree">Degree</label>
+                                    <input id="degree" type="text" class="validate" formControlName="degree" placeholder="Degree">
+                                    <!-- <label for="degree">Degree</label> -->
                                 </div>
                                 <mz-select-container>
                                     <div class="input-field col s4">
                                         <select mz-select [label]="'Graduation Year'" formControlName="year">
-                                        <option value="" disabled selected>Select Year</option>
+                                        <option value=""  selected>Select Year</option>
                                       <option value="{{ year }}" *ngFor="let year of year_list" >{{ year }}</option>
                                     </select>
                                     </div>
@@ -34,20 +33,20 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s9">
-                                    <textarea id="textarea1" class="materialize-textarea" length="120" formControlName="description"></textarea>
-                                    <label for="description">Short Description</label>
+                                    <textarea id="textarea1" class="materialize-textarea" length="120" formControlName="description" placeholder="Short Description"></textarea>
+                                    <!-- <label for="description">Short Description</label> -->
                                 </div>
                                 <div class="col s3">
                                     <div class="preview-button">
-                                        <button type="submit">Save/Add More
-                                    </button>
+                                        <button type="submit" *ngIf="isEdit==null" (click)="addData()">Add More</button>
+                                        <button type="submit" *ngIf="isEdit!=null" (click)="saveData()">Save</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <app-data-slider [storedData]="education"></app-data-slider>
+                        <app-data-slider [storedData]="education" [isEdit]="isEdit!=null?true:false" (deleteMe)="deleteMe($event)" (editMe)="editMe($event)"></app-data-slider>
                     </div>
                 </div>
                 <div class="col s4">

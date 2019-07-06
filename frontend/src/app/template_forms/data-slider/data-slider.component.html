@@ -1,36 +1,27 @@
 <div class=" slider" *ngIf='storedData.length'>
     <div class="row">
-        <div class="col s1 nav">
-            <i class="large material-icons" *ngIf="currentItem>0" (click)="back()">arrow_back</i>
-        </div>
-        <div class="col s10">
-            <div class="data">
-                <div class="tag">
-                    <p>{{ currentItem + 1 }}</p>
-                </div>
+        <div class="col s10 offset-s1">
+            <div class="data" *ngFor="let entry of storedData;let i=index">
                 <div class="row">
                     <div class="col s8">
-                        <div class="information" *ngIf="storedData[currentItem]?.schoolName">
-                            {{ storedData[currentItem]?.degree | titlecase }}, {{ storedData[currentItem]?.schoolName | titlecase }}
+                        <div class="information" *ngIf="entry?.schoolName">
+                            {{ entry?.degree | titlecase }}, {{ entry?.schoolName | titlecase }}
                         </div>
-                        <div class="information" *ngIf="storedData[currentItem]?.projectTitle">
-                            {{ storedData[currentItem]?.projectTitle | titlecase }}
+                        <div class="information" *ngIf="entry?.projectTitle">
+                            {{ entry?.projectTitle | titlecase }}
                         </div>
-                        <div class="information" *ngIf="storedData[currentItem]?.job_title">
-                            {{ storedData[currentItem]?.job_title}}, {{ storedData[currentItem]?.employer}}
+                        <div class="information" *ngIf="entry?.job_title">
+                            {{ entry?.job_title}}, {{ entry?.employer}}
                         </div>
                     </div>
                     <div class="col s1 offset-s2">
-                        <i class="material-icons">mode_edit</i>
+                        <i class="material-icons" (click)="onEdit(i)" *ngIf="!isEdit">mode_edit</i>
                     </div>
                     <div class="col s1">
-                        <i class="material-icons">delete</i>
+                        <i class="material-icons" (click)="onDelete(i)" *ngIf="!isEdit">delete</i>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col s1 nav">
-            <i class="large material-icons" *ngIf="storedData.length - 1 > currentItem" (click)="next()">arrow_forward</i>
         </div>
     </div>
 </div>

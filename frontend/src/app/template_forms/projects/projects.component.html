@@ -1,4 +1,4 @@
-<form [formGroup]="projectForm" (ngSubmit)="saveData()">
+<form [formGroup]="projectForm">
     <section class="base">
         <div class="container">
             <h1>Now, tell us about your projects?</h1>
@@ -9,8 +9,8 @@
                         <div class="col s12">
                             <div class="row">
                                 <div class="input-field col s6 ">
-                                    <input id="job_title" type="text" class="validate" formControlName="projectTitle">
-                                    <label for="job_title">Project Title</label>
+                                    <input id="job_title" type="text" class="validate" formControlName="projectTitle" placeholder="Project Title">
+                                    <!-- <label for="job_title">Project Title</label> -->
                                 </div>
                             </div>
                             <div class="row">
@@ -19,24 +19,24 @@
                                     <label for="start_day">Start Date :</label>
                                 </div>
                                 <div class="input-field col s2">
-                                    <input id="start_day" type="number" class="validate" formControlName="start_day">
-                                    <label for="start_day">Day</label>
+                                    <input id="start_day" type="number" class="validate" formControlName="start_day" placeholder="Day" min=1 max=31>
+                                    <!-- <label for="start_day">Day</label> -->
                                 </div>
                                 <div class="input-field col s1">
                                     <!-- <input id="job_title" type="number" class="validate"> -->
                                     <label for="job_title" style="width:100%;text-align: center;">/</label>
                                 </div>
                                 <div class="input-field col s2">
-                                    <input id="start_month" type="number" class="validate" formControlName="start_month">
-                                    <label for="start_month">Month</label>
+                                    <input id="start_month" type="number" class="validate" formControlName="start_month" placeholder="Month" min=1 max=12>
+                                    <!-- <label for="start_month">Month</label> -->
                                 </div>
                                 <div class="input-field col s1">
                                     <!-- <input id="job_title" type="number" class="validate"> -->
                                     <label for="job_title" style="width:100%;text-align: center;">/</label>
                                 </div>
                                 <div class="input-field col s3">
-                                    <input id="start_year" type="number" class="validate" formControlName="start_year">
-                                    <label for="start_year">Year</label>
+                                    <input id="start_year" type="number" class="validate" formControlName="start_year" placeholder="Year" min=1950 max=2019>
+                                    <!-- <label for="start_year">Year</label> -->
                                 </div>
                             </div>
                             <div class="row">
@@ -45,41 +45,44 @@
                                     <label for="end_date">End Date :</label>
                                 </div>
                                 <div class="input-field col s2">
-                                    <input id="end__day" type="number" class="validate" formControlName="end_day">
-                                    <label for="end_day">Day</label>
+                                    <input id="end__day" type="number" class="validate" formControlName="end_day" placeholder="Day" min=1 max=31>
+                                    <!-- <label for="end_day">Day</label> -->
                                 </div>
                                 <div class="input-field col s1">
                                     <!-- <input id="job_title" type="number" class="validate"> -->
                                     <label for="job_title" style="width:100%;text-align: center;">/</label>
                                 </div>
                                 <div class="input-field col s2">
-                                    <input id="end_month" type="number" class="validate" formControlName="end_month">
-                                    <label for="end_month">Month</label>
+                                    <input id="end_month" type="number" class="validate" formControlName="end_month" placeholder="Month" min=1 max=12>
+                                    <!-- <label for="end_month">Month</label> -->
                                 </div>
                                 <div class="input-field col s1">
                                     <!-- <input id="job_title" type="number" class="validate"> -->
                                     <label for="job_title" style="width:100%;text-align: center;">/</label>
                                 </div>
                                 <div class="input-field col s3">
-                                    <input id="end_year" type="number" class="validate" formControlName="end_year">
-                                    <label for="end_year">Year</label>
+                                    <input id="end_year" type="number" class="validate" formControlName="end_year" placeholder="Year" min=1950>
+                                    <!-- <label for="end_year">Year</label> -->
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s9">
-                                    <textarea id="textarea1" class="materialize-textarea" length="120" formControlName="description"></textarea>
-                                    <label for="description">Short Description</label>
+                                    <textarea id="textarea1" class="materialize-textarea" length="120" formControlName="description" placeholder="Short Description"></textarea>
+                                    <!-- <label for="description">Short Description</label> -->
                                 </div>
                                 <div class="col s3">
                                     <div class="preview-button">
-                                        <button type="submit">Save/Add More</button>
+                                        <!-- <button type="submit">Save/Add More</button> -->
+                                        <button type="submit" *ngIf="isEdit==null" (click)="addData()">Add More</button>
+                                        <button type="submit" *ngIf="isEdit!=null" (click)="saveData()">Save</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <app-data-slider [storedData]="projects"></app-data-slider>
+                        <!-- <app-data-slider [storedData]="projects"></app-data-slider> -->
+                        <app-data-slider [storedData]="projects" [isEdit]="isEdit!=null?true:false" (deleteMe)="deleteMe($event)" (editMe)="editMe($event)"></app-data-slider>
                     </div>
                 </div>
                 <div class="col s4">
