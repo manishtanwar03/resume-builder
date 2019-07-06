@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http'
 
 
 @Injectable({
@@ -8,7 +9,19 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  constructor(public cookie:CookieService,public router:Router) { }
+  private _registerUrl = "http://localhost:9000/user/register";
+  private _loginUrl = "http://localhost:9000/user/login";
+
+  constructor(private http: HttpClient, public cookie:CookieService,public router:Router) { }
+
+  registerUser(email,password) {
+    return this.http.post<any>(this._registerUrl, {'email':email,'password':password});
+  }
+
+  loginUser(email, password) {
+    return this.http.post<any>(this._loginUrl, {'email':email,'password':password});
+  }
+
 
   createCookie(username,password){
   

@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { CookieService } from 'ngx-cookie-service';
         FormsModule,
         ReactiveFormsModule,
         AuthRoutingModule,
+        HttpClientModule,
         RouterModule
     ],
     providers:[CookieService]
