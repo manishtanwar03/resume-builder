@@ -20,6 +20,9 @@ post(User.addUser);
 router.route('/login').
 post(User.authUser);
 
+router.route('/:id').
+delete(User.deleteUser);
+
 
 
 module.exports = router;

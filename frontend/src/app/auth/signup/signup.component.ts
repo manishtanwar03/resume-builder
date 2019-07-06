@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  [x: string]: any;
   signupForm:FormGroup;
   
 
@@ -16,7 +17,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.signupForm = new FormGroup({
-      'username' : new FormControl(null,Validators.required),
+      'email' : new FormControl(null,Validators.required),
       'password' : new FormControl("",[Validators.required,Validators.min(6)]),
       'confirm-password' : new FormControl(null,[Validators.required,Validators.min(6)])
     },
@@ -25,9 +26,9 @@ export class SignupComponent implements OnInit {
     }
     );
 
-    if (this.authService.isLoggedIn()){
-      this.router.navigate(['/dashboard']);
-    }
+    // if (this.authService.isLoggedIn()){
+    //   this.router.navigate(['/dashboard']);
+    // }
   }
 
 // confirm password validator
@@ -44,10 +45,23 @@ matchingPasswords(passwordKey: string, confirmpasswordKey: string) {
 
 
   onSubmit(){
-    if ( this.authService.signUp(this.signupForm.value.username,this.signupForm.value.password) )
-        this.router.navigate(['/'])
+    // if ( this.authService.signUp(this.signupForm.value.username,this.signupForm.value.password) )
+    //     this.router.navigate(['/'])
+ console.log(this.signupForm.value)
+ this.authService.registerUser(this.signupForm.value.email,this.signupForm.value.password)
+    .subscribe(
+     
+
+      res => {
+         console.log(res)
+        localStorage.setItem('token', res.token)
+        this.router.navigate(['/dashboard'])
+      },
+      err => console.log(err)
+    )      
   }
-    
-}
 
 
+        
+        
+  }

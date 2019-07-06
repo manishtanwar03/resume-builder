@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup , FormControl} from '@angular/forms';
+import {FormGroup , FormControl,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 
@@ -29,12 +29,12 @@ export class BasicInformationComponent implements OnInit {
 
   ngOnInit() {
     this.basicInformationForm=new FormGroup({
-      firstName:new FormControl(''),
-        lastName:new FormControl(''),
-        title:new FormControl(''),
-        pitch:new FormControl(''),
-        phone:new FormControl(''),
-        email:new FormControl(''),
+      firstName:new FormControl('',Validators.required),
+        lastName:new FormControl('',Validators.required),
+        title:new FormControl('',Validators.required),
+        pitch:new FormControl('',Validators.required),
+        phone:new FormControl('',[Validators.required,Validators.min(10)]),
+        email:new FormControl('',Validators.required),
     });
     // loading previous values if any
    if(this.getBasicInfo()){

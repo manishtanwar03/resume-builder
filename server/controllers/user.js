@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const jwt = require('jsonwebtoken')
   //controllers user.js
 
 async function addUser(req,res){
@@ -8,7 +9,12 @@ async function addUser(req,res){
     let user = new User(req.body);
     let result = await user.save();
     // console.log("Result"+result);
-    res.send(result);  
+    // res.send(result);  
+
+    let payload = {subject: result._id}
+      let token = jwt.sign(payload, '@#$Dadfsfsa#@$@#')
+    res.send({token});  
+
     }
     catch(error)
     {
@@ -31,7 +37,12 @@ async function authUser(req,res){
       if ( user.password !== userData.password) {
         res.status(401).send('Invalid Email and Password')
       } else {
-          res.status(200).send(user)
+          // res.status(200).send(user)
+
+          let payload = {subject: user._id}
+          let token = jwt.sign(payload, 'secretKey')
+          res.status(200).send({token})
+
       }
     }
   })

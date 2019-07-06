@@ -16,20 +16,34 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      'username' : new FormControl(null,Validators.required),
+      'email' : new FormControl(null,Validators.required),
       'password' : new FormControl(null,[Validators.required,Validators.min(6)])
     });
-    if(this.authService.isLoggedIn()){
-      this.router.navigate(['/dashboard']);
-    }
+    // if(this.authService.isLoggedIn()){
+    //   this.router.navigate(['/dashboard']);
+    // }
   }
 
   onSubmit(){
-    if(this.authService.logIn(this.loginForm.value.username,this.loginForm.value.password)){
-      this.router.navigate(['/dashboard']);
-    }
-    else{
-      alert("Authentication failed !!!\nwrong Username or Password");
-    }
+    // if(this.authService.logIn(this.loginForm.value.email,this.loginForm.value.password)){
+    //   this.router.navigate(['/dashboard']);
+    // }
+    // else{
+    //   alert("Authentication failed !!!\nwrong Username or Password");
+    // }
+
+    console.log(this.loginForm.value)
+
+    this.authService.loginUser(this.loginForm.value.email,this.loginForm.value.password)
+    .subscribe(
+      res => {
+        console.log(res)
+       
+       localStorage.setItem('token', res.token)
+       this.router.navigate(['/dashboard'])
+     },
+      err => console.log(err)
+    )   
+    
   }
 }

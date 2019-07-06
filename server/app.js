@@ -2,11 +2,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const resume = require('./routes/resume');
 const user = require('./routes/user');
+const cors = require('cors');
+
 
 
 const port = 9000;
 const app = express();
 app.use(express.json()); 
+app.use(cors());
 
 app.get('/', (req, res) => {
       res.send('Hello From Server');
