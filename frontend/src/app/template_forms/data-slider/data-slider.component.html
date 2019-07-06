@@ -10,8 +10,14 @@
                 </div>
                 <div class="row">
                     <div class="col s8">
-                        <div class="information">
-                            {{ storedData[currentItem]?.schoolName | titlecase }} {{ storedData[currentItem]?.projectName | titlecase }} {{ storedData[currentItem]?.job_title}}
+                        <div class="information" *ngIf="storedData[currentItem]?.schoolName">
+                            {{ storedData[currentItem]?.degree | titlecase }}, {{ storedData[currentItem]?.schoolName | titlecase }}
+                        </div>
+                        <div class="information" *ngIf="storedData[currentItem]?.projectTitle">
+                            {{ storedData[currentItem]?.projectTitle | titlecase }}
+                        </div>
+                        <div class="information" *ngIf="storedData[currentItem]?.job_title">
+                            {{ storedData[currentItem]?.job_title}}, {{ storedData[currentItem]?.employer}}
                         </div>
                     </div>
                     <div class="col s1 offset-s2">
