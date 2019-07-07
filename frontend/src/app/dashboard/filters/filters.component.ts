@@ -14,7 +14,7 @@ export class FiltersComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // this.filterValue.emit("#479099");
+    this.activeFilter=JSON.parse(localStorage.getItem('filter'));
   }
 
   setActive(filter){
