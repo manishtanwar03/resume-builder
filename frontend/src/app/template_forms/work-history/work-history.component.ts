@@ -93,4 +93,6 @@ export class WorkHistoryComponent implements OnInit {
   //   this.workHistoryForm.patchValue({'index':this.workHistory.length});
 
   // }
+
+
 }

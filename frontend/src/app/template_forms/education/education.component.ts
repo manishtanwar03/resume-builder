@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl,FormGroup } from '@angular/forms';
+import { FormControl,FormGroup,Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-education',
@@ -32,11 +32,11 @@ export class EducationComponent implements OnInit {
 
   ngOnInit() {
     this.educationForm = new FormGroup({
-      schoolName:new FormControl(''),
-      location:new FormControl(''),
-      degree:new FormControl(''),
-      year:new FormControl(''),
-      description:new FormControl(''),
+      schoolName:new FormControl('',Validators.required),
+      location:new FormControl('',Validators.required),
+      degree:new FormControl('',Validators.required),
+      year:new FormControl('',Validators.required),
+      description:new FormControl('',Validators.required),
     });
     
     // load existing data if any
@@ -67,5 +67,7 @@ export class EducationComponent implements OnInit {
     this.education.splice(index,1);
     this.setEducation();
   }
+
+ 
 
 }
