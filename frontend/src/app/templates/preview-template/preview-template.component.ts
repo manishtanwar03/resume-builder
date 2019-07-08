@@ -23,6 +23,7 @@ export class PreviewTemplateComponent implements OnInit {
   ngOnInit() {
 
   }
+  
   ngDoCheck(){
   this.basicInformation = JSON.parse(localStorage.getItem('basicInformation'));
   this.skills = JSON.parse(localStorage.getItem('skills'));

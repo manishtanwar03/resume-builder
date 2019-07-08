@@ -54,6 +54,7 @@
     border-color: #dddddd;
     background-color: transparent;
     padding: 0.4rem 1.6rem;
+    padding-top: 0;
     border-radius: 5px;
     background-color: #fbfcfd;
     color: #3a96f0;
@@ -102,4 +103,24 @@
 
 .base .collection-item:hover .buttons i {
     display: block;
+}
+
+
+/* template modal */
+
+mz-modal-header {
+    width: 100% !important;
+    display: block;
+}
+
+mz-modal-header button {
+    float: right;
+}
+
+mz-modal-header button i {
+    font-size: 28px;
+}
+
+mz-modal-header button i:hover {
+    color: #d32f2f;
 }

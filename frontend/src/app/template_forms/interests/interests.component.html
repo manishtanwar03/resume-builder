@@ -28,7 +28,7 @@
                     <app-preview-template></app-preview-template>
                 </div>
                 <div class="preview-button">
-                    <button type="button" name="action">Preview
+                    <button mz-button (click)="bottomSheetModal.openModal()" type="button" name="action">Preview
                         <i class="material-icons left">remove_red_eye</i>
                     </button>
                 </div>
@@ -44,3 +44,15 @@
 <div class="navigation-next">
     <a class="waves-effect pulse btn-large green"><i class="material-icons right">arrow_forward</i>Done</a>
 </div>
+
+<!-- template -->
+<mz-modal #bottomSheetModal [options]="modalOptions" [fullscreen]=true style="background-color:white">
+    <mz-modal-header>
+        <button mz-button [flat]="true" mz-modal-close>
+            <i class="material-icons">close</i>
+        </button>
+    </mz-modal-header>
+    <mz-modal-content>
+        <app-template></app-template>
+    </mz-modal-content>
+</mz-modal>

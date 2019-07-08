@@ -11,6 +11,7 @@ import { DataService } from 'src/app/services/data.service';
 export class BasicInformationComponent implements OnInit {
 
   basicInformationForm:FormGroup=null;
+  
 
   constructor(private router:Router, private dataService:DataService) { }
 
@@ -47,4 +48,5 @@ export class BasicInformationComponent implements OnInit {
     this.setBasicInfo(this.basicInformationForm.value);
     // this.router.navigate(['/resume','work-history']);
   }
+
 }
