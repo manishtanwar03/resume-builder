@@ -13,6 +13,7 @@ import { TemplateFormsModule } from './template_forms/template-forms.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuthGuard } from 'src/app/services/auth.guard';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -35,7 +36,7 @@ import { AuthGuard } from 'src/app/services/auth.guard';
     ReactiveFormsModule
     
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard , CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -24,7 +24,7 @@ export class AuthService {
 
 
   loggedIn() {
-    return !!localStorage.getItem('token')    
+    return !!this.cookie.get('token');   
   }
 
 
@@ -51,9 +51,8 @@ export class AuthService {
   // }
 
   // isLoggedIn(){
-  //   if( this.cookie.get('loggedIn') == 'true')
-  //       return true;
-  //   return false;
+    
+  //   return !!this.cookie.get('token');
   // }
 
   // signUp(username,password){
