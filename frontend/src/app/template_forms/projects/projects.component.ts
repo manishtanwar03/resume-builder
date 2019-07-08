@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormControl} from '@angular/forms';
+import {FormGroup,FormControl,Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-projects',
@@ -27,14 +27,14 @@ export class ProjectsComponent implements OnInit {
   
   ngOnInit() {
     this.projectForm=new FormGroup({
-      projectTitle:new FormControl(''),
-      start_day:new FormControl(''),
-      start_month:new FormControl(''),
-      start_year:new FormControl(''),
-      end_day:new FormControl(''),
-      end_month:new FormControl(''),
-      end_year:new FormControl(''),
-      description:new FormControl(''),
+      projectTitle:new FormControl('',Validators.required),
+      start_day:new FormControl('',Validators.required),
+      start_month:new FormControl('',Validators.required),
+      start_year:new FormControl('',Validators.required),
+      end_day:new FormControl('',Validators.required),
+      end_month:new FormControl('',Validators.required),
+      end_year:new FormControl('',Validators.required),
+      description:new FormControl('',Validators.required),
       index:new FormControl(''),
     });
     // load existing data if any
@@ -73,4 +73,5 @@ export class ProjectsComponent implements OnInit {
     this.projects.splice(index,1);
     this.setProject();
   }
+ 
 }
