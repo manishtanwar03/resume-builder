@@ -40,7 +40,7 @@ async function authUser(req,res){
           // res.status(200).send(user)
 
           let payload = {subject: user._id}
-          let token = jwt.sign(payload, 'secretKey')
+          let token = jwt.sign(payload, '@#$Dadfsfsa#@$@#')
           res.status(200).send({token})
 
       }

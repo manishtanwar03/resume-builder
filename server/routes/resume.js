@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 var resume = require('../controllers/resume');
+const auth  = require('./auth');
 
 router.get('/',(req,res)=>{
     res.send('hello');
@@ -34,12 +35,12 @@ router.get('/',(req,res)=>{
 
 
 router.route('/').
-post(resume.addResume);
+post(auth,resume.addResume);
 
-router.route('/:id').
+router.route(auth,'/:id').
 put(resume.updateResume);
 
-router.route('/:id').
+router.route(auth,'/:id').
 delete(resume.deleteResume);
 
 module.exports = router;
