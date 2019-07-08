@@ -8,7 +8,7 @@ import {FormGroup,FormControl,Validators} from '@angular/forms';
 export class WorkHistoryComponent implements OnInit {
   workHistoryForm:FormGroup;
   workHistory=[];
-  toggle:boolean = true;
+  isEdit=null;
 
   constructor() { }
 
@@ -40,28 +40,59 @@ export class WorkHistoryComponent implements OnInit {
       this.workHistory = this.getWork();
       // console.log(this.workHistory);
     }
-    this.workHistoryForm.patchValue({'index':this.workHistory.length});
   }
 
-  nextRoute(){
-    console.log(this.workHistoryForm.valid);
-    if(this.workHistoryForm.valid || this.workHistory.length >= 1){
-      // this.
-      console.log('next');
-    }
-    else if(this.workHistoryForm.invalid ){
-      alert('bhar le bhai');
-    }
+  // saveData(){
+  //   this.workHistory[this.workHistoryForm.value.index] = this.workHistoryForm.value;
+  //   this.setWork();
+  //   this.workHistoryForm.reset();
+  //   this.workHistoryForm.patchValue({'index':this.workHistory.length});
+  // }
+
+  addData(){
+    this.workHistory.push(this.workHistoryForm.value);
+    this.setWork();
+    this.workHistoryForm.reset();
   }
 
   saveData(){
-    console.log(this.workHistoryForm.dirty);
-    this.toggle =false;
-    this.workHistory[this.workHistoryForm.value.index] = this.workHistoryForm.value;
-    console.log(this.workHistory.length);
-    this.setWork();
+    this.workHistory[this.isEdit]=this.workHistoryForm.value;
+    this.isEdit=null;
     this.workHistoryForm.reset();
-    this.workHistoryForm.patchValue({'index':this.workHistory.length});
-
+    this.setWork();
   }
+
+  editMe(index){
+    this.workHistoryForm.setValue(this.workHistory[index]);
+    this.isEdit=index;
+  }
+
+  deleteMe(index){
+    this.workHistory.splice(index,1);
+    this.setWork();
+  }
+  
+  // nextRoute(){
+  //   console.log(this.workHistoryForm.valid);
+  //   if(this.workHistoryForm.valid || this.workHistory.length >= 1){
+  //     // this.
+  //     console.log('next');
+  //   }
+  //   else if(this.workHistoryForm.invalid ){
+  //     alert('bhar le bhai');
+  //   }
+  // }
+
+  // saveData(){
+  //   console.log(this.workHistoryForm.dirty);
+  //   this.toggle =false;
+  //   this.workHistory[this.workHistoryForm.value.index] = this.workHistoryForm.value;
+  //   console.log(this.workHistory.length);
+  //   this.setWork();
+  //   this.workHistoryForm.reset();
+  //   this.workHistoryForm.patchValue({'index':this.workHistory.length});
+
+  // }
+
+
 }

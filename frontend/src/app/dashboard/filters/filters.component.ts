@@ -14,13 +14,16 @@ export class FiltersComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // this.filterValue.emit("#479099");
+    this.activeFilter=JSON.parse(localStorage.getItem('filter'));
   }
 
   setActive(filter){
     this.activeFilter=filter;
-    if(filter=='#fff')
+    localStorage.setItem('filter',JSON.stringify(this.activeFilter));
+    if(filter=='#fff'){
+      localStorage.setItem('filter',JSON.stringify("#479099"));
       this.filterValue.emit("#479099");
+    }
     else
       this.filterValue.emit(filter);
   }

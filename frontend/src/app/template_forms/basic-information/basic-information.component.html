@@ -9,42 +9,34 @@
                         <div class="col s12">
                             <div class="row">
                                 <div class="input-field col s6">
-                                    <input id="first_name" type="text" class="validate" formControlName="firstName">
-                                    <label for="first_name">First Name</label>
+                                    <input id="first_name" type="text" class="validate" formControlName="firstName" placeholder="First Name" (input)="saveData()">
+                                    <!-- <label for="first_name">First Name</label> -->
                                 </div>
                                 <div class="input-field col s6">
-                                    <input id="last_name" type="text" class="validate" formControlName="lastName">
-                                    <label for="last_name">Last Name</label>
+                                    <input id="last_name" type="text" class="validate" formControlName="lastName" placeholder="Last Name" (input)="saveData()">
+                                    <!-- <label for="last_name">Last Name</label> -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="professional_title" type="text" class="validate" formControlName="title" placeholder="Professional Title" (input)="saveData()">
+                                    <!-- <label for="street_address">Street Address</label> -->
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="street_address" type="text" class="validate" formControlName="street">
-                                    <label for="street_address">Street Address</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <input id="state" type="text" class="validate" formControlName="state">
-                                    <label for="state">State/Province</label>
-                                </div>
-                                <div class="input-field col s3">
-                                    <input id="city" type="text" class="validate" formControlName="city">
-                                    <label for="city">City</label>
-                                </div>
-                                <div class="input-field col s3">
-                                    <input id="pincode" type="text" class="validate" formControlName="pincode">
-                                    <label for="pincode">Pincode</label>
+                                    <input id="pitch" type="text" class="validate" formControlName="pitch" placeholder="Short and engaging pitch about yourself" (input)="saveData()">
+                                    <!-- <label for="state">State/Province</label> -->
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s5">
-                                    <input id="phone" type="text" class="validate" formControlName="phone">
-                                    <label for="phone">Phone</label>
+                                    <input id="phone" type="text" class="validate" formControlName="phone" placeholder="Phone" (input)="saveData()">
+                                    <!-- <label for="phone">Phone</label> -->
                                 </div>
                                 <div class="input-field col s7">
-                                    <input id="email" type="text" class="validate" formControlName="email">
-                                    <label for="email">Email Address</label>
+                                    <input id="email" type="text" class="validate" formControlName="email" placeholder="Email Address" (input)="saveData()">
+                                    <!-- <label for="email">Email Address</label> -->
                                 </div>
                             </div>
                         </div>
@@ -55,7 +47,7 @@
                         <app-preview-template></app-preview-template>
                     </div>
                     <div class="preview-button">
-                        <button type="submit" name="action">Preview
+                        <button mz-button (click)="bottomSheetModal.openModal()" type="button" name="action">Preview
                         <i class="material-icons left">remove_red_eye</i>
                     </button>
                     </div>
@@ -68,6 +60,20 @@
     </div>
 
     <div class="navigation-next">
-        <button type='submit' class="waves-effect pulse btn-large green"  [disabled]="!basicInformationForm.valid"><i class="material-icons right">arrow_forward</i>Next</button>
+        <button type='submit' class="waves-effect pulse btn-large green" [routerLink]="['/resume','work-history']" [disabled]="!basicInformationForm.valid"><i class="material-icons right">arrow_forward</i>Next</button>
+        <!-- <button type='submit' class="waves-effect pulse btn-large green"  [disabled]="!basicInformationForm.valid"><i class="material-icons right">arrow_forward</i>Next</button> -->
     </div>
 </form>
+
+
+<!-- template -->
+<mz-modal #bottomSheetModal [options]="modalOptions" [fullscreen]=true style="background-color:white">
+    <mz-modal-header>
+        <button mz-button [flat]="true" mz-modal-close>
+            <i class="material-icons">close</i>
+        </button>
+    </mz-modal-header>
+    <mz-modal-content>
+        <app-template></app-template>
+    </mz-modal-content>
+</mz-modal>

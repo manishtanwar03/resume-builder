@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-data-slider',
@@ -6,23 +6,22 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./data-slider.component.css']
 })
 export class DataSliderComponent implements OnInit {
+  @Output() editMe = new EventEmitter<Number>();
+  @Output() deleteMe = new EventEmitter<Number>();
   @Input() storedData=[];
-  currentItem = 0;
+  @Input() isEdit:Boolean=false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  next(){
-    if(this.currentItem + 1 <= this.storedData.length - 1){
-      this.currentItem++;
-    }
+  onEdit(index){
+    this.isEdit=true;
+    this.editMe.emit(index);
+  }
+  onDelete(index){
+    this.deleteMe.emit(index);
   }
 
-  back(){
-    if(this.currentItem - 1 >= 0){
-      this.currentItem--;
-    }
-  }
 }
