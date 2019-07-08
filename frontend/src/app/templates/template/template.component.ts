@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
+
 @Component({
   selector: 'app-template',
   templateUrl: './template.component.html',
@@ -14,8 +16,13 @@ export class TemplateComponent implements OnInit {
   projects=null;
   education=null;
   filter:String="#479099";
-  constructor() { }
 
+
+  constructor(private exportAsService: ExportAsService) { }
+  exportAsConfig: ExportAsConfig = {
+    type: 'pdf', // the type you want to download
+    elementId: 'resume', // the id of html/table element
+  }
   ngOnInit() {
   }
 
@@ -29,4 +36,9 @@ export class TemplateComponent implements OnInit {
     this.projects = JSON.parse(localStorage.getItem('projects'));
     this.education = JSON.parse(localStorage.getItem('education'));
     }
+
+
+public capture(){
+  this.exportAsService.save(this.exportAsConfig, 'My File Name');
+}
 }

@@ -153,7 +153,7 @@ const Resume = new mongoose.Schema({
     }],
     skills: [String], //validator required
     interests: [String], // validator required
-    languages:[String ],
+    languages: [String],
     personal_projects: [{
         name: {
             type: String,
@@ -178,14 +178,17 @@ const Resume = new mongoose.Schema({
             lowercase: true,
             minlength: 10,
             maxlength: 200
-        }   
+        }
     }],
-    template:{
-        type:String,
-        default:"functional"
+    template: {
+        type: String,
+        default: "functional"
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 });
 
-const Resume_Model=mongoose.model('ResumeDetails',Resume);
-
+const Resume_Model = mongoose.model('ResumeDetails', Resume);
 module.exports = Resume_Model;

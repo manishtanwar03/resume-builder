@@ -3,6 +3,7 @@ import {FormGroup , FormControl,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-basic-information',
   templateUrl: './basic-information.component.html',
@@ -38,7 +39,7 @@ export class BasicInformationComponent implements OnInit {
     });
     // loading previous values if any
    if(this.getBasicInfo()){
-        this.basicInformationForm.setValue(this.getBasicInfo());
+        this.basicInformationForm.setValue(this.getBasicInfo());  
    }
   }
 
@@ -46,5 +47,9 @@ export class BasicInformationComponent implements OnInit {
     this.setBasicInfo(this.basicInformationForm.value);
     // this.router.navigate(['/resume','work-history']);
   }
+
+
+
+
 
 }
