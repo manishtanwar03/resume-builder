@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup , FormControl,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DataService } from 'src/app/services/data.service';
+
 
 @Component({
   selector: 'app-basic-information',
@@ -13,7 +13,7 @@ export class BasicInformationComponent implements OnInit {
   basicInformationForm:FormGroup=null;
   
 
-  constructor(private router:Router, private dataService:DataService) { }
+  constructor(private router:Router) { }
 
 
   // local storage methods
@@ -24,7 +24,6 @@ export class BasicInformationComponent implements OnInit {
   }
 
   private setBasicInfo(data){
-    this.dataService.update('basicInformation',this.basicInformationForm.value);
     localStorage.setItem('basicInformation',JSON.stringify(data));
   }
 
@@ -40,7 +39,6 @@ export class BasicInformationComponent implements OnInit {
     // loading previous values if any
    if(this.getBasicInfo()){
         this.basicInformationForm.setValue(this.getBasicInfo());
-        this.dataService.update('basicInformation',this.basicInformationForm.value);
    }
   }
 
