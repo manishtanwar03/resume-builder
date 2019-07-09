@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuthGuard } from 'src/app/services/auth.guard';
 import { CookieService } from 'ngx-cookie-service';
+import { TemplateModule } from './templates/template.module';
 
 
 
@@ -33,7 +34,8 @@ import { CookieService } from 'ngx-cookie-service';
     DashboardModule,
     AuthModule,
     TemplateFormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TemplateModule
     
   ],
   providers: [AuthService, AuthGuard , CookieService],
