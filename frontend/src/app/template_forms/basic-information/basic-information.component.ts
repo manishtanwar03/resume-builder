@@ -3,7 +3,6 @@ import {FormGroup , FormControl,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 
-
 @Component({
   selector: 'app-basic-information',
   templateUrl: './basic-information.component.html',
