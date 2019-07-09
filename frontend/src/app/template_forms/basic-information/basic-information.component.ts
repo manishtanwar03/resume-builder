@@ -26,15 +26,16 @@ export class BasicInformationComponent implements OnInit {
     this.dataService.update('basicInformation',this.basicInformationForm.value);
     localStorage.setItem('basicInformation',JSON.stringify(data));
   }
-
+phonePattern="/^\d{10}$/";
   ngOnInit() {
+    
     this.basicInformationForm=new FormGroup({
       firstName:new FormControl('',Validators.required),
         lastName:new FormControl('',Validators.required),
         title:new FormControl('',Validators.required),
         pitch:new FormControl('',Validators.required),
-        phone:new FormControl('',[Validators.required,Validators.min(10)]),
-        email:new FormControl('',Validators.required),
+        phone:new FormControl(''),
+        email:new FormControl('',[Validators.required,Validators.email]),
     });
     // loading previous values if any
    if(this.getBasicInfo()){

@@ -35,7 +35,7 @@
                                     <!-- <label for="phone">Phone</label> -->
                                 </div>
                                 <div class="input-field col s7">
-                                    <input id="email" type="text" class="validate" formControlName="email" placeholder="Email Address" (input)="saveData()">
+                                    <input id="email" type="text" class="validate" formControlName="email" placeholder="Email Address" (input)="saveData()" email>
                                     <!-- <label for="email">Email Address</label> -->
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
     </div>
 
     <div class="navigation-next">
-        <button type='submit' class="waves-effect pulse btn-large green" [routerLink]="['/resume','work-history']" [disabled]="!basicInformationForm.valid"><i class="material-icons right">arrow_forward</i>Next</button>
+        <button type='submit' class="waves-effect pulse btn-large green" [routerLink]="['/resume','work-history']" ><i class="material-icons right">arrow_forward</i>Next</button>
         <!-- <button type='submit' class="waves-effect pulse btn-large green"  [disabled]="!basicInformationForm.valid"><i class="material-icons right">arrow_forward</i>Next</button> -->
     </div>
 </form>

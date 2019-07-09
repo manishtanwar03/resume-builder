@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-interests',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InterestsComponent implements OnInit {
   public interests=[];
-  constructor() { }
+  constructor(private service:DataService) { }
 
   private getInterests(){
     let localStorageItem=JSON.parse(localStorage.getItem('interests'));
@@ -33,6 +34,10 @@ export class InterestsComponent implements OnInit {
   removeMe(id){
     this.interests.splice(id,1);
     this.setInterests();
+  }
+
+  saveData(){
+    this.service.saveData();
   }
 
 }

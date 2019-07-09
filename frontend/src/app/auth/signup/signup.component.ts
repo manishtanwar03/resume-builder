@@ -17,9 +17,12 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.signupForm = new FormGroup({
-      'email' : new FormControl(null,Validators.required),
-      'password' : new FormControl("",[Validators.required,Validators.min(6)]),
-      'confirm-password' : new FormControl(null,[Validators.required,Validators.min(6)])
+      'email' : new FormControl(null,Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      'password' : new FormControl("",[Validators.required,Validators.minLength(6)]),
+      'confirm-password' : new FormControl(null,[Validators.required,Validators.minLength(6)])
     },
     {
       validators:this.matchingPasswords('password','confirm-password')

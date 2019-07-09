@@ -26,7 +26,7 @@ export class EducationComponent implements OnInit {
   }
 
   private setEducation(){
-    localStorage.clear()
+    // localStorage.clear()
     localStorage.setItem('education',JSON.stringify(this.education));
   }
 
