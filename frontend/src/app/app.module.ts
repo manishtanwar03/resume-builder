@@ -11,9 +11,10 @@ import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { TemplateFormsModule } from './template_forms/template-forms.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DataService } from './services/data.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuthGuard } from 'src/app/services/auth.guard';
+import { CookieService } from 'ngx-cookie-service';
+import { TemplateModule } from './templates/template.module';
 
 
 
@@ -33,10 +34,11 @@ import { AuthGuard } from 'src/app/services/auth.guard';
     DashboardModule,
     AuthModule,
     TemplateFormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TemplateModule
     
   ],
-  providers: [ DataService,AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard , CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

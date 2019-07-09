@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MzButtonModule, MzInputModule } from 'ngx-materialize';
-import { MzSelectModule } from 'ngx-materialize'
+import { MzButtonModule, MzInputModule,MzSelectModule,MzModalModule } from 'ngx-materialize';
 
 import { BasicInformationComponent } from './basic-information/basic-information.component';
 import { TemplateFormsRoutingModule } from './template-forms-routing.module';
@@ -33,6 +32,7 @@ import { DataSliderComponent } from './data-slider/data-slider.component';
         MzButtonModule,
     MzInputModule,
     MzSelectModule,
+    MzModalModule,
         RouterModule,
         TemplateFormsRoutingModule,
         ReactiveFormsModule,

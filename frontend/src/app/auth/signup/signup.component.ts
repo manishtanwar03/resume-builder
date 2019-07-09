@@ -1,7 +1,10 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup, Validators }  from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +16,7 @@ export class SignupComponent implements OnInit {
   signupForm:FormGroup;
   
 
-  constructor(public authService:AuthService,public router:Router) { }
+  constructor( public location:Location, public authService:AuthService, public router:Router , public cookie: CookieService) { }
 
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -24,14 +27,18 @@ export class SignupComponent implements OnInit {
       'password' : new FormControl("",[Validators.required,Validators.minLength(6)]),
       'confirm-password' : new FormControl(null,[Validators.required,Validators.minLength(6)])
     },
+
+
     {
       validators:this.matchingPasswords('password','confirm-password')
     }
     );
 
-    // if (this.authService.isLoggedIn()){
-    //   this.router.navigate(['/dashboard']);
-    // }
+
+    if(this.authService.loggedIn()){
+      // this.router.navigate(['/dashboard']);
+      this.location.back();
+    }
   }
 
 // confirm password validator
@@ -57,8 +64,9 @@ matchingPasswords(passwordKey: string, confirmpasswordKey: string) {
 
       res => {
          console.log(res)
-        localStorage.setItem('token', res.token)
-        this.router.navigate(['/dashboard'])
+         this.cookie.set('token', res.token);
+       // localStorage.setItem('token', res.token);
+        this.router.navigate(['/dashboard']);
       },
       err => console.log(err)
     )      

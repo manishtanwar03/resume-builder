@@ -4,14 +4,17 @@ import { PreviewTemplateComponent } from './preview-template/preview-template.co
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { ExportAsModule } from 'ngx-export-as';
 @NgModule({
     declarations:[
         TemplateComponent,
-        PreviewTemplateComponent
+        PreviewTemplateComponent,
+        
     ],
     imports:[
         CommonModule,
-        RouterModule
+        RouterModule,
+        ExportAsModule
     ],
     exports:[
         TemplateComponent,

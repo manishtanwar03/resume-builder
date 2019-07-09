@@ -45,10 +45,9 @@
                 <div class="col s4">
                     <div class="preview">
                         <app-preview-template></app-preview-template>
-                        <ng-content></ng-content>
                     </div>
                     <div class="preview-button">
-                        <button type="submit" name="action">Preview
+                        <button mz-button (click)="bottomSheetModal.openModal()" type="button" name="action">Preview
                         <i class="material-icons left">remove_red_eye</i>
                     </button>
                     </div>
@@ -65,3 +64,16 @@
         <!-- <button type='submit' class="waves-effect pulse btn-large green"  [disabled]="!basicInformationForm.valid"><i class="material-icons right">arrow_forward</i>Next</button> -->
     </div>
 </form>
+
+
+<!-- template -->
+<mz-modal #bottomSheetModal [options]="modalOptions" [fullscreen]=true style="background-color:white">
+    <mz-modal-header>
+        <button mz-button [flat]="true" mz-modal-close>
+            <i class="material-icons">close</i>
+        </button>
+    </mz-modal-header>
+    <mz-modal-content>
+        <app-template></app-template>
+    </mz-modal-content>
+</mz-modal>

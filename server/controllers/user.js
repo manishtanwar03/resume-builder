@@ -1,79 +1,39 @@
 const User = require('../models/user');
 const jwt = require('jsonwebtoken')
-  //controllers user.js
 
-async function addUser(req,res){
-    try{
-        console.log(req.body);
-        // res.send(req.body);
-    let user = new User(req.body);
-    let result = await user.save();
-    // console.log("Result"+result);
-    // res.send(result);  
-
-    let payload = {subject: result._id}
-      let token = jwt.sign(payload, '@#$Dadfsfsa#@$@#')
-    res.send({token});  
-
-    }
-    catch(error)
-    {
-        res.status(400).send(error);
-        throw(error);
+async function addUser(req, res) {
+    try {
+        let user = new User(req.body);
+        let result = await user.save();
+        let payload = { subject: result._id }
+        let token = jwt.sign(payload, 'cGFzc3dvcmRwYXNzd29yZAo') //password*2|b64
+        res.send({ token });
+    } catch (error) {
+        console.log("Error occurrend in addUser ", error);
+        res.status(500).send("something went wrong, please try again!!");
     }
 }
 
 
-async function authUser(req,res){
-
+async function authUser(req, res) {
     let userData = req.body;
-  User.findOne({email: userData.email}, (err, user) => {
-    if (err) {
-      console.log(err)    
-    } else {
-      if (!user) {
-        res.status(401).send('Invalid Email and Password')
-      } else 
-      if ( user.password !== userData.password) {
-        res.status(401).send('Invalid Email and Password')
-      } else {
-          // res.status(200).send(user)
-
-          let payload = {subject: user._id}
-          let token = jwt.sign(payload, 'secretKey')
-          res.status(200).send({token})
-
-      }
-    }
-  })
+    User.findOne({ email: userData.email }, (error, user) => {
+        if (error) {
+            console.log(`Error occurred in authUser ${error}`)
+        } else {
+            if (!user) {
+                res.status(401).send('invalid email or password')
+            } else if (user.password !== userData.password) {
+                res.status(401).send('invalid email or password')
+            } else {
+                let payload = { subject: user._id }
+                let token = jwt.sign(payload, 'cGFzc3dvcmRwYXNzd29yZAo')
+                res.status(200).send({ token })
+            }
+        }
+    })
 }
-
-
-
-async function deleteUser(req,res)
-{    
-    try{
-    const deletedUser=await User.findByIdAndDelete({ _id: req.params.id }); 
-    deletedUser ? res.status(200).send({ message: 'data Deleted', res: deletedUser })
-    : res.status(422).send({ message: 'Data Not Deleted', res: deletedUser });
-    // res.send(deletedResume);
-    }
-    catch(error){
-        throw(error);
-    }
-}
-
-// async function updateUser(req,res)
-// {
-//     console.log(req.body)
-//     const result=await User.findByIdAndUpdate({_id:id},req.body);
-    
-//     return result;
-// }
-
 
 
 module.exports.addUser = addUser;
 module.exports.authUser = authUser;
-module.exports.deleteUser=deleteUser;
-// module.exports.updateUser=updateUser;

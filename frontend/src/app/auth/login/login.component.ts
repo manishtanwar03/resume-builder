@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-login',
@@ -12,8 +13,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm:FormGroup;
-  constructor( public cookie:CookieService,public authService:AuthService,public router:Router) { }
+  constructor(public location:Location, public cookie:CookieService,public authService:AuthService,public router:Router) { }
 
+  
   ngOnInit() {
     this.loginForm = new FormGroup({
       'email' : new FormControl(null,Validators.compose([
@@ -22,9 +24,12 @@ export class LoginComponent implements OnInit {
       ])),
       'password' : new FormControl(null,[Validators.required,Validators.min(6)])
     });
-    // if(this.authService.isLoggedIn()){
-    //   this.router.navigate(['/dashboard']);
-    // }
+
+    
+    if(this.authService.loggedIn()){
+      // this.router.navigate(['/dashboard']);
+      this.location.back();
+    }
   }
 
   onSubmit(){
@@ -33,7 +38,7 @@ export class LoginComponent implements OnInit {
     // }
     // else{
     //   alert("Authentication failed !!!\nwrong Username or Password");
-    // }
+    // }   
 
     console.log(this.loginForm.value)
 
@@ -41,8 +46,8 @@ export class LoginComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res)
-       
-       localStorage.setItem('token', res.token)
+       this.cookie.set('token', res.token);
+       //localStorage.setItem('token', res.token)
        this.router.navigate(['/dashboard'])
      },
       err => console.log(err)

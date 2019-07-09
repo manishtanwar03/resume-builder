@@ -3,13 +3,14 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http'
 
+import { environment } from './../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private _registerUrl = "http://localhost:9000/user/register";
+  private _registerUrl = `${environment.API_URL}/user/register`;
   private _loginUrl = "http://localhost:9000/user/login";
 
   constructor(private http: HttpClient, public cookie:CookieService,public router:Router) { }
@@ -24,7 +25,7 @@ export class AuthService {
 
 
   loggedIn() {
-    return !!localStorage.getItem('token')    
+    return !!this.cookie.get('token');   
   }
 
 
@@ -51,9 +52,8 @@ export class AuthService {
   // }
 
   // isLoggedIn(){
-  //   if( this.cookie.get('loggedIn') == 'true')
-  //       return true;
-  //   return false;
+    
+  //   return !!this.cookie.get('token');
   // }
 
   // signUp(username,password){

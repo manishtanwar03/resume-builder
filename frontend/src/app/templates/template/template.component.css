@@ -5,10 +5,12 @@
 }
 
 .functional .resume {
-    width: 1190px;
-    height: 1644px;
-    margin: 50px auto;
+    max-width: 1190px;
+    max-height: 1644px;
+    /* margin: 50px auto; */
     padding: 44px 0;
+    margin: 0 auto;
+    background: white;
 }
 
 
@@ -17,6 +19,8 @@
 .functional .personal-details {
     padding: 0 0 0 50px;
     margin-bottom: 54px;
+    /* border: 1px solid red; */
+    background: white;
 }
 
 .functional .personal-details .image {
