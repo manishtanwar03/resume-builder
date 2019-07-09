@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup , FormControl,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {DataService} from '../../services/data.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class BasicInformationComponent implements OnInit {
   basicInformationForm:FormGroup=null;
   
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private service :DataService) { }
 
 
   // local storage methods
@@ -25,6 +26,7 @@ export class BasicInformationComponent implements OnInit {
 
   private setBasicInfo(data){
     localStorage.setItem('basicInformation',JSON.stringify(data));
+    this.service.update('basicInformation',data);
   }
 phonePattern="/^\d{10}$/";
   ngOnInit() {

@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-skills',
@@ -8,7 +9,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 export class SkillsComponent implements OnInit {
   private skills=[];
 
-  constructor() {}
+  constructor(private service:DataService) {}
 
   private getSkills()
   {
@@ -18,6 +19,7 @@ export class SkillsComponent implements OnInit {
 
   private setLocalStorageSkills(){
     localStorage.setItem('skills',JSON.stringify(this.skills));
+    this.service.update('skills',this.skills);
   }
 
   ngOnInit() {

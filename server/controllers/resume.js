@@ -7,6 +7,7 @@ async function addResume(req, res) {
         res.status(200).send(result);
     } catch (error) {
         console.log("Error occurred in addResume ", error);
+        res.send(error);
         res.status(500).send("something went wrong, please try again!!");
     }
 }

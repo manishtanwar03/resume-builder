@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl,Validators} from '@angular/forms';
-
+import {DataService} from '../../services/data.service';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -11,7 +11,7 @@ export class ProjectsComponent implements OnInit {
   projects=[];
   isEdit=null;
 
-  constructor() { }
+  constructor(private service:DataService) { }
 
 
   // local storage
@@ -23,6 +23,7 @@ export class ProjectsComponent implements OnInit {
 
   private setProject(){
     localStorage.setItem('projects',JSON.stringify(this.projects));
+    this.service.update('projects',this.projects);
   }
   
   ngOnInit() {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-languages',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LanguagesComponent implements OnInit {
   public languages=[];
-  constructor() { }
+  constructor(private service:DataService) { }
 
   private getLanguages()
   {
@@ -17,6 +18,7 @@ export class LanguagesComponent implements OnInit {
 
   private setLocalStorageLanguages(){
     localStorage.setItem('languages',JSON.stringify(this.languages));
+    this.service.update('languages',this.languages);
   }
 
   ngOnInit() {

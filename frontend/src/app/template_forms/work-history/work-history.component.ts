@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl,Validators} from '@angular/forms';
+import {DataService } from '../../services/data.service';
 @Component({
   selector: 'app-work-history',
   templateUrl: './work-history.component.html',
@@ -10,7 +11,7 @@ export class WorkHistoryComponent implements OnInit {
   workHistory=[];
   isEdit=null;
 
-  constructor() { }
+  constructor(private service:DataService) { }
 
   private getWork()
   {
@@ -20,6 +21,7 @@ export class WorkHistoryComponent implements OnInit {
 
   private setWork(){
     localStorage.setItem('workHistory',JSON.stringify(this.workHistory));
+    this.service.update('workHistory',this.workHistory);
   }
 
   ngOnInit() {

@@ -15,6 +15,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { AuthGuard } from 'src/app/services/auth.guard';
 import { CookieService } from 'ngx-cookie-service';
 import { TemplateModule } from './templates/template.module';
+import { Page404Component } from './page404/page404.component';
 
 
 
@@ -23,6 +24,7 @@ import { TemplateModule } from './templates/template.module';
   declarations: [
     AppComponent,
     HomePageComponent,
+    Page404Component,
     
   ],
   imports: [

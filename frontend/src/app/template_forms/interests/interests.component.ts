@@ -17,6 +17,7 @@ export class InterestsComponent implements OnInit {
 
   private setInterests(){
     localStorage.setItem('interests',JSON.stringify(this.interests));
+    this.service.update('interests',this.interests);
   }
 
   ngOnInit() {
@@ -36,7 +37,7 @@ export class InterestsComponent implements OnInit {
     this.setInterests();
   }
 
-  saveData(){
+  saveData1(){
     this.service.saveData();
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup,Validators } from '@angular/forms';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-education',
@@ -12,7 +13,7 @@ export class EducationComponent implements OnInit {
   year_list=[];
   isEdit=null;
 
-  constructor() { 
+  constructor(private service:DataService) { 
     for(let year=new Date().getFullYear();year!=1950;year--){
       this.year_list.push(year);
     }
@@ -28,6 +29,7 @@ export class EducationComponent implements OnInit {
   private setEducation(){
     // localStorage.clear()
     localStorage.setItem('education',JSON.stringify(this.education));
+    this.service.update('education',this.education);
   }
 
   ngOnInit() {

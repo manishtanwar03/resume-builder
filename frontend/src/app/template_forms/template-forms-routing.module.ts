@@ -8,7 +8,7 @@ import { SkillsComponent } from './skills/skills.component';
 import { InterestsComponent } from './interests/interests.component';
 import { LanguagesComponent } from './languages/languages.component';
 import { AuthGuard } from 'src/app/services/auth.guard';
-
+import {Page404Component} from '../page404/page404.component';
 const routes:Routes=[
     {path:'resume',canActivate:[AuthGuard],children:[
         { path:'',redirectTo:'basic-information',pathMatch:'full'},
@@ -18,8 +18,10 @@ const routes:Routes=[
         { path:'projects',component:ProjectsComponent},
         { path:'skills', component:SkillsComponent},
         { path:'interests',component:InterestsComponent},
-        { path:'languages', component:LanguagesComponent} 
-    ]}
+        { path:'languages', component:LanguagesComponent},
+    ]},
+    { path:'**', component:Page404Component}     
+
 ];
 @NgModule({
     imports:[

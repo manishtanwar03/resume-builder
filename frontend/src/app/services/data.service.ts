@@ -24,8 +24,7 @@ export class DataService {
 
   update(key,value){
       this.resumeData[key]=value;
-      this.detail=new Details(this.resumeData.interests,this.resumeData.languages,this.resumeData.skills,
-        this.resumeData.education,this.resumeData.projects,this.resumeData.workHistory,this.resumeData.basicInformation);
+    //  console.log(this.resumeData[key]);
   }
 
 
@@ -39,13 +38,26 @@ export class DataService {
 
   saveData()
   {
-    this.http.post<any>(this._resumeUrl,this.detail).subscribe(
+    console.log(this.resumeData);
+    this.detail=new Details(this.resumeData.interests,this.resumeData.languages,this.resumeData.skills,
+      this.resumeData.education,this.resumeData.projects,this.resumeData.workHistory,this.resumeData.basicInformation);
+//     console.log(this.detail);
+//     this.http.post<any>(this._resumeUrl,this.detail).subscribe(
+//       res=>{
+//         console.log(res);
+//         return(res);
+//       },
+//       err=>console.log(err)
+// );
+
+    this.http.post<any>(this._resumeUrl,this.resumeData).subscribe(
       res=>{
         console.log(res);
-        return(res);
+        return (res);
       },
       err=>console.log(err)
-);
+
+    );
   }
   
 }
