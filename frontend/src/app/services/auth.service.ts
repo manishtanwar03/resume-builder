@@ -25,7 +25,11 @@ export class AuthService {
 
 
   loggedIn() {
-    return !!this.cookie.get('token');   
+    return !!localStorage.getItem('token');   
+  }
+
+  getToken(){
+    return localStorage.getItem('token');
   }
 
 

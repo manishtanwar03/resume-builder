@@ -6,8 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { HttpClientModule } from '@angular/common/http';
-
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import {TokenInterceptorService} from '../services/token-interceptor.service';
 
 @NgModule({
     declarations:[
@@ -22,7 +22,12 @@ import { HttpClientModule } from '@angular/common/http';
         HttpClientModule,
         RouterModule
     ],
-    providers:[CookieService]
+    providers:[CookieService,
+    {
+        provide:HTTP_INTERCEPTORS,
+        useClass:TokenInterceptorService,
+        multi:true
+    }]
 
 })
 

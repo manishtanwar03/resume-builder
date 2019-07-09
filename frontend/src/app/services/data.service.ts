@@ -38,6 +38,7 @@ export class DataService {
 
   saveData()
   {
+    console.log("555");
     console.log(this.resumeData);
     this.detail=new Details(this.resumeData.interests,this.resumeData.languages,this.resumeData.skills,
       this.resumeData.education,this.resumeData.projects,this.resumeData.workHistory,this.resumeData.basicInformation);
