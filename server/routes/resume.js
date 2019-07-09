@@ -4,10 +4,10 @@ var resume = require('../controllers/resume');
 const auth = require('../middleware/auth');
 
 
-router.route('/').post(auth, resume.addResume);
+router.route('/', auth).post(resume.addResume);
 
-router.route(auth, '/:id').put(auth, resume.updateResume);
+router.route('/:id', auth).put(resume.updateResume);
 
-router.route(auth, '/:id').delete(auth, resume.deleteResume);
+router.route('/:id', auth).delete(resume.deleteResume);
 
 module.exports = router;
