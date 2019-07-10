@@ -1,5 +1,14 @@
 const Resume = require('../models/resume');
 
+async function loadResume(req, res) {
+    try {
+        let resume = await Resume.findOne({ _id: req.params.id });
+        res.status(200).send(resume);
+    } catch (err) {
+        console.log("Error occurred in loadResume", err);
+        res.status(500).send("something went wrong");
+    }
+}
 async function addResume(req, res) {
     try {
         let resume = new Resume(req.body);
@@ -34,3 +43,4 @@ async function updateResume(req, res) {
 module.exports.addResume = addResume;
 module.exports.deleteResume = deleteResume;
 module.exports.updateResume = updateResume;
+module.exports.loadResume = loadResume;

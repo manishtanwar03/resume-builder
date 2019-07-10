@@ -6,6 +6,8 @@ const verifyToken = require('../middleware/verifyToken');
 
 router.route('/').post(verifyToken, resume.addResume);
 
+router.route('/:id').get(verifyToken, resume.loadResume);
+
 // router.route('/:id', User.verifyToken).put(resume.updateResume);
 // router.route('/:id', User.verifyToken).delete(resume.deleteResume);
 
