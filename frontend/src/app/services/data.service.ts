@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Details } from './resume.model';
 import { HttpClient } from '@angular/common/http'
-
+import { environment } from './../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +18,9 @@ export class DataService {
         'languages':null,
         'filter':null
     };
-
-    private _resumeUrl = "http://localhost:9000/resume";
+    
+    private    _resumeUrl = `${environment.API_URL}/resume`;
+    // private _resumeUrl = "http://localhost:9000/resume";
   constructor(private http: HttpClient) { }
 
   update(key,value){
@@ -41,7 +42,7 @@ export class DataService {
     console.log("555");
     console.log(this.resumeData);
     this.detail=new Details(this.resumeData.interests,this.resumeData.languages,this.resumeData.skills,
-      this.resumeData.education,this.resumeData.projects,this.resumeData.workHistory,this.resumeData.basicInformation);
+    this.resumeData.education,this.resumeData.projects,this.resumeData.workHistory,this.resumeData.basicInformation);
 //     console.log(this.detail);
 //     this.http.post<any>(this._resumeUrl,this.detail).subscribe(
 //       res=>{

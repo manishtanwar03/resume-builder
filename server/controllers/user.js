@@ -1,13 +1,23 @@
 const User = require('../models/user');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken')     
 
-async function addUser(req, res) {
+async function addUser(req, res) {    //
     try {
-        let user = new User(req.body);
-        let result = await user.save();
-        let payload = { subject: result._id }
-        let token = jwt.sign(payload, 'cGFzc3dvcmRwYXNzd29yZAo') //password*2|b64
-        res.send({ token });
+        console.log('asda')
+        let user = await User.find({email:req.body.email});
+        console.log(user)
+        if(user.length){
+            console.log('exist');
+            res.send('already exists');
+        }
+        else if(user.length == 0){
+            console.log('new');            
+            let user = new User(req.body);   
+            let result = await user.save();
+            let payload = { subject: result._id }
+            let token = jwt.sign(payload, 'cGFzc3dvcmRwYXNzd29yZAo') //password*2|b64
+            res.send({ token });
+        }
     } catch (error) {
         console.log("Error occurrend in addUser ", error);
         res.status(500).send("something went wrong, please try again!!");
@@ -15,7 +25,7 @@ async function addUser(req, res) {
 }
 
 
-async function authUser(req, res) {
+async function authUser(req, res) {    //function used for login
     let userData = req.body;
     User.findOne({ email: userData.email }, (error, user) => {
         if (error) {
