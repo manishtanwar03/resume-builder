@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl,Validators} from '@angular/forms';
 import {DataService } from '../../services/data.service';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-work-history',
   templateUrl: './work-history.component.html',
@@ -11,7 +12,7 @@ export class WorkHistoryComponent implements OnInit {
   workHistory=[];
   isEdit=null;
 
-  constructor(private service:DataService) { }
+  constructor(private route:ActivatedRoute,private router:Router,private service:DataService) { }
 
   private getWork()
   {
@@ -44,13 +45,6 @@ export class WorkHistoryComponent implements OnInit {
     }
   }
 
-  // saveData(){
-  //   this.workHistory[this.workHistoryForm.value.index] = this.workHistoryForm.value;
-  //   this.setWork();
-  //   this.workHistoryForm.reset();
-  //   this.workHistoryForm.patchValue({'index':this.workHistory.length});
-  // }
-
   addData(){
     this.workHistory.push(this.workHistoryForm.value);
     this.setWork();
@@ -74,27 +68,10 @@ export class WorkHistoryComponent implements OnInit {
     this.setWork();
   }
   
-  // nextRoute(){
-  //   console.log(this.workHistoryForm.valid);
-  //   if(this.workHistoryForm.valid || this.workHistory.length >= 1){
-  //     // this.
-  //     console.log('next');
-  //   }
-  //   else if(this.workHistoryForm.invalid ){
-  //     alert('bhar le bhai');
-  //   }
-  // }
-
-  // saveData(){
-  //   console.log(this.workHistoryForm.dirty);
-  //   this.toggle =false;
-  //   this.workHistory[this.workHistoryForm.value.index] = this.workHistoryForm.value;
-  //   console.log(this.workHistory.length);
-  //   this.setWork();
-  //   this.workHistoryForm.reset();
-  //   this.workHistoryForm.patchValue({'index':this.workHistory.length});
-
-  // }
-
+  nextRoute(){
+    let next = this.route.snapshot.queryParams.next;
+    this.router.navigate(['/resume',next==undefined?'education':next]);
+  }
+  
 
 }

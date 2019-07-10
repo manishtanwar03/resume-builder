@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup , FormControl,Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import {DataService} from '../../services/data.service';
 
 
@@ -14,7 +14,7 @@ export class BasicInformationComponent implements OnInit {
   basicInformationForm:FormGroup=null;
   
 
-  constructor(private router:Router,private service :DataService) { }
+  constructor(private route:ActivatedRoute,private router:Router,private service :DataService) { }
 
 
   // local storage methods
@@ -50,8 +50,10 @@ phonePattern="/^\d{10}$/";
     // this.router.navigate(['/resume','work-history']);
   }
 
-
-
+nextRoute(){
+  let next = this.route.snapshot.queryParams.next;
+  this.router.navigate(['/resume',next==undefined?'work-history':next]);
+}
 
 
 }

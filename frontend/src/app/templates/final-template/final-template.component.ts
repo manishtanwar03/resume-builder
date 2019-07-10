@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-final-template',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinalTemplateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
 
+  goTo(path){
+    this.router.navigate(['/resume',path],{queryParams:{next:'final'}});
+  }
 }

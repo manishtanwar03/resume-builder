@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-languages',
@@ -8,7 +9,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class LanguagesComponent implements OnInit {
   public languages=[];
-  constructor(private service:DataService) { }
+  constructor(private route:ActivatedRoute,private router:Router,private service:DataService) { }
 
   private getLanguages()
   {
@@ -42,4 +43,10 @@ export class LanguagesComponent implements OnInit {
     this.languages[id].value = Number(value);
     this.setLocalStorageLanguages();
   }
+
+  nextRoute(){
+    let next = this.route.snapshot.queryParams.next;
+    this.router.navigate(['/resume',next==undefined?'interests':next]);
+  }
+
 }

@@ -73,7 +73,7 @@
                                 <div class="col s3">
                                     <div class="preview-button">
                                         <!-- <button type="submit">Save/Add More</button> -->
-                                        <button type="submit" *ngIf="isEdit==null" (click)="addData()" >Add More</button>
+                                        <button type="submit" *ngIf="isEdit==null" (click)="addData()">Add More</button>
                                         <button type="submit" *ngIf="isEdit!=null" (click)="saveData()">Save</button>
                                     </div>
                                 </div>
@@ -105,7 +105,7 @@
     </div>
 
     <div class="navigation-next">
-        <button class="waves-effect pulse btn-large green" [routerLink]="['/resume','skills']" [disabled]="projects.length<1"><i class="material-icons right">arrow_forward</i>Next</button>
+        <button class="waves-effect pulse btn-large green" (click)="nextRoute()" [disabled]="projects.length<1"><i class="material-icons right">arrow_forward</i>Next</button>
     </div>
 </form>
 

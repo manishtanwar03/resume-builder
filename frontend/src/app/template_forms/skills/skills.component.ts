@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-skills',
@@ -9,7 +10,7 @@ import { DataService } from 'src/app/services/data.service';
 export class SkillsComponent implements OnInit {
   private skills=[];
 
-  constructor(private service:DataService) {}
+  constructor(private route:ActivatedRoute,private router:Router,private service:DataService) {}
 
   private getSkills()
   {
@@ -39,4 +40,8 @@ export class SkillsComponent implements OnInit {
     this.setLocalStorageSkills();
   }
 
+  nextRoute(){
+    let next = this.route.snapshot.queryParams.next;
+    this.router.navigate(['/resume',next==undefined?'languages':next]);
+  }
 }

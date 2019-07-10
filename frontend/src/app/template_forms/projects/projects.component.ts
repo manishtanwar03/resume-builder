@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl,Validators} from '@angular/forms';
 import {DataService} from '../../services/data.service';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -11,7 +12,7 @@ export class ProjectsComponent implements OnInit {
   projects=[];
   isEdit=null;
 
-  constructor(private service:DataService) { }
+  constructor(private route:ActivatedRoute,private router:Router,private service:DataService) { }
 
 
   // local storage
@@ -74,5 +75,9 @@ export class ProjectsComponent implements OnInit {
     this.projects.splice(index,1);
     this.setProject();
   }
- 
+
+  nextRoute(){
+    let next = this.route.snapshot.queryParams.next;
+    this.router.navigate(['/resume',next==undefined?'skills':next]);
+  }
 }
