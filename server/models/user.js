@@ -2,60 +2,50 @@
 const mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 const User = new mongoose.Schema({
-email: 
-{
+    email: {
         type: String,
         unique: true,
         trim: true,
         lowercase: true,
         required: true,
-},
+    },
 
-password: 
-{
+    password: {
         type: String,
         required: true,
-        trim: true,
-        minlength: 6,
-        maxlength: 40
-},
+    },
 
-isActive: 
-{
+    isActive: {
         type: Boolean,
         default: true,
-},
+    },
 
-password_reset_otp: 
-{
+    password_reset_otp: {
         type: String,
-},
+    },
 
-verification_otp: 
-{
+    verification_otp: {
         type: String,
-},
+    },
 
-verified: 
-{
+    verified: {
         type: Boolean,
         default: false,
-},
+    },
 
-created_at: 
-{
+    created_at: {
         type: Date,
         default: Date.now
-}
+    }
 
 });
 
-User.generateHash=function(password){
-	return bcrypt.hashSync(password, bcrypt.genSaltSync(9));
+User.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(9));
 }
 
-User.validPassword = function(password){
-	return bcrypt.compareSync(password, this.local.password);
+User.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.local.password);
 }
 
 const User_Model = mongoose.model('User', User);

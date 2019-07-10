@@ -16,6 +16,8 @@ import { AuthGuard } from 'src/app/services/auth.guard';
 import { CookieService } from 'ngx-cookie-service';
 import { TemplateModule } from './templates/template.module';
 import { Page404Component } from './page404/page404.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 
 
@@ -37,7 +39,6 @@ import { Page404Component } from './page404/page404.component';
     TemplateFormsModule,
     ReactiveFormsModule,
     TemplateModule,
-    PDFExportModule
     
   ],
   providers: [AuthService, AuthGuard , CookieService,{

@@ -58,7 +58,7 @@
 //     // req.userId=payload.subject
 //     req.body.user = payload.subject;
 //     next()
-    
+
 // }
 
 
@@ -69,20 +69,20 @@
 
 const hash = require('../helper/common');
 const User = require('../models/user');
-const jwt = require('jsonwebtoken')     
+const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs');
-async function addUser(req, res) {    //
+async function addUser(req, res) { //
     try {
         console.log('asda')
-        let user = await User.find({email:req.body.email});
+        let user = await User.find({ email: req.body.email });
         console.log(user)
-        if(user.length){
+        if (user.length) {
             console.log('exist');
             res.send('already exists');
-        }
-        else if(user.length == 0){
-            console.log('new');            
-            let user = new User(req.body);   
+        } else if (user.length == 0) {
+            console.log('new');
+            req.body.password = hash(req.body.password)
+            let user = new User(req.body);
             let result = await user.save();
             let payload = { subject: result._id }
             let token = jwt.sign(payload, 'cGFzc3dvcmRwYXNzd29yZAo') //password*2|b64
@@ -95,49 +95,44 @@ async function addUser(req, res) {    //
 }
 
 
-async function authUser(req, res) {    //function used for login
-    try{
-        let user = User.findOne({ email: userData.email });
-        if(!user){
+async function authUser(req, res) { //function used for login
+    try {
+        let user = User.findOne({ email: req.body.email });
+        if (!user) {
             res.status(401).send("invalid email or password");
-        }
-        else{
-            let result = await bcrypt.compare(req.body.password,user.password);
-            if(result){
+        } else {
+            let result = await bcrypt.compare(req.body.password, user.password);
+            if (result) {
                 let payload = { subject: user._id }
                 let token = jwt.sign(payload, 'cGFzc3dvcmRwYXNzd29yZAo')
-                res.status(200).send({ token }) 
+                res.status(200).send({ token })
             }
-            res.status(401).send('invalid email or password')
+            res.status(402).send('invalid email or password')
         }
-    }
-    catch(error){
-        res.status(401).send("invalid email or password");
+    } catch (error) {
+        res.status(403).send("invalid email or password");
     }
 }
 
-function verifyToken(req,res,next)
-{
-    if(!req.headers.authorization)
-    {
+function verifyToken(req, res, next) {
+    if (!req.headers.authorization) {
         return res.status(401).send("Unauthorized access");
     }
-    let token =req.headers.authorization.split(' ')[1];
-    if(token === null){
+    let token = req.headers.authorization.split(' ')[1];
+    if (token === null) {
         return res.status(401).send("Unauthorized access");
     }
-    let payload=jwt.verify(token,'cGFzc3dvcmRwYXNzd29yZAo');
-    if(!payload)
-    {
+    let payload = jwt.verify(token, 'cGFzc3dvcmRwYXNzd29yZAo');
+    if (!payload) {
         return res.status(401).send("Unauthorized access");
     }
-    req.userId=payload.subject
+    req.userId = payload.subject
     console.log("MIddleware running");
     next()
-    
+
 }
 
 
 module.exports.addUser = addUser;
 module.exports.authUser = authUser;
-module.exports.verifyToken=verifyToken;
+module.exports.verifyToken = verifyToken;
