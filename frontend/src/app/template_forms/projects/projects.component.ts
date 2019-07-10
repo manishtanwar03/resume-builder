@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProjectsComponent implements OnInit {
   projectForm:FormGroup;
-
+  isEdit:Boolean=true;
   constructor(private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {

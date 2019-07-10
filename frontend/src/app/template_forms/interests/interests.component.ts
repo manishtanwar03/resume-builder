@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class InterestsComponent implements OnInit {
   public interests=[];
 
-  constructor() { }
+  constructor(private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
   }
@@ -25,5 +26,8 @@ export class InterestsComponent implements OnInit {
     this.interests.splice(id,1);
   }
 
-
+  nextRoute(){
+    let next = this.route.snapshot.queryParams.next;
+    this.router.navigate(['/resume',next==undefined?'final':next]);
+  }
 }

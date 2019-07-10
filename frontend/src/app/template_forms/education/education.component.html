@@ -10,17 +10,14 @@
                             <div class="row">
                                 <div class="input-field col s6">
                                     <input id="job_title" type="text" class="validate" formControlName="schoolName" placeholder="School Name">
-                                    <!-- <label for="job_title">School Name</label> -->
                                 </div>
                                 <div class="input-field col s6">
                                     <input id="location" type="text" class="validate" formControlName="location" placeholder="Location">
-                                    <!-- <label for="location">Location</label> -->
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s6">
                                     <input id="degree" type="text" class="validate" formControlName="degree" placeholder="Degree">
-                                    <!-- <label for="degree">Degree</label> -->
                                 </div>
                                 <mz-select-container>
                                     <div class="input-field col s4">
@@ -34,12 +31,11 @@
                             <div class="row">
                                 <div class="input-field col s9">
                                     <textarea id="textarea1" class="materialize-textarea" length="120" formControlName="description" placeholder="Short Description"></textarea>
-                                    <!-- <label for="description">Short Description</label> -->
                                 </div>
                                 <div class="col s3">
                                     <div class="preview-button">
-                                        <button type="submit" *ngIf="isEdit==null" (click)="addData()">Add More</button>
-                                        <button type="submit" *ngIf="isEdit!=null" (click)="saveData()">Save</button>
+                                        <button type="submit" *ngIf="isEdit==null">Add More</button>
+                                        <button type="submit" *ngIf="isEdit!=null">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +63,7 @@
     </div>
 
     <div class="navigation-next">
-        <button class="waves-effect pulse btn-large green" [routerLink]="['/resume','projects']" [disabled]="education.length<1"><i class="material-icons right">arrow_forward</i>Next</button>
+        <button class="waves-effect pulse btn-large green" [routerLink]="['/resume','projects']"><i class="material-icons right">arrow_forward</i>Next</button>
     </div>
 </form>
 

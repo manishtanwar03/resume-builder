@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup,Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-education',
@@ -11,7 +12,7 @@ export class EducationComponent implements OnInit {
   year_list=[];
   isEdit=null;
 
-  constructor() { 
+  constructor(private route:ActivatedRoute,private router:Router) { 
     for(let year=new Date().getFullYear();year!=1950;year--){
       this.year_list.push(year);
     }
@@ -25,6 +26,11 @@ export class EducationComponent implements OnInit {
       year:new FormControl('',Validators.required),
       description:new FormControl('',Validators.required),
     });
+  }
+  
+  nextRoute(){
+    let next = this.route.snapshot.queryParams.next;
+    this.router.navigate(['/resume',next==undefined?'interests':next]);
   }
 
 }
