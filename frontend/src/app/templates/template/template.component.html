@@ -1,145 +1,154 @@
-<button (click)="capture()">Download</button>
-<section>
-    <section class="functional" id='resume'>
-        <div class="resume z-depth-3">
-            <div class="row personal-details">
-                <div class="col s3">
-                    <div class="image">
-                        <img alt="image" src='../../../assets/template/profile.jpg'>
+<section class="functional">
+    <section class="resume z-depth-3">
+        <!-- basic information -->
+        <div class="basic_information">
+            <div class="heading">
+                <h1>Manish Tanwar</h1>
+                <h3>Professional Title</h3>
+                <p>Short and engaging pitch about yourself</p>
+            </div>
+            <div class="contact_details">
+                <a><img src="../../../assets/template/email.png">manishkumar4206@gmail.com</a>
+                <a><img src="../../../assets/template/phone.png">+91-8168527285</a>
+            </div>
+        </div>
+        <!-- resume body -->
+        <div class="row">
+            <div class="col s6">
+                <!-- left side -->
+                <!-- work experience -->
+                <div class="row">
+                    <div class="base">
+                        <h1>WORK EXPERIENCE</h1>
+                        <div class="entry">
+                            <h1>Position</h1>
+                            <h3>Company</h3>
+                            <span>start_date</span>
+                            <span>-</span>
+                            <span>end_date</span>
+                            <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                        </div>
+                        <div class="entry">
+                            <h1>Position</h1>
+                            <h3>Company</h3>
+                            <span>start_date</span>
+                            <span>-</span>
+                            <span>end_date</span>
+                            <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col s9" style="padding:0;">
-                    <div [ngStyle]='{ "background-color" : filter }' style='background:white' class="details">
-                        <h1 *ngIf="!basicInformation?.firstName">John Doe</h1>
-                        <h1 *ngIf="basicInformation">
-                            {{ basicInformation?.firstName }} {{ basicInformation?.lastName }}
-                        </h1>
-                        <h3 *ngIf="!basicInformation?.title">Professional Title</h3>
-                        <h3 *ngIf="basicInformation?.title">{{ basicInformation.title }}</h3>
-                        <div class="seperator"></div>
-                        <p *ngIf="!basicInformation?.pitch">Short and engaging pitch about yourself.</p>
-                        <p *ngIf="basicInformation?.pitch">{{ basicInformation.pitch }}</p>
+                <!-- education -->
+                <div class="row">
+                    <div class="base">
+                        <h1>EDUCATION</h1>
+                        <!-- education here -->
+                        <div class="entry">
+                            <h1>Position</h1>
+                            <h3>Company</h3>
+                            <span>start_date</span>
+                            <span>-</span>
+                            <span>end_date</span>
+                            <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                        </div>
+                        <div class="entry">
+                            <h1>Position</h1>
+                            <h3>Company</h3>
+                            <span>start_date</span>
+                            <span>-</span>
+                            <span>end_date</span>
+                            <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- interests -->
+                <div class="row">
+                    <div class="base">
+                        <h1>INTERESTS</h1>
+                        <!-- interests here -->
+                        <div class="list">
+                            <div class="entry interest">Swimming</div>
+                            <div class="entry interest">Dancing</div>
+                            <div class="entry interest">Coding</div>
+                            <div class="entry interest">Gym</div>
+                            <div class="entry interest">Cooking</div>
+                            <div class="entry interest">Swimming</div>
+                            <div class="entry interest">Dancing</div>
+                            <div class="entry interest">Coding</div>
+                            <div class="entry interest">Gym</div>
+                            <div class="entry interest">Cooking</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row" style='display:block;'>
-                <div class="col s3">
-                    <div class="row">
-                        <div class="contact-details">
-                            <div class="email" *ngIf="basicInformation?.email">
-                                <i class="material-icons" [ngStyle]=' { "color":filter} '>email</i><br>
-
-                                <p>{{ basicInformation.email }}</p>
-                            </div>
-                            <div class="phone" *ngIf="basicInformation?.phone">
-                                <i class="material-icons" [ngStyle]='{ "color":filter} '>call</i><br>
-
-                                <p>{{ basicInformation.phone }}</p>
-                            </div>
+            <!-- right side -->
+            <div class="col s6">
+                <!-- personal projects -->
+                <div class="row">
+                    <div class="base">
+                        <h1>PERSONAL PROJECTS</h1>
+                        <!-- projects here -->
+                        <div class="entry">
+                            <h1>Position</h1>
+                            <h3>Company</h3>
+                            <span>start_date</span>
+                            <span>-</span>
+                            <span>end_date</span>
+                            <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="skills">
-                            <h1 [ngStyle]="{'color ':filter,'border-color ': filter }">SKILLS</h1>
-                            <div class="skills_list" *ngIf="skills?.length<=0">
-                                <div class="skill" [ngStyle]="{'background-color ':filter }">Skill</div>
-                            </div>
-                            <div class="skills_list" *ngIf="skills?.length>0">
-                                <div class="skill" [ngStyle]="{'background-color ':filter }" *ngFor='let skill of skills '>{{ skill }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="languages">
-                            <h1 [ngStyle]="{'color ':filter, 'border-color ':filter }">Languages</h1>
-                            <div class="languages_list" *ngIf="languages?.length<=0">
-                                <div class="language">
-                                    <p>Language</p>
-                                    <div class="progress">
-                                        <div class="determinate " [ngStyle]="{'background-color ':filter}" style="width:70%;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="languages_list" *ngIf="languages?.length>0">
-                                <div class="language" *ngFor="let entry of languages">
-                                    <p>{{ entry.language }}</p>
-                                    <div class="progress">
-                                        <div class="determinate " [ngStyle]="{'background-color ':filter, 'width ':entry.value+'% '}"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div class="interests ">
-                            <h1 [ngStyle]="{'color ':filter, 'border-color ':filter}">Interests</h1>
-                            <div class="interests_list" *ngIf="interests?.length<=0">
-                                <div class="interest" [ngStyle]="{'color ':filter}">Interest</div>
-                            </div>
-                            <div class="interests_list" *ngIf="interests?.length>0">
-                                <div class="interest" [ngStyle]="{'color ':filter}" *ngFor="let interest of interests">{{ interest }}</div>
-                            </div>
+                        <div class="entry">
+                            <h1>Position</h1>
+                            <h3>Company</h3>
+                            <span>start_date</span>
+                            <span>-</span>
+                            <span>end_date</span>
+                            <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="col s9 ">
-                    <div class="row ">
-                        <div class="base work-experience " *ngIf="!workHistory">
-                            <h1 [ngStyle]="{'color ':filter, 'border-color ':filter}">Work Experience</h1>
-                            <div class="work ">
-                                <h1 [ngStyle]="{'color ':filter}">Title/Position</h1>
-                                <h3>Workplace/Company</h3>
-                                <p [ngStyle]="{'color ':filter}" class="date ">start_date - end_date</p>
-                                <p>Short Description about your job</p>
-                            </div>
-                        </div>
-                        <div class="base work-experience " *ngIf="workHistory">
-                            <div>
-                                <div class="work " *ngFor="let work of workHistory">
-                                    <h1 [ngStyle]="{'color ':filter, 'border-color ':filter}">{{ work?.job_title }}</h1>
-                                    <h3>{{ work?.employer }}</h3>
-                                    <p [ngStyle]="{'color ':filter}" class="date ">{{work?.start_day}}/{{work?.start_month}}/{{work?.start_year}} - {{work?.end}}/{{work?.end_month}}/{{work?.end_year}}</p>
-                                    <p>{{ work?.description}}</p>
-                                </div>
-                            </div>
+                <!-- skills -->
+                <div class="row">
+                    <div class="base">
+                        <h1>SKILLS</h1>
+                        <!-- skills here -->
+                        <div class="list">
+                            <div class="entry skill">Swimming</div>
+                            <div class="entry skill">Dancing</div>
+                            <div class="entry skill">Coding</div>
+                            <div class="entry skill">Gym</div>
+                            <div class="entry skill">Cooking</div>
+                            <div class="entry skill">Swimming</div>
+                            <div class="entry skill">Swimming</div>
+                            <div class="entry skill">Dancing</div>
+                            <div class="entry skill">Coding</div>
+                            <div class="entry skill">Gym</div>
+                            <div class="entry skill">Cooking</div>
                         </div>
                     </div>
-                    <div class="row ">
-                        <div class="base education ">
-                            <h1 [ngStyle]="{'color ':filter, 'border-color ':filter}">Education</h1>
-                            <div class="list " *ngIf="!education">
-                                <div class="school ">
-                                    <h1 [ngStyle]="{'color ':filter}">Study Program</h1>
-                                    <h3>Institution/Place of Education</h3>
-                                    <p [ngStyle]="{'color ':filter}">Graduation Year</p>
+                </div>
+                <!-- languages -->
+                <div class="row">
+                    <div class="base">
+                        <h1>LANGUAGES</h1>
+                        <!-- languages here -->
+                        <div class="languages">
+                            <div class="language">
+                                <p>English</p>
+                                <div class="progress">
+                                    <div class="determinate" style="width: 70%"></div>
                                 </div>
                             </div>
-                            <div class="list " *ngIf="education">
-                                <div class="work school " *ngFor="let school of education">
-                                    <h1 [ngStyle]="{'color ':filter}">{{ school?.degree }} - ({{ school?.year}})</h1>
-                                    <h3>{{ school?.schoolName }}, {{ school?.location}}</h3>
-                                    <p [ngStyle]="{'color ':filter}">{{ school?.description }}</p>
+                            <div class="language">
+                                <p>Hindi</p>
+                                <div class="progress">
+                                    <div class="determinate" style="width: 70%"></div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div class="base personal-projects ">
-                            <h1 [ngStyle]="{'color ':filter, 'border-color ':filter}">Personal Projects</h1>
-                            <div class="projects " *ngIf="!projects">
-                                <div class="project ">
-                                    <h1 [ngStyle]="{'color ':filter}">Project Name</h1>
-                                    <p [ngStyle]="{'color ':filter}" class="date ">start_date - end_date</p>
-                                    <p class="desc ">Description</p>
-                                </div>
-                            </div>
-                            <div class="projects " *ngIf="projects">
-                                <div class="project " *ngFor="let project of projects">
-                                    <h1 [ngStyle]="{'color ':filter}">{{ project?.projectName }}</h1>
-                                    <p [ngStyle]="{'color ':filter}" class="date ">{{project?.start_day}}/{{project?.start_month}}/{{project?.start_year}} - {{project?.end}}/{{project?.end_month}}/{{project?.end_year}}</p>
-                                    <p class="desc ">{{ project.description }}</p>
+                            <div class="language">
+                                <p>Punjabi</p>
+                                <div class="progress">
+                                    <div class="determinate" style="width: 70%"></div>
                                 </div>
                             </div>
                         </div>

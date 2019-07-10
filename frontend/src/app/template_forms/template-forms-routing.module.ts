@@ -9,6 +9,9 @@ import { InterestsComponent } from './interests/interests.component';
 import { LanguagesComponent } from './languages/languages.component';
 import { AuthGuard } from 'src/app/services/auth.guard';
 import {Page404Component} from '../page404/page404.component';
+import { TemplateComponent } from '../templates/template/template.component';
+
+
 const routes:Routes=[
     {path:'resume',canActivate:[AuthGuard],children:[
         { path:'',redirectTo:'basic-information',pathMatch:'full'},
@@ -19,6 +22,7 @@ const routes:Routes=[
         { path:'skills', component:SkillsComponent},
         { path:'interests',component:InterestsComponent},
         { path:'languages', component:LanguagesComponent},
+        { path:'template',component:TemplateComponent}
     ]},
     { path:'**', component:Page404Component}     
 

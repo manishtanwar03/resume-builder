@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
 
 @Component({
   selector: 'app-template',
@@ -18,11 +17,7 @@ export class TemplateComponent implements OnInit {
   filter:String="#479099";
 
 
-  constructor(private exportAsService: ExportAsService) { }
-  exportAsConfig: ExportAsConfig = {
-    type: 'pdf', // the type you want to download
-    elementId: 'resume', // the id of html/table element
-  }
+  constructor() { }
   ngOnInit() {
   }
 
@@ -38,7 +33,4 @@ export class TemplateComponent implements OnInit {
     }
 
 
-public capture(){
-  this.exportAsService.save(this.exportAsConfig, 'My File Name');
-}
 }

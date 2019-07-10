@@ -18,7 +18,7 @@ import { TemplateModule } from './templates/template.module';
 import { Page404Component } from './page404/page404.component';
 
 
-
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import { Page404Component } from './page404/page404.component';
     AuthModule,
     TemplateFormsModule,
     ReactiveFormsModule,
-    TemplateModule
+    TemplateModule,
+    PDFExportModule
     
   ],
   providers: [AuthService, AuthGuard , CookieService],

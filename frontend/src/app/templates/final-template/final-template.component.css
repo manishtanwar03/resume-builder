@@ -15,7 +15,7 @@ section {
     position: fixed;
     bottom: 0;
     right: 0;
-    margin: 7.563px 12.605px;
+    margin: 30px 50px;
     z-index: 100;
 }
 
@@ -23,72 +23,82 @@ section {
     width: 100%;
     font-family: sans-serif;
     box-sizing: border-box;
-    padding: 12.605px 0;
+    padding: 50px 0;
     position: relative;
 }
 
 .resume {
-    max-width: 300.0px;
+    max-width: 1190px;
     margin: 0 auto;
     background-color: white;
-    /* border: 0.252px solid #b7b7b7; */
+    /* border: 1px solid #b7b7b7; */
 }
 
 
 /* basic_information */
 
 .basic_information {
-    padding-top: 11.092px;
-    margin-bottom: 7.563px;
+    padding-top: 44px;
+    margin-bottom: 30px;
     background: #334458;
     position: relative;
 }
 
 .basic_information .heading {
-    padding: 0 12.605px;
-    margin-left: 8.571px;
-    min-height: 40.336px;
+    padding: 0 50px;
+    margin-left: 34px;
+    min-height: 160px;
 }
 
 .basic_information .heading h1 {
     color: #fff;
-    font-size: 11.597px;
-    line-height: 12.101px;
+    font-size: 46px;
+    line-height: 48px;
 }
 
 .basic_information .heading h3 {
     color: #4f90cd;
-    font-size: 6.05px;
-    line-height: 6.555px;
-    padding-top: 1.513px;
+    font-size: 24px;
+    line-height: 26px;
+    padding-top: 6px;
 }
 
 .basic_information .heading p {
     color: #fff;
-    font-size: 4.538px;
-    line-height: 5.546px;
-    margin-top: 5.546px;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 22px;
 }
 
 .basic_information .contact_details {
     background-color: #2B343F;
     text-align: center;
-    padding: 5.546px 12.605px;
-    padding-bottom: 4.034px;
+    padding: 22px 50px;
+    padding-bottom: 16px;
 }
 
 .basic_information .contact_details a {
     color: white;
-    padding-right: 8.571px;
-    font-size: 4.538px;
+    padding-right: 34px;
+    font-size: 18px;
 }
 
 .basic_information .contact_details img {
-    width: 7.059px;
-    height: 7.059px;
+    width: 28px;
+    height: 28px;
     position: relative;
-    top: 1.513px;
-    margin-right: 2.521px;
+    top: 6px;
+    margin-right: 10px;
+}
+
+.basic_information:hover {
+    border: 1px solid red;
+    opacity: 0.9;
+}
+
+.basic_information:hover .edit {
+    display: block;
+    color: white;
 }
 
 
@@ -96,24 +106,34 @@ section {
 
 .base {
     background: white;
-    padding: 2.521px 9.076px 2.521px 12.605px;
-    margin-bottom: 8.571px;
+    padding: 10px 36px 10px 50px;
+    margin-bottom: 34px;
     position: relative;
-    /* border: 0.252px solid white; */
+    /* border: 1px solid white; */
+}
+
+.base:hover {
+    border: 1px solid red;
+    opacity: 0.6;
+}
+
+.base:hover .edit {
+    display: block;
+    /* color: #b7b7b7; */
 }
 
 .base h1 {
     color: #4f90cd;
     font-weight: 800;
     display: inline-block;
-    font-size: 6.555px;
-    padding-bottom: 1.008px;
-    border-bottom: 1.008px solid #4f90cd;
-    margin-bottom: 3.529px;
+    font-size: 26px;
+    padding-bottom: 4px;
+    border-bottom: 4px solid #4f90cd;
+    margin-bottom: 14px;
 }
 
 .base .entry {
-    padding-bottom: 2.521px;
+    padding-bottom: 10px;
 }
 
 .base .entry * {
@@ -125,28 +145,28 @@ section {
 }
 
 .base .entry h1 {
-    font-size: 6.05px;
-    line-height: 6.555px;
+    font-size: 24px;
+    line-height: 26px;
     color: #000;
     font-weight: 700;
 }
 
 .base .entry h3 {
-    font-size: 5.546px;
-    line-height: 6.05px;
+    font-size: 22px;
+    line-height: 24px;
     color: #000;
 }
 
 .base .entry span {
     display: inline-block;
-    font-size: 4.034px;
-    margin-top: 1.261px;
+    font-size: 16px;
+    margin-top: 5px;
     font-style: italic;
     color: #4f90cd;
 }
 
 .base .entry p {
-    font-size: 4.034px;
+    font-size: 16px;
     color: #7c7c7c;
     text-align: left;
 }
@@ -155,7 +175,7 @@ section {
 /* interests */
 
 .list {
-    padding: 2.521px 6.303px;
+    padding: 10px 25px;
     padding-left: 0;
     display: flex;
     justify-content: flex-start;
@@ -164,16 +184,16 @@ section {
 }
 
 .list .entry {
-    padding: 1.513px 3.529px;
-    margin-right: 2.521px;
-    margin-bottom: 3.529px;
-    font-size: 4.538px;
-    border-radius: 1.513px;
+    padding: 6px 14px;
+    margin-right: 10px;
+    margin-bottom: 14px;
+    font-size: 18px;
+    border-radius: 6px;
 }
 
 .interest {
     background: white;
-    border: 0.504px solid #b7b7b7;
+    border: 2px solid #b7b7b7;
 }
 
 .skill {
@@ -185,24 +205,38 @@ section {
 /* languages */
 
 .languages {
-    padding-top: 3.782px;
+    padding-top: 15px;
 }
 
 .languages .language {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 1.261px;
-    margin-bottom: 3.782px;
-    border-bottom: 0.252px solid #b7b7b7;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #b7b7b7;
 }
 
 .languages .language p {
-    font-size: 4.538px;
+    font-size: 18px;
     width: 50%;
 }
 
 .languages .language .progress {
     width: 50%;
-    height: 1.261px;
+    height: 5px;
     padding: 0;
+}
+
+
+/* edit */
+
+.edit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: black;
+    margin-right: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: none;
 }
