@@ -16,8 +16,8 @@ import { AuthGuard } from 'src/app/services/auth.guard';
 import { CookieService } from 'ngx-cookie-service';
 import { TemplateModule } from './templates/template.module';
 import { Page404Component } from './page404/page404.component';
-
-
+import { HTTP_INTERCEPTORS} from '@angular/common/http';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 
 @NgModule({
@@ -40,7 +40,11 @@ import { Page404Component } from './page404/page404.component';
     TemplateModule
     
   ],
-  providers: [AuthService, AuthGuard , CookieService],
+  providers: [AuthService, AuthGuard , CookieService,{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

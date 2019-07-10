@@ -19,7 +19,7 @@ export class DataService {
         'filter':null
     };
 
-    private _resumeUrl = "http://localhost:9000/resume";
+    private _resumeUrl = "http://localhost:9000/resume/";
   constructor(private http: HttpClient) { }
 
   update(key,value){
@@ -40,8 +40,8 @@ export class DataService {
   {
     console.log("555");
     console.log(this.resumeData);
-    this.detail=new Details(this.resumeData.interests,this.resumeData.languages,this.resumeData.skills,
-      this.resumeData.education,this.resumeData.projects,this.resumeData.workHistory,this.resumeData.basicInformation);
+    // this.detail=new Details(this.resumeData.interests,this.resumeData.languages,this.resumeData.skills,
+    //   this.resumeData.education,this.resumeData.projects,this.resumeData.workHistory,this.resumeData.basicInformation);
 //     console.log(this.detail);
 //     this.http.post<any>(this._resumeUrl,this.detail).subscribe(
 //       res=>{
@@ -53,7 +53,8 @@ export class DataService {
 
     this.http.post<any>(this._resumeUrl,this.resumeData).subscribe(
       res=>{
-        console.log(res);
+        console.log("this is reposne" ,res);
+        // console.log("111");
         return (res);
       },
       err=>console.log(err)

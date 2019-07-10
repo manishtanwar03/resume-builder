@@ -60,8 +60,6 @@ matchingPasswords(passwordKey: string, confirmpasswordKey: string) {
  console.log(this.signupForm.value)
  this.authService.registerUser(this.signupForm.value.email,this.signupForm.value.password)
     .subscribe(
-     
-
       res => {
          console.log(res)
         //  this.cookie.set('token', res.token);

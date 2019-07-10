@@ -1,6 +1,6 @@
 'use strict'
 const mongoose = require('mongoose');
-
+var bcrypt = require('bcryptjs');
 const User = new mongoose.Schema({
     email: {
         type: String,
@@ -12,9 +12,6 @@ const User = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        trim: true,
-        minlength: 6,
-        maxlength: 40
     },
     isActive: {
         type: Boolean,
@@ -35,6 +32,14 @@ const User = new mongoose.Schema({
         default: Date.now
     }
 });
+
+User.generateHash=function(password){
+	return bcrypt.hashSync(password, bcrypt.genSaltSync(9));
+}
+
+User.validPassword = function(password){
+	return bcrypt.compareSync(password, this.local.password);
+}
 
 const User_Model = mongoose.model('User', User);
 module.exports = User_Model;
