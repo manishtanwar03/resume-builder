@@ -62,8 +62,8 @@ matchingPasswords(passwordKey: string, confirmpasswordKey: string) {
     .subscribe(
       res => {
          console.log(res)
-        //  this.cookie.set('token', res.token);
-       localStorage.setItem('token', res.token);
+         this.cookie.set('token', res.token);
+      //  localStorage.setItem('token', res.token);
         this.router.navigate(['/dashboard']);
       },
       err => console.log(err)

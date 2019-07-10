@@ -69,26 +69,19 @@
 
 const hash = require('../helper/common');
 const User = require('../models/user');
-const jwt = require('jsonwebtoken');
-var bcrypt = require('bcryptjs');
-// const popup = require('popups');    
-
+const jwt = require('jsonwebtoken')     
+const bcrypt = require('bcryptjs');
 async function addUser(req, res) {    //
     try {
+        console.log('asda')
         let user = await User.find({email:req.body.email});
         console.log(user)
         if(user.length){
-            console.log('user already exists');
+            console.log('exist');
             res.send('already exists');
-
-            // popup.alert({
-            //     content: 'Email Id is already registered , try with another email or login!'
-            // });
-            // // res.jsonp({success : true});
         }
         else if(user.length == 0){
-            console.log('new');  
-            req.body.password=hash(req.body.password);          
+            console.log('new');            
             let user = new User(req.body);   
             let result = await user.save();
             let payload = { subject: result._id }
@@ -104,26 +97,23 @@ async function addUser(req, res) {    //
 
 async function authUser(req, res) {    //function used for login
     try{
-    const user = await User.findOne({ email: req.body.email })  
-    const result= await bcrypt.compare(req.body.password,user.password);    
-    if (!user) {
-        res.status(401).send('invalid email or password1');
-    }
-    
-    else if (!result) {
-        // const result= await bcrypt.compare(req.body.password,user.password);
-        console.log(result);
-        res.status(401).send('invalid email or password');
-    }
-    else {
-        let payload = { subject: user._id }
-        let token = jwt.sign(payload, 'cGFzc3dvcmRwYXNzd29yZAo')
-        res.status(200).send({ token })
-    }
-    }
-    catch(error) {
-            console.log(`Error occurred in authUser ${error}`)
+        let user = User.findOne({ email: userData.email });
+        if(!user){
+            res.status(401).send("invalid email or password");
         }
+        else{
+            let result = await bcrypt.compare(req.body.password,user.password);
+            if(result){
+                let payload = { subject: user._id }
+                let token = jwt.sign(payload, 'cGFzc3dvcmRwYXNzd29yZAo')
+                res.status(200).send({ token }) 
+            }
+            res.status(401).send('invalid email or password')
+        }
+    }
+    catch(error){
+        res.status(401).send("invalid email or password");
+    }
 }
 
 function verifyToken(req,res,next)

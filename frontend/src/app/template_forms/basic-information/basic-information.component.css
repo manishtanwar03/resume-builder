@@ -2,7 +2,6 @@
 .base {
     padding: 50px 0;
     font-family: 'Asap', sans-serif;
-    /* border: 1px solid #b7b7b7; */
 }
 
 
@@ -36,9 +35,9 @@
 /* preview */
 
 .base .preview {
-    height: 415px;
     width: 300px;
     margin-left: 50px;
+    background-color: white;
 }
 
 .base .preview-button {
@@ -46,6 +45,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 5px solid white;
 }
 
 .base .preview-button button {
@@ -88,19 +88,28 @@
 
 /* template modal */
 
+mz-modal-content {
+    background: white !important;
+}
+
 mz-modal-header {
     width: 100% !important;
     display: block;
+    padding: 20px 60px;
 }
 
 mz-modal-header button {
     float: right;
+    cursor: pointer;
+    color: #d32f2f;
 }
 
 mz-modal-header button i {
     font-size: 28px;
+    cursor: pointer;
 }
 
 mz-modal-header button i:hover {
-    color: #d32f2f;
+    columns: #b7b7b7;
+    cursor: pointer;
 }

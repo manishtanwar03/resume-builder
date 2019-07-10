@@ -4,17 +4,19 @@ import { PreviewTemplateComponent } from './preview-template/preview-template.co
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { ExportAsModule } from 'ngx-export-as';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import { FinalTemplateComponent } from './final-template/final-template.component';
 @NgModule({
     declarations:[
         TemplateComponent,
         PreviewTemplateComponent,
+        FinalTemplateComponent,
         
     ],
     imports:[
         CommonModule,
         RouterModule,
-        ExportAsModule
+        PDFExportModule
     ],
     exports:[
         TemplateComponent,

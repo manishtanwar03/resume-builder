@@ -47,9 +47,9 @@
                         <app-preview-template></app-preview-template>
                     </div>
                     <div class="preview-button">
-                        <button mz-button (click)="bottomSheetModal.openModal()" type="button" name="action">Preview
-                        <i class="material-icons left">remove_red_eye</i>
-                    </button>
+                        <button (click)="bottomSheetModal.openModal()" type="button" name="action">Preview
+                                    <i class="material-icons left">remove_red_eye</i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -60,16 +60,15 @@
     </div>
 
     <div class="navigation-next">
-        <button type='submit' class="waves-effect pulse btn-large green" [routerLink]="['/resume','work-history']" ><i class="material-icons right">arrow_forward</i>Next</button>
-        <!-- <button type='submit' class="waves-effect pulse btn-large green"  [disabled]="!basicInformationForm.valid"><i class="material-icons right">arrow_forward</i>Next</button> -->
+        <button type='submit' class="waves-effect pulse btn-large green" [routerLink]="['/resume','work-history']"><i class="material-icons right">arrow_forward</i>Next</button>
     </div>
 </form>
 
 
 <!-- template -->
-<mz-modal #bottomSheetModal [options]="modalOptions" [fullscreen]=true style="background-color:white">
+<mz-modal #bottomSheetModal [bottomSheet]="true" [fullscreen]=true style="background-color:white">
     <mz-modal-header>
-        <button mz-button [flat]="true" mz-modal-close>
+        <button mz-button [flat]="true" mz-modal-close style="position: fixed;top:0;right:0;cursor:pointer;margin:20px 50px;">
             <i class="material-icons">close</i>
         </button>
     </mz-modal-header>
