@@ -15,6 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { TemplateModule } from '../templates/template.module';
 import { DataSliderComponent } from './data-slider/data-slider.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {TokenInterceptorService } from '../services/token-interceptor.service';
 
 @NgModule({
     declarations:[
@@ -40,7 +42,12 @@ import { DataSliderComponent } from './data-slider/data-slider.component';
     ],
     exports:[
         BasicInformationComponent
-    ]
+    ],
+    providers:[{
+        provide:HTTP_INTERCEPTORS,
+        useClass:TokenInterceptorService,
+        multi:true
+    }]
 })
 export class TemplateFormsModule{
 

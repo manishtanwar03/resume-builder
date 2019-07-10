@@ -11,7 +11,8 @@ import { environment } from './../../environments/environment'
 export class AuthService {
 
   private _registerUrl = `${environment.API_URL}/user/register`;
-  private _loginUrl = "http://localhost:9000/user/login";
+  private    _loginUrl = `${environment.API_URL}/user/login`;
+  // private _loginUrl = "http://localhost:9000/user/login";
 
   constructor(private http: HttpClient, public cookie:CookieService,public router:Router) { }
 
@@ -23,9 +24,15 @@ export class AuthService {
     return this.http.post<any>(this._loginUrl, {'email':email,'password':password});
   }
 
-
   loggedIn() {
     return !!this.cookie.get('token');   
+  }
+  // loggedIn() {
+  //   return !!localStorage.getItem('token');   
+  // }
+
+  getToken(){
+    return localStorage.getItem('token');
   }
 
 

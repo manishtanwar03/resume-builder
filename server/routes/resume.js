@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 var resume = require('../controllers/resume');
 const auth = require('../middleware/auth');
+const User = require('../controllers/user');
 
 
-router.route('/', auth).post(resume.addResume);
+router.route('/', User.verifyToken).post(resume.addResume);
 
-router.route('/:id', auth).put(resume.updateResume);
+router.route('/:id', User.verifyToken).put(resume.updateResume);
 
-router.route('/:id', auth).delete(resume.deleteResume);
+router.route('/:id', User.verifyToken).delete(resume.deleteResume);
 
 module.exports = router;
