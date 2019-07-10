@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="col s3">
                                     <div class="preview-button">
-                                        <button type="submit" *ngIf="isEdit==null" (click)="addData()" >Add More</button>
+                                        <button type="submit" *ngIf="isEdit==null" (click)="addData()">Add More</button>
                                         <button type="submit" *ngIf="isEdit!=null" (click)="saveData()">Save</button>
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <app-data-slider [storedData]="education" [isEdit]="isEdit!=null?true:false" (deleteMe)="deleteMe($event)" (editMe)="editMe($event)"></app-data-slider>
+                        <app-data-slider></app-data-slider>
                     </div>
                 </div>
                 <div class="col s4">
@@ -71,10 +71,11 @@
     </div>
 </form>
 
+
 <!-- template -->
-<mz-modal #bottomSheetModal [options]="modalOptions" [fullscreen]=true style="background-color:white">
+<mz-modal #bottomSheetModal [bottomSheet]="true" [fullscreen]=true style="background-color:white">
     <mz-modal-header>
-        <button mz-button [flat]="true" mz-modal-close>
+        <button mz-button [flat]="true" mz-modal-close style="position: fixed;top:0;right:0;cursor:pointer;margin:20px 50px;">
             <i class="material-icons">close</i>
         </button>
     </mz-modal-header>

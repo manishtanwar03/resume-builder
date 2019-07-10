@@ -1,9 +1,25 @@
-var bcrypt = require('bcryptjs');
-//npm i bcryptjs --save
-function generateHash(password){
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+const secret = 'cGFzc3dvcmRwYXNzd29yZAo';
+
+function generateHash(password) {
     return bcrypt.hashSync(password);
 }
 
-module.exports = generateHash;
+function verifyHash(password, hash) {
+    return bcrypt.compare(password, hash);
+}
 
-// , bcrypt.genSaltSync(9)
+function generateToken(payload) {
+    return jwt.sign(payload, secret);
+}
+
+function verifyToken(token) {
+    return jwt.verify(token, secret);
+}
+
+module.exports.generateHash = generateHash;
+module.exports.verifyHash = verifyHash;
+module.exports.generateToken = generateToken;
+module.exports.verifyToken = verifyToken;

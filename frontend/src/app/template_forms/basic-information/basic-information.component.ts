@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup , FormControl,Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import {DataService} from '../../services/data.service';
+
 
 
 @Component({
@@ -13,22 +13,8 @@ export class BasicInformationComponent implements OnInit {
 
   basicInformationForm:FormGroup=null;
   
+  constructor(private route:ActivatedRoute,private router:Router) { }
 
-  constructor(private route:ActivatedRoute,private router:Router,private service :DataService) { }
-
-
-  // local storage methods
-  private getBasicInfo()
-  {
-    let localStorageItem=JSON.parse(localStorage.getItem('basicInformation'));
-    return localStorageItem;
-  }
-
-  private setBasicInfo(data){
-    localStorage.setItem('basicInformation',JSON.stringify(data));
-    this.service.update('basicInformation',data);
-  }
-phonePattern="/^\d{10}$/";
   ngOnInit() {
     
     this.basicInformationForm=new FormGroup({
@@ -39,15 +25,6 @@ phonePattern="/^\d{10}$/";
         phone:new FormControl(''),
         email:new FormControl('',[Validators.required,Validators.email]),
     });
-    // loading previous values if any
-   if(this.getBasicInfo()){
-        this.basicInformationForm.setValue(this.getBasicInfo());  
-   }
-  }
-
-  saveData(){
-    this.setBasicInfo(this.basicInformationForm.value);
-    // this.router.navigate(['/resume','work-history']);
   }
 
 nextRoute(){

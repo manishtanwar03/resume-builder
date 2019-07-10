@@ -53,7 +53,6 @@
     border-color: #dddddd;
     background-color: transparent;
     padding: 0.4rem 1.6rem;
-    padding-top: 0;
     border-radius: 5px;
     background-color: #fbfcfd;
     color: #3a96f0;
@@ -88,28 +87,22 @@
 
 /* template modal */
 
-mz-modal-content {
-    background: white !important;
-}
+
+/* template modal */
 
 mz-modal-header {
     width: 100% !important;
     display: block;
-    padding: 20px 60px;
 }
 
 mz-modal-header button {
     float: right;
-    cursor: pointer;
-    color: #d32f2f;
 }
 
 mz-modal-header button i {
     font-size: 28px;
-    cursor: pointer;
 }
 
 mz-modal-header button i:hover {
-    columns: #b7b7b7;
-    cursor: pointer;
+    color: #d32f2f;
 }
