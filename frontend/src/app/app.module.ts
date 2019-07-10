@@ -18,7 +18,6 @@ import { TemplateModule } from './templates/template.module';
 import { Page404Component } from './page404/page404.component';
 
 
-import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 
 @NgModule({
   declarations: [
@@ -41,7 +40,11 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
     PDFExportModule
     
   ],
-  providers: [AuthService, AuthGuard , CookieService],
+  providers: [AuthService, AuthGuard , CookieService,{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

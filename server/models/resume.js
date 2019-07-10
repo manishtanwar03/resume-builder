@@ -47,7 +47,7 @@ const Resume = new mongoose.Schema({
         },
         
     },
-    work_history: [{
+    workHistory: [{
         job_title: {
             type: String,
             // required: true,
@@ -65,27 +65,27 @@ const Resume = new mongoose.Schema({
             // maxlength: 20
         },
         start_day: {
-            type: Number, // date
+            type: String, // date
             // required: true,
         },
         start_month: {
-            type: Number, // date
+            type: String, // date
             // required: true,
         },
         start_year: {
-            type: Number, // date
+            type: String, // date
             // required: true,
         },
         end_day: {
-            type: Number,
+            type: String,
             // required: true
         },
         end_month: {
-            type: Number,
+            type: String,
             // required: true
         },
         end_year: {
-            type: Number,
+            type: String,
             // required: true
         },
        
@@ -124,7 +124,7 @@ const Resume = new mongoose.Schema({
             // minlength: 3,
             // maxlength: 20
         },
-        graduation_year: {
+        year: {
             type: Number,
             // required: true,
             // match: [/^\d{4}$/, 'Please fill a valid year']
@@ -152,8 +152,8 @@ const Resume = new mongoose.Schema({
         }
         
     }],
-    personal_projects: [{
-        project_title: {
+    projects: [{
+        projectTitle: {
             type: String,
             // required: true,
             trim: true,
@@ -199,10 +199,10 @@ const Resume = new mongoose.Schema({
     //     default: "functional",
     //     required:false
     // },
-    // user: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'User'
-    // }
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 const Resume_Model = mongoose.model('ResumeDetails', Resume);

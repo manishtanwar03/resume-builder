@@ -54,7 +54,8 @@ export class DataService {
 
     this.http.post<any>(this._resumeUrl,this.resumeData).subscribe(
       res=>{
-        console.log(res);
+        console.log("this is reposne" ,res);
+        // console.log("111");
         return (res);
       },
       err=>console.log(err)
