@@ -52,9 +52,11 @@ export class LoginComponent implements OnInit {
      },
       err => {
         if(err.status == '402'){
-          alert("Please enter correct user name and password.")
-    console.log("hellllllllll");
+          window.alert("Please enter correct email/password.");
     }
+    if(err.status == '401'){
+      window.alert("This user does not exist ,you have to register first");
+}
       }
     )   
     

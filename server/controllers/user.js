@@ -10,7 +10,7 @@ async function addUser(req, res) {
         let user = await User.findOne({ email: req.body.email });
         if (user) {
             // if email exists
-            res.send('user already exists');
+            res.status(401).send('user already exists');
         } else {
             // 1. hashing password
             req.body.password = helper.generateHash(req.body.password)

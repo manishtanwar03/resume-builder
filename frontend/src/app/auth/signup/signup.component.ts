@@ -66,7 +66,11 @@ matchingPasswords(passwordKey: string, confirmpasswordKey: string) {
       //  localStorage.setItem('token', res.token);
         this.router.navigate(['/dashboard']);
       },
-      err => console.log(err)
+      err => {
+        if(err.status == '401'){
+          window.alert("email already registered");
+    }
+      }
     )      
   }
 
