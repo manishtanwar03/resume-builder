@@ -66,6 +66,15 @@
     color: white;
 }
 
+.addBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    color: #3a96f0;
+    padding-top: 10px;
+}
+
 
 /* navigation buttons */
 

@@ -1,7 +1,7 @@
-<div class=" slider" *ngIf='storedData.length'>
+<div class=" slider" *ngIf='data.length'>
     <div class="row">
         <div class="col s10 offset-s1">
-            <div class="data" *ngFor="let entry of storedData;let i=index">
+            <div class="data" *ngFor="let entry of data;let i=index">
                 <div class="row">
                     <div class="col s8">
                         <div class="information" *ngIf="entry?.schoolName">

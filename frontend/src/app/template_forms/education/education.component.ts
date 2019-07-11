@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EducationComponent implements OnInit {
   educationForm:FormGroup;
+  education=[];
   year_list=[];
   isEdit=null;
 
@@ -28,6 +29,26 @@ export class EducationComponent implements OnInit {
     });
   }
   
+  addData(){
+    if(!!this.isEdit){
+      this.education[this.isEdit-1] = this.educationForm.value;
+      this.isEdit=null;
+    }
+    else{
+      this.education.push(this.educationForm.value);
+    }
+    this.educationForm.reset();
+  }
+
+  editMe(index){
+    this.isEdit = index;
+    this.educationForm.setValue(this.education[index-1]);
+  }
+
+  deleteMe(index){
+    this.education.splice(index,1);
+  }
+
   nextRoute(){
     let next = this.route.snapshot.queryParams.next;
     this.router.navigate(['/resume',next==undefined?'interests':next]);

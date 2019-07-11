@@ -1,15 +1,16 @@
 <section class="base">
     <div class="container">
         <h1>The Languages you know?</h1>
-        <p>Start typing and press Enter to save then set the proficienty</p>
+        <p>Start typing and add to save then set the proficienty</p>
         <div class="row">
             <div class="col s8">
                 <div class="row form">
                     <div class="col s12">
                         <div class="row">
                             <div class="input-field col s6 offset-s3">
-                                <input id="language" type="text" class="validate" (keydown.enter)="onEnter($event.target.value)" (keyup.enter)="$event.target.value = ''">
+                                <input id="language" type="text" class="validate" (keydown.enter)="onEnter($event.target.value)" (keyup.enter)="$event.target.value = ''" #language>
                                 <label for="language">Language</label>
+                                <i class="material-icons left addBtn" (mousedown)="onEnter(language.value)" (mouseup)="language.value=''">add</i>
                             </div>
                         </div>
                         <div class="row">

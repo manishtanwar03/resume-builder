@@ -7,7 +7,6 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./preview-template.component.css']
 })
 export class PreviewTemplateComponent implements OnInit {
-  @Input() filter:String="#479099";
 
   resume = {};
 

@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class DataSliderComponent implements OnInit {
   @Output() editMe = new EventEmitter<Number>();
   @Output() deleteMe = new EventEmitter<Number>();
-  @Input() storedData=[];
+  @Input() data=[];
   @Input() isEdit:Boolean=false;
 
   constructor() { }
@@ -17,8 +17,7 @@ export class DataSliderComponent implements OnInit {
   }
 
   onEdit(index){
-    this.isEdit=true;
-    this.editMe.emit(index);
+    this.editMe.emit(index+1);
   }
   onDelete(index){
     this.deleteMe.emit(index);

@@ -1,15 +1,16 @@
 <section class="base">
     <div class="container">
         <h1>What skills do you want to highlight?</h1>
-        <p>Start typing and press Enter to save and click it to remove</p>
+        <p>Start typing and add to save and click on it to remove</p>
         <div class="row">
             <div class="col s8">
                 <div class="row form">
                     <div class="col s12">
                         <div class="row">
                             <div class="input-field col s6 offset-s3">
-                                <input id="skill" type="text" class="validate" (keydown.enter)="onEnter($event.target.value)" (keyup.enter)="$event.target.value = ''">
+                                <input id="skill" type="text" class="validate" (keydown.enter)="onEnter($event.target.value)" (keyup.enter)="$event.target.value = ''" #skill>
                                 <label for="skill">Enter Skill</label>
+                                <i class="material-icons left addBtn" (mousedown)="onEnter(skill.value)" (mouseup)="skill.value=''">add</i>
                             </div>
                         </div>
                         <div class="row">

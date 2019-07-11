@@ -7,8 +7,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./work-history.component.css']
 })
 export class WorkHistoryComponent implements OnInit {
+  
   workHistoryForm:FormGroup;
   workHistory=[];
+  isEdit=null;
 
   constructor(private route:ActivatedRoute,private router:Router) { }
 
@@ -23,13 +25,27 @@ export class WorkHistoryComponent implements OnInit {
         end_month:new FormControl('',Validators.required),
         end_year:new FormControl('',Validators.required),
         description:new FormControl('',Validators.required),
-        index:new FormControl('')
     });
     }
 
   addData(){
-    this.workHistory.push(this.workHistoryForm.value);
+    if(!!this.isEdit){
+      this.workHistory[ this.isEdit -1 ] = this.workHistoryForm.value;
+      this.isEdit=null;
+    }
+    else{
+      this.workHistory.push(this.workHistoryForm.value);
+    }
     this.workHistoryForm.reset();
+  }
+
+  editMe(index){
+    this.isEdit = index;
+    this.workHistoryForm.setValue(this.workHistory[index-1]);
+  }
+
+  deleteMe(index){
+    this.workHistory.splice(index,1);
   }
 
   nextRoute(){

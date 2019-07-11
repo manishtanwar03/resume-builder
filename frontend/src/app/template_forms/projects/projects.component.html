@@ -1,4 +1,4 @@
-<form [formGroup]="projectForm">
+<form [formGroup]="projectForm" (ngSubmit)="addData()">
     <section class="base">
         <div class="container">
             <h1>Now, tell us about your projects?</h1>
@@ -58,15 +58,14 @@
                                 </div>
                                 <div class="col s3">
                                     <div class="preview-button">
-                                        <button type="submit" *ngIf="isEdit==null">Add More</button>
-                                        <button type="submit" *ngIf="isEdit!=null">Save</button>
+                                        <button type="submit" style="padding-top:0.4em;">Save</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <app-data-slider></app-data-slider>
+                        <app-data-slider [data]='projects' [isEdit]='isEdit' (editMe)='editMe($event)' (deleteMe)='deleteMe($event)'></app-data-slider>
                     </div>
                 </div>
                 <div class="col s4">

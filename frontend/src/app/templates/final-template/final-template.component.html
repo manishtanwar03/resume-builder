@@ -15,18 +15,18 @@
                 </div>
                 <div class="contact_details">
                     <!-- email -->
-                    <a *ngIf="!resume?.basicInformation.email">
+                    <a *ngIf="!resume?.basicInformation?.email">
                         <img src="../../../assets/template/email.png"> manishkumar9999@gmail.com
                     </a>
-                    <a *ngIf="resume?.basicInformation.email">
-                        <img src="../../../assets/template/email.png"> {{ resume?.basicInformation.email }}
+                    <a *ngIf="resume?.basicInformation?.email">
+                        <img src="../../../assets/template/email.png"> {{ resume?.basicInformation?.email }}
                     </a>
                     <!-- phone -->
-                    <a *ngIf="!resume?.basicInformation.phone">
+                    <a *ngIf="!resume?.basicInformation?.phone">
                         <img src="../../../assets/template/phone.png"> +91-8168686868
                     </a>
-                    <a *ngIf="resume?.basicInformation.phone">
-                        <img src="../../../assets/template/phone.png">{{ resume?.basicInformation.phone }}
+                    <a *ngIf="resume?.basicInformation?.phone">
+                        <img src="../../../assets/template/phone.png">{{ resume?.basicInformation?.phone }}
                     </a>
                 </div>
                 <div class="edit">

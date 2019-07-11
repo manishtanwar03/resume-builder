@@ -15,7 +15,7 @@ export class FinalTemplateComponent implements OnInit {
   ngOnInit() {
     let resume_id = this.route.snapshot.params.id;
     this.remoteStorage.getData(resume_id).subscribe(
-      (res) => this.resume = res,
+      (res) => res==null?this.router.navigate(['/page-not-found']):this.resume=res,
       (err) => this.router.navigate(['/page-not-found'])
     );
   }
