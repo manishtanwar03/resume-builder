@@ -1,55 +1,82 @@
-import { Injectable } from '@angular/core';
-import { Details } from './resume.model';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { environment } from './../../environments/environment'
+import * as Rx from "rxjs";
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class DataService  implements OnInit{
   private    _resumeUrl = `${environment.API_URL}/resume`;
-  
-    detail:Details;
-    resumeData={
-        'basicInformation':null,
-        'education':null,
-        'workHistory':null,
-        'projects':null,
-        'skills':null,
-        'interests':null,
-        'languages':null,
-        'filter':null
-    };
-    
-   
 
+  localData={
+    'basicInformation':{'firstName':'hp'},
+    'education':null,
+    'workHistory':null,
+    'projects':null,
+    'skills':null,
+    'interests':null,
+    'languages':null,
+    'filter':null
+};
 
-  constructor(private http: HttpClient) { }
+remoteData={
+  'basicInformation': {'firstName':'hp','lastName':'dasd'},
+  'education':null,
+  'workHistory':null,
+  'projects':null,
+  'skills':null,
+  'interests':null,
+  'languages':null,
+  'filter':null
+};
 
-  update(key,value){
-      this.resumeData[key]=value;
+  local = new Rx.BehaviorSubject(this.localData);
+  remote = new Rx.BehaviorSubject(this.remoteData);
+
+  constructor(private http: HttpClient,private localStorage:LocalStorageService) { }
+
+  ngOnInit(){
+    //initalizing data
+    this.local.next(this.localStorage.get(this.localData));
   }
 
 
-  get(key){
-      return this.resumeData[key];
+getData(flag,key='all'){
+    // key is the invidual data to be returned, if not given whole object is to be returned
+    let data={};
+    if(flag){
+      this.remote.subscribe(
+        (res) => key=='all'?data=res:data=res[key],
+        (err) => console.log('something went wrong'));
+    }
+    else{
+    this.local.subscribe(
+      (res) => key=='all'?data=res:data=res[key],
+      (err) => this.localData);
+    }
+    return data;
+  } 
+
+  update(flag,key='all',data){
+    console.log(flag)
+    // key is the invidual data to be updated, if not given whole object is to be updated
+    if(flag){
+      key=='all'?this.remoteData=data:this.remoteData[key]=data;
+      this.remote.next(this.remoteData);
+    }
+    else{
+      if(key=='all'){
+        this.localData=data;
+        this.localStorage.set(this.localData);
+      }
+      else{
+        this.localData[key]=data;
+        this.localStorage.set(this.localData,key);
+      }
+      this.local.next(this.localData);
+    }
   }
 
-  getAll(){
-      return this.resumeData;
-  }
-
-  saveData()
-  {
-    this.detail=new Details(this.resumeData.interests,this.resumeData.languages,this.resumeData.skills,
-    this.resumeData.education,this.resumeData.projects,this.resumeData.workHistory,this.resumeData.basicInformation);
-
-    this.http.post<any>(this._resumeUrl,this.resumeData).subscribe(
-      res=>{
-        return (res);
-      },
-      err=>console.log(err)
-    );
-  }
-  
 }

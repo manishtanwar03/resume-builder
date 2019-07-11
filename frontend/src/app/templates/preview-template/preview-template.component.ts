@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-preview-template',
@@ -15,11 +16,10 @@ export class PreviewTemplateComponent implements OnInit {
   workHistory=null;
   projects=null;
   education=null;
-
-  constructor() { }
+data="";
+  constructor(private dataService:DataService) { }
 
   ngOnInit() {
-
   }
   
   ngDoCheck(){
