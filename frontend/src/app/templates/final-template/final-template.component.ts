@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { RemoteStorageService } from 'src/app/services/remote-storage.service';
 
 @Component({
   selector: 'app-final-template',
@@ -7,10 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./final-template.component.css']
 })
 export class FinalTemplateComponent implements OnInit {
-
-  constructor(private router:Router) { }
+  resume={};
+  // id 5d26e55277e7eb5255cfd97d
+  constructor(private route:ActivatedRoute,private router:Router,private remoteStorage:RemoteStorageService) { }
 
   ngOnInit() {
+    let resume_id = this.route.snapshot.params.id;
+    this.remoteStorage.getData(resume_id).subscribe(
+      (res) => this.resume = res,
+      (err) => this.router.navigate(['/page-not-found'])
+    );
   }
 
   goTo(path){

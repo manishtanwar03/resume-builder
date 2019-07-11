@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 const Resume = new mongoose.Schema({
-    basic_information: {
+    basicInformation: {
         firstName: {
             type: String,
             // required: true,
@@ -34,7 +34,7 @@ const Resume = new mongoose.Schema({
             lowercase: true,
             // minlength: 10,
             // maxlength: 50
-        },  
+        },
         phone: {
             type: Number,
             // required: true,
@@ -45,7 +45,7 @@ const Resume = new mongoose.Schema({
             // required: true,
             // match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
         },
-        
+
     },
     workHistory: [{
         job_title: {
@@ -88,7 +88,7 @@ const Resume = new mongoose.Schema({
             type: String,
             // required: true
         },
-       
+
         // present: {
         //     type: Boolean,
         //     default: false
@@ -111,7 +111,7 @@ const Resume = new mongoose.Schema({
             // minlength: 3,
             // maxlength: 50
         },
-        location:{
+        location: {
             type: String,
             trim: true,
             lowercase: true
@@ -129,7 +129,7 @@ const Resume = new mongoose.Schema({
             // required: true,
             // match: [/^\d{4}$/, 'Please fill a valid year']
         },
-        description:{
+        description: {
             type: String,
             // required: true,
             trim: true,
@@ -141,16 +141,16 @@ const Resume = new mongoose.Schema({
     skills: [String], //validator required
     interests: [String], // validator required
     languages: [{
-        language:{
+        language: {
             type: String,
             // required: true,
             trim: true
         },
-        value:{
+        value: {
             type: Number,
             // required: true,
         }
-        
+
     }],
     projects: [{
         projectTitle: {
