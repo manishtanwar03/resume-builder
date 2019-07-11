@@ -48,7 +48,9 @@ async function authUser(req, res) {
                 res.status(200).send({ token })
             } else {
                 // if passwords doesn't match
-                res.status(401).send('invalid email or password')
+                
+                res.status(402).send('invalid email or password')
+                
             }
         }
     } catch (error) {

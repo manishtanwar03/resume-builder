@@ -20,7 +20,7 @@ export class DataService  implements OnInit{
     'languages':null,
     'filter':null
 };
-
+id=null;
 remoteData={
   'basicInformation': {'firstName':'hp','lastName':'dasd'},
   'education':null,
@@ -43,7 +43,7 @@ remoteData={
   }
 
 
-getData(flag,key='all'){
+getData(flag=false,key='all'){
     // key is the invidual data to be returned, if not given whole object is to be returned
     let data={};
     if(flag){
@@ -78,5 +78,7 @@ getData(flag,key='all'){
       this.local.next(this.localData);
     }
   }
+
+
 
 }

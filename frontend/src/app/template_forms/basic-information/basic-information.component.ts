@@ -13,7 +13,7 @@ import { DataService } from 'src/app/services/data.service';
 export class BasicInformationComponent implements OnInit {
 
   basicInformationForm:FormGroup=null;
-  flag:Boolean=false;
+  flag:boolean=false;
 
   constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService) { }
 

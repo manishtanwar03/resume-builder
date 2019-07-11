@@ -2,7 +2,7 @@ const Resume = require('../models/resume');
 
 async function loadResume(req, res) {
     try {
-        let resume = await Resume.findOne({ _id: req.params.id });
+        let resume = await Resume.findOne({ _id: req.params.id, user: req.body.user});
         res.status(200).send(resume);
     } catch (err) {
         console.log("Error occurred in loadResume", err);
@@ -13,7 +13,7 @@ async function addResume(req, res) {
     try {
         let resume = new Resume(req.body);
         let result = await resume.save();
-        return res.status(200).send(result);
+        res.status(200).send(result);
     } catch (error) {
         console.log("Error occurred in addResume ", error);
         res.status(500).send("something went wrong, please try again!!");
@@ -34,10 +34,16 @@ async function deleteResume(req, res) {
 }
 
 async function updateResume(req, res) {
-    console.log(req.body)
+   try{
+
+    
     const result = await Resume.findByIdAndUpdate({ _id: id }, req.body);
 
     return result;
+   }
+   catch(error){
+       throw(error);
+   }
 }
 
 module.exports.addResume = addResume;

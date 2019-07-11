@@ -50,7 +50,12 @@ export class LoginComponent implements OnInit {
       //  localStorage.setItem('token', res.token)
        this.router.navigate(['/dashboard'])
      },
-      err => console.log(err)
+      err => {
+        if(err.status == '402'){
+          alert("Please enter correct user name and password.")
+    console.log("hellllllllll");
+    }
+      }
     )   
     
   }

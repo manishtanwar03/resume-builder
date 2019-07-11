@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RemoteStorageService } from '../../services/remote-storage.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class InterestsComponent implements OnInit {
   public interests=[];
 
-  constructor(private route:ActivatedRoute,private router:Router) { }
+  constructor(private route:ActivatedRoute,private router:Router,private service :RemoteStorageService) { }
 
   ngOnInit() {
   }
@@ -29,5 +30,7 @@ export class InterestsComponent implements OnInit {
   nextRoute(){
     let next = this.route.snapshot.queryParams.next;
     this.router.navigate(['/resume',next==undefined?'final':next]);
+    this.service.saveData();
+
   }
 }
