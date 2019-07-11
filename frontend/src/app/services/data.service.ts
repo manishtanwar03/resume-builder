@@ -11,14 +11,14 @@ export class DataService  implements OnInit{
   private    _resumeUrl = `${environment.API_URL}/resume`;
 
   localData={
-    'basicInformation':{'firstName':'hp'},
-    'education':null,
-    'workHistory':null,
-    'projects':null,
-    'skills':null,
-    'interests':null,
-    'languages':null,
-    'filter':null
+    'basicInformation':{},
+    'education':[],
+    'workHistory':[],
+    'projects':[],
+    'skills':[],
+    'interests':[],
+    'languages':[],
+    'filter':''
 };
 id=null;
 remoteData={
@@ -49,12 +49,12 @@ getData(flag=false,key='all'){
     if(flag){
       this.remote.subscribe(
         (res) => key=='all'?data=res:data=res[key],
-        (err) => console.log('something went wrong'));
+        (err) => console.log('something went wrong',err));
     }
     else{
     this.local.subscribe(
       (res) => key=='all'?data=res:data=res[key],
-      (err) => this.localData);
+      (err) => console.log('something went wrongq'));
     }
     return data;
   } 

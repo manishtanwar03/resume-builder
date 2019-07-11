@@ -3,13 +3,30 @@
         <!-- basic information -->
         <div class="basic_information">
             <div class="heading">
-                <h1>Manish Tanwar</h1>
-                <h3>Professional Title</h3>
-                <p>Short and engaging pitch about yourself</p>
+                <h1 *ngIf="!resume?.basicInformation.firstName">Manish Tanwar</h1>
+                <h1 *ngIf="resume?.basicInformation.firstName || resume?.basicInformation.lastName">
+                    {{ resume?.basicInformation.firstName }} {{ resume?.basicInformation.lastName }}
+                </h1>
+                <h3 *ngIf="!resume?.basicInformation.title">Professional Title</h3>
+                <h3 *ngIf="resume?.basicInformation.title">{{ resume?.basicInformation.title }}</h3>
+                <p *ngIf="!resume?.basicInformation.pitch">Short and engaging pitch about yourself</p>
+                <p *ngIf="resume?.basicInformation.pitch">{{ resume?.basicInformation.pitch }}</p>
             </div>
             <div class="contact_details">
-                <a><img src="../../../assets/template/email.png">manishkumar4206@gmail.com</a>
-                <a><img src="../../../assets/template/phone.png">+91-8168527285</a>
+                <!-- email -->
+                <a *ngIf="!resume?.basicInformation.email">
+                    <img src="../../../assets/template/email.png"> manishkumar9999@gmail.com
+                </a>
+                <a *ngIf="resume?.basicInformation.email">
+                    <img src="../../../assets/template/email.png"> {{ resume?.basicInformation.email }}
+                </a>
+                <!-- phone -->
+                <a *ngIf="!resume?.basicInformation.phone">
+                    <img src="../../../assets/template/phone.png"> +91-8168686868
+                </a>
+                <a *ngIf="resume?.basicInformation.phone">
+                    <img src="../../../assets/template/phone.png">{{ resume?.basicInformation.phone }}
+                </a>
             </div>
         </div>
         <!-- resume body -->
@@ -18,65 +35,71 @@
                 <!-- left side -->
                 <!-- work experience -->
                 <div class="row">
-                    <div class="base">
-                        <h1>WORK EXPERIENCE</h1>
-                        <div class="entry">
-                            <h1>Position</h1>
-                            <h3>Company</h3>
-                            <span>start_date</span>
-                            <span>-</span>
-                            <span>end_date</span>
-                            <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
-                        </div>
-                        <div class="entry">
-                            <h1>Position</h1>
-                            <h3>Company</h3>
-                            <span>start_date</span>
-                            <span>-</span>
-                            <span>end_date</span>
-                            <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                    <div class="col s12">
+                        <div class="base">
+                            <h1>WORK EXPERIENCE</h1>
+                            <div class="entry">
+                                <h1>Position</h1>
+                                <h3>Company</h3>
+                                <span>start_date</span>
+                                <span>-</span>
+                                <span>end_date</span>
+                                <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                            </div>
+                            <div class="entry">
+                                <h1>Position</h1>
+                                <h3>Company</h3>
+                                <span>start_date</span>
+                                <span>-</span>
+                                <span>end_date</span>
+                                <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- education -->
                 <div class="row">
-                    <div class="base">
-                        <h1>EDUCATION</h1>
-                        <!-- education here -->
-                        <div class="entry">
-                            <h1>Position</h1>
-                            <h3>Company</h3>
-                            <span>start_date</span>
-                            <span>-</span>
-                            <span>end_date</span>
-                            <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
-                        </div>
-                        <div class="entry">
-                            <h1>Position</h1>
-                            <h3>Company</h3>
-                            <span>start_date</span>
-                            <span>-</span>
-                            <span>end_date</span>
-                            <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                    <div class="col s12">
+                        <div class="base">
+                            <h1>EDUCATION</h1>
+                            <!-- education here -->
+                            <div class="entry">
+                                <h1>Position</h1>
+                                <h3>Company</h3>
+                                <span>start_date</span>
+                                <span>-</span>
+                                <span>end_date</span>
+                                <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                            </div>
+                            <div class="entry">
+                                <h1>Position</h1>
+                                <h3>Company</h3>
+                                <span>start_date</span>
+                                <span>-</span>
+                                <span>end_date</span>
+                                <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- interests -->
                 <div class="row">
-                    <div class="base">
-                        <h1>INTERESTS</h1>
-                        <!-- interests here -->
-                        <div class="list">
-                            <div class="entry interest">Swimming</div>
-                            <div class="entry interest">Dancing</div>
-                            <div class="entry interest">Coding</div>
-                            <div class="entry interest">Gym</div>
-                            <div class="entry interest">Cooking</div>
-                            <div class="entry interest">Swimming</div>
-                            <div class="entry interest">Dancing</div>
-                            <div class="entry interest">Coding</div>
-                            <div class="entry interest">Gym</div>
-                            <div class="entry interest">Cooking</div>
+                    <div class="col s12">
+                        <div class="base">
+                            <h1>INTERESTS</h1>
+                            <!-- interests here -->
+                            <div class="list">
+                                <div class="entry interest">Swimming</div>
+                                <div class="entry interest">Dancing</div>
+                                <div class="entry interest">Coding</div>
+                                <div class="entry interest">Gym</div>
+                                <div class="entry interest">Cooking</div>
+                                <div class="entry interest">Swimming</div>
+                                <div class="entry interest">Dancing</div>
+                                <div class="entry interest">Coding</div>
+                                <div class="entry interest">Gym</div>
+                                <div class="entry interest">Cooking</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -86,69 +109,75 @@
             <div class="col s6">
                 <!-- personal projects -->
                 <div class="row">
-                    <div class="base">
-                        <h1>PERSONAL PROJECTS</h1>
-                        <!-- projects here -->
-                        <div class="entry">
-                            <h1>Position</h1>
-                            <h3>Company</h3>
-                            <span>start_date</span>
-                            <span>-</span>
-                            <span>end_date</span>
-                            <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
-                        </div>
-                        <div class="entry">
-                            <h1>Position</h1>
-                            <h3>Company</h3>
-                            <span>start_date</span>
-                            <span>-</span>
-                            <span>end_date</span>
-                            <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                    <div class="col s12">
+                        <div class="base">
+                            <h1>PERSONAL PROJECTS</h1>
+                            <!-- projects here -->
+                            <div class="entry">
+                                <h1>Position</h1>
+                                <h3>Company</h3>
+                                <span>start_date</span>
+                                <span>-</span>
+                                <span>end_date</span>
+                                <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                            </div>
+                            <div class="entry">
+                                <h1>Position</h1>
+                                <h3>Company</h3>
+                                <span>start_date</span>
+                                <span>-</span>
+                                <span>end_date</span>
+                                <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- skills -->
                 <div class="row">
-                    <div class="base">
-                        <h1>SKILLS</h1>
-                        <!-- skills here -->
-                        <div class="list">
-                            <div class="entry skill">Swimming</div>
-                            <div class="entry skill">Dancing</div>
-                            <div class="entry skill">Coding</div>
-                            <div class="entry skill">Gym</div>
-                            <div class="entry skill">Cooking</div>
-                            <div class="entry skill">Swimming</div>
-                            <div class="entry skill">Swimming</div>
-                            <div class="entry skill">Dancing</div>
-                            <div class="entry skill">Coding</div>
-                            <div class="entry skill">Gym</div>
-                            <div class="entry skill">Cooking</div>
+                    <div class="col s12">
+                        <div class="base">
+                            <h1>SKILLS</h1>
+                            <!-- skills here -->
+                            <div class="list">
+                                <div class="entry skill">Swimming</div>
+                                <div class="entry skill">Dancing</div>
+                                <div class="entry skill">Coding</div>
+                                <div class="entry skill">Gym</div>
+                                <div class="entry skill">Cooking</div>
+                                <div class="entry skill">Swimming</div>
+                                <div class="entry skill">Swimming</div>
+                                <div class="entry skill">Dancing</div>
+                                <div class="entry skill">Coding</div>
+                                <div class="entry skill">Gym</div>
+                                <div class="entry skill">Cooking</div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- languages -->
                 <div class="row">
-                    <div class="base">
-                        <h1>LANGUAGES</h1>
-                        <!-- languages here -->
-                        <div class="languages">
-                            <div class="language">
-                                <p>English</p>
-                                <div class="progress">
-                                    <div class="determinate" style="width: 70%"></div>
+                    <div class="col s12">
+                        <div class="base">
+                            <h1>LANGUAGES</h1>
+                            <!-- languages here -->
+                            <div class="languages">
+                                <div class="language">
+                                    <p>English</p>
+                                    <div class="progress">
+                                        <div class="determinate" style="width: 70%"></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="language">
-                                <p>Hindi</p>
-                                <div class="progress">
-                                    <div class="determinate" style="width: 70%"></div>
+                                <div class="language">
+                                    <p>Hindi</p>
+                                    <div class="progress">
+                                        <div class="determinate" style="width: 70%"></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="language">
-                                <p>Punjabi</p>
-                                <div class="progress">
-                                    <div class="determinate" style="width: 70%"></div>
+                                <div class="language">
+                                    <p>Punjabi</p>
+                                    <div class="progress">
+                                        <div class="determinate" style="width: 70%"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

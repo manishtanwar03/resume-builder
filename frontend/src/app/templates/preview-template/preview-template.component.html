@@ -3,13 +3,30 @@
         <!-- basic information -->
         <div class="basic_information">
             <div class="heading">
-                <h1>Manish Tanwar</h1>
-                <h3>Professional Title</h3>
-                <p>Short and engaging pitch about yourself</p>
+                <h1 *ngIf="!resume?.basicInformation.firstName">Manish Tanwar</h1>
+                <h1 *ngIf="resume?.basicInformation.firstName || resume?.basicInformation.lastName">
+                    {{ resume?.basicInformation.firstName }} {{ resume?.basicInformation.lastName }}
+                </h1>
+                <h3 *ngIf="!resume?.basicInformation.title">Professional Title</h3>
+                <h3 *ngIf="resume?.basicInformation.title">{{ resume?.basicInformation.title }}</h3>
+                <p *ngIf="!resume?.basicInformation.pitch">Short and engaging pitch about yourself</p>
+                <p *ngIf="resume?.basicInformation.pitch">{{ resume?.basicInformation.pitch }}</p>
             </div>
             <div class="contact_details">
-                <a><img src="../../../assets/template/email.png">manishkumar4206@gmail.com</a>
-                <a><img src="../../../assets/template/phone.png">+91-8168527285</a>
+                <!-- email -->
+                <a *ngIf="!resume?.basicInformation.email">
+                    <img src="../../../assets/template/email.png"> manishkumar9999@gmail.com
+                </a>
+                <a *ngIf="resume?.basicInformation.email">
+                    <img src="../../../assets/template/email.png"> {{ resume?.basicInformation.email }}
+                </a>
+                <!-- phone -->
+                <a *ngIf="!resume?.basicInformation.phone">
+                    <img src="../../../assets/template/phone.png"> +91-8168686868
+                </a>
+                <a *ngIf="resume?.basicInformation.phone">
+                    <img src="../../../assets/template/phone.png">{{ resume?.basicInformation.phone }}
+                </a>
             </div>
         </div>
         <!-- resume body -->
