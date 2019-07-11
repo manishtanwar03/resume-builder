@@ -24,9 +24,10 @@ const routes:Routes=[
         { path:'interests',component:InterestsComponent},
         { path:'languages', component:LanguagesComponent},
         { path:'template',component:TemplateComponent},
-        { path:'final',component:FinalTemplateComponent}
+        { path:':id',component:FinalTemplateComponent}
     ]},
-    { path:'**', component:Page404Component}     
+    { path:'**',redirectTo:'page-not-found',pathMatch:'full'},
+    {path :'page-not-found',component: Page404Component }  ,   
 
 ];
 @NgModule({

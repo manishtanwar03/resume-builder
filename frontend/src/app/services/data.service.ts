@@ -20,7 +20,7 @@ export class DataService  implements OnInit{
     'languages':[],
     'filter':''
 };
-id=null;
+
 remoteData={
   'basicInformation': {'firstName':'hp','lastName':'dasd'},
   'education':null,
