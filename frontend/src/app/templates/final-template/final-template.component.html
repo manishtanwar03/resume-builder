@@ -4,29 +4,29 @@
             <!-- basic information -->
             <div class="basic_information">
                 <div class="heading">
-                    <h1 *ngIf="!resume?.basicInformation?.firstName">Manish Tanwar</h1>
-                    <h1 *ngIf="resume?.basicInformation?.firstName || resume?.basicInformation?.lastName">
-                        {{ resume?.basicInformation?.firstName }} {{ resume?.basicInformation?.lastName }}
+                    <h1 *ngIf="!resume?.basicInformation.firstName">Manish Tanwar</h1>
+                    <h1 *ngIf="resume?.basicInformation.firstName || resume?.basicInformation.lastName">
+                        {{ resume?.basicInformation.firstName }} {{ resume?.basicInformation.lastName }}
                     </h1>
-                    <h3 *ngIf="!resume?.basicInformation?.title">Professional Title</h3>
-                    <h3 *ngIf="resume?.basicInformation?.title">{{ resume?.basicInformation?.title }}</h3>
-                    <p *ngIf="!resume?.basicInformation?.pitch">Short and engaging pitch about yourself</p>
-                    <p *ngIf="resume?.basicInformation?.pitch">{{ resume?.basicInformation?.pitch }}</p>
+                    <h3 *ngIf="!resume?.basicInformation.title">Professional Title</h3>
+                    <h3 *ngIf="resume?.basicInformation.title">{{ resume?.basicInformation.title }}</h3>
+                    <p *ngIf="!resume?.basicInformation.pitch">Short and engaging pitch about yourself</p>
+                    <p *ngIf="resume?.basicInformation.pitch">{{ resume?.basicInformation.pitch }}</p>
                 </div>
                 <div class="contact_details">
                     <!-- email -->
-                    <a *ngIf="!resume?.basicInformation?.email">
+                    <a *ngIf="!resume?.basicInformation.email">
                         <img src="../../../assets/template/email.png"> manishkumar9999@gmail.com
                     </a>
-                    <a *ngIf="resume?.basicInformation?.email">
-                        <img src="../../../assets/template/email.png"> {{ resume?.basicInformation?.email }}
+                    <a *ngIf="resume?.basicInformation.email">
+                        <img src="../../../assets/template/email.png"> {{ resume?.basicInformation.email }}
                     </a>
                     <!-- phone -->
-                    <a *ngIf="!resume?.basicInformation?.phone">
+                    <a *ngIf="!resume?.basicInformation.phone">
                         <img src="../../../assets/template/phone.png"> +91-8168686868
                     </a>
-                    <a *ngIf="resume?.basicInformation?.phone">
-                        <img src="../../../assets/template/phone.png">{{ resume?.basicInformation?.phone }}
+                    <a *ngIf="resume?.basicInformation.phone">
+                        <img src="../../../assets/template/phone.png">{{ resume?.basicInformation.phone }}
                     </a>
                 </div>
                 <div class="edit">
@@ -40,26 +40,22 @@
                     <!-- work experience -->
                     <div class="row">
                         <div class="col s12">
-                            <div class="base">
+                            <!-- if work history present -->
+                            <div class="base" *ngIf="resume?.workHistory">
                                 <h1>WORK EXPERIENCE</h1>
-                                <div class="entry">
-                                    <h1>Position</h1>
-                                    <h3>Company</h3>
-                                    <span>start_date</span>
-                                    <span>-</span>
-                                    <span>end_date</span>
-                                    <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
-                                </div>
-                                <div class="entry">
-                                    <h1>Position</h1>
-                                    <h3>Company</h3>
-                                    <span>start_date</span>
-                                    <span>-</span>
-                                    <span>end_date</span>
-                                    <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                                <div class="entry" *ngFor="let work of resume?.workHistory">
+                                    <h1 *ngIf="work?.job_title">{{ work?.job_title }}</h1>
+                                    <h3 *ngIf="work?.employer">{{ work?.employer }}</h3>
+                                    <span *ngIf="work?.start_day">{{ work?.start_day}}/</span>
+                                    <span *ngIf="work?.start_month">{{ work?.start_month }}/</span>
+                                    <span *ngIf="work?.start_year">{{ work?.start_year }} - </span>
+                                    <span *ngIf="work?.end_day">{{ work?.end_day }}/</span>
+                                    <span *ngIf="work?.end_month">{{ work?.end_month }}/</span>
+                                    <span *ngIf="work?.end_year">{{ work?.end_year }}</span>
+                                    <p *ngIf="work?.description">{{ work?.description }}</p>
                                 </div>
                                 <div class="edit">
-                                    <i class="material-icons" (click)="goTo('work-history')">create</i>
+                                    <i class="material-icons" (click)="goTo('workHistory')">create</i>
                                 </div>
                             </div>
                         </div>
@@ -67,24 +63,18 @@
                     <!-- education -->
                     <div class="row">
                         <div class="col s12">
-                            <div class="base">
-                                <h1>EDUCATION</h1>
-                                <!-- education here -->
-                                <div class="entry">
-                                    <h1>Position</h1>
-                                    <h3>Company</h3>
-                                    <span>start_date</span>
-                                    <span>-</span>
-                                    <span>end_date</span>
-                                    <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
-                                </div>
-                                <div class="entry">
-                                    <h1>Position</h1>
-                                    <h3>Company</h3>
-                                    <span>start_date</span>
-                                    <span>-</span>
-                                    <span>end_date</span>
-                                    <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                            <div class="base" *ngIf="resume?.education">
+                                <h1>Education</h1>
+                                <div class="entry" *ngFor="let school of resume?.education">
+                                    <h1 *ngIf="school?.schoolName">{{ school?.schoolName }} <span *ngIf="school?.location">| {{school?.location}}</span></h1>
+                                    <h3 *ngIf="school?.degree">{{ school?.degree }}</h3>
+                                    <span *ngIf="school?.start_day">{{ school?.start_day}}/</span>
+                                    <span *ngIf="school?.start_month">{{ school?.start_month }}/</span>
+                                    <span *ngIf="school?.start_year">{{ school?.start_year }} - </span>
+                                    <span *ngIf="school?.end_day">{{ school?.end_day }}/</span>
+                                    <span *ngIf="school?.end_month">{{ school?.end_month }}/</span>
+                                    <span *ngIf="school?.end_year">{{ school?.end_year }}</span>
+                                    <p *ngIf="school?.description">{{ school?.description }}</p>
                                 </div>
                                 <div class="edit">
                                     <i class="material-icons" (click)="goTo('education')">create</i>
@@ -95,20 +85,11 @@
                     <!-- interests -->
                     <div class="row">
                         <div class="col s12">
-                            <div class="base">
+                            <div class="base" *ngIf="resume?.interests">
                                 <h1>INTERESTS</h1>
                                 <!-- interests here -->
                                 <div class="list">
-                                    <div class="entry interest">Swimming</div>
-                                    <div class="entry interest">Dancing</div>
-                                    <div class="entry interest">Coding</div>
-                                    <div class="entry interest">Gym</div>
-                                    <div class="entry interest">Cooking</div>
-                                    <div class="entry interest">Swimming</div>
-                                    <div class="entry interest">Dancing</div>
-                                    <div class="entry interest">Coding</div>
-                                    <div class="entry interest">Gym</div>
-                                    <div class="entry interest">Cooking</div>
+                                    <div class="entry interest" *ngFor="let interest of resume?.interests">{{ interest | titlecase }}</div>
                                 </div>
                                 <div class="edit">
                                     <i class="material-icons" (click)="goTo('interests')">create</i>
@@ -123,50 +104,32 @@
                     <!-- personal projects -->
                     <div class="row">
                         <div class="col s12">
-                            <div class="base">
+                            <div class="base" *ngIf="resume?.projects">
                                 <h1>PERSONAL PROJECTS</h1>
-                                <!-- projects here -->
-                                <div class="entry">
-                                    <h1>Position</h1>
-                                    <h3>Company</h3>
-                                    <span>start_date</span>
-                                    <span>-</span>
-                                    <span>end_date</span>
-                                    <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
-                                </div>
-                                <div class="entry">
-                                    <h1>Position</h1>
-                                    <h3>Company</h3>
-                                    <span>start_date</span>
-                                    <span>-</span>
-                                    <span>end_date</span>
-                                    <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                                <div class="entry" *ngFor="let project of resume?.projects">
+                                    <h1 *ngIf="project?.projectTitle">{{ project?.projectTitle }}</h1>
+                                    <span *ngIf="project?.start_day">{{ project?.start_day}}/</span>
+                                    <span *ngIf="project?.start_month">{{ project?.start_month }}/</span>
+                                    <span *ngIf="project?.start_year">{{ project?.start_year }} - </span>
+                                    <span *ngIf="project?.end_day">{{ project?.end_day }}/</span>
+                                    <span *ngIf="project?.end_month">{{ project?.end_month }}/</span>
+                                    <span *ngIf="project?.end_year">{{ project?.end_year }}</span>
+                                    <p *ngIf="project?.description">{{ project?.description }}</p>
                                 </div>
                                 <div class="edit">
                                     <i class="material-icons" (click)="goTo('projects')">create</i>
                                 </div>
-                                <div></div>
                             </div>
                         </div>
                     </div>
                     <!-- skills -->
                     <div class="row">
                         <div class="col s12">
-                            <div class="base">
+                            <div class="base" *ngIf="resume?.skills">
                                 <h1>SKILLS</h1>
                                 <!-- skills here -->
                                 <div class="list">
-                                    <div class="entry skill">Swimming</div>
-                                    <div class="entry skill">Dancing</div>
-                                    <div class="entry skill">Coding</div>
-                                    <div class="entry skill">Gym</div>
-                                    <div class="entry skill">Cooking</div>
-                                    <div class="entry skill">Swimming</div>
-                                    <div class="entry skill">Swimming</div>
-                                    <div class="entry skill">Dancing</div>
-                                    <div class="entry skill">Coding</div>
-                                    <div class="entry skill">Gym</div>
-                                    <div class="entry skill">Cooking</div>
+                                    <div class="entry skill" *ngFor="let skill of resume?.skills">{{ skill | titlecase }}</div>
                                 </div>
                                 <div class="edit">
                                     <i class="material-icons" (click)="goTo('skills')">create</i>
@@ -177,26 +140,14 @@
                     <!-- languages -->
                     <div class="row">
                         <div class="col s12">
-                            <div class="base">
+                            <div class="base" *ngIf="resume?.languages">
                                 <h1>LANGUAGES</h1>
                                 <!-- languages here -->
                                 <div class="languages">
-                                    <div class="language">
-                                        <p>English</p>
+                                    <div class="language" *ngFor="let language of resume?.languages">
+                                        <p>{{ language.language | titlecase }}</p>
                                         <div class="progress">
-                                            <div class="determinate" style="width: 70%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="language">
-                                        <p>Hindi</p>
-                                        <div class="progress">
-                                            <div class="determinate" style="width: 70%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="language">
-                                        <p>Punjabi</p>
-                                        <div class="progress">
-                                            <div class="determinate" style="width: 70%"></div>
+                                            <div class="determinate" [ngStyle]="{ 'width':language.value + '%'}"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -211,6 +162,7 @@
         </section>
     </kendo-pdf-export>
 </section>
+
 
 <div class="download_button">
     <a class="btn-floating btn-large waves-effect waves-light green" kendo-button (click)="pdf.saveAs('resume.pdf')"><i class="material-icons">file_download</i></a>

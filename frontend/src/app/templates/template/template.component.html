@@ -36,23 +36,31 @@
                 <!-- work experience -->
                 <div class="row">
                     <div class="col s12">
-                        <div class="base">
+                        <!-- if work history not present -->
+                        <div class="base" *ngIf="!resume?.workHistory || resume?.workHistory.length==0">
                             <h1>WORK EXPERIENCE</h1>
                             <div class="entry">
                                 <h1>Position</h1>
                                 <h3>Company</h3>
                                 <span>start_date</span>
-                                <span>-</span>
+                                <span> - </span>
                                 <span>end_date</span>
-                                <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                                <p>This is Description</p>
                             </div>
-                            <div class="entry">
-                                <h1>Position</h1>
-                                <h3>Company</h3>
-                                <span>start_date</span>
-                                <span>-</span>
-                                <span>end_date</span>
-                                <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                        </div>
+                        <!-- if work history present -->
+                        <div class="base" *ngIf="resume?.workHistory.length>0 ">
+                            <h1>WORK EXPERIENCE</h1>
+                            <div class="entry" *ngFor="let work of resume?.workHistory">
+                                <h1 *ngIf="work?.job_title">{{ work?.job_title }}</h1>
+                                <h3 *ngIf="work?.employer">{{ work?.employer }}</h3>
+                                <span *ngIf="work?.start_day">{{ work?.start_day}}/</span>
+                                <span *ngIf="work?.start_month">{{ work?.start_month }}/</span>
+                                <span *ngIf="work?.start_year">{{ work?.start_year }} - </span>
+                                <span *ngIf="work?.end_day">{{ work?.end_day }}/</span>
+                                <span *ngIf="work?.end_month">{{ work?.end_month }}/</span>
+                                <span *ngIf="work?.end_year">{{ work?.end_year }}</span>
+                                <p *ngIf="work?.description">{{ work?.description }}</p>
                             </div>
                         </div>
                     </div>
@@ -60,24 +68,31 @@
                 <!-- education -->
                 <div class="row">
                     <div class="col s12">
-                        <div class="base">
+                        <!-- if education not avaiable -->
+                        <div class="base" *ngIf="!resume?.education || resume?.education.length==0">
                             <h1>EDUCATION</h1>
-                            <!-- education here -->
                             <div class="entry">
-                                <h1>Position</h1>
-                                <h3>Company</h3>
+                                <h1>School Name <span>| Location</span></h1>
+                                <h3>Degree</h3>
                                 <span>start_date</span>
-                                <span>-</span>
+                                <span> - </span>
                                 <span>end_date</span>
-                                <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                                <p>This is Description</p>
                             </div>
-                            <div class="entry">
-                                <h1>Position</h1>
-                                <h3>Company</h3>
-                                <span>start_date</span>
-                                <span>-</span>
-                                <span>end_date</span>
-                                <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                        </div>
+                        <!-- if education present -->
+                        <div class="base" *ngIf="resume?.education.length>0">
+                            <h1>Education</h1>
+                            <div class="entry" *ngFor="let school of resume?.education">
+                                <h1 *ngIf="school?.schoolName">{{ school?.schoolName }} <span *ngIf="school?.location">| {{school?.location}}</span></h1>
+                                <h3 *ngIf="school?.degree">{{ school?.degree }}</h3>
+                                <span *ngIf="school?.start_day">{{ school?.start_day}}/</span>
+                                <span *ngIf="school?.start_month">{{ school?.start_month }}/</span>
+                                <span *ngIf="school?.start_year">{{ school?.start_year }} - </span>
+                                <span *ngIf="school?.end_day">{{ school?.end_day }}/</span>
+                                <span *ngIf="school?.end_month">{{ school?.end_month }}/</span>
+                                <span *ngIf="school?.end_year">{{ school?.end_year }}</span>
+                                <p *ngIf="school?.description">{{ school?.description }}</p>
                             </div>
                         </div>
                     </div>
@@ -85,20 +100,20 @@
                 <!-- interests -->
                 <div class="row">
                     <div class="col s12">
-                        <div class="base">
+                        <!-- if not present -->
+                        <div class="base" *ngIf="!resume?.interests || resume?.interests.length==0">
                             <h1>INTERESTS</h1>
                             <!-- interests here -->
                             <div class="list">
-                                <div class="entry interest">Swimming</div>
-                                <div class="entry interest">Dancing</div>
-                                <div class="entry interest">Coding</div>
-                                <div class="entry interest">Gym</div>
-                                <div class="entry interest">Cooking</div>
-                                <div class="entry interest">Swimming</div>
-                                <div class="entry interest">Dancing</div>
-                                <div class="entry interest">Coding</div>
-                                <div class="entry interest">Gym</div>
-                                <div class="entry interest">Cooking</div>
+                                <div class="entry interest">Interest</div>
+                            </div>
+                        </div>
+                        <!-- if present -->
+                        <div class="base" *ngIf="resume?.interests.length>0">
+                            <h1>INTERESTS</h1>
+                            <!-- interests here -->
+                            <div class="list">
+                                <div class="entry interest" *ngFor="let interest of resume?.interests">{{ interest | titlecase }}</div>
                             </div>
                         </div>
                     </div>
@@ -110,24 +125,29 @@
                 <!-- personal projects -->
                 <div class="row">
                     <div class="col s12">
-                        <div class="base">
+                        <!-- if projects not available -->
+                        <div class="base" *ngIf="!resume?.projects || resume?.projects.length==0">
                             <h1>PERSONAL PROJECTS</h1>
-                            <!-- projects here -->
                             <div class="entry">
-                                <h1>Position</h1>
-                                <h3>Company</h3>
+                                <h1>Project Title</h1>
                                 <span>start_date</span>
-                                <span>-</span>
+                                <span> - </span>
                                 <span>end_date</span>
-                                <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                                <p>This is Description</p>
                             </div>
-                            <div class="entry">
-                                <h1>Position</h1>
-                                <h3>Company</h3>
-                                <span>start_date</span>
-                                <span>-</span>
-                                <span>end_date</span>
-                                <p>This is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is DescriptionThis is Description</p>
+                        </div>
+                        <!-- if projects present -->
+                        <div class="base" *ngIf="resume?.projects.length>0">
+                            <h1>PERSONAL PROJECTS</h1>
+                            <div class="entry" *ngFor="let project of resume?.projects">
+                                <h1 *ngIf="project?.projectTitle">{{ project?.projectTitle }}</h1>
+                                <span *ngIf="project?.start_day">{{ project?.start_day}}/</span>
+                                <span *ngIf="project?.start_month">{{ project?.start_month }}/</span>
+                                <span *ngIf="project?.start_year">{{ project?.start_year }} - </span>
+                                <span *ngIf="project?.end_day">{{ project?.end_day }}/</span>
+                                <span *ngIf="project?.end_month">{{ project?.end_month }}/</span>
+                                <span *ngIf="project?.end_year">{{ project?.end_year }}</span>
+                                <p *ngIf="project?.description">{{ project?.description }}</p>
                             </div>
                         </div>
                     </div>
@@ -135,21 +155,20 @@
                 <!-- skills -->
                 <div class="row">
                     <div class="col s12">
-                        <div class="base">
+                        <!-- if skill not present -->
+                        <div class="base" *ngIf="!resume?.skills || resume?.skills.length==0">
                             <h1>SKILLS</h1>
                             <!-- skills here -->
                             <div class="list">
-                                <div class="entry skill">Swimming</div>
-                                <div class="entry skill">Dancing</div>
-                                <div class="entry skill">Coding</div>
-                                <div class="entry skill">Gym</div>
-                                <div class="entry skill">Cooking</div>
-                                <div class="entry skill">Swimming</div>
-                                <div class="entry skill">Swimming</div>
-                                <div class="entry skill">Dancing</div>
-                                <div class="entry skill">Coding</div>
-                                <div class="entry skill">Gym</div>
-                                <div class="entry skill">Cooking</div>
+                                <div class="entry skill">Skill</div>
+                            </div>
+                        </div>
+                        <!-- if skill present -->
+                        <div class="base" *ngIf="resume?.skills.length>0">
+                            <h1>SKILLS</h1>
+                            <!-- skills here -->
+                            <div class="list">
+                                <div class="entry skill" *ngFor="let skill of resume?.skills">{{ skill | titlecase }}</div>
                             </div>
                         </div>
                     </div>
@@ -157,26 +176,28 @@
                 <!-- languages -->
                 <div class="row">
                     <div class="col s12">
-                        <div class="base">
+                        <!-- if language not present -->
+                        <div class="base" *ngIf="!resume?.languages || resume?.languages.length==0">
                             <h1>LANGUAGES</h1>
                             <!-- languages here -->
                             <div class="languages">
                                 <div class="language">
-                                    <p>English</p>
+                                    <p>Language</p>
                                     <div class="progress">
                                         <div class="determinate" style="width: 70%"></div>
                                     </div>
                                 </div>
-                                <div class="language">
-                                    <p>Hindi</p>
+                            </div>
+                        </div>
+                        <!-- if language present -->
+                        <div class="base" *ngIf="resume?.languages.length>0">
+                            <h1>LANGUAGES</h1>
+                            <!-- languages here -->
+                            <div class="languages">
+                                <div class="language" *ngFor="let language of resume?.languages">
+                                    <p>{{ language.language | titlecase }}</p>
                                     <div class="progress">
-                                        <div class="determinate" style="width: 70%"></div>
-                                    </div>
-                                </div>
-                                <div class="language">
-                                    <p>Punjabi</p>
-                                    <div class="progress">
-                                        <div class="determinate" style="width: 70%"></div>
+                                        <div class="determinate" [ngStyle]="{ 'width':language.value + '%'}"></div>
                                     </div>
                                 </div>
                             </div>

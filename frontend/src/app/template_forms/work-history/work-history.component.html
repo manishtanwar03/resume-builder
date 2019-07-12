@@ -84,22 +84,23 @@
             </div>
         </div>
     </section>
-    <div class="navigation-back">
-        <a class="btn-floating btn-large waves-effect waves-light red" [routerLink]="['/resume','basic-information']"><i class="material-icons">arrow_back</i></a>
-    </div>
+</form>
+<div class="navigation-back">
+    <a class="btn-floating btn-large waves-effect waves-light red" [routerLink]="['/resume','basic-information']"><i class="material-icons">arrow_back</i></a>
+</div>
 
-    <div class="navigation-next">
-        <button class="waves-effect pulse btn-large green" (click)="nextRoute()"><i class="material-icons right">arrow_forward</i>Next</button>
-    </div>
+<div class="navigation-next">
+    <button class="waves-effect pulse btn-large green" (click)="nextRoute()"><i class="material-icons right">arrow_forward</i>Next</button>
+</div>
 
-    <!-- template -->
-    <mz-modal #bottomSheetModal [bottomSheet]="true" [fullscreen]=true style="background-color:white">
-        <mz-modal-header>
-            <button mz-button [flat]="true" mz-modal-close style="position: fixed;top:0;right:0;cursor:pointer;margin:20px 50px;">
+<!-- template -->
+<mz-modal #bottomSheetModal [bottomSheet]="true" [fullscreen]=true style="background-color:white">
+    <mz-modal-header>
+        <button type="button" mz-button [flat]="true" mz-modal-close style="position: fixed;top:0;right:0;cursor:pointer;margin:20px 50px;">
             <i class="material-icons">close</i>
         </button>
-        </mz-modal-header>
-        <mz-modal-content>
-            <app-template></app-template>
-        </mz-modal-content>
-    </mz-modal>
+    </mz-modal-header>
+    <mz-modal-content>
+        <app-template></app-template>
+    </mz-modal-content>
+</mz-modal>

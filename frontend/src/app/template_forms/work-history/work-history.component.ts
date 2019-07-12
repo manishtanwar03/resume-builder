@@ -60,7 +60,7 @@ export class WorkHistoryComponent implements OnInit {
 
   deleteMe(index){
     this.workHistory.splice(index,1);
-    this.update();
+  this.update();
   }
 
   nextRoute(){

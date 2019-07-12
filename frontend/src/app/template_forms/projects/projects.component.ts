@@ -58,7 +58,7 @@ export class ProjectsComponent implements OnInit {
 
   deleteMe(index){
     this.projects.splice(index,1);
-    this.update();
+this.update();
   }
   
   nextRoute(){
