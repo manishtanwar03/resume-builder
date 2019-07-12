@@ -5,11 +5,29 @@ import { Injectable, OnInit } from '@angular/core';
   providedIn: 'root'
 })
 export class LocalStorageService{
-  constructor() { }
+  
+  Data={
+    'basicInformation':{},
+    'education':[],
+    'workHistory':[],
+    'projects':[],
+    'skills':[],
+    'interests':[],
+    'languages':[],
+    'filter':''
+};
+
+constructor() { 
+  for(let [key,value] of Object.entries(this.Data)){
+    if(localStorage.getItem('local_'+key)==undefined){
+      localStorage.setItem('local_'+key,JSON.stringify(this.Data[key]));
+    }
+}
+}
 
   set(data,type='all'){
     if(type=='all'){
-        for(let [key,value] of Object.entries(data)){
+        for(let [key,value] of Object.entries(this.Data)){
             localStorage.setItem('local_'+key,JSON.stringify(data[key]));
         }
     }
@@ -19,10 +37,10 @@ export class LocalStorageService{
     }
   }
 
-  get(data,type='all'){
+  get(type='all'){
     if(type=='all'){
         let localData={};
-        for( let [key,value] of Object.entries(data)){
+        for( let [key,value] of Object.entries(this.Data)){
             localData[key] = JSON.parse(localStorage.getItem('local_'+key));
         }
         return localData;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl,Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -10,10 +11,10 @@ export class ProjectsComponent implements OnInit {
   projectForm:FormGroup;
   projects=[];
   isEdit=null;
+  flag:boolean=false;
+  constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService) { }
 
-  constructor(private route:ActivatedRoute,private router:Router) { }
-
-  ngOnInit() {
+  async ngOnInit() {
     this.projectForm=new FormGroup({
       projectTitle:new FormControl('',Validators.required),
       start_day:new FormControl('',Validators.required),
@@ -25,7 +26,18 @@ export class ProjectsComponent implements OnInit {
       description:new FormControl('',Validators.required),
       index:new FormControl(''),
     });
+    //fetching default values if any
+    let data = await this.dataService.getData(this.flag,'projects');
+    if(data!=null && data['length']>0){
+        for(let key in data){
+          this.projects.push(data[key]);
+        }
+    }
   } 
+
+  async update(){
+    await this.dataService.update(this.flag,'projects',this.projects);
+  }
 
   addData(){
     if(!!this.isEdit){
@@ -35,6 +47,7 @@ export class ProjectsComponent implements OnInit {
     else{
       this.projects.push(this.projectForm.value);
     }
+    this.update();
     this.projectForm.reset();
   }
 
@@ -45,6 +58,7 @@ export class ProjectsComponent implements OnInit {
 
   deleteMe(index){
     this.projects.splice(index,1);
+    this.update();
   }
   
   nextRoute(){

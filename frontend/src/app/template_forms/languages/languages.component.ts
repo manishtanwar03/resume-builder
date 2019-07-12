@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-languages',
@@ -8,10 +9,22 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LanguagesComponent implements OnInit {
   public languages=[];
-  
-  constructor(private route:ActivatedRoute,private router:Router) { }
+  flag:boolean=false;
 
-  ngOnInit() {
+  constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService) { }
+
+  async ngOnInit() {
+    //fetching default values if any
+    let data = await this.dataService.getData(this.flag,'languages');
+    if(data!=null && data['length']>0){
+        for(let key in data){
+          this.languages.push(data[key]);
+        }
+    }
+  }
+
+  async update(){
+    await this.dataService.update(this.flag,'languages',this.languages);
   }
 
   onEnter(language){
@@ -19,14 +32,17 @@ export class LanguagesComponent implements OnInit {
     if(language && !this.languages.find((entry)=>entry.language==language)){
       this.languages.push({'language':language,'value':100});
     }
+    this.update();
   }
 
   removeMe(id){
     this.languages.splice(id,1);
+    this.update();
   }
 
   setProficiency(id,value){
     this.languages[id].value = Number(value);
+    this.update();
   }
 
   nextRoute(){

@@ -21,6 +21,6 @@ export class FinalTemplateComponent implements OnInit {
   }
 
   goTo(path){
-    this.router.navigate(['/resume',path],{queryParams:{next:'final'}});
+    this.router.navigate(['/resume',path],{queryParams:{next:this.route.snapshot.params.id}});
   }
 }

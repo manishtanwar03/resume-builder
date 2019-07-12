@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl,Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-work-history',
   templateUrl: './work-history.component.html',
@@ -11,10 +12,11 @@ export class WorkHistoryComponent implements OnInit {
   workHistoryForm:FormGroup;
   workHistory=[];
   isEdit=null;
+  flag:boolean=false;
 
-  constructor(private route:ActivatedRoute,private router:Router) { }
+  constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.workHistoryForm=new FormGroup({
       job_title:new FormControl('',Validators.required),
       employer:new FormControl('',Validators.required),
@@ -26,6 +28,17 @@ export class WorkHistoryComponent implements OnInit {
         end_year:new FormControl('',Validators.required),
         description:new FormControl('',Validators.required),
     });
+    //fetching default values if any
+    let data = await this.dataService.getData(this.flag,'workHistory');
+    if(data!=null && data['length']>0){
+        for(let key in data){
+          this.workHistory.push(data[key]);
+        }
+    }
+    }
+
+    async update(){
+      await this.dataService.update(this.flag,'workHistory',this.workHistory);
     }
 
   addData(){
@@ -36,6 +49,7 @@ export class WorkHistoryComponent implements OnInit {
     else{
       this.workHistory.push(this.workHistoryForm.value);
     }
+    this.update();
     this.workHistoryForm.reset();
   }
 
@@ -46,10 +60,11 @@ export class WorkHistoryComponent implements OnInit {
 
   deleteMe(index){
     this.workHistory.splice(index,1);
+    this.update();
   }
 
   nextRoute(){
-    let next = this.route.snapshot.queryParams.next;
+    let next = this.route.snapshot.params.id;
     this.router.navigate(['/resume',next==undefined?'education':next]);
   }
   

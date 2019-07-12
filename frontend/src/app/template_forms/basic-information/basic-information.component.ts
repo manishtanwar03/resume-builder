@@ -28,11 +28,11 @@ async ngOnInit() {
         email:new FormControl('',[Validators.required,Validators.email]),
     });
     //fetching default values if any
-    this.basicInformationForm.patchValue(await this.dataService.getData(this.flag,'basicInformation'))
+    this.basicInformationForm.patchValue(await this.dataService.getData(this.flag,'basicInformation'));
   } 
 
 async update(){
-  console.log(this.basicInformationForm.value.firstName)
+  // console.log(this.basicInformationForm.value.firstName)
   await this.dataService.update(this.flag,'basicInformation',this.basicInformationForm.value);
 }
 
