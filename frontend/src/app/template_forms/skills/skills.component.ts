@@ -13,31 +13,29 @@ export class SkillsComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService) {}
 
-  async ngOnInit() {
-    //fetching default values if any
-    let data = await this.dataService.getData(this.flag,'skills');
-    if(data!=null && data['length']>0){
-        for(let key in data){
-          this.skills.push(data[key]);
-        }
-    }
+   ngOnInit() {
+     //fetching previous data
+    this.dataService.get().subscribe(
+      (res)=>{
+        this.skills=[];
+        for(let value of res['skills'])
+          this.skills.push(value);
+      }
+    );
   }
 
-  async update(){
-    await this.dataService.update(this.flag,'skills',this.skills);
-  }
 
   onEnter(skill){
     skill = skill.trim().toLowerCase();
     if(skill && !this.skills.includes(skill)){
       this.skills.push(skill);
     }
-    this.update();
+    this.dataService.set({'skills':this.skills});
   }
 
   removeMe(id){
     this.skills.splice(id,1);
-    this.update();
+    this.dataService.set({'skills':this.skills});
   }
 
   nextRoute(){

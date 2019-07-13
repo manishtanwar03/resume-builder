@@ -26,7 +26,7 @@ export class RemoteStorageService {
 
   saveData()
   { //to send resumeDetails to backend
-    this.http.post<any>(this._resumeUrl,this.service.getData()).subscribe(
+    this.http.post<any>(this._resumeUrl,{"data_here":1}).subscribe(
       res=>{
         this.router.navigate(['/resume',res['resume']]);
       },

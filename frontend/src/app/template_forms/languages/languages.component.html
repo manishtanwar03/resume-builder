@@ -22,7 +22,7 @@
                                             {{ language.language | titlecase}}
                                             <i class="material-icons" (click)="removeMe(id)">clear</i>
                                         </div>
-                                        <input type="range" id="proficiency" min="0" max="100" value="100" (change)="setProficiency(id,$event.target.value)">
+                                        <input type="range" id="proficiency" min="0" max="100" [value]="language.value" (change)="setProficiency(id,$event.target.value)">
                                     </li>
 
                                 </ul>

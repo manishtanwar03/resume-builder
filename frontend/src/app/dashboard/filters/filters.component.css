@@ -10,17 +10,11 @@
     position: relative;
     font-family: Asap, 'sans-serif';
     width: 100%;
-    background-color: #263238;
+    background-color: white;
     margin-bottom: 50px;
     z-index: 1000;
-    padding: 25px 0;
-}
-
-.template-filters .filters h1 {
-    font-size: 24px;
-    color: #46464E;
-    text-align: center;
-    margin: 0;
+    padding: 15px 0;
+    padding-top: 20px;
 }
 
 
@@ -33,15 +27,17 @@
 }
 
 .filters .filter_colors .filter {
-    width: 50px;
-    height: 35px;
+    width: 60px;
+    height: 45px;
     background-color: red;
     margin: 0 10px;
     border-radius: 4px;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    border: 5px solid red;
 }
 
 .filter_colors .filter:hover {
@@ -51,6 +47,5 @@
 
 .filter_colors .filter i {
     font-size: 30px;
-    /* color: white; */
     font-weight: 800;
 }

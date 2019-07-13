@@ -16,7 +16,7 @@ export class WorkHistoryComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService) { }
 
-  async ngOnInit() {
+ngOnInit() {
     this.workHistoryForm=new FormGroup({
       job_title:new FormControl('',Validators.required),
       employer:new FormControl('',Validators.required),
@@ -28,17 +28,14 @@ export class WorkHistoryComponent implements OnInit {
         end_year:new FormControl('',Validators.required),
         description:new FormControl('',Validators.required),
     });
-    //fetching default values if any
-    let data = await this.dataService.getData(this.flag,'workHistory');
-    if(data!=null && data['length']>0){
-        for(let key in data){
-          this.workHistory.push(data[key]);
-        }
-    }
-    }
-
-    async update(){
-      await this.dataService.update(this.flag,'workHistory',this.workHistory);
+    //fetching previous data
+    this.dataService.get().subscribe(
+      (res)=>{
+        this.workHistory=[];
+        for(let value of res['workHistory'])
+          this.workHistory.push(value);
+      }
+    );
     }
 
   addData(){
@@ -49,8 +46,8 @@ export class WorkHistoryComponent implements OnInit {
     else{
       this.workHistory.push(this.workHistoryForm.value);
     }
-    this.update();
     this.workHistoryForm.reset();
+    this.dataService.set({'workHistory':this.workHistory});
   }
 
   editMe(index){
@@ -60,7 +57,7 @@ export class WorkHistoryComponent implements OnInit {
 
   deleteMe(index){
     this.workHistory.splice(index,1);
-  this.update();
+    this.dataService.set({'workHistory':this.workHistory});
   }
 
   nextRoute(){

@@ -14,7 +14,7 @@ export class LocalStorageService{
     'skills':[],
     'interests':[],
     'languages':[],
-    'filter':''
+    'filter':{'heading':'#334458','subheading':'#2B343F','title':'#4f90cd'}
 };
 
 constructor() { 
@@ -22,33 +22,28 @@ constructor() {
     if(localStorage.getItem('local_'+key)==undefined){
       localStorage.setItem('local_'+key,JSON.stringify(this.Data[key]));
     }
-}
+  }
 }
 
-  set(data,type='all'){
-    if(type=='all'){
-        for(let [key,value] of Object.entries(this.Data)){
-            localStorage.setItem('local_'+key,JSON.stringify(data[key]));
-        }
-    }
-    else{
-        // else type is the key and data is the value to be updated
-        localStorage.setItem('local_'+type,JSON.stringify(data));
-    }
+set(data){
+  for(let [key,value] of Object.entries(data)){
+    localStorage.setItem('local_'+key,JSON.stringify(data[key]));
   }
+}
 
-  get(type='all'){
-    if(type=='all'){
-        let localData={};
-        for( let [key,value] of Object.entries(this.Data)){
-            localData[key] = JSON.parse(localStorage.getItem('local_'+key));
-        }
-        return localData;
-    }
-    else{
-        // else type is the key
-        return JSON.parse(localStorage.getItem('local_'+type));
-    }
+get(){
+  let data={};
+  let temp;
+  for(let [key,value] of Object.entries(this.Data)){
+    temp = JSON.parse(localStorage.getItem('local_'+key));
+    data[key]=temp==undefined?this.Data[key]:temp;
   }
+  return data;
+}
+
+getOne(KEY){
+  let temp  = JSON.parse(localStorage.getItem('local_'+KEY));
+  return temp==undefined?this.Data[KEY]:temp;
+}
 
 }

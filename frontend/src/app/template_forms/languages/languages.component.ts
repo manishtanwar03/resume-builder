@@ -13,18 +13,15 @@ export class LanguagesComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService) { }
 
-  async ngOnInit() {
-    //fetching default values if any
-    let data = await this.dataService.getData(this.flag,'languages');
-    if(data!=null && data['length']>0){
-        for(let key in data){
-          this.languages.push(data[key]);
-        }
-    }
-  }
-
-  async update(){
-    await this.dataService.update(this.flag,'languages',this.languages);
+   ngOnInit() {
+      //fetching previous data
+    this.dataService.get().subscribe(
+      (res)=>{
+        this.languages=[];
+        for(let value of res['languages'])
+          this.languages.push(value);
+      }
+    );
   }
 
   onEnter(language){
@@ -32,17 +29,17 @@ export class LanguagesComponent implements OnInit {
     if(language && !this.languages.find((entry)=>entry.language==language)){
       this.languages.push({'language':language,'value':100});
     }
-    this.update();
+    this.dataService.set({'languages':this.languages});
   }
 
   removeMe(id){
     this.languages.splice(id,1);
-    this.update();
+    this.dataService.set({'languages':this.languages});
   }
 
   setProficiency(id,value){
-    this.languages[id].value = Number(value);
-    this.update();
+    this.languages[id].value=value;
+    this.dataService.set({'languages':this.languages});
   }
 
   nextRoute(){

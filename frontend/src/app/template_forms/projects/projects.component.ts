@@ -12,6 +12,7 @@ export class ProjectsComponent implements OnInit {
   projects=[];
   isEdit=null;
   flag:boolean=false;
+
   constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService) { }
 
   async ngOnInit() {
@@ -26,18 +27,15 @@ export class ProjectsComponent implements OnInit {
       description:new FormControl('',Validators.required),
       index:new FormControl(''),
     });
-    //fetching default values if any
-    let data = await this.dataService.getData(this.flag,'projects');
-    if(data!=null && data['length']>0){
-        for(let key in data){
-          this.projects.push(data[key]);
-        }
-    }
+    //fetching previous data
+    this.dataService.get().subscribe(
+      (res)=>{
+        this.projects=[];
+        for(let value of res['projects'])
+          this.projects.push(value);
+      }
+    );
   } 
-
-  async update(){
-    await this.dataService.update(this.flag,'projects',this.projects);
-  }
 
   addData(){
     if(!!this.isEdit){
@@ -47,8 +45,8 @@ export class ProjectsComponent implements OnInit {
     else{
       this.projects.push(this.projectForm.value);
     }
-    this.update();
     this.projectForm.reset();
+    this.dataService.set({'projects':this.projects});
   }
 
   editMe(index){
@@ -58,7 +56,7 @@ export class ProjectsComponent implements OnInit {
 
   deleteMe(index){
     this.projects.splice(index,1);
-this.update();
+    this.dataService.set({'projects':this.projects});
   }
   
   nextRoute(){

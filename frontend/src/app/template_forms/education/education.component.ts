@@ -13,7 +13,6 @@ export class EducationComponent implements OnInit {
   education=[];
   year_list=[];
   isEdit=null;
-  flag:boolean=false;
 
   constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService) { 
     for(let year=new Date().getFullYear();year!=1950;year--){
@@ -21,7 +20,7 @@ export class EducationComponent implements OnInit {
     }
   }
 
-  async ngOnInit() {
+ ngOnInit() {
     this.educationForm = new FormGroup({
       schoolName:new FormControl('',Validators.required),
       location:new FormControl('',Validators.required),
@@ -29,18 +28,16 @@ export class EducationComponent implements OnInit {
       year:new FormControl('',Validators.required),
       description:new FormControl('',Validators.required),
     });
-    //fetching default values if any
-    let data = await this.dataService.getData(this.flag,'education');
-    if(data!=null && data['length']>0){
-        for(let key in data){
-          this.education.push(data[key]);
-        }
-    }
+    //fetching previous data
+    this.dataService.get().subscribe(
+      (res)=>{
+        this.education=[];
+        for(let value of res['education'])
+          this.education.push(value);
+      }
+    );
   }
   
-  async update(){
-    await this.dataService.update(this.flag,'education',this.education);
-  }
 
   addData(){
     if(!!this.isEdit){
@@ -50,8 +47,8 @@ export class EducationComponent implements OnInit {
     else{
       this.education.push(this.educationForm.value);
     }
-    this.update();
     this.educationForm.reset();
+    this.dataService.set({'education':this.education});
   }
 
   editMe(index){
@@ -61,7 +58,7 @@ export class EducationComponent implements OnInit {
 
   deleteMe(index){
     this.education.splice(index,1);
-    this.update();
+    this.dataService.set({'education':this.education});
   }
 
   nextRoute(){

@@ -8,64 +8,28 @@ import { LocalStorageService } from './local-storage.service';
   providedIn: 'root'
 })
 export class DataService{
-  private    _resumeUrl = `${environment.API_URL}/resume`;
 
-remoteData={
-  'basicInformation': {'firstName':'hp','lastName':'dasd'},
-  'education':null,
-  'workHistory':null,
-  'projects':null,
-  'skills':null,
-  'interests':null,
-  'languages':null,
-  'filter':null
-};
+DataSubject = new Rx.BehaviorSubject([]);
+localDataSubject = new Rx.BehaviorSubject(this.localStorage.get());
 
-localData = this.localStorage.get();
-local = new Rx.BehaviorSubject(this.localData);
-remote = new Rx.BehaviorSubject(this.remoteData);
-
-constructor(private http: HttpClient,private localStorage:LocalStorageService) {
+constructor(private localStorage:LocalStorageService) {
 }
 
+get(flag=false){
+  if(flag)
+    return ;
+  return this.localDataSubject;
+}
 
-getData(flag=false,key='all'){
-  // key is the invidual data to be returned, if not given whole object is to be returned
-  let data={};
+set(data,flag=false){
   if(flag){
-    this.remote.subscribe(
-      (res) => key=='all'?data=res:data=res,
-      (err) => console.log('something went wrong',err)
-      );
-    }
-    else{
-      this.local.subscribe(
-        (res) => {
-          key=='all'?data=res:data=res[key];
-        },
-        (err) => console.log('something went wrongq'));
-      }
-      return data;
-    } 
-    
-    update(flag=false,key='all',data){
-      // key is the invidual data to be updated, if not given whole object is to be updated
-      if(flag){
-        key=='all'?this.remoteData=data:this.remoteData[key]=data;
-        this.remote.next(this.remoteData);
-      }
-      else{
-        if(key=='all'){
-          this.localData=data;
-          this.localStorage.set(this.localData);
-        }
-        else{
-          // this.local.next(this.localStorage.get(this.localData));
-          this.localData[key]=data;
-          this.localStorage.set(this.localData);
-        }
-        this.local.next(this.localStorage.get(this.localData));
-      }
-    }
+    return ;
+  }
+  else{
+    console.log(data)
+    this.localStorage.set(data);
+    this.localDataSubject.next(this.localStorage.get());
+  }
+}
 
 }

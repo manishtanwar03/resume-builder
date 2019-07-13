@@ -10,10 +10,13 @@ export class PreviewTemplateComponent implements OnInit {
 
   resume = {};
 
-  constructor(private dataService:DataService) { }
+  constructor(private dataService:DataService) { 
+    this.dataService.get().subscribe(
+      (res)=>this.resume=res,
+      (error)=>console.log("Error in Preview",error)
+    );
+  }
 
   ngOnInit() {
-    this.resume = this.dataService.getData(false);
   }
-  
 }

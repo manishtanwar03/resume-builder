@@ -14,6 +14,9 @@ export class TemplateComponent implements OnInit {
   constructor(private dataService:DataService) { }
 
   ngOnInit() {
-    this.resume = this.dataService.getData(false);
+    this.dataService.get().subscribe(
+      (res)=>this.resume=res,
+      (error)=>console.log("Error in Template",error)
+    );
   }
 }

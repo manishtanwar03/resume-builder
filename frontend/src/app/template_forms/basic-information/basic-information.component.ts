@@ -17,7 +17,7 @@ export class BasicInformationComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService) { }
 
-async ngOnInit() {
+ngOnInit() {
     
     this.basicInformationForm=new FormGroup({
       firstName:new FormControl('',Validators.required),
@@ -27,14 +27,15 @@ async ngOnInit() {
         phone:new FormControl(''),
         email:new FormControl('',[Validators.required,Validators.email]),
     });
-    //fetching default values if any
-    this.basicInformationForm.patchValue(await this.dataService.getData(this.flag,'basicInformation'));
+    this.dataService.get().subscribe(
+      (res)=>this.basicInformationForm.patchValue(res['basicInformation']),
+      (error)=>console.log("Error in basicInformationComponent",error)
+    );
   } 
 
-async update(){
-  // console.log(this.basicInformationForm.value.firstName)
-  await this.dataService.update(this.flag,'basicInformation',this.basicInformationForm.value);
-}
+update(){
+  this.dataService.set({'basicInformation':this.basicInformationForm.value});
+} 
 
 nextRoute(){
   let next = this.route.snapshot.queryParams.next;

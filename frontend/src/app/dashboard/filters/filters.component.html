@@ -1,9 +1,10 @@
 <div class="container template-filters">
     <div class="filters z-depth-3 ">
         <div class="filter_colors">
-            <section *ngFor="let filter of filters_list">
-                <div class="filter" [ngStyle]='{ "background-color" : filter }' (click)="setActive(filter)">
-                    <i class="material-icons" *ngIf="activeFilter==filter">check</i>
+            <section *ngFor="let filter of filters_list;let i=index">
+                <div class="filter" [ngStyle]='{ "background-color" : filter?.heading, "border-color":filter?.subheading }' (click)="setActive(i)">
+                    <!-- <div class="subfilter" [ngStyle]='{ "background-color" : filter?.subheading }'></div> -->
+                    <i class="material-icons" *ngIf="activeFilter==i" [ngStyle]="{'color':filter?.title}">check</i>
                 </div>
             </section>
         </div>
