@@ -28,6 +28,6 @@ export class FiltersComponent implements OnInit {
 
   setActive(index){
     this.activeFilter=index;
-    // this.dataService.update(false,'filter',this.filters_list[index]);
+    this.dataService.set({'filter':this.filters_list[index]});
   }
 }

@@ -7,8 +7,8 @@
                 <h1 *ngIf="resume?.basicInformation.firstName || resume?.basicInformation.lastName">
                     {{ resume?.basicInformation.firstName }} {{ resume?.basicInformation.lastName }}
                 </h1>
-                <h3 *ngIf="!resume?.basicInformation.title">Professional Title</h3>
-                <h3 *ngIf="resume?.basicInformation.title">{{ resume?.basicInformation.title }}</h3>
+                <h3 *ngIf="!resume?.basicInformation.title" [ngStyle]="{'color':'white'}">Professional Title</h3>
+                <h3 *ngIf="resume?.basicInformation.title" [ngStyle]="{'color':'white'}">{{ resume?.basicInformation.title }}</h3>
                 <p *ngIf="!resume?.basicInformation.pitch">Short and engaging pitch about yourself</p>
                 <p *ngIf="resume?.basicInformation.pitch">{{ resume?.basicInformation.pitch }}</p>
             </div>
