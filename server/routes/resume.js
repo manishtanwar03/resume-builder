@@ -4,15 +4,14 @@ const resume = require('../controllers/resume');
 const verifyToken = require('../middleware/verifyToken');
 
 
-router.route('/').post( verifyToken,resume.addResume);
+router.route('/').
+post(verifyToken, resume.addResume).
+get(verifyToken, resume.loadAllResume);
 
-router.route('/:id').get(verifyToken, resume.loadResume);
+router.route('/:id').
+get(verifyToken, resume.loadResume).
+put(resume.updateResume).
+delete(verifyToken, resume.deleteResume);
 
-router.route('/:id').put( resume.updateResume);
-
-router.route('/:id').delete( resume.deleteResume);
-
-// router.route('/:id', User.verifyToken).put(resume.updateResume);
-// router.route('/:id', User.verifyToken).delete(resume.deleteResume);
 
 module.exports = router;

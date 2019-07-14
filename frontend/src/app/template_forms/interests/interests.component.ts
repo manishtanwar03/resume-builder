@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RemoteStorageService } from '../../services/remote-storage.service';
+import { RemoteStorageService } from '../../services/remote.service';
 import { DataService } from 'src/app/services/data.service';
 
 
@@ -13,7 +13,7 @@ export class InterestsComponent implements OnInit {
   public interests=[];
   flag:boolean=false;
 
-  constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService,private service :RemoteStorageService) { }
+  constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService) { }
    
   ngOnInit() {
       //fetching previous data

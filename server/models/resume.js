@@ -5,111 +5,86 @@ const Resume = new mongoose.Schema({
     basicInformation: {
         firstName: {
             type: String,
-            // required: true,
+            required: true,
             trim: true,
             lowercase: true,
-            // minlength: 3,
-            // maxlength: 20
         },
         lastName: {
             type: String,
-            // required: true,
             trim: true,
             lowercase: true,
-            // minlength: 3,
-            // maxlength: 20
         },
         title: {
             type: String,
-            // required: true,
             trim: true,
             lowercase: true,
-            // minlength: 3,
-            // maxlength: 20
         },
         pitch: {
             type: String,
-            // required: true,
             trim: true,
             lowercase: true,
-            // minlength: 10,
-            // maxlength: 50
         },
         phone: {
             type: Number,
-            // required: true,
-            // match: [/^\d{10}$/, 'Please fill a valid phone number']
         },
         email: {
             type: String,
-            // required: true,
-            // match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
         },
 
     },
     workHistory: [{
         job_title: {
             type: String,
-            // required: true,
             trim: true,
             lowercase: true,
-            // minlength: 3,
-            // maxlength: 20
         },
         employer: {
             type: String,
-            // required: true,
             trim: true,
             lowercase: true,
-            // minlength: 3,
-            // maxlength: 20
         },
         start_day: {
             type: String, // date
-            // required: true,
         },
         start_month: {
             type: String, // date
-            // required: true,
         },
         start_year: {
             type: String, // date
-            // required: true,
         },
         end_day: {
             type: String,
-            // required: true
         },
         end_month: {
             type: String,
-            // required: true
+            required: true
         },
         end_year: {
             type: String,
-            // required: true
+            required: true
         },
 
-        // present: {
-        //     type: Boolean,
-        //     default: false
-        // },
+        present: {
+            type: Boolean,
+            default: false
+        },
         description: {
             type: String,
-            // required: true,
+            required: true,
             trim: true,
             lowercase: true,
-            // minlength: 10,
-            // maxlength: 200
+            minlength: 10,
+            maxlength: 200
         }
     }],
     education: [{
         school_name: {
             type: String,
-            // required: true,
+            required: true,
             trim: true,
             lowercase: true,
-            // minlength: 3,
-            // maxlength: 50
+            minlength: 3,
+            maxlength: 50
         },
         location: {
             type: String,
@@ -118,24 +93,24 @@ const Resume = new mongoose.Schema({
         },
         degree: {
             type: String,
-            // required: true,
+            required: true,
             trim: true,
             lowercase: true,
-            // minlength: 3,
-            // maxlength: 20
+            minlength: 3,
+            maxlength: 20
         },
         year: {
             type: Number,
-            // required: true,
-            // match: [/^\d{4}$/, 'Please fill a valid year']
+            required: true,
+            match: [/^\d{4}$/, 'Please fill a valid year']
         },
         description: {
             type: String,
-            // required: true,
+            required: true,
             trim: true,
             lowercase: true,
-            // minlength: 10,
-            // maxlength: 200
+            minlength: 10,
+            maxlength: 200
         }
     }],
     skills: [String], //validator required
@@ -143,62 +118,64 @@ const Resume = new mongoose.Schema({
     languages: [{
         language: {
             type: String,
-            // required: true,
+            required: true,
             trim: true
         },
         value: {
             type: Number,
-            // required: true,
+            required: true,
         }
 
     }],
     projects: [{
         projectTitle: {
             type: String,
-            // required: true,
+            required: true,
             trim: true,
             lowercase: true,
-            // minlength: 10,
-            // maxlength: 40
+            minlength: 10,
+            maxlength: 40
         },
         start_day: {
             type: Number, // date
-            // required: true,
+            required: true,
         },
         start_month: {
             type: Number, // date
-            // required: true,
+            required: true,
         },
         start_year: {
             type: Number, // date
-            // required: true,
+            required: true,
         },
         end_day: {
             type: Number,
-            // required: true
+            required: true
         },
         end_month: {
             type: Number,
-            // required: true
+            required: true
         },
         end_year: {
             type: Number,
-            // required: true
+            required: true
         },
         description: {
             type: String,
-            // required: true,
+            required: true,
             trim: true,
             lowercase: true,
-            // minlength: 10,
-            // maxlength: 200
         }
     }],
-    // template: {
-    //     type: String,
-    //     default: "functional",
-    //     required:false
-    // },
+    is_deleted: {
+        type: Boolean,
+        default: false
+    },
+    modified_on: {
+        type: Date,
+        default: Date.now
+    },
+    filter: String,
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

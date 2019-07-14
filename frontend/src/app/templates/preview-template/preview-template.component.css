@@ -23,7 +23,7 @@ section {
     width: 100%;
     font-family: sans-serif;
     box-sizing: border-box;
-    padding: 12.605px 0;
+    /* padding: 12.605px 0; */
     position: relative;
 }
 

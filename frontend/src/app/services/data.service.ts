@@ -1,6 +1,4 @@
 import { Injectable} from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { environment } from './../../environments/environment'
 import * as Rx from "rxjs";
 import { LocalStorageService } from './local-storage.service';
 
@@ -9,8 +7,8 @@ import { LocalStorageService } from './local-storage.service';
 })
 export class DataService{
 
-DataSubject = new Rx.BehaviorSubject([]);
 localDataSubject = new Rx.BehaviorSubject(this.localStorage.get());
+// remoteDataSubject = new Rx.BehaviorSubject()
 
 constructor(private localStorage:LocalStorageService) {
 }

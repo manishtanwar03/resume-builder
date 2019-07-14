@@ -1,0 +1,10 @@
+.nav-wrapper {
+    padding: 0 15px;
+}
+
+.nav-wrapper .logo {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    margin-right: 10px;
+}

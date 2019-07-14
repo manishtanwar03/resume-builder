@@ -24,22 +24,29 @@ export class RemoteStorageService {
 
   constructor(private service:DataService,private http: HttpClient,private router:Router) { }
 
-  saveData()
-  { //to send resumeDetails to backend
-    this.http.post<any>(this._resumeUrl,{"data_here":1}).subscribe(
+  saveResume(resumeData)
+  { 
+    //to send resumeDetails to backend
+    this.http.post<any>(this._resumeUrl,resumeData).subscribe(
       res=>{
         this.router.navigate(['/resume',res['resume']]);
       },
-      err=>console.log(err)
+      err=>{
+        this.router.navigate(['/resume']);
+        window.alert(err);
+        console.log(err);
+      }
     );
  }
 
- getData(id){
-  return this.http.get<any>(this._resumeUrl+id);
+ loadOneResume(id){
+  return this.http.get<any>(this._resumeUrl+id).toPromise();
  }
 
-
+loadAllResume(){
+  return this.http.get<any>(this._resumeUrl).toPromise();
   }
+}
 
 
 

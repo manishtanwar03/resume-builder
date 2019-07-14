@@ -1,19 +1,10 @@
 const Resume = require('../models/resume');
 
-async function loadResume(req, res) {
-    try {
-        let resume = await Resume.findOne({ _id: req.params.id, user: req.body.user });
-        res.status(200).send(resume);
-    } catch (err) {
-        console.log("Error occurred in loadResume", err);
-        res.status(500).send("something went wrong");
-    }
-}
+
 async function addResume(req, res) {
     try {
-        console.log(req.body);
+        req.body.modified_on = Date.now();
         let resume = new Resume(req.body);
-        console.log(resume);
         let result = await resume.save();
         res.status(200).send({ 'resume': result._id });
     } catch (error) {
@@ -22,32 +13,49 @@ async function addResume(req, res) {
     }
 }
 
-// add msgs similar as above
-
-async function deleteResume(req, res) {
+async function loadResume(req, res) {
     try {
-        const deletedResume = await Resume.findByIdAndDelete({ _id: req.params.id });
-        deletedResume ? res.status(200).send({ message: 'data Deleted', res: deletedResume }) :
-            res.status(422).send({ message: 'Data Not Deleted', res: deletedResume });
-        // res.send(deletedResume);
-    } catch (error) {
-        throw (error);
+        let resume = await Resume.findOne({ _id: req.params.id, user: req.body.user, is_deleted: false });
+        res.status(200).send(resume);
+    } catch (err) {
+        console.log("Error occurred in loadResume ", err);
+        res.status(500).send("something went wrong");
+    }
+}
+
+async function loadAllResume(req, res) {
+    try {
+        let resumes = await Resume.find({ user: req.body.user, is_deleted: false }, { user: -1 });
+        res.status(200).send(resumes);
+    } catch (err) {
+        console.log("Error occurred in loadAllResume ", err);
+        res.status(500).send("something went wrong");
     }
 }
 
 async function updateResume(req, res) {
     try {
+        req.body.modified_on = Date.now();
+        let result = await Resume.findOneAndUpdate({ _id: req.params.id, user: req.body.user, is_deleted: false }, req.body, { new: true });
+        res.status(200).send({ 'resume': result._id });
+    } catch (err) {
+        console.log("Error occurred in updateResume ", err);
+        res.status(500).send("something went wrong");
+    }
+}
 
-
-        const result = await Resume.findByIdAndUpdate({ _id: id }, req.body);
-
-        return result;
-    } catch (error) {
-        throw (error);
+async function deleteResume(req, res) {
+    try {
+        let result = await Resume.findOneAndUpdate({ _id: req.params.id, user: req.body.user, is_deleted: false }, { $set: { is_deleted: true } });
+        res.status(200).send(`Resume ID: ${result._id} deleted successfully`);
+    } catch (err) {
+        console.log("Error occurred in deleteResume ", err);
+        res.status(500).send('something went wrong');
     }
 }
 
 module.exports.addResume = addResume;
-module.exports.deleteResume = deleteResume;
-module.exports.updateResume = updateResume;
 module.exports.loadResume = loadResume;
+module.exports.loadAllResume = loadAllResume;
+module.exports.updateResume = updateResume;
+module.exports.deleteResume = deleteResume;
