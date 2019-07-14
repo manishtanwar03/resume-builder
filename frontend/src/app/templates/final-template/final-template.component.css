@@ -29,6 +29,7 @@ section {
 
 .resume {
     max-width: 1190px;
+    min-height: 1490px;
     margin: 0 auto;
     background-color: white;
     /* border: 1px solid #b7b7b7; */

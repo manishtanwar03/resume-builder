@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { RemoteStorageService } from 'src/app/services/remote.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { RemoteService } from 'src/app/services/remote.service';
 
 @Component({
   selector: 'app-final-template',
@@ -9,10 +10,13 @@ import { RemoteStorageService } from 'src/app/services/remote.service';
 })
 export class FinalTemplateComponent implements OnInit {
   resume={};
-  constructor(private route:ActivatedRoute,private router:Router) { }
+  constructor(private route:ActivatedRoute,private router:Router,private remoteService:RemoteService) { 
+    
+  }
 
-  ngOnInit() {
+  async ngOnInit() {
     let resume_id = this.route.snapshot.params.id;
+    this.resume = await this.remoteService.loadOneResume(this.route.snapshot.params.id)
   }
 
   goTo(path){

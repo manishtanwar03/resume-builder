@@ -18,6 +18,10 @@ import { TemplateModule } from './templates/template.module';
 import { Page404Component } from './page404/page404.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { RemoteStorageService } from './services/remote-storage.services';
+import { RemoteService } from './services/remote.service';
+
+import { DataService } from './services/data.service';
 
 
 
@@ -45,7 +49,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptorService,
     multi:true
-  }],
+  },RemoteStorageService,DataService,RemoteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

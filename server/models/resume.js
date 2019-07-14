@@ -57,11 +57,9 @@ const Resume = new mongoose.Schema({
         },
         end_month: {
             type: String,
-            required: true
         },
         end_year: {
             type: String,
-            required: true
         },
 
         present: {
@@ -70,21 +68,15 @@ const Resume = new mongoose.Schema({
         },
         description: {
             type: String,
-            required: true,
             trim: true,
             lowercase: true,
-            minlength: 10,
-            maxlength: 200
         }
     }],
     education: [{
         school_name: {
             type: String,
-            required: true,
             trim: true,
             lowercase: true,
-            minlength: 3,
-            maxlength: 50
         },
         location: {
             type: String,
@@ -93,24 +85,17 @@ const Resume = new mongoose.Schema({
         },
         degree: {
             type: String,
-            required: true,
             trim: true,
             lowercase: true,
-            minlength: 3,
-            maxlength: 20
         },
         year: {
             type: Number,
-            required: true,
             match: [/^\d{4}$/, 'Please fill a valid year']
         },
         description: {
             type: String,
-            required: true,
             trim: true,
             lowercase: true,
-            minlength: 10,
-            maxlength: 200
         }
     }],
     skills: [String], //validator required
@@ -118,51 +103,39 @@ const Resume = new mongoose.Schema({
     languages: [{
         language: {
             type: String,
-            required: true,
             trim: true
         },
         value: {
             type: Number,
-            required: true,
         }
 
     }],
     projects: [{
         projectTitle: {
             type: String,
-            required: true,
             trim: true,
             lowercase: true,
-            minlength: 10,
-            maxlength: 40
         },
         start_day: {
             type: Number, // date
-            required: true,
         },
         start_month: {
             type: Number, // date
-            required: true,
         },
         start_year: {
-            type: Number, // date
-            required: true,
+            type: Number, // date,
         },
         end_day: {
             type: Number,
-            required: true
         },
         end_month: {
             type: Number,
-            required: true
         },
         end_year: {
             type: Number,
-            required: true
         },
         description: {
             type: String,
-            required: true,
             trim: true,
             lowercase: true,
         }
@@ -175,7 +148,7 @@ const Resume = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    filter: String,
+    filter: {},
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

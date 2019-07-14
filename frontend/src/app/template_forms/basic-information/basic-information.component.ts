@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup , FormControl,Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { RemoteService } from 'src/app/services/remote.service';
 
 
 
@@ -15,7 +16,11 @@ export class BasicInformationComponent implements OnInit {
   basicInformationForm:FormGroup=null;
   flag:boolean=false;
 
-  constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService) { }
+  constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService,private remoteService:RemoteService) {
+      if(this.route.snapshot.queryParams.next!=undefined){
+        this.flag=true;
+      }
+   }
 
 ngOnInit() {
     
@@ -27,19 +32,20 @@ ngOnInit() {
         phone:new FormControl(''),
         email:new FormControl('',[Validators.required,Validators.email]),
     });
-    this.dataService.get().subscribe(
+    this.dataService.get(this.flag).subscribe(
       (res)=>this.basicInformationForm.patchValue(res['basicInformation']),
       (error)=>console.log("Error in basicInformationComponent",error)
     );
   } 
 
 update(){
-  this.dataService.set({'basicInformation':this.basicInformationForm.value});
+  this.dataService.set({'basicInformation':this.basicInformationForm.value},this.flag);
 } 
 
 nextRoute(){
-  let next = this.route.snapshot.queryParams.next;
-  this.router.navigate(['/resume',next==undefined?'work-history':next]);
+  if(this.flag)
+    this.router.navigate(['/resume',this.route.snapshot.queryParams.next]);  
+  this.router.navigate(['/resume','work-history']);
 }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RemoteService } from 'src/app/services/remote.service';
 
 @Component({
   selector: 'app-saved-resumes',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./saved-resumes.component.css']
 })
 export class SavedResumesComponent implements OnInit {
+  resumes =null;
+  constructor(private remoteService:RemoteService) { }
 
-  constructor() { }
-
-  ngOnInit() {
+  async ngOnInit() {
+    try{
+      let data = await this.remoteService.loadAllResume();
+      if(data)
+        this.resumes=data;
+    }
+    catch(err){
+      console.log(err);
+    }
   }
 
 }

@@ -3,29 +3,29 @@
         <!-- basic information -->
         <div class="basic_information" [ngStyle]="{'background':resume?.filter?.heading}">
             <div class="heading">
-                <h1 *ngIf="!resume?.basicInformation.firstName">Manish Tanwar</h1>
-                <h1 *ngIf="resume?.basicInformation.firstName || resume?.basicInformation.lastName">
-                    {{ resume?.basicInformation.firstName }} {{ resume?.basicInformation.lastName }}
+                <h1 *ngIf="!resume?.basicInformation?.firstName">Manish Tanwar</h1>
+                <h1 *ngIf="resume?.basicInformation?.firstName || resume?.basicInformation?.lastName">
+                    {{ resume?.basicInformation.firstName|titlecase }} {{ resume?.basicInformation.lastName|titlecase }}
                 </h1>
-                <h3 *ngIf="!resume?.basicInformation.title" [ngStyle]="{'color':'white'}">Professional Title</h3>
-                <h3 *ngIf="resume?.basicInformation.title" [ngStyle]="{'color':'white'}">{{ resume?.basicInformation.title }}</h3>
-                <p *ngIf="!resume?.basicInformation.pitch">Short and engaging pitch about yourself</p>
-                <p *ngIf="resume?.basicInformation.pitch">{{ resume?.basicInformation.pitch }}</p>
+                <h3 *ngIf="!resume?.basicInformation?.title" [ngStyle]="{'color':'white'}">Professional Title</h3>
+                <h3 *ngIf="resume?.basicInformation?.title" [ngStyle]="{'color':'white'}">{{ resume?.basicInformation?.title|titlecase }}</h3>
+                <p *ngIf="!resume?.basicInformation?.pitch">Short and engaging pitch about yourself</p>
+                <p *ngIf="resume?.basicInformation?.pitch">{{ resume?.basicInformation?.pitch|titlecase }}</p>
             </div>
             <div class="contact_details" [ngStyle]="{'background':resume?.filter?.subheading}">
                 <!-- email -->
-                <a *ngIf="!resume?.basicInformation.email">
+                <a *ngIf="!resume?.basicInformation?.email">
                     <img src="../../../assets/template/email.png"> manishkumar9999@gmail.com
                 </a>
-                <a *ngIf="resume?.basicInformation.email">
-                    <img src="../../../assets/template/email.png"> {{ resume?.basicInformation.email }}
+                <a *ngIf="resume?.basicInformation?.email">
+                    <img src="../../../assets/template/email.png"> {{ resume?.basicInformation?.email }}
                 </a>
                 <!-- phone -->
-                <a *ngIf="!resume?.basicInformation.phone">
+                <a *ngIf="!resume?.basicInformation?.phone">
                     <img src="../../../assets/template/phone.png"> +91-8168686868
                 </a>
-                <a *ngIf="resume?.basicInformation.phone">
-                    <img src="../../../assets/template/phone.png">{{ resume?.basicInformation.phone }}
+                <a *ngIf="resume?.basicInformation?.phone">
+                    <img src="../../../assets/template/phone.png">{{ resume?.basicInformation?.phone }}
                 </a>
             </div>
         </div>
@@ -37,7 +37,7 @@
                 <div class="row">
                     <div class="col s12">
                         <!-- if work history not present -->
-                        <div class="base" *ngIf="!resume?.workHistory || resume?.workHistory.length==0">
+                        <div class="base" *ngIf="!resume?.workHistory || resume?.workHistory?.length==0">
                             <h1>WORK EXPERIENCE</h1>
                             <div class="entry">
                                 <h1>Position</h1>
@@ -49,18 +49,18 @@
                             </div>
                         </div>
                         <!-- if work history present -->
-                        <div class="base" *ngIf="resume?.workHistory.length>0 ">
+                        <div class="base" *ngIf="resume?.workHistory?.length>0 ">
                             <h1>WORK EXPERIENCE</h1>
                             <div class="entry" *ngFor="let work of resume?.workHistory">
-                                <h1 *ngIf="work?.job_title">{{ work?.job_title }}</h1>
-                                <h3 *ngIf="work?.employer">{{ work?.employer }}</h3>
+                                <h1 *ngIf="work?.job_title">{{ work?.job_title|titlecase }}</h1>
+                                <h3 *ngIf="work?.employer">{{ work?.employer|titlecase }}</h3>
                                 <span *ngIf="work?.start_day">{{ work?.start_day}}/</span>
                                 <span *ngIf="work?.start_month">{{ work?.start_month }}/</span>
                                 <span *ngIf="work?.start_year">{{ work?.start_year }} - </span>
                                 <span *ngIf="work?.end_day">{{ work?.end_day }}/</span>
                                 <span *ngIf="work?.end_month">{{ work?.end_month }}/</span>
                                 <span *ngIf="work?.end_year">{{ work?.end_year }}</span>
-                                <p *ngIf="work?.description">{{ work?.description }}</p>
+                                <p *ngIf="work?.description">{{ work?.description|titlecase }}</p>
                             </div>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                 <div class="row">
                     <div class="col s12">
                         <!-- if education not avaiable -->
-                        <div class="base" *ngIf="!resume?.education || resume?.education.length==0">
+                        <div class="base" *ngIf="!resume?.education || resume?.education?.length==0">
                             <h1>EDUCATION</h1>
                             <div class="entry">
                                 <h1>School Name <span>| Location</span></h1>
@@ -81,18 +81,18 @@
                             </div>
                         </div>
                         <!-- if education present -->
-                        <div class="base" *ngIf="resume?.education.length>0">
+                        <div class="base" *ngIf="resume?.education?.length>0">
                             <h1>Education</h1>
                             <div class="entry" *ngFor="let school of resume?.education">
-                                <h1 *ngIf="school?.schoolName">{{ school?.schoolName }} <span *ngIf="school?.location">| {{school?.location}}</span></h1>
-                                <h3 *ngIf="school?.degree">{{ school?.degree }}</h3>
+                                <h1 *ngIf="school?.schoolName">{{ school?.schoolName|titlecase }} <span *ngIf="school?.location">| {{school?.location|titlecase}}</span></h1>
+                                <h3 *ngIf="school?.degree">{{ school?.degree |titlecase}}</h3>
                                 <span *ngIf="school?.start_day">{{ school?.start_day}}/</span>
                                 <span *ngIf="school?.start_month">{{ school?.start_month }}/</span>
                                 <span *ngIf="school?.start_year">{{ school?.start_year }} - </span>
                                 <span *ngIf="school?.end_day">{{ school?.end_day }}/</span>
                                 <span *ngIf="school?.end_month">{{ school?.end_month }}/</span>
                                 <span *ngIf="school?.end_year">{{ school?.end_year }}</span>
-                                <p *ngIf="school?.description">{{ school?.description }}</p>
+                                <p *ngIf="school?.description">{{ school?.description|titlecase }}</p>
                             </div>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                 <div class="row">
                     <div class="col s12">
                         <!-- if not present -->
-                        <div class="base" *ngIf="!resume?.interests || resume?.interests.length==0">
+                        <div class="base" *ngIf="!resume?.interests || resume?.interests?.length==0">
                             <h1>INTERESTS</h1>
                             <!-- interests here -->
                             <div class="list">
@@ -109,7 +109,7 @@
                             </div>
                         </div>
                         <!-- if present -->
-                        <div class="base" *ngIf="resume?.interests.length>0">
+                        <div class="base" *ngIf="resume?.interests?.length>0">
                             <h1>INTERESTS</h1>
                             <!-- interests here -->
                             <div class="list">
@@ -126,7 +126,7 @@
                 <div class="row">
                     <div class="col s12">
                         <!-- if projects not available -->
-                        <div class="base" *ngIf="!resume?.projects || resume?.projects.length==0">
+                        <div class="base" *ngIf="!resume?.projects || resume?.projects?.length==0">
                             <h1>PERSONAL PROJECTS</h1>
                             <div class="entry">
                                 <h1>Project Title</h1>
@@ -137,17 +137,17 @@
                             </div>
                         </div>
                         <!-- if projects present -->
-                        <div class="base" *ngIf="resume?.projects.length>0">
+                        <div class="base" *ngIf="resume?.projects?.length>0">
                             <h1>PERSONAL PROJECTS</h1>
                             <div class="entry" *ngFor="let project of resume?.projects">
-                                <h1 *ngIf="project?.projectTitle">{{ project?.projectTitle }}</h1>
+                                <h1 *ngIf="project?.projectTitle">{{ project?.projectTitle |titlecase}}</h1>
                                 <span *ngIf="project?.start_day">{{ project?.start_day}}/</span>
                                 <span *ngIf="project?.start_month">{{ project?.start_month }}/</span>
                                 <span *ngIf="project?.start_year">{{ project?.start_year }} - </span>
                                 <span *ngIf="project?.end_day">{{ project?.end_day }}/</span>
                                 <span *ngIf="project?.end_month">{{ project?.end_month }}/</span>
                                 <span *ngIf="project?.end_year">{{ project?.end_year }}</span>
-                                <p *ngIf="project?.description">{{ project?.description }}</p>
+                                <p *ngIf="project?.description">{{ project?.description|titlecase }}</p>
                             </div>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                 <div class="row">
                     <div class="col s12">
                         <!-- if skill not present -->
-                        <div class="base" *ngIf="!resume?.skills || resume?.skills.length==0">
+                        <div class="base" *ngIf="!resume?.skills || resume?.skills?.length==0">
                             <h1>SKILLS</h1>
                             <!-- skills here -->
                             <div class="list">
@@ -164,7 +164,7 @@
                             </div>
                         </div>
                         <!-- if skill present -->
-                        <div class="base" *ngIf="resume?.skills.length>0">
+                        <div class="base" *ngIf="resume?.skills?.length>0">
                             <h1>SKILLS</h1>
                             <!-- skills here -->
                             <div class="list">
@@ -177,7 +177,7 @@
                 <div class="row">
                     <div class="col s12">
                         <!-- if language not present -->
-                        <div class="base" *ngIf="!resume?.languages || resume?.languages.length==0">
+                        <div class="base" *ngIf="!resume?.languages || resume?.languages?.length==0">
                             <h1>LANGUAGES</h1>
                             <!-- languages here -->
                             <div class="languages">
@@ -190,14 +190,14 @@
                             </div>
                         </div>
                         <!-- if language present -->
-                        <div class="base" *ngIf="resume?.languages.length>0">
+                        <div class="base" *ngIf="resume?.languages?.length>0">
                             <h1>LANGUAGES</h1>
                             <!-- languages here -->
                             <div class="languages">
                                 <div class="language" *ngFor="let language of resume?.languages">
-                                    <p>{{ language.language | titlecase }}</p>
+                                    <p>{{ language?.language | titlecase }}</p>
                                     <div class="progress">
-                                        <div class="determinate" [ngStyle]="{ 'width':language.value + '%'}"></div>
+                                        <div class="determinate" [ngStyle]="{ 'width':language?.value + '%'}"></div>
                                     </div>
                                 </div>
                             </div>

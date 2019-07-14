@@ -1,16 +1,24 @@
 .resumes {
-    padding: 50px 0;
+    padding-top: 30px;
 }
 
 .resumes h1 {
     padding: 0;
     margin: 0 50px;
     font-size: 28px;
-    color: black;
+    color: #3f3f3f;
     margin-bottom: 15px;
     font-weight: bold;
     padding-bottom: 5px;
-    /* border-bottom: 3px solid black; */
+    border-bottom: 3px solid #b7b7b7;
+}
+
+.resumes h3 {
+    padding: 0;
+    margin: 80px 50px;
+    font-size: 24px;
+    color: #3f3f3f;
+    text-align: center;
 }
 
 
@@ -37,7 +45,7 @@
 
 .overlay {
     position: absolute;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
     width: 100%;
     height: 100%;
 }
@@ -94,10 +102,6 @@
 
 
 /* expand */
-
-.load {
-    border-bottom: 1px solid #b7b7b7;
-}
 
 .load .less {
     float: left;

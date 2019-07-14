@@ -15,7 +15,7 @@ async function addResume(req, res) {
 
 async function loadResume(req, res) {
     try {
-        let resume = await Resume.findOne({ _id: req.params.id, user: req.body.user, is_deleted: false });
+        let resume = await Resume.findOne({ _id: req.params.id, user: req.body.user, is_deleted: false }, { modified_on: 0, is_deleted: 0, user: 0 });
         res.status(200).send(resume);
     } catch (err) {
         console.log("Error occurred in loadResume ", err);
@@ -25,7 +25,7 @@ async function loadResume(req, res) {
 
 async function loadAllResume(req, res) {
     try {
-        let resumes = await Resume.find({ user: req.body.user, is_deleted: false }, { user: -1 });
+        let resumes = await Resume.find({ user: req.body.user, is_deleted: false }, { _id: 1, modified_on: 1 });
         res.status(200).send(resumes);
     } catch (err) {
         console.log("Error occurred in loadAllResume ", err);

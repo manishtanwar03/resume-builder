@@ -2,7 +2,7 @@
 <app-navbar></app-navbar>
 
 <!-- saved resumes -->
-<app-saved-resumes></app-saved-resumes>
+<app-saved-resumes *ngIf="authService.loggedIn()"></app-saved-resumes>
 
 <!-- resume templates -->
 

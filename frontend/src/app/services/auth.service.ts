@@ -30,4 +30,8 @@ export class AuthService {
   getToken(){
     return this.cookie.get('token');
   }
+
+  logout(){
+    this.cookie.delete('token');
+  }
 }

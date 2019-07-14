@@ -1,10 +1,11 @@
 <div class="resumes">
     <h1>My Resumes</h1>
+    <h3 *ngIf="resumes.length<1">You have not created a resume yet,<br> choose a template and let's get started.</h3>
     <!-- resume templates -->
-    <div class="saved-resumes">
-        <div class="row">
+    <div class="saved-resumes" *ngIf="resumes.length>0">
+        <div class="row" *ngFor="let resume of resumes">
             <div class="template-container">
-                <app-preview-template class="template"></app-preview-template>
+                <app-preview-template [resumeId]="resume._id" class="template"></app-preview-template>
                 <div class="overlay">
                     <div class="controls">
                         <div class="text">Modified on: <br> Yesterday 01:20</div>
@@ -22,8 +23,8 @@
             </div>
         </div>
     </div>
-    <div class="load">
-        <!-- <i class="material-icons less">expand_less</i>
-        <i class="material-icons more">expand_more</i> -->
-    </div>
+    <!-- <div class="load">
+        <i class="material-icons less">expand_less</i>
+        <i class="material-icons more">expand_more</i>
+    </div> -->
 </div>

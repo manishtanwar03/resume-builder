@@ -7,18 +7,19 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class RemoteStorageService {
+export class RemoteService {
 
   Data={
-    'basicInformation': {'firstName':'hp','lastName':'dasd'},
-    'education':null,
-    'workHistory':null,
-    'projects':null,
-    'skills':null,
-    'interests':null,
-    'languages':null,
-    'filter':null
-  };
+    'basicInformation':{},
+    'education':[],
+    'workHistory':[],
+    'projects':[],
+    'skills':[],
+    'interests':[],
+    'languages':[],
+    'filter':{'heading':'#334458','subheading':'#2B343F','title':'#4f90cd'}
+};
+
 
   private    _resumeUrl = `${environment.API_URL}/resume/`;
 
@@ -33,7 +34,7 @@ export class RemoteStorageService {
       },
       err=>{
         this.router.navigate(['/resume']);
-        window.alert(err);
+        window.alert("something went wrong ");
         console.log(err);
       }
     );
@@ -46,6 +47,20 @@ export class RemoteStorageService {
 loadAllResume(){
   return this.http.get<any>(this._resumeUrl).toPromise();
   }
+
+updateResume(id,data){
+  this.http.put<any>(this._resumeUrl+id,data).subscribe(
+    (res)=>console.log("Resume updated"),
+    (err)=>window.alert(err)
+  );
+}
+
+deleteResume(id){
+  this.http.delete<any>(this._resumeUrl+id).subscribe(
+    (res)=>window.alert(res),
+    (err)=>console.log(err)
+  );
+}
 }
 
 
