@@ -1,4 +1,4 @@
-<form [formGroup]="basicInformationForm" (ngSubmit)="saveData()">
+<form [formGroup]="basicInformationForm">
     <section class="base">
         <div class="container">
             <h1>Tell me something about yourself?</h1>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="col s4">
                     <div class="preview">
-                        <app-preview-template></app-preview-template>
+                        <app-preview-template [flag]="flag"></app-preview-template>
                     </div>
                     <div class="preview-button">
                         <button (click)="bottomSheetModal.openModal()" type="button" name="action">Preview
@@ -67,6 +67,6 @@
         </button>
     </mz-modal-header>
     <mz-modal-content>
-        <app-template></app-template>
+        <app-template [flag]="flag"></app-template>
     </mz-modal-content>
 </mz-modal>

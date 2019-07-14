@@ -1,10 +1,10 @@
 <div class="resumes">
     <h1>My Resumes</h1>
-    <h3 *ngIf="resumes.length<1">You have not created a resume yet,<br> choose a template and let's get started.</h3>
+    <h3 *ngIf="resumes?.length<1">You have not created a resume yet,<br> choose a template and let's get started.</h3>
     <!-- resume templates -->
-    <div class="saved-resumes" *ngIf="resumes.length>0">
-        <div class="row" *ngFor="let resume of resumes">
-            <div class="template-container">
+    <div class="saved-resumes" *ngIf="resumes?.length>0">
+        <div class="row">
+            <div class="template-container" *ngFor="let resume of resumes;let i=index">
                 <app-preview-template [resumeId]="resume._id" class="template"></app-preview-template>
                 <div class="overlay">
                     <div class="controls">
@@ -15,8 +15,8 @@
                     </div> -->
                     <div class="buttons">
                         <div class="links">
-                            <a class="btn-floating teal"><i class="material-icons">create</i></a>
-                            <a class="btn-floating red"><i class="material-icons">delete</i></a>
+                            <a class="btn-floating teal" [routerLink]="['/resume',resume._id]"><i class="material-icons">create</i></a>
+                            <a class="btn-floating red" (click)="deleteMe(resume._id,i)"><i class="material-icons">delete</i></a>
                         </div>
                     </div>
                 </div>

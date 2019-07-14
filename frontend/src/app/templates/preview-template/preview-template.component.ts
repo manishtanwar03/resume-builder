@@ -9,6 +9,7 @@ import { RemoteService } from 'src/app/services/remote.service';
 })
 export class PreviewTemplateComponent implements OnInit {
   @Input() resumeId=null;
+  @Input() flag=false;
   resume = {};
 
   constructor(private dataService:DataService,private remoteService:RemoteService) { 
@@ -20,7 +21,7 @@ export class PreviewTemplateComponent implements OnInit {
       this.resume = await this.remoteService.loadOneResume(this.resumeId);
     }
     else{
-      this.dataService.get().subscribe(
+      this.dataService.get(this.flag).subscribe(
         (res)=>this.resume=res,
         (error)=>console.log("Error in Preview",error)
       );

@@ -10,7 +10,7 @@ get(verifyToken, resume.loadAllResume);
 
 router.route('/:id').
 get(verifyToken, resume.loadResume).
-put(resume.updateResume).
+put(verifyToken, resume.updateResume).
 delete(verifyToken, resume.deleteResume);
 
 

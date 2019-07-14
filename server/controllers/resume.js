@@ -37,7 +37,7 @@ async function updateResume(req, res) {
     try {
         req.body.modified_on = Date.now();
         let result = await Resume.findOneAndUpdate({ _id: req.params.id, user: req.body.user, is_deleted: false }, req.body, { new: true });
-        res.status(200).send({ 'resume': result._id });
+        res.status(200).send({ 'resume': result });
     } catch (err) {
         console.log("Error occurred in updateResume ", err);
         res.status(500).send("something went wrong");

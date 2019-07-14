@@ -4,29 +4,29 @@
             <!-- basic information -->
             <div class="basic_information">
                 <div class="heading">
-                    <h1 *ngIf="!resume?.basicInformation.firstName">Manish Tanwar</h1>
-                    <h1 *ngIf="resume?.basicInformation.firstName || resume?.basicInformation.lastName">
-                        {{ resume?.basicInformation.firstName|titlecase }} {{ resume?.basicInformation.lastName|titlecase }}
+                    <h1 *ngIf="!resume?.basicInformation?.firstName">Manish Tanwar</h1>
+                    <h1 *ngIf="resume?.basicInformation?.firstName || resume?.basicInformation?.lastName">
+                        {{ resume?.basicInformation?.firstName|titlecase }} {{ resume?.basicInformation?.lastName|titlecase }}
                     </h1>
-                    <h3 *ngIf="!resume?.basicInformation.title">Professional Title</h3>
-                    <h3 *ngIf="resume?.basicInformation.title">{{ resume?.basicInformation.title|titlecase }}</h3>
-                    <p *ngIf="!resume?.basicInformation.pitch">Short and engaging pitch about yourself</p>
-                    <p *ngIf="resume?.basicInformation.pitch">{{ resume?.basicInformation.pitch |titlecase}}</p>
+                    <h3 *ngIf="!resume?.basicInformation?.title">Professional Title</h3>
+                    <h3 *ngIf="resume?.basicInformation?.title">{{ resume?.basicInformation?.title|titlecase }}</h3>
+                    <p *ngIf="!resume?.basicInformation?.pitch">Short and engaging pitch about yourself</p>
+                    <p *ngIf="resume?.basicInformation?.pitch">{{ resume?.basicInformation?.pitch |titlecase}}</p>
                 </div>
                 <div class="contact_details">
                     <!-- email -->
-                    <a *ngIf="!resume?.basicInformation.email">
+                    <a *ngIf="!resume?.basicInformation?.email">
                         <img src="../../../assets/template/email.png"> manishkumar9999@gmail.com
                     </a>
-                    <a *ngIf="resume?.basicInformation.email">
-                        <img src="../../../assets/template/email.png"> {{ resume?.basicInformation.email }}
+                    <a *ngIf="resume?.basicInformation?.email">
+                        <img src="../../../assets/template/email.png"> {{ resume?.basicInformation?.email }}
                     </a>
                     <!-- phone -->
-                    <a *ngIf="!resume?.basicInformation.phone">
+                    <a *ngIf="!resume?.basicInformation?.phone">
                         <img src="../../../assets/template/phone.png"> +91-8168686868
                     </a>
-                    <a *ngIf="resume?.basicInformation.phone">
-                        <img src="../../../assets/template/phone.png">{{ resume?.basicInformation.phone }}
+                    <a *ngIf="resume?.basicInformation?.phone">
+                        <img src="../../../assets/template/phone.png">{{ resume?.basicInformation?.phone }}
                     </a>
                 </div>
                 <div class="edit">
@@ -145,9 +145,9 @@
                                 <!-- languages here -->
                                 <div class="languages">
                                     <div class="language" *ngFor="let language of resume?.languages">
-                                        <p>{{ language.language | titlecase }}</p>
+                                        <p>{{ language?.language | titlecase }}</p>
                                         <div class="progress">
-                                            <div class="determinate" [ngStyle]="{ 'width':language.value + '%'}"></div>
+                                            <div class="determinate" [ngStyle]="{ 'width':language?.value + '%'}"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -163,6 +163,9 @@
     </kendo-pdf-export>
 </section>
 
+<div class="home_button">
+    <a class="btn-floating btn-large waves-effect waves-light teal" routerLink="/dashboard"><i class="material-icons">home</i></a>
+</div>
 
 <div class="download_button">
     <a class="btn-floating btn-large waves-effect waves-light green" kendo-button (click)="pdf.saveAs('resume.pdf')"><i class="material-icons">file_download</i></a>

@@ -3,6 +3,7 @@ import { DataService } from './data.service';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -51,7 +52,7 @@ loadAllResume(){
 updateResume(id,data){
   this.http.put<any>(this._resumeUrl+id,data).subscribe(
     (res)=>console.log("Resume updated"),
-    (err)=>window.alert(err)
+    (err)=>throwError(new Error(err))
   );
 }
 

@@ -3,6 +3,7 @@ import {FormGroup , FormControl,Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { RemoteService } from 'src/app/services/remote.service';
+import { RemoteStorageService } from 'src/app/services/remote-storage.services';
 
 
 
@@ -16,7 +17,7 @@ export class BasicInformationComponent implements OnInit {
   basicInformationForm:FormGroup=null;
   flag:boolean=false;
 
-  constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService,private remoteService:RemoteService) {
+  constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService,private remoteService:RemoteService,private remoteStorage:RemoteStorageService) {
       if(this.route.snapshot.queryParams.next!=undefined){
         this.flag=true;
       }
@@ -43,9 +44,21 @@ update(){
 } 
 
 nextRoute(){
-  if(this.flag)
-    this.router.navigate(['/resume',this.route.snapshot.queryParams.next]);  
+  if(this.flag){
+    let resumeId = this.route.snapshot.queryParams.next;
+    let resumeData = this.remoteStorage.get();
+    console.log(resumeData);
+    try{
+    this.remoteService.updateResume(resumeId,resumeData);
+    this.router.navigate(['/resume',resumeId]);
+    }
+    catch(err){
+      window.alert(err);
+    }
+  }
+  else{
   this.router.navigate(['/resume','work-history']);
+  }
 }
 
 }
