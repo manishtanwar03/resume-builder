@@ -73,7 +73,7 @@ const Resume = new mongoose.Schema({
         }
     }],
     education: [{
-        school_name: {
+        schoolName: {
             type: String,
             trim: true,
             lowercase: true,

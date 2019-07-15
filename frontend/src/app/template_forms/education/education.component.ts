@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup,Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { RemoteService } from 'src/app/services/remote.service';
+import { RemoteStorageService } from 'src/app/services/remote-storage.services';
 
 @Component({
   selector: 'app-education',
@@ -13,12 +15,17 @@ export class EducationComponent implements OnInit {
   education=[];
   year_list=[];
   isEdit=null;
+  flag:boolean=false;
 
-  constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService) { 
+  constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService,private remoteService:RemoteService,private remoteStorage:RemoteStorageService) { 
     for(let year=new Date().getFullYear();year!=1950;year--){
       this.year_list.push(year);
     }
+      // setting flag
+  if(this.route.snapshot.queryParams.next!=undefined){
+    this.flag=true;
   }
+}
 
  ngOnInit() {
     this.educationForm = new FormGroup({
@@ -29,7 +36,7 @@ export class EducationComponent implements OnInit {
       description:new FormControl('',Validators.required),
     });
     //fetching previous data
-    this.dataService.get().subscribe(
+    this.dataService.get(this.flag).subscribe(
       (res)=>{
         this.education=[];
         for(let value of res['education'])
@@ -48,7 +55,7 @@ export class EducationComponent implements OnInit {
       this.education.push(this.educationForm.value);
     }
     this.educationForm.reset();
-    this.dataService.set({'education':this.education});
+    this.dataService.set({'education':this.education},this.flag);
   }
 
   editMe(index){
@@ -58,12 +65,23 @@ export class EducationComponent implements OnInit {
 
   deleteMe(index){
     this.education.splice(index,1);
-    this.dataService.set({'education':this.education});
+    this.dataService.set({'education':this.education},this.flag);
   }
 
   nextRoute(){
-    let next = this.route.snapshot.queryParams.next;
-    this.router.navigate(['/resume',next==undefined?'interests':next]);
+    if(this.flag){
+      let resumeId = this.route.snapshot.queryParams.next;
+      let resumeData = this.remoteStorage.getOne('education');
+      try{
+      this.remoteService.updateResume(resumeId,resumeData);
+      this.router.navigate(['/resume',resumeId]);
+      }
+      catch(err){
+        window.alert(err);
+      }
+    }
+    else{
+    this.router.navigate(['/resume','projects']);
+    }
   }
-
 }

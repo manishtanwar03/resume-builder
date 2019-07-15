@@ -47,7 +47,6 @@ nextRoute(){
   if(this.flag){
     let resumeId = this.route.snapshot.queryParams.next;
     let resumeData = this.remoteStorage.get();
-    console.log(resumeData);
     try{
     this.remoteService.updateResume(resumeId,resumeData);
     this.router.navigate(['/resume',resumeId]);

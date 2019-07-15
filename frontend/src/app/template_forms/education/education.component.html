@@ -46,7 +46,7 @@
                 </div>
                 <div class="col s4">
                     <div class="preview">
-                        <app-preview-template></app-preview-template>
+                        <app-preview-template [flag]="flag"></app-preview-template>
                     </div>
                     <div class="preview-button">
                         <button (click)="bottomSheetModal.openModal()" type="button" name="action">Preview
@@ -62,7 +62,7 @@
     </div>
 
     <div class="navigation-next">
-        <button class="waves-effect pulse btn-large green" [routerLink]="['/resume','projects']"><i class="material-icons right">arrow_forward</i>Next</button>
+        <button button="button" class="waves-effect pulse btn-large green" (click)="nextRoute()"><i class="material-icons right">arrow_forward</i>Next</button>
     </div>
 </form>
 
@@ -75,6 +75,6 @@
         </button>
     </mz-modal-header>
     <mz-modal-content>
-        <app-template></app-template>
+        <app-template [flag]="flag"></app-template>
     </mz-modal-content>
 </mz-modal>

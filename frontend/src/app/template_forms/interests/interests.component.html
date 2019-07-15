@@ -42,8 +42,11 @@
     <a class="btn-floating btn-large waves-effect waves-light red" [routerLink]="['/resume','languages']"><i class="material-icons">arrow_back</i></a>
 </div>
 
-<div class="navigation-next">
+<div class="navigation-next" *ngIf="!flag">
     <button class="waves-effect pulse btn-large green" (click)="nextRoute()">Done</button>
+</div>
+<div class="navigation-next" *ngIf="flag">
+    <button class="waves-effect pulse btn-large green" (click)="nextRoute()">Next</button>
 </div>
 
 <!-- template -->
@@ -54,6 +57,6 @@
         </button>
     </mz-modal-header>
     <mz-modal-content>
-        <app-template></app-template>
+        <app-template [flag]="flag"></app-template>
     </mz-modal-content>
 </mz-modal>

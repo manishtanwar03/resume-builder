@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl,Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { RemoteService } from 'src/app/services/remote.service';
+import { RemoteStorageService } from 'src/app/services/remote-storage.services';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -13,7 +15,11 @@ export class ProjectsComponent implements OnInit {
   isEdit=null;
   flag:boolean=false;
 
-  constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService) { }
+  constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService,private remoteService:RemoteService,private remoteStorage:RemoteStorageService) {
+    if(this.route.snapshot.queryParams.next!=undefined){
+      this.flag=true;
+    }
+   }
 
   async ngOnInit() {
     this.projectForm=new FormGroup({
@@ -28,7 +34,7 @@ export class ProjectsComponent implements OnInit {
       index:new FormControl(''),
     });
     //fetching previous data
-    this.dataService.get().subscribe(
+    this.dataService.get(this.flag).subscribe(
       (res)=>{
         this.projects=[];
         for(let value of res['projects'])
@@ -46,7 +52,7 @@ export class ProjectsComponent implements OnInit {
       this.projects.push(this.projectForm.value);
     }
     this.projectForm.reset();
-    this.dataService.set({'projects':this.projects});
+    this.dataService.set({'projects':this.projects},this.flag);
   }
 
   editMe(index){
@@ -56,11 +62,23 @@ export class ProjectsComponent implements OnInit {
 
   deleteMe(index){
     this.projects.splice(index,1);
-    this.dataService.set({'projects':this.projects});
+    this.dataService.set({'projects':this.projects},this.flag);
   }
   
   nextRoute(){
-    let next = this.route.snapshot.queryParams.next;
-    this.router.navigate(['/resume',next==undefined?'skills':next]);
+    if(this.flag){
+      let resumeId = this.route.snapshot.queryParams.next;
+      let resumeData = this.remoteStorage.get();
+      try{
+      this.remoteService.updateResume(resumeId,resumeData);
+      this.router.navigate(['/resume',resumeId]);
+      }
+      catch(err){
+        window.alert(err);
+      }
+    }
+    else{
+    this.router.navigate(['/resume','skills']);
+    }
   }
 }
