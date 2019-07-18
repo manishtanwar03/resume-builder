@@ -4,7 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 import {Page404Component} from '../page404/page404.component';
 
 const routes:Routes=[
-    { path:'dashboard',component:DashboardComponent},
+    { path:'dashboard',component:DashboardComponent,},
     // { path:'**', component:Page404Component}
 ];
 @NgModule({

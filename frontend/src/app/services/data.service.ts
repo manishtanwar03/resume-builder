@@ -20,6 +20,7 @@ get(flag=false){
   return this.localDataSubject;
 }
 
+
 set(data,flag=false){
   if(flag){
     this.remoteStorage.set(data);
@@ -30,5 +31,6 @@ set(data,flag=false){
     this.localDataSubject.next(this.localStorage.get());
   }
 }
+
 
 }

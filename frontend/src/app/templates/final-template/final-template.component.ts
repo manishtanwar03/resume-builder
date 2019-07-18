@@ -11,8 +11,9 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class FinalTemplateComponent implements OnInit {
   resume={};
+  template='functional';
+
   constructor(private route:ActivatedRoute,private router:Router,private remoteService:RemoteService,private dataService:DataService) { 
-    
   }
 
   async ngOnInit() {

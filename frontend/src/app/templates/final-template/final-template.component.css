@@ -28,7 +28,7 @@ section {
     z-index: 100;
 }
 
-.functional {
+.layout {
     width: 100%;
     font-family: sans-serif;
     box-sizing: border-box;

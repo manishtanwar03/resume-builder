@@ -20,6 +20,7 @@ section {
 }
 
 .functional {
+    /* display: none; */
     width: 100%;
     font-family: sans-serif;
     box-sizing: border-box;
@@ -27,7 +28,7 @@ section {
     position: relative;
 }
 
-.resume {
+.functional .resume {
     max-width: 300.0px;
     min-height: 400px;
     margin: 0 auto;
@@ -38,53 +39,53 @@ section {
 
 /* basic_information */
 
-.basic_information {
+.functional .basic_information {
     padding-top: 11.092px;
     margin-bottom: 7.563px;
     background: #334458;
     position: relative;
 }
 
-.basic_information .heading {
+.functional .basic_information .heading {
     padding: 0 12.605px;
     margin-left: 8.571px;
     min-height: 40.336px;
 }
 
-.basic_information .heading h1 {
+.functional .basic_information .heading h1 {
     color: #fff;
     font-size: 11.597px;
     line-height: 12.101px;
 }
 
-.basic_information .heading h3 {
+.functional .basic_information .heading h3 {
     color: #4f90cd;
     font-size: 6.05px;
     line-height: 6.555px;
     padding-top: 1.513px;
 }
 
-.basic_information .heading p {
+.functional .basic_information .heading p {
     color: #fff;
     font-size: 4.538px;
     line-height: 5.546px;
     margin-top: 5.546px;
 }
 
-.basic_information .contact_details {
+.functional .basic_information .contact_details {
     background-color: #2B343F;
     text-align: center;
     padding: 5.546px 12.605px;
     padding-bottom: 4.034px;
 }
 
-.basic_information .contact_details a {
+.functional .basic_information .contact_details a {
     color: white;
     padding-right: 8.571px;
     font-size: 4.538px;
 }
 
-.basic_information .contact_details img {
+.functional .basic_information .contact_details img {
     width: 7.059px;
     height: 7.059px;
     position: relative;
@@ -95,7 +96,7 @@ section {
 
 /* body */
 
-.base {
+.functional .base {
     background: white;
     padding: 2.521px 9.076px 2.521px 12.605px;
     margin-bottom: 8.571px;
@@ -103,7 +104,7 @@ section {
     /* border: 0.252px solid white; */
 }
 
-.base h1 {
+.functional .base h1 {
     color: #4f90cd;
     font-weight: 800;
     display: inline-block;
@@ -113,11 +114,11 @@ section {
     margin-bottom: 3.529px;
 }
 
-.base .entry {
+.functional .base .entry {
     padding-bottom: 2.521px;
 }
 
-.base .entry * {
+.functional .base .entry * {
     font-weight: 0;
     display: block;
     padding: 0;
@@ -125,20 +126,20 @@ section {
     border: 0;
 }
 
-.base .entry h1 {
+.functional .base .entry h1 {
     font-size: 6.05px;
     line-height: 6.555px;
     color: #000;
     font-weight: 700;
 }
 
-.base .entry h3 {
+.functional .base .entry h3 {
     font-size: 5.546px;
     line-height: 6.05px;
     color: #000;
 }
 
-.base .entry span {
+.functional .base .entry span {
     display: inline-block;
     font-size: 4.034px;
     margin-top: 1.261px;
@@ -146,7 +147,7 @@ section {
     color: #4f90cd;
 }
 
-.base .entry p {
+.functional .base .entry p {
     font-size: 4.034px;
     color: #7c7c7c;
     text-align: left;
@@ -155,7 +156,7 @@ section {
 
 /* interests */
 
-.list {
+.functional .list {
     padding: 2.521px 6.303px;
     padding-left: 0;
     display: flex;
@@ -164,7 +165,7 @@ section {
     flex-wrap: wrap;
 }
 
-.list .entry {
+.functional .list .entry {
     padding: 1.513px 3.529px;
     margin-right: 2.521px;
     margin-bottom: 3.529px;
@@ -172,12 +173,12 @@ section {
     border-radius: 1.513px;
 }
 
-.interest {
+.functional .interest {
     background: white;
     border: 0.504px solid #b7b7b7;
 }
 
-.skill {
+.functional .skill {
     background: #4f90cd;
     color: white;
 }
@@ -185,11 +186,11 @@ section {
 
 /* languages */
 
-.languages {
+.functional .languages {
     padding-top: 3.782px;
 }
 
-.languages .language {
+.functional .languages .language {
     display: flex;
     justify-content: space-between;
     padding-bottom: 1.261px;
@@ -197,13 +198,218 @@ section {
     border-bottom: 0.252px solid #b7b7b7;
 }
 
-.languages .language p {
+.functional .languages .language p {
     font-size: 4.538px;
     width: 50%;
 }
 
-.languages .language .progress {
+.functional .languages .language .progress {
     width: 50%;
     height: 1.261px;
     padding: 0;
+}
+
+
+/* template 2 */
+
+.simple {
+    width: 100%;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.simple .resume {
+    max-width: 300.0px;
+    min-height: 400px;
+    margin: 0 auto;
+    background-color: white;
+    /* border: 0.252px solid #b7b7b7; */
+}
+
+
+/* basic_information */
+
+.simple .basic_information {
+    padding-top: 11.092px;
+    margin-bottom: 7.563px;
+    position: relative;
+}
+
+.simple .basic_information .heading {
+    padding: 0 12.605px;
+    margin-left: 8.571px;
+    min-height: 40.336px;
+}
+
+.simple .basic_information .heading h1 {
+    color: black;
+    font-size: 11.597px;
+    line-height: 12.101px;
+}
+
+.simple .basic_information .heading h3 {
+    color: #c62828;
+    font-size: 6.05px;
+    line-height: 6.555px;
+    padding-top: 1.513px;
+}
+
+.simple .basic_information .heading p {
+    color: black;
+    font-size: 4.538px;
+    line-height: 5.546px;
+    margin-top: 5.546px;
+}
+
+.simple .basic_information .contact_details {
+    background-color: #c62828;
+    text-align: center;
+    /* padding: 5.546px 12.605px; */
+    padding-bottom: 4.034px;
+}
+
+.simple .basic_information .contact_details a {
+    color: white;
+    padding-right: 8.571px;
+    font-size: 4.538px;
+}
+
+.simple .basic_information .contact_details img {
+    width: 7.059px;
+    height: 7.059px;
+    position: relative;
+    top: 1.513px;
+    margin-right: 2.521px;
+}
+
+
+/* body */
+
+.simple .base {
+    background: white;
+    padding: 2.521px 9.076px 2.521px 12.605px;
+    margin-bottom: 8.571px;
+    position: relative;
+    /* border: 0.252px solid white; */
+}
+
+.simple .base h1 {
+    color: #c62828;
+    font-weight: 800;
+    display: inline-block;
+    font-size: 6.555px;
+    padding-bottom: 1.008px;
+    /* border-bottom: 1.008px solid #4f90cd; */
+    margin-bottom: 3.529px;
+}
+
+.simple .base .entry {
+    padding-bottom: 2.521px;
+    position: relative;
+}
+
+.simple .base .entry * {
+    font-weight: 0;
+    display: block;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.simple .base .entry h1 {
+    font-size: 6.05px;
+    line-height: 6.555px;
+    color: #000;
+    font-weight: 700;
+}
+
+.simple .base .entry h3 {
+    font-size: 5.546px;
+    line-height: 6.05px;
+    color: #000;
+}
+
+.simple .base .entry span {
+    display: inline-block;
+    font-size: 4.034px;
+    margin-top: 1.261px;
+    font-style: italic;
+    color: #c62828;
+}
+
+.simple .base .entry p {
+    font-size: 4.034px;
+    color: #7c7c7c;
+    text-align: left;
+}
+
+
+/* interests */
+
+.simple .list {
+    padding: 2.521px 6.303px;
+    padding-left: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.simple .list .entry {
+    padding: 1.513px 3.529px;
+    margin-right: 2.521px;
+    margin-bottom: 3.529px;
+    font-size: 4.538px;
+    border-radius: 1.513px;
+}
+
+.simple .interest {
+    background: white;
+    border: 0.504px solid #b7b7b7;
+}
+
+.simple .skill {
+    background: #c62828;
+    color: white;
+}
+
+
+/* languages */
+
+.simple .languages {
+    padding-top: 3.782px;
+}
+
+.simple .line {
+    background: #c62828;
+    width: 5px;
+    height: 1px;
+    position: absolute;
+    left: -12.605px;
+    top: 0;
+}
+
+.simple .languages .language {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1.261px;
+    margin-bottom: 3.782px;
+    border-bottom: 0.252px solid #b7b7b7;
+}
+
+.simple .languages .language p {
+    font-size: 4.538px;
+    width: 50%;
+}
+
+.simple .languages .language .progress {
+    width: 50%;
+    height: 1.5 px;
+    padding: 0;
+    background: #b7b7b7;
+}
+
+.simple .progress .determinate {
+    background: #c62828;
 }

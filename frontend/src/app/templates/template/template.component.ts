@@ -9,15 +9,20 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class TemplateComponent implements OnInit {
   @Input() flag=false;
+  template='functional';
 
   resume = {};
 
   constructor(private dataService:DataService) { }
 
-  ngOnInit() {
-    this.dataService.get(this.flag).subscribe(
-      (res)=>this.resume=res,
-      (error)=>console.log("Error in Template",error)
-    );
+ async ngOnInit() {
+  this.dataService.get(this.flag).subscribe(
+    (res)=>{
+      this.resume = res;
+      this.template=this.resume['template'];
+    },
+    (err)=>{
+      console.log("PreviewTemplate ",err)
+    });
   }
 }

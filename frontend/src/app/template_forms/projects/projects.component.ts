@@ -33,7 +33,7 @@ export class ProjectsComponent implements OnInit {
       description:new FormControl('',Validators.required),
       index:new FormControl(''),
     });
-    //fetching previous data
+    // fetching previous data
     this.dataService.get(this.flag).subscribe(
       (res)=>{
         this.projects=[];

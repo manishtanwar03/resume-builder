@@ -49,7 +49,7 @@ import { DataService } from './services/data.service';
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptorService,
     multi:true
-  },RemoteStorageService,DataService,RemoteService],
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

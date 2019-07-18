@@ -17,17 +17,21 @@ export class LanguagesComponent implements OnInit {
     if(this.route.snapshot.queryParams.next!=undefined){
       this.flag=true;
     }
+    console.log("Language");
    }
 
    ngOnInit() {
       //fetching previous data
-    this.dataService.get(this.flag).subscribe(
-      (res)=>{
-        this.languages=[];
-        for(let value of res['languages'])
-          this.languages.push(value);
-      }
-    );
+      this.dataService.get(this.flag).subscribe(
+        (res)=>{
+          this.languages=[];
+          for(let value of res['languages'])
+              this.languages.push(value);
+        },
+        (err)=>{
+          console.log("LanguagesComponent ",err);
+        }
+      );
   }
 
   onEnter(language){

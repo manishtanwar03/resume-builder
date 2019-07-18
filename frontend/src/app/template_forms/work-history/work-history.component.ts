@@ -39,10 +39,13 @@ ngOnInit() {
       (res)=>{
         this.workHistory=[];
         for(let value of res['workHistory'])
-          this.workHistory.push(value);
+            this.workHistory.push(value);
+      },
+      (err)=>{
+        console.log("EducationComponent ",err);
       }
     );
-    }
+  }
 
   addData(){
     if(!!this.isEdit){

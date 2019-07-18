@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,8 +10,8 @@ import { AuthService } from '../services/auth.service';
 })
 export class  DashboardComponent implements OnInit {
   filter:String="#479099";
-
-  constructor(private router:Router,private authService:AuthService) { }
+  templates = ['functional','simple'];
+  constructor(private router:Router,private authService:AuthService,private dataService:DataService) { }
 
   ngOnInit() {
     
@@ -22,6 +23,11 @@ onSubmit()
 // filter value
 updateFilter(filter){
   this.filter = filter;
+}
+
+createResume(template){
+  this.dataService.set({'template':template},false);
+  this.router.navigate(['/resume','basic-information']);
 }
 
 }

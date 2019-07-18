@@ -21,11 +21,14 @@ export class SkillsComponent implements OnInit {
 
    ngOnInit() {
      //fetching previous data
-    this.dataService.get(this.flag).subscribe(
+     this.dataService.get(this.flag).subscribe(
       (res)=>{
         this.skills=[];
         for(let value of res['skills'])
-          this.skills.push(value);
+            this.skills.push(value);
+      },
+      (err)=>{
+        console.log("SkillsComponent ",err);
       }
     );
   }

@@ -19,6 +19,9 @@ section {
     z-index: 100;
 }
 
+
+/* template 1 */
+
 .functional {
     width: 100%;
     font-family: sans-serif;
@@ -27,64 +30,63 @@ section {
     position: relative;
 }
 
-.resume {
+.functional .resume {
     max-width: 1190px;
     min-height: 1490px;
     margin: 0 auto;
     background-color: white;
-    /* border: 1px solid #b7b7b7; */
 }
 
 
 /* basic_information */
 
-.basic_information {
+.functional .basic_information {
     padding-top: 44px;
     margin-bottom: 30px;
     background: #334458;
     position: relative;
 }
 
-.basic_information .heading {
+.functional .basic_information .heading {
     padding: 0 50px;
     margin-left: 34px;
     min-height: 160px;
 }
 
-.basic_information .heading h1 {
+.functional .basic_information .heading h1 {
     color: #fff;
     font-size: 46px;
     line-height: 48px;
 }
 
-.basic_information .heading h3 {
+.functional .basic_information .heading h3 {
     color: #4f90cd;
     font-size: 24px;
     line-height: 26px;
     padding-top: 6px;
 }
 
-.basic_information .heading p {
+.functional .basic_information .heading p {
     color: #fff;
     font-size: 18px;
     line-height: 22px;
     margin-top: 22px;
 }
 
-.basic_information .contact_details {
+.functional .basic_information .contact_details {
     background-color: #2B343F;
     text-align: center;
     padding: 22px 50px;
     padding-bottom: 16px;
 }
 
-.basic_information .contact_details a {
+.functional .basic_information .contact_details a {
     color: white;
     padding-right: 34px;
     font-size: 18px;
 }
 
-.basic_information .contact_details img {
+.functional .basic_information .contact_details img {
     width: 28px;
     height: 28px;
     position: relative;
@@ -95,15 +97,14 @@ section {
 
 /* body */
 
-.base {
+.functional .base {
     background: white;
     padding: 10px 36px 10px 50px;
     margin-bottom: 34px;
     position: relative;
-    /* border: 1px solid white; */
 }
 
-.base h1 {
+.functional .base h1 {
     color: #4f90cd;
     font-weight: 800;
     display: inline-block;
@@ -113,11 +114,11 @@ section {
     margin-bottom: 14px;
 }
 
-.base .entry {
+.functional .base .entry {
     padding-bottom: 10px;
 }
 
-.base .entry * {
+.functional .base .entry * {
     font-weight: 0;
     display: block;
     padding: 0;
@@ -125,20 +126,20 @@ section {
     border: 0;
 }
 
-.base .entry h1 {
+.functional .base .entry h1 {
     font-size: 24px;
     line-height: 26px;
     color: #000;
     font-weight: 700;
 }
 
-.base .entry h3 {
+.functional .base .entry h3 {
     font-size: 22px;
     line-height: 24px;
     color: #000;
 }
 
-.base .entry span {
+.functional .base .entry span {
     display: inline-block;
     font-size: 16px;
     margin-top: 5px;
@@ -146,7 +147,7 @@ section {
     color: #4f90cd;
 }
 
-.base .entry p {
+.functional .base .entry p {
     font-size: 16px;
     color: #7c7c7c;
     text-align: left;
@@ -155,7 +156,7 @@ section {
 
 /* interests */
 
-.list {
+.functional .list {
     padding: 10px 25px;
     padding-left: 0;
     display: flex;
@@ -164,7 +165,7 @@ section {
     flex-wrap: wrap;
 }
 
-.list .entry {
+.functional .list .entry {
     padding: 6px 14px;
     margin-right: 10px;
     margin-bottom: 14px;
@@ -172,12 +173,12 @@ section {
     border-radius: 6px;
 }
 
-.interest {
+.functional .interest {
     background: white;
     border: 2px solid #b7b7b7;
 }
 
-.skill {
+.functional .skill {
     background: #4f90cd;
     color: white;
 }
@@ -185,11 +186,11 @@ section {
 
 /* languages */
 
-.languages {
+.functional .languages {
     padding-top: 15px;
 }
 
-.languages .language {
+.functional .languages .language {
     display: flex;
     justify-content: space-between;
     padding-bottom: 5px;
@@ -197,13 +198,225 @@ section {
     border-bottom: 1px solid #b7b7b7;
 }
 
-.languages .language p {
+.functional .languages .language p {
     font-size: 18px;
     width: 50%;
 }
 
-.languages .language .progress {
+.functional .languages .language .progress {
     width: 50%;
     height: 5px;
     padding: 0;
+}
+
+
+/* template 2 */
+
+.simple {
+    /* display: none; */
+    width: 100%;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    padding: 50px 0;
+    position: relative;
+}
+
+.simple .resume {
+    max-width: 1190px;
+    min-height: 1490px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid #b7b7b7;
+}
+
+
+/* basic_information */
+
+.simple .basic_information {
+    padding-top: 44px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.simple .basic_information .heading {
+    padding: 0 50px;
+    margin-left: 34px;
+    min-height: 160px;
+}
+
+.simple .basic_information .heading h1 {
+    color: black;
+    font-size: 46px;
+    line-height: 48px;
+}
+
+.simple .basic_information .heading h3 {
+    color: #c62828;
+    font-size: 24px;
+    line-height: 26px;
+    padding-top: 6px;
+}
+
+.simple .basic_information .heading p {
+    color: black;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 22px;
+}
+
+.simple .basic_information .contact_details {
+    background-color: #c62828;
+    text-align: center;
+    padding: 22px 50px;
+    padding-bottom: 16px;
+}
+
+.simple .basic_information .contact_details a {
+    color: white;
+    padding-right: 34px;
+    font-size: 18px;
+}
+
+.simple .basic_information .contact_details img {
+    width: 28px;
+    height: 28px;
+    position: relative;
+    top: 6px;
+    margin-right: 10px;
+}
+
+
+/* body */
+
+.simple .base {
+    background: white;
+    padding: 10px 36px 10px 50px;
+    margin-bottom: 34px;
+    position: relative;
+    /* border: 1px solid white; */
+}
+
+.simple .base h1 {
+    color: #c62828;
+    font-weight: 800;
+    display: inline-block;
+    font-size: 26px;
+    padding-bottom: 4px;
+    /* border-bottom: 4px solid #4f90cd; */
+    margin-bottom: 14px;
+}
+
+.simple .base .entry {
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.simple .base .entry * {
+    font-weight: 0;
+    display: block;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.simple .base .entry h1 {
+    font-size: 24px;
+    line-height: 26px;
+    color: #000;
+    font-weight: 700;
+}
+
+.simple .base .entry h3 {
+    font-size: 22px;
+    line-height: 24px;
+    color: #000;
+}
+
+.simple .base .entry span {
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 5px;
+    font-style: italic;
+    color: #c62828;
+}
+
+.simple .base .entry p {
+    font-size: 16px;
+    color: #7c7c7c;
+    text-align: left;
+}
+
+
+/* interests */
+
+.simple .list {
+    padding: 10px 25px;
+    padding-left: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.simple .list .entry {
+    padding: 6px 14px;
+    margin-right: 10px;
+    margin-bottom: 14px;
+    font-size: 18px;
+    border-radius: 6px;
+    position: relative;
+}
+
+.simple .interest {
+    background: white;
+    border: 2px solid #b7b7b7;
+}
+
+.simple .skill {
+    background: #c62828;
+    color: white;
+}
+
+
+/* languages */
+
+.simple .languages {
+    padding-top: 15px;
+}
+
+.simple .line {
+    background: #c62828;
+    width: 24px;
+    height: 2px;
+    position: absolute;
+    left: -61px;
+    top: 5px;
+}
+
+.simple .languages .language {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #b7b7b7;
+}
+
+.simple .languages .language p {
+    font-size: 18px;
+    width: 50%;
+}
+
+.simple .languages .language .progress {
+    width: 50%;
+    height: 8px;
+    padding: 0;
+    /* margin-bottom: -5px; */
+}
+
+.simple .progress {
+    background: #b7b7b7;
+}
+
+.simple .progress .determinate {
+    background: #c62828;
 }

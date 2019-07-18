@@ -23,70 +23,9 @@
 <!-- resume templates -->
 <div>
     <div class="row">
-        <div class="template-container" id='my_id'>
-            <app-preview-template class="template"></app-preview-template>
-            <button class="btn waves-effect waves-light red" type="button" name="action" [routerLink]="['/resume','basic-information']">Create My Resume</button>
-        </div>
-        <div class="template-container">
-            <app-preview-template class="template"></app-preview-template>
-            <button class="btn waves-effect waves-light red" type="button" name="action" [routerLink]="['/resume','basic-information']">Create My Resume</button>
-        </div>
-        <div class="template-container">
-            <app-preview-template class="template"></app-preview-template>
-            <button class="btn waves-effect waves-light red" type="button" name="action" [routerLink]="['/resume','basic-information']">Create My Resume</button>
-        </div>
-        <div class="template-container">
-            <app-preview-template class="template"></app-preview-template>
-            <button class="btn waves-effect waves-light red" type="button" name="action" [routerLink]="['/resume','basic-information']">Create My Resume</button>
-        </div>
-        <div class="template-container">
-            <app-preview-template class="template"></app-preview-template>
-            <button class="btn waves-effect waves-light red" type="button" name="action" [routerLink]="['/resume','basic-information']">Create My Resume</button>
-        </div>
-        <div class=" template-container">
-            <app-preview-template class="template"></app-preview-template>
-            <button class="btn waves-effect waves-light red" type="button" name="action" [routerLink]="['/resume','basic-information']">Create My Resume</button>
-        </div>
-        <div class=" template-container">
-            <app-preview-template class="template"></app-preview-template>
-            <button class="btn waves-effect waves-light red" type="button" name="action" [routerLink]="['/resume','basic-information']">Create My Resume</button>
-        </div>
-        <div class="template-container">
-            <app-preview-template class="template"></app-preview-template>
-            <button class="btn waves-effect waves-light red" type="button" name="action" [routerLink]="['/resume','basic-information']">Create My Resume</button>
-        </div>
-
-        <div class="col template-container" id='my_id'>
-            <app-preview-template class="template"></app-preview-template>
-            <button class="btn waves-effect waves-light red" type="button" name="action" [routerLink]="['/resume','basic-information']">Create My Resume</button>
-        </div>
-        <div class="col template-container">
-            <app-preview-template class="template"></app-preview-template>
-            <button class="btn waves-effect waves-light red" type="button" name="action" [routerLink]="['/resume','basic-information']">Create My Resume</button>
-        </div>
-        <div class="col template-container">
-            <app-preview-template class="template"></app-preview-template>
-            <button class="btn waves-effect waves-light red" type="button" name="action" [routerLink]="['/resume','basic-information']">Create My Resume</button>
-        </div>
-        <div class="col template-container">
-            <app-preview-template class="template"></app-preview-template>
-            <button class="btn waves-effect waves-light red" type="button" name="action" [routerLink]="['/resume','basic-information']">Create My Resume</button>
-        </div>
-        <div class="col template-container">
-            <app-preview-template class="template"></app-preview-template>
-            <button class="btn waves-effect waves-light red" type="button" name="action" [routerLink]="['/resume','basic-information']">Create My Resume</button>
-        </div>
-        <div class="col template-container">
-            <app-preview-template class="template"></app-preview-template>
-            <button class="btn waves-effect waves-light red" type="button" name="action" [routerLink]="['/resume','basic-information']">Create My Resume</button>
-        </div>
-        <div class="col template-container">
-            <app-preview-template class="template"></app-preview-template>
-            <button class="btn waves-effect waves-light red" type="button" name="action" [routerLink]="['/resume','basic-information']">Create My Resume</button>
-        </div>
-        <div class="col template-container">
-            <app-preview-template class="template"></app-preview-template>
-            <button class="btn waves-effect waves-light red" type="button" name="action" [routerLink]="['/resume','basic-information']">Create My Resume</button>
+        <div class="template-container" id='my_id' *ngFor="let template of templates">
+            <app-preview-template class="template" [template]="template" [location]="'dashboard'"></app-preview-template>
+            <button class="btn waves-effect waves-light red" type="button" name="action" (click)="createResume(template)">Create My Resume</button>
         </div>
     </div>
 </div>

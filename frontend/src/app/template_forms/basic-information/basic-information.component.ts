@@ -18,12 +18,13 @@ export class BasicInformationComponent implements OnInit {
   flag:boolean=false;
 
   constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService,private remoteService:RemoteService,private remoteStorage:RemoteStorageService) {
+     console.log(this.route.snapshot.queryParams.next);
       if(this.route.snapshot.queryParams.next!=undefined){
         this.flag=true;
       }
    }
 
-ngOnInit() {
+async ngOnInit() {
     
     this.basicInformationForm=new FormGroup({
       firstName:new FormControl('',Validators.required),
@@ -33,9 +34,14 @@ ngOnInit() {
         phone:new FormControl(''),
         email:new FormControl('',[Validators.required,Validators.email]),
     });
+    //fetching previous data
     this.dataService.get(this.flag).subscribe(
-      (res)=>this.basicInformationForm.patchValue(res['basicInformation']),
-      (error)=>console.log("Error in basicInformationComponent",error)
+      (res)=>{
+        this.basicInformationForm.patchValue(res['basicInformation']);
+      },
+      (err)=>{
+        console.log("basicInformation ",err);
+      }
     );
   } 
 

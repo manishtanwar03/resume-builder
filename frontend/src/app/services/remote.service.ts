@@ -24,23 +24,11 @@ export class RemoteService {
 
   private    _resumeUrl = `${environment.API_URL}/resume/`;
 
-  constructor(private service:DataService,private http: HttpClient,private router:Router) { }
+  constructor(private http: HttpClient,private router:Router) { }
 
-  saveResume(resumeData)
-  { 
-    //to send resumeDetails to backend
-    this.http.post<any>(this._resumeUrl,resumeData).subscribe(
-      res=>{
-        this.router.navigate(['/resume',res['resume']]);
-      },
-      err=>{
-        this.router.navigate(['/resume']);
-        window.alert("something went wrong ");
-        console.log(err);
-      }
-    );
- }
-
+saveResume(resumeData){
+  return this.http.post<any>(this._resumeUrl,resumeData).toPromise();
+}
  loadOneResume(id){
   return this.http.get<any>(this._resumeUrl+id).toPromise();
  }
@@ -50,17 +38,11 @@ loadAllResume(){
   }
 
 updateResume(id,data){
-  this.http.put<any>(this._resumeUrl+id,data).subscribe(
-    (res)=>console.log("Resume updated"),
-    (err)=>throwError(new Error(err))
-  );
+  this.http.put<any>(this._resumeUrl+id,data).toPromise();
 }
 
 deleteResume(id){
-  this.http.delete<any>(this._resumeUrl+id).subscribe(
-    (res)=>window.alert(res),
-    (err)=>console.log(err)
-  );
+  this.http.delete<any>(this._resumeUrl+id).toPromise()
 }
 }
 

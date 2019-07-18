@@ -14,7 +14,8 @@ export class RemoteStorageService{
     'skills':[],
     'interests':[],
     'languages':[],
-    'filter':{'heading':'#334458','subheading':'#2B343F','title':'#4f90cd'}
+    'filter':{'heading':'#334458','subheading':'#2B343F','title':'#4f90cd'},
+    'template':'functional'
 };
 
 constructor() { 

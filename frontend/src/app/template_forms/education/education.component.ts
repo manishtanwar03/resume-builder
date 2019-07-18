@@ -40,7 +40,10 @@ export class EducationComponent implements OnInit {
       (res)=>{
         this.education=[];
         for(let value of res['education'])
-          this.education.push(value);
+            this.education.push(value);
+      },
+      (err)=>{
+        console.log("EducationComponent ",err);
       }
     );
   }
