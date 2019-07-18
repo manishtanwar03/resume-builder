@@ -38,28 +38,28 @@
                     <div class="col s12">
                         <!-- if work history not present -->
                         <div class="base" *ngIf="!resume?.workHistory || resume?.workHistory?.length==0">
-                            <h1>WORK EXPERIENCE</h1>
+                            <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">WORK EXPERIENCE</h1>
                             <div class="entry">
                                 <h1>Position</h1>
                                 <h3>Company</h3>
-                                <span>start_date</span>
-                                <span> - </span>
-                                <span>end_date</span>
+                                <span [ngStyle]="{'color':resume?.filter?.subheading}">start_date</span>
+                                <span [ngStyle]="{'color':resume?.filter?.subheading}"> - </span>
+                                <span [ngStyle]="{'color':resume?.filter?.subheading}">end_date</span>
                                 <p>This is Description</p>
                             </div>
                         </div>
                         <!-- if work history present -->
                         <div class="base" *ngIf="resume?.workHistory?.length>0 ">
-                            <h1>WORK EXPERIENCE</h1>
+                            <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">WORK EXPERIENCE</h1>
                             <div class="entry" *ngFor="let work of resume?.workHistory">
                                 <h1 *ngIf="work?.job_title">{{ work?.job_title |titlecase }}</h1>
                                 <h3 *ngIf="work?.employer">{{ work?.employer |titlecase }}</h3>
-                                <span *ngIf="work?.start_day">{{ work?.start_day}}/</span>
-                                <span *ngIf="work?.start_month">{{ work?.start_month }}/</span>
-                                <span *ngIf="work?.start_year">{{ work?.start_year }} - </span>
-                                <span *ngIf="work?.end_day">{{ work?.end_day }}/</span>
-                                <span *ngIf="work?.end_month">{{ work?.end_month }}/</span>
-                                <span *ngIf="work?.end_year">{{ work?.end_year }}</span>
+                                <span *ngIf="work?.start_day" [ngStyle]="{'color':resume?.filter?.subheading}">{{ work?.start_day}}/</span>
+                                <span *ngIf="work?.start_month" [ngStyle]="{'color':resume?.filter?.subheading}">{{ work?.start_month }}/</span>
+                                <span *ngIf="work?.start_year" [ngStyle]="{'color':resume?.filter?.subheading}">{{ work?.start_year }} - </span>
+                                <span *ngIf="work?.end_day" [ngStyle]="{'color':resume?.filter?.subheading}">{{ work?.end_day }}/</span>
+                                <span *ngIf="work?.end_month" [ngStyle]="{'color':resume?.filter?.subheading}">{{ work?.end_month }}/</span>
+                                <span *ngIf="work?.end_year" [ngStyle]="{'color':resume?.filter?.subheading}">{{ work?.end_year }}</span>
                                 <p *ngIf="work?.description">{{ work?.description |titlecase }}</p>
                             </div>
                         </div>
@@ -70,28 +70,28 @@
                     <div class="col s12">
                         <!-- if education not avaiable -->
                         <div class="base" *ngIf="!resume?.education || resume?.education?.length==0">
-                            <h1>EDUCATION</h1>
+                            <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">EDUCATION</h1>
                             <div class="entry">
-                                <h1>School Name <span>| Location</span></h1>
+                                <h1>School Name <span [ngStyle]="{'color':resume?.filter?.subheading}">| Location</span></h1>
                                 <h3>Degree</h3>
-                                <span>start_date</span>
-                                <span> - </span>
-                                <span>end_date</span>
+                                <span [ngStyle]="{'color':resume?.filter?.subheading}">start_date</span>
+                                <span [ngStyle]="{'color':resume?.filter?.subheading}"> - </span>
+                                <span [ngStyle]="{'color':resume?.filter?.subheading}">end_date</span>
                                 <p>This is Description</p>
                             </div>
                         </div>
                         <!-- if education present -->
                         <div class="base" *ngIf="resume?.education?.length>0">
-                            <h1>Education</h1>
+                            <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">Education</h1>
                             <div class="entry" *ngFor="let school of resume?.education">
-                                <h1 *ngIf="school?.schoolName">{{ school?.schoolName |titlecase }} <span *ngIf="school?.location">| {{school?.location |titlecase}}</span></h1>
+                                <h1 *ngIf="school?.schoolName">{{ school?.schoolName |titlecase }} <span *ngIf="school?.location" [ngStyle]="{'color':resume?.filter?.subheading}">| {{school?.location |titlecase}}</span></h1>
                                 <h3 *ngIf="school?.degree">{{ school?.degree |titlecase }}</h3>
-                                <span *ngIf="school?.start_day">{{ school?.start_day}}/</span>
-                                <span *ngIf="school?.start_month">{{ school?.start_month }}/</span>
-                                <span *ngIf="school?.start_year">{{ school?.start_year }} - </span>
-                                <span *ngIf="school?.end_day">{{ school?.end_day }}/</span>
-                                <span *ngIf="school?.end_month">{{ school?.end_month }}/</span>
-                                <span *ngIf="school?.end_year">{{ school?.end_year }}</span>
+                                <span *ngIf="school?.start_day" [ngStyle]="{'color':resume?.filter?.subheading}">{{ school?.start_day}}/</span>
+                                <span *ngIf="school?.start_month" [ngStyle]="{'color':resume?.filter?.subheading}">{{ school?.start_month }}/</span>
+                                <span *ngIf="school?.start_year" [ngStyle]="{'color':resume?.filter?.subheading}">{{ school?.start_year }} - </span>
+                                <span *ngIf="school?.end_day" [ngStyle]="{'color':resume?.filter?.subheading}">{{ school?.end_day }}/</span>
+                                <span *ngIf="school?.end_month" [ngStyle]="{'color':resume?.filter?.subheading}">{{ school?.end_month }}/</span>
+                                <span *ngIf="school?.end_year" [ngStyle]="{'color':resume?.filter?.subheading}">{{ school?.end_year }}</span>
                                 <p *ngIf="school?.description">{{ school?.description |titlecase }}</p>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                     <div class="col s12">
                         <!-- if not present -->
                         <div class="base" *ngIf="!resume?.interests || resume?.interests?.length==0">
-                            <h1>INTERESTS</h1>
+                            <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">INTERESTS</h1>
                             <!-- interests here -->
                             <div class="list">
                                 <div class="entry interest">Interest</div>
@@ -110,7 +110,7 @@
                         </div>
                         <!-- if present -->
                         <div class="base" *ngIf="resume?.interests?.length>0">
-                            <h1>INTERESTS</h1>
+                            <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">INTERESTS</h1>
                             <!-- interests here -->
                             <div class="list">
                                 <div class="entry interest" *ngFor="let interest of resume?.interests">{{ interest | titlecase }}</div>
@@ -127,26 +127,26 @@
                     <div class="col s12">
                         <!-- if projects not available -->
                         <div class="base" *ngIf="!resume?.projects || resume?.projects?.length==0">
-                            <h1>PERSONAL PROJECTS</h1>
+                            <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">PERSONAL PROJECTS</h1>
                             <div class="entry">
                                 <h1>Project Title</h1>
-                                <span>start_date</span>
-                                <span> - </span>
-                                <span>end_date</span>
+                                <span [ngStyle]="{'color':resume?.filter?.subheading}">start_date</span>
+                                <span [ngStyle]="{'color':resume?.filter?.subheading}"> - </span>
+                                <span [ngStyle]="{'color':resume?.filter?.subheading}">end_date</span>
                                 <p>This is Description</p>
                             </div>
                         </div>
                         <!-- if projects present -->
                         <div class="base" *ngIf="resume?.projects?.length>0">
-                            <h1>PERSONAL PROJECTS</h1>
+                            <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">PERSONAL PROJECTS</h1>
                             <div class="entry" *ngFor="let project of resume?.projects">
-                                <h1 *ngIf="project?.projectTitle">{{ project?.projectTitle |titlecase }}</h1>
-                                <span *ngIf="project?.start_day">{{ project?.start_day}}/</span>
-                                <span *ngIf="project?.start_month">{{ project?.start_month }}/</span>
-                                <span *ngIf="project?.start_year">{{ project?.start_year }} - </span>
-                                <span *ngIf="project?.end_day">{{ project?.end_day }}/</span>
-                                <span *ngIf="project?.end_month">{{ project?.end_month }}/</span>
-                                <span *ngIf="project?.end_year">{{ project?.end_year }}</span>
+                                <h1 *ngIf="project?.projectTitle" [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">{{ project?.projectTitle |titlecase }}</h1>
+                                <span *ngIf="project?.start_day" [ngStyle]="{'color':resume?.filter?.subheading}">{{ project?.start_day}}/</span>
+                                <span *ngIf="project?.start_month" [ngStyle]="{'color':resume?.filter?.subheading}">{{ project?.start_month }}/</span>
+                                <span *ngIf="project?.start_year" [ngStyle]="{'color':resume?.filter?.subheading}">{{ project?.start_year }} - </span>
+                                <span *ngIf="project?.end_day" [ngStyle]="{'color':resume?.filter?.subheading}">{{ project?.end_day }}/</span>
+                                <span *ngIf="project?.end_month" [ngStyle]="{'color':resume?.filter?.subheading}">{{ project?.end_month }}/</span>
+                                <span *ngIf="project?.end_year" [ngStyle]="{'color':resume?.filter?.subheading}">{{ project?.end_year }}</span>
                                 <p *ngIf="project?.description">{{ project?.description |titlecase }}</p>
                             </div>
                         </div>
@@ -157,18 +157,18 @@
                     <div class="col s12">
                         <!-- if skill not present -->
                         <div class="base" *ngIf="!resume?.skills || resume?.skills?.length==0">
-                            <h1>SKILLS</h1>
+                            <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">SKILLS</h1>
                             <!-- skills here -->
                             <div class="list">
-                                <div class="entry skill">Skill</div>
+                                <div class="entry skill" [ngStyle]="{'background':resume?.filter?.subheading}">Skill</div>
                             </div>
                         </div>
                         <!-- if skill present -->
                         <div class="base" *ngIf="resume?.skills?.length>0">
-                            <h1>SKILLS</h1>
+                            <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">SKILLS</h1>
                             <!-- skills here -->
                             <div class="list">
-                                <div class="entry skill" *ngFor="let skill of resume?.skills">{{ skill | titlecase }}</div>
+                                <div class="entry skill" *ngFor="let skill of resume?.skills" [ngStyle]="{'background':resume?.filter?.subheading}">{{ skill | titlecase }}</div>
                             </div>
                         </div>
                     </div>
@@ -178,26 +178,26 @@
                     <div class="col s12">
                         <!-- if language not present -->
                         <div class="base" *ngIf="!resume?.languages || resume?.languages?.length==0">
-                            <h1>LANGUAGES</h1>
+                            <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">LANGUAGES</h1>
                             <!-- languages here -->
                             <div class="languages">
                                 <div class="language">
                                     <p>Language</p>
                                     <div class="progress">
-                                        <div class="determinate" style="width: 70%"></div>
+                                        <div class="determinate" style="width: 70%" [ngStyle]="{'background':resume?.filter?.subheading}"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- if language present -->
                         <div class="base" *ngIf="resume?.languages?.length>0">
-                            <h1>LANGUAGES</h1>
+                            <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">LANGUAGES</h1>
                             <!-- languages here -->
                             <div class="languages">
                                 <div class="language" *ngFor="let language of resume?.languages">
                                     <p>{{ language.language | titlecase }}</p>
                                     <div class="progress">
-                                        <div class="determinate" [ngStyle]="{ 'width':language?.value + '%'}"></div>
+                                        <div class="determinate" [ngStyle]="{ 'width':language?.value + '%', 'background':resume?.filter?.subheading}"></div>
                                     </div>
                                 </div>
                             </div>

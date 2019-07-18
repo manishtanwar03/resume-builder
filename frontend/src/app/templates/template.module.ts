@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { FinalTemplateComponent } from './final-template/final-template.component';
+import { DashboardModule } from '../dashboard/dashboard.module';
 @NgModule({
     declarations:[
         TemplateComponent,
@@ -16,7 +17,7 @@ import { FinalTemplateComponent } from './final-template/final-template.componen
     imports:[
         CommonModule,
         RouterModule,
-        PDFExportModule
+        PDFExportModule,
     ],
     exports:[
         TemplateComponent,
