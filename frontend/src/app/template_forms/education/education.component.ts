@@ -63,6 +63,7 @@ export class EducationComponent implements OnInit {
 
   editMe(index){
     this.isEdit = index;
+    delete this.education[index-1]['_id'];
     this.educationForm.setValue(this.education[index-1]);
   }
 

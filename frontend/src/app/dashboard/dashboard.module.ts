@@ -5,16 +5,16 @@ import { DashboardModuleRouting } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { MzButtonModule, MzInputModule } from 'ngx-materialize';
 import { TemplateModule } from '../templates/template.module';
-import { FiltersComponent } from './filters/filters.component';
+import { FiltersComponent } from '../shared/filters/filters.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SavedResumesComponent } from './saved-resumes/saved-resumes.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
     declarations:[
         DashboardComponent,
-        FiltersComponent,
         NavbarComponent,
         SavedResumesComponent,
     ],
@@ -25,6 +25,7 @@ import { SavedResumesComponent } from './saved-resumes/saved-resumes.component';
         MzInputModule,
         DashboardModuleRouting,
         TemplateModule,
+        SharedModule
         
     ],
     providers:[]
