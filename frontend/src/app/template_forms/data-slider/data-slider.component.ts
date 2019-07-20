@@ -17,6 +17,7 @@ export class DataSliderComponent implements OnInit {
   }
 
   onEdit(index){
+    console.log(index);
     this.editMe.emit(index+1);
   }
   onDelete(index){

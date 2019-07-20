@@ -25,6 +25,7 @@
     "angular-webstorage-service": "^1.0.2",
     "froala-editor": "^3.0.2",
     "jquery": "^3.4.1",
+    "moment": "^2.24.0",
     "ngx-cookie-service": "^2.2.0",
     "ngx-export-as": "^1.2.5",
     "ngx-materialize": "^6.1.3",

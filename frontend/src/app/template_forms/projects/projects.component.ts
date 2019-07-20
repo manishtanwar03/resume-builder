@@ -31,7 +31,6 @@ export class ProjectsComponent implements OnInit {
       end_month:new FormControl('',Validators.required),
       end_year:new FormControl('',Validators.required),
       description:new FormControl('',Validators.required),
-      index:new FormControl(''),
     });
     // fetching previous data
     this.dataService.get(this.flag).subscribe(
@@ -52,11 +51,13 @@ export class ProjectsComponent implements OnInit {
       this.projects.push(this.projectForm.value);
     }
     this.projectForm.reset();
+    console.log(this.projects);
     this.dataService.set({'projects':this.projects},this.flag);
   }
 
   editMe(index){
     this.isEdit = index;
+    delete this.projects[index-1]['_id'];
     this.projectForm.setValue(this.projects[index-1]);
   }
 

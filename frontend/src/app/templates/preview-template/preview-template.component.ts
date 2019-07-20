@@ -14,7 +14,7 @@ export class PreviewTemplateComponent implements OnInit {
   @Input() template='functional';
   @Input() location;
   resume = {};
-  constructor(private dataService:DataService,private remoteService:RemoteService,private route:ActivatedRoute) { 
+  constructor(private dataService:DataService,private remoteService:RemoteService) { 
   }
 
   async ngOnInit() {;

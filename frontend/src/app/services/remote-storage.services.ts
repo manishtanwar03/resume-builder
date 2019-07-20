@@ -46,5 +46,4 @@ getOne(KEY){
   let temp  = JSON.parse(localStorage.getItem('remote_'+KEY));
   return temp==undefined?this.Data[KEY]:temp;
 }
-
 }

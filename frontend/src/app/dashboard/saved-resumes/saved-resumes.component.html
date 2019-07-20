@@ -8,7 +8,7 @@
                 <app-preview-template [resumeId]="resume._id" [location]="'saved'" class="template"></app-preview-template>
                 <div class="overlay">
                     <div class="controls">
-                        <div class="text">Modified on: <br> Yesterday 01:20</div>
+                        <div class="text">Modified: {{ resume?.modified_on | titlecase }}</div>
                     </div>
                     <!-- <div class="delete">
                         <a class="btn-floating red"><i class="material-icons">delete</i></a>

@@ -1,6 +1,7 @@
 'use strict'
 const mongoose = require('mongoose');
 
+
 const Resume = new mongoose.Schema({
     basicInformation: {
         firstName: {
@@ -146,7 +147,6 @@ const Resume = new mongoose.Schema({
     },
     modified_on: {
         type: Date,
-        default: Date.now
     },
     filter: {},
     template: String,
@@ -155,6 +155,7 @@ const Resume = new mongoose.Schema({
         ref: 'User'
     }
 });
+
 
 const Resume_Model = mongoose.model('ResumeDetails', Resume);
 module.exports = Resume_Model;

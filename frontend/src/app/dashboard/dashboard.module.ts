@@ -9,6 +9,8 @@ import { FiltersComponent } from './filters/filters.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SavedResumesComponent } from './saved-resumes/saved-resumes.component';
 
+
+
 @NgModule({
     declarations:[
         DashboardComponent,
@@ -22,8 +24,10 @@ import { SavedResumesComponent } from './saved-resumes/saved-resumes.component';
         MzButtonModule,
         MzInputModule,
         DashboardModuleRouting,
-        TemplateModule
-    ]
+        TemplateModule,
+        
+    ],
+    providers:[]
 })
 export class DashboardModule {
 

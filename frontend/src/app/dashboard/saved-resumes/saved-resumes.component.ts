@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RemoteService } from 'src/app/services/remote.service';
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-saved-resumes',
@@ -8,13 +9,16 @@ import { RemoteService } from 'src/app/services/remote.service';
 })
 export class SavedResumesComponent implements OnInit {
   resumes =null;
-  constructor(private remoteService:RemoteService) { }
-
+  constructor(private remoteService:RemoteService) { 
+  }
   async ngOnInit() {
     try{
       let data = await this.remoteService.loadAllResume();
       if(data)
-        this.resumes=data;
+      this.resumes=data.map((resume)=>{
+        resume['modified_on']=moment(resume['modified_on']).fromNow();
+        return resume;
+      });
     }
     catch(err){
       console.log(err);
