@@ -66,6 +66,23 @@ export class ProjectsComponent implements OnInit {
     this.dataService.set({'projects':this.projects},this.flag);
   }
   
+  reorder(obj){
+    if((obj.index==0 && obj.move==-1) || (obj.index==this.projects.length && obj.move==1)){
+      ;
+    }
+    else{
+      let tempData = this.projects[obj.index];
+      this.projects.splice(obj.index,1);
+      if(obj.move==-1){
+        this.projects.splice(obj.index-1,0,tempData);
+      }
+      else{
+        this.projects.splice(obj.index+1,0,tempData);
+      }
+    }
+    this.dataService.set({'projects':this.projects},this.flag);
+  }
+
   nextRoute(){
     if(this.flag){
       let resumeId = this.route.snapshot.queryParams.next;

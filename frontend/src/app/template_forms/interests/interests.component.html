@@ -38,8 +38,8 @@
     </div>
 </section>
 
-<div class="navigation-back">
-    <a class="btn-floating btn-large waves-effect waves-light red" [routerLink]="['/resume','languages']"><i class="material-icons">arrow_back</i></a>
+<div class="navigation-back" *ngIf="!flag">
+    <a class="btn-floating btn-large waves-effect waves-light teal" [routerLink]="['/resume','languages']"><i class="material-icons">home</i></a>
 </div>
 
 <div class="navigation-next" *ngIf="!flag">

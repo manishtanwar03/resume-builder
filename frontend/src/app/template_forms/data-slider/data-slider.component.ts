@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class DataSliderComponent implements OnInit {
   @Output() editMe = new EventEmitter<Number>();
   @Output() deleteMe = new EventEmitter<Number>();
+  @Output() move = new EventEmitter<Object>();
   @Input() data=[];
   @Input() isEdit:Boolean=false;
 
@@ -24,4 +25,16 @@ export class DataSliderComponent implements OnInit {
     this.deleteMe.emit(index);
   }
 
+  moveUp(index){
+    this.move.emit({
+      'index':index,
+      'move':-1
+    });
+  }
+  moveDown(index){
+    this.move.emit({
+      'index':index,
+      'move':1
+    })
+  }
 }

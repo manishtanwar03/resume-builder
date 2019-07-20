@@ -14,11 +14,16 @@
                             {{ entry?.job_title}}, {{ entry?.employer}}
                         </div>
                     </div>
-                    <div class="col s1 offset-s2">
+                    <div class="col s1 offset-s1">
                         <i class="material-icons" (click)="onEdit(i)" *ngIf="!isEdit">mode_edit</i>
                     </div>
                     <div class="col s1">
                         <i class="material-icons" (click)="onDelete(i)" *ngIf="!isEdit">delete</i>
+                    </div>
+                    <div class="col s1">
+                        <!-- keyboard_arrow_up -->
+                        <i class="material-icons" style="margin-top:-10px;" (click)="moveUp(i)">keyboard_arrow_up</i>
+                        <i class="material-icons" style="margin-bottom:-15px;" (click)="moveDown(i)">keyboard_arrow_down</i>
                     </div>
                 </div>
             </div>

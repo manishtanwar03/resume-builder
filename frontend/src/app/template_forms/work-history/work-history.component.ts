@@ -71,6 +71,23 @@ ngOnInit() {
     this.dataService.set({'workHistory':this.workHistory},this.flag);
   }
 
+  reorder(obj){
+    if((obj.index==0 && obj.move==-1) || (obj.index==this.workHistory.length && obj.move==1)){
+      ;
+    }
+    else{
+      let tempData = this.workHistory[obj.index];
+      this.workHistory.splice(obj.index,1);
+      if(obj.move==-1){
+        this.workHistory.splice(obj.index-1,0,tempData);
+      }
+      else{
+        this.workHistory.splice(obj.index+1,0,tempData);
+      }
+    }
+    this.dataService.set({'workHistory':this.workHistory},this.flag);
+  }
+
   nextRoute(){
     let resumeId = this.route.snapshot.queryParams.next;
     if(this.flag){

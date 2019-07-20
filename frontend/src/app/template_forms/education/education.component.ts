@@ -72,6 +72,23 @@ export class EducationComponent implements OnInit {
     this.dataService.set({'education':this.education},this.flag);
   }
 
+  reorder(obj){
+    if((obj.index==0 && obj.move==-1) || (obj.index==this.education.length && obj.move==1)){
+      ;
+    }
+    else{
+      let tempData = this.education[obj.index];
+      this.education.splice(obj.index,1);
+      if(obj.move==-1){
+        this.education.splice(obj.index-1,0,tempData);
+      }
+      else{
+        this.education.splice(obj.index+1,0,tempData);
+      }
+    }
+    this.dataService.set({'education':this.education},this.flag);
+  }
+
   nextRoute(){
     if(this.flag){
       let resumeId = this.route.snapshot.queryParams.next;

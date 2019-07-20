@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <app-data-slider [data]='education' [isEdit]='isEdit' (editMe)='editMe($event)' (deleteMe)='deleteMe($event)'></app-data-slider>
+                        <app-data-slider [data]='education' [isEdit]='isEdit' (editMe)='editMe($event)' (deleteMe)='deleteMe($event)' (move)="reorder($event)"></app-data-slider>
                     </div>
                 </div>
                 <div class="col s4">
@@ -57,8 +57,8 @@
             </div>
         </div>
     </section>
-    <div class="navigation-back">
-        <a class="btn-floating btn-large waves-effect waves-light red" [routerLink]="['/resume','work-history']"><i class="material-icons">arrow_back</i></a>
+    <div class="navigation-back" *ngIf="!flag">
+        <a class="btn-floating btn-large waves-effect waves-light teal" [routerLink]="['/resume','work-history']"><i class="material-icons">home</i></a>
     </div>
 
     <div class="navigation-next">

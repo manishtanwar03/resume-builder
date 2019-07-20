@@ -49,8 +49,8 @@
             </div>
         </div>
     </section>
-    <div class="navigation-back">
-        <a class="btn-floating btn-large waves-effect waves-light red" [routerLink]="['/dashboard']"><i class="material-icons">arrow_back</i></a>
+    <div class="navigation-back" *ngIf="!this.flag">
+        <a class="btn-floating btn-large waves-effect waves-light teal" [routerLink]="['/dashboard']"><i class="material-icons">home</i></a>
     </div>
 
     <div class="navigation-next">

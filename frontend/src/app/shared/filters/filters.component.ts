@@ -21,7 +21,9 @@ export class FiltersComponent implements OnInit {
     {'heading':'#ED4F47','subheading':'#A10300','title':'#193042'},
   ];
   
-  constructor(private dataService:DataService) { }
+  constructor(private dataService:DataService) {
+    this.setActive(this.activeFilter);
+   }
 
   ngOnInit() {
   }
