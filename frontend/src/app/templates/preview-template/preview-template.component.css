@@ -11,6 +11,16 @@ section {
     border: 0;
 }
 
+.loader {
+    max-width: 300.0px;
+    min-height: 400px;
+    margin: 0 auto;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .download_button {
     position: fixed;
     bottom: 0;

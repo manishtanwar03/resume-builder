@@ -1,4 +1,7 @@
-<section class="layout">
+<div class="loader" *ngIf="!loadingStatus">
+    <app-loader></app-loader>
+</div>
+<section class="layout" *ngIf="loadingStatus">
     <kendo-pdf-export #pdf paperSize="A2">
         <section class="functional" *ngIf="template=='functional'">
             <section class="resume z-depth-3">
@@ -345,6 +348,6 @@
     <a class="btn-floating btn-large waves-effect waves-light teal" [routerLink]="['/dashboard']"><i class="material-icons">home</i></a>
 </div>
 
-<div class="download_button">
+<div class="download_button" *ngIf="loadingStatus">
     <a class="btn-floating btn-large waves-effect waves-light green" kendo-button (click)="pdf.saveAs('resume.pdf')"><i class="material-icons">file_download</i></a>
 </div>

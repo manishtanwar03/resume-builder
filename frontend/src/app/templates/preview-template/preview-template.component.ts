@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { RemoteService } from 'src/app/services/remote.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-preview-template',
@@ -13,7 +12,9 @@ export class PreviewTemplateComponent implements OnInit {
   @Input() flag=false;
   @Input() template='functional';
   @Input() location;
+  @Output() loadingStatus = new EventEmitter<boolean>();
   resume = {};
+  
   constructor(private dataService:DataService,private remoteService:RemoteService) { 
   }
 
@@ -21,6 +22,8 @@ export class PreviewTemplateComponent implements OnInit {
     if(this.resumeId){
       this.resume = await this.remoteService.loadOneResume(this.resumeId);
       this.template=this.resume['template'];
+      // this.loadingStatus.emit(true);
+      setTimeout(()=>this.loadingStatus.emit(true),800);
     }
     else{
       this.dataService.get(this.flag).subscribe(

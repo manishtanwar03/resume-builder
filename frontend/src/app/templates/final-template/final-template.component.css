@@ -11,6 +11,21 @@ section {
     border: 0;
 }
 
+
+/* loader start */
+
+.loader {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* loader ends */
+
 .download_button {
     position: fixed;
     bottom: 0;

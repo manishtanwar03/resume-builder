@@ -12,6 +12,7 @@ import { DataService } from 'src/app/services/data.service';
 export class FinalTemplateComponent implements OnInit {
   resume={};
   template='functional';
+  loadingStatus:boolean=false;
 
   constructor(private route:ActivatedRoute,private router:Router,private remoteService:RemoteService,private dataService:DataService) { 
   }
@@ -20,6 +21,7 @@ export class FinalTemplateComponent implements OnInit {
     this.resume = await this.remoteService.loadOneResume(this.route.snapshot.params.id)
     this.template = this.resume['template'];
     this.dataService.set(this.resume,true);
+    setTimeout(()=>this.loadingStatus=true,1200);
   }
 
   goTo(path){

@@ -9,6 +9,7 @@ import * as moment from 'moment'
 })
 export class SavedResumesComponent implements OnInit {
   resumes =null;
+  loading=0;
   constructor(private remoteService:RemoteService) { 
   }
   async ngOnInit() {
@@ -16,6 +17,7 @@ export class SavedResumesComponent implements OnInit {
       let data = await this.remoteService.loadAllResume();
       if(data)
       this.resumes=data.map((resume)=>{
+        resume['loading']=true;
         resume['modified_on']=moment(resume['modified_on']).fromNow();
         return resume;
       });
@@ -36,5 +38,9 @@ export class SavedResumesComponent implements OnInit {
         window.alert("Something went wrong, try again!")
       }
     }
+  }
+  loadingStatus(index){
+    console.log(index);
+    this.resumes[index]['loading']=false;
   }
 }
