@@ -11,7 +11,7 @@ import { DataService } from '../services/data.service';
 export class  DashboardComponent implements OnInit {
   filter:String="#479099";
   templates = ['functional','simple'];
-  constructor(private router:Router,private authService:AuthService,private dataService:DataService) { }
+  constructor(private router:Router,public authService:AuthService,private dataService:DataService) { }
 
   ngOnInit() {
     

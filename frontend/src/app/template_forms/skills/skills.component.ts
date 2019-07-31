@@ -10,7 +10,7 @@ import { RemoteStorageService } from 'src/app/services/remote-storage.services';
   styleUrls: ['./skills.component.css']
 })
 export class SkillsComponent implements OnInit {
-  private skills=[];
+  skills=[];
   flag:boolean=false;
 
   constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService,private remoteService:RemoteService,private remoteStorage:RemoteStorageService) {

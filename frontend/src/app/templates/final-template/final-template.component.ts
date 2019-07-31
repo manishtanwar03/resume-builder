@@ -13,7 +13,7 @@ export class FinalTemplateComponent implements OnInit {
   resume={};
   template='functional';
   loadingStatus:boolean=false;
-
+  font=null;
   constructor(private route:ActivatedRoute,private router:Router,private remoteService:RemoteService,private dataService:DataService) { 
   }
 
@@ -26,5 +26,25 @@ export class FinalTemplateComponent implements OnInit {
 
   goTo(path){
     this.router.navigate(['/resume',path],{queryParams:{next:this.route.snapshot.params.id}});
+  }
+
+  updateFilter(filter){
+    this.resume['filter']=filter;
+  }
+
+  setFont(font){
+    this.resume['font']=font;
+  }
+
+  async saveChanges(){
+    //save changes
+    try{
+      console.log(this.resume['_id'],this.resume['font']);
+      let result = await this.remoteService.updateResume(this.resume['_id'],this.resume);
+    }
+    catch(err){
+      console.log("Error Occurred",err);
+      this.router.navigate(['/resume',this.resume['_id']]);
+    }
   }
 }

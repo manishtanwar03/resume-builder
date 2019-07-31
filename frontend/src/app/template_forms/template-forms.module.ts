@@ -17,9 +17,11 @@ import { TemplateModule } from '../templates/template.module';
 import { DataSliderComponent } from './data-slider/data-slider.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptorService } from '../services/token-interceptor.service';
+import { TemplateFormsComponent } from './template-forms.component';
 
 @NgModule({
     declarations:[
+        TemplateFormsComponent,
         BasicInformationComponent,
         WorkHistoryComponent,
         EducationComponent,

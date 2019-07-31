@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { DataService } from './data.service';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +16,8 @@ export class RemoteService {
     'skills':[],
     'interests':[],
     'languages':[],
-    'filter':{'heading':'#334458','subheading':'#2B343F','title':'#4f90cd'}
+    'filter':{'heading':'#334458','subheading':'#2B343F','title':'#4f90cd'},
+    'font':'default'
 };
 
 

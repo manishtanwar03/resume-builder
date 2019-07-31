@@ -150,6 +150,7 @@ const Resume = new mongoose.Schema({
     },
     filter: {},
     template: String,
+    font: String,
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

@@ -80,13 +80,11 @@ export class InterestsComponent implements OnInit,OnDestroy {
               }
             }
           );
+        this.subs2.unsubscribe();
     }
   }
   ngOnDestroy(){
     // console.log("destroy called");
     this.subs1.unsubscribe()
-    if(!this.flag){
-      this.subs2.unsubscribe()
-    }
   }
 }

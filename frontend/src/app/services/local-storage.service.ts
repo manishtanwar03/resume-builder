@@ -14,8 +14,9 @@ export class LocalStorageService{
     'skills':[],
     'interests':[],
     'languages':[],
-    'filter':{'heading':'#334458','subheading':'#2B343F','title':'#4f90cd'},
-    'template':'functional'
+    'filter':{'index':0,'heading':'#334458','subheading':'#2B343F','title':'#4f90cd'},
+    'template':'functional',
+    'font':'default'
 };
 
 constructor() { 

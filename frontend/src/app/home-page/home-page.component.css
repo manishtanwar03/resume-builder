@@ -13,7 +13,7 @@
 
 .parrallex .text {
     text-align: center;
-    font-size: 6em;
+    font-size: 10vw !important;
     font-weight: 600;
     /* color: white; */
     background: url('../../assets/home/home_p.png');

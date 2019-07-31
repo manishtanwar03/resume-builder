@@ -5,12 +5,13 @@ const user = require('./routes/user'); //2   telling server to use user route
 const cors = require('cors');
 
 
-const port = 9000;
-const app = express(); //1.instance of expree
+const port = process.env.PORT // port server will listen on
+
+const app = express(); //1.instance of express
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb://127.0.0.1:27017/rizoom", { useNewUrlParser: true }) // this returns promise
+mongoose.connect(process.env.DB_HOST, { useNewUrlParser: true }) // this returns promise
     .then(() => console.log("Connected to Mongodb"))
     .catch(() => console.log("Could not connect to Mongodb"));
 

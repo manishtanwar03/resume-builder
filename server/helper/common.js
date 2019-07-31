@@ -1,7 +1,8 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const secret = 'cGFzc3dvcmRwYXNzd29yZAo';
+const secret = process.env.SECERT
+console.log(secret);
 
 function generateHash(password) {
     return bcrypt.hashSync(password);
