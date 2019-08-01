@@ -4,7 +4,6 @@ const resume = require('./routes/resume');
 const user = require('./routes/user'); //2   telling server to use user route 
 const cors = require('cors');
 
-
 const port = process.env.PORT // port server will listen on
 
 const app = express(); //1.instance of express

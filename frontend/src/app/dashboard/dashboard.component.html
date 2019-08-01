@@ -2,7 +2,13 @@
 <app-navbar></app-navbar>
 
 <!-- saved resumes -->
-<app-saved-resumes *ngIf="authService.loggedIn()"></app-saved-resumes>
+<app-saved-resumes *ngIf="authService.loggedIn()">
+    <div class="template my_content">
+        <i class="medium material-icons">description</i>
+        <h1>My Content</h1>
+        <p>Place for your frequently used data</p>
+    </div>
+</app-saved-resumes>
 
 <!-- resume templates -->
 

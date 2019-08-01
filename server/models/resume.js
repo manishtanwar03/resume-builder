@@ -45,13 +45,13 @@ const Resume = new mongoose.Schema({
             lowercase: true,
         },
         start_day: {
-            type: String, // date
+            type: String,
         },
         start_month: {
-            type: String, // date
+            type: String,
         },
         start_year: {
-            type: String, // date
+            type: String,
         },
         end_day: {
             type: String,
@@ -99,8 +99,8 @@ const Resume = new mongoose.Schema({
             lowercase: true,
         }
     }],
-    skills: [String], //validator required
-    interests: [String], // validator required
+    skills: [String],
+    interests: [String],
     languages: [{
         language: {
             type: String,
