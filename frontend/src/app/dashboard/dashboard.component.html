@@ -3,7 +3,7 @@
 
 <!-- saved resumes -->
 <app-saved-resumes *ngIf="authService.loggedIn()">
-    <div class="template my_content">
+    <div class="template my_content" [routerLink]="['/resume','basic-information']" [queryParams]="{'my_content':true}">
         <i class="medium material-icons">description</i>
         <h1>My Content</h1>
         <p>Place for your frequently used data</p>

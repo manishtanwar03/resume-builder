@@ -14,23 +14,24 @@ import { Subscription } from 'rxjs';
 export class InterestsComponent implements OnInit,OnDestroy {
   public interests=[];
   flag:boolean=false;
+  templates:boolean=true;
   subs1:Subscription;
   subs2:Subscription;
-  mySub;
+
+
   constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService,private remoteService:RemoteService,private remoteStorage:RemoteStorageService) {
     if(this.route.snapshot.queryParams.next!=undefined){
       this.flag=true;
     }
-    console.log("interesCOnst")
+    else if(this.route.snapshot.queryParams['my_content']){
+      this.templates=false;
+    }
   }
    
   ngOnInit() {
     //fetching previous data
-    console.log("InterOuter");
-
-    this.subs1= this.dataService.get(this.flag).subscribe(
+    this.subs1= this.dataService.get(this.flag,!this.templates).subscribe(
       (res)=>{
-        console.log("InterInnner");
         this.interests=[];
         for(let value of res['interests'])
             this.interests.push(value);
@@ -47,12 +48,12 @@ export class InterestsComponent implements OnInit,OnDestroy {
     if(interest && !this.interests.includes(interest)){
       this.interests.push(interest);
     }
-    this.dataService.set({'interests':this.interests},this.flag);
+    this.dataService.set({'interests':this.interests},this.flag,!this.templates);
   }
 
   removeMe(id){
     this.interests.splice(id,1);
-    this.dataService.set({'interests':this.interests},this.flag);
+    this.dataService.set({'interests':this.interests},this.flag,!this.templates);
   }
 
   async nextRoute(){
@@ -68,7 +69,7 @@ export class InterestsComponent implements OnInit,OnDestroy {
       }
     }
     else{
-         this.subs2= this.dataService.get(this.flag).subscribe(
+         this.subs2= this.dataService.get(this.flag,!this.templates).subscribe(
             async (res)=>{
               try{
                 let response = await this.remoteService.saveResume(res);

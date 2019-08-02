@@ -12,16 +12,20 @@ import { RemoteStorageService } from 'src/app/services/remote-storage.services';
 export class SkillsComponent implements OnInit {
   skills=[];
   flag:boolean=false;
+  templates:boolean=true;
 
   constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService,private remoteService:RemoteService,private remoteStorage:RemoteStorageService) {
     if(this.route.snapshot.queryParams.next!=undefined){
       this.flag=true;
     }
+    else if(this.route.snapshot.queryParams['my_content']){
+      this.templates=false;
+    }
   }
 
    ngOnInit() {
      //fetching previous data
-     this.dataService.get(this.flag).subscribe(
+     this.dataService.get(this.flag,!this.templates).subscribe(
       (res)=>{
         this.skills=[];
         for(let value of res['skills'])
@@ -39,12 +43,12 @@ export class SkillsComponent implements OnInit {
     if(skill && !this.skills.includes(skill)){
       this.skills.push(skill);
     }
-    this.dataService.set({'skills':this.skills},this.flag);
+    this.dataService.set({'skills':this.skills},this.flag,!this.templates);
   }
 
   removeMe(id){
     this.skills.splice(id,1);
-    this.dataService.set({'skills':this.skills},this.flag);
+    this.dataService.set({'skills':this.skills},this.flag,!this.templates);
   }
 
   nextRoute(){
@@ -58,6 +62,9 @@ export class SkillsComponent implements OnInit {
       catch(err){
         window.alert(err);
       }
+    }
+    else if(!this.templates){
+      this.router.navigate(['/resume','languages'],{queryParams:{'my_content':true}});
     }
     else{
     this.router.navigate(['/resume','languages']);

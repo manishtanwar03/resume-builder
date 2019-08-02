@@ -15,10 +15,14 @@ export class WorkHistoryComponent implements OnInit {
   workHistory=[];
   isEdit=null;
   flag:boolean=false;
+  templates:boolean=true;
 
   constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService,private remoteService:RemoteService,private remoteStorage:RemoteStorageService) { 
     if(this.route.snapshot.queryParams.next!=undefined){
       this.flag=true;
+    }
+    else if(this.route.snapshot.queryParams['my_content']){ 
+      this.templates=false;
     }
   }
 
@@ -35,7 +39,7 @@ ngOnInit() {
         description:new FormControl('',Validators.required),
     });
     //fetching previous data
-    this.dataService.get(this.flag).subscribe(
+    this.dataService.get(this.flag,!this.templates).subscribe(
       (res)=>{
         this.workHistory=[];
         for(let value of res['workHistory'])
@@ -56,7 +60,7 @@ ngOnInit() {
       this.workHistory.push(this.workHistoryForm.value);
     }
     this.workHistoryForm.reset();
-    this.dataService.set({'workHistory':this.workHistory},this.flag);
+    this.dataService.set({'workHistory':this.workHistory},this.flag,!this.templates);
   }
 
   editMe(index){
@@ -68,7 +72,7 @@ ngOnInit() {
 
   deleteMe(index){
     this.workHistory.splice(index,1);
-    this.dataService.set({'workHistory':this.workHistory},this.flag);
+    this.dataService.set({'workHistory':this.workHistory},this.flag,!this.templates);
   }
 
   reorder(obj){
@@ -85,12 +89,12 @@ ngOnInit() {
         this.workHistory.splice(obj.index+1,0,tempData);
       }
     }
-    this.dataService.set({'workHistory':this.workHistory},this.flag);
+    this.dataService.set({'workHistory':this.workHistory},this.flag,!this.templates);
   }
 
   nextRoute(){
     let resumeId = this.route.snapshot.queryParams.next;
-    if(this.flag){
+      if(this.flag){
       let resumeData = this.remoteStorage.get();
       try{
       this.remoteService.updateResume(resumeId,resumeData);
@@ -99,6 +103,9 @@ ngOnInit() {
       catch(err){
         window.alert(err);
       }
+    }
+    else if(!this.templates){
+      this.router.navigate(['/resume','education'],{queryParams:{my_content:true}});
     }
     else{
     this.router.navigate(['/resume','education']);

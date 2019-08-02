@@ -16,11 +16,13 @@ export class BasicInformationComponent implements OnInit {
 
   basicInformationForm:FormGroup=null;
   flag:boolean=false;
-
+  templates:boolean=true;
   constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService,private remoteService:RemoteService,private remoteStorage:RemoteStorageService) {
-     console.log(this.route.snapshot.queryParams.next);
       if(this.route.snapshot.queryParams.next!=undefined){
         this.flag=true;
+      }
+      else if(this.route.snapshot.queryParams['my_content']){
+        this.templates=false;
       }
    }
 
@@ -35,7 +37,7 @@ async ngOnInit() {
         email:new FormControl('',[Validators.required,Validators.email]),
     });
     //fetching previous data
-    this.dataService.get(this.flag).subscribe(
+    this.dataService.get(this.flag,!this.templates).subscribe(
       (res)=>{
         this.basicInformationForm.patchValue(res['basicInformation']);
       },
@@ -46,7 +48,7 @@ async ngOnInit() {
   } 
 
 update(){
-  this.dataService.set({'basicInformation':this.basicInformationForm.value},this.flag);
+  this.dataService.set({'basicInformation':this.basicInformationForm.value},this.flag,!this.templates);
 } 
 
 nextRoute(){
@@ -60,6 +62,9 @@ nextRoute(){
     catch(err){
       window.alert(err);
     }
+  }
+  else if(!this.templates){
+    this.router.navigate(['/resume','work-history'],{queryParams:{'my_content':true}});
   }
   else{
   this.router.navigate(['/resume','work-history']);

@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col s4">
+            <div class="col s4" *ngIf='templates'>
                 <div class="preview">
                     <!-- preview template here -->
                     <app-preview-template [flag]="flag" [location]="'preview'"></app-preview-template>

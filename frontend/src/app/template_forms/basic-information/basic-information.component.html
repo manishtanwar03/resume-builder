@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s4">
+                <div class="col s4" *ngIf="templates">
                     <div class="preview">
                         <app-preview-template [flag]="flag" [location]="'preview'"></app-preview-template>
                     </div>

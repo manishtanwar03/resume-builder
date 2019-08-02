@@ -16,6 +16,7 @@ export class EducationComponent implements OnInit {
   year_list=[];
   isEdit=null;
   flag:boolean=false;
+  templates:boolean=true;
 
   constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService,private remoteService:RemoteService,private remoteStorage:RemoteStorageService) { 
     for(let year=new Date().getFullYear();year!=1950;year--){
@@ -24,6 +25,9 @@ export class EducationComponent implements OnInit {
       // setting flag
   if(this.route.snapshot.queryParams.next!=undefined){
     this.flag=true;
+  }
+  else if(this.route.snapshot.queryParams['my_content']){
+    this.templates=false;
   }
 }
 
@@ -36,7 +40,7 @@ export class EducationComponent implements OnInit {
       description:new FormControl('',Validators.required),
     });
     //fetching previous data
-    this.dataService.get(this.flag).subscribe(
+    this.dataService.get(this.flag,!this.templates).subscribe(
       (res)=>{
         this.education=[];
         for(let value of res['education'])
@@ -58,7 +62,7 @@ export class EducationComponent implements OnInit {
       this.education.push(this.educationForm.value);
     }
     this.educationForm.reset();
-    this.dataService.set({'education':this.education},this.flag);
+    this.dataService.set({'education':this.education},this.flag,!this.templates);
   }
 
   editMe(index){
@@ -69,7 +73,7 @@ export class EducationComponent implements OnInit {
 
   deleteMe(index){
     this.education.splice(index,1);
-    this.dataService.set({'education':this.education},this.flag);
+    this.dataService.set({'education':this.education},this.flag,!this.templates);
   }
 
   reorder(obj){
@@ -86,7 +90,7 @@ export class EducationComponent implements OnInit {
         this.education.splice(obj.index+1,0,tempData);
       }
     }
-    this.dataService.set({'education':this.education},this.flag);
+    this.dataService.set({'education':this.education},this.flag,!this.templates);
   }
 
   nextRoute(){
@@ -100,6 +104,9 @@ export class EducationComponent implements OnInit {
       catch(err){
         window.alert(err);
       }
+    }
+    else if(!this.templates){
+      this.router.navigate(['/resume','projects'],{queryParams:{'my_content':true}});
     }
     else{
     this.router.navigate(['/resume','projects']);

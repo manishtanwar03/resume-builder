@@ -14,10 +14,14 @@ export class ProjectsComponent implements OnInit {
   projects=[];
   isEdit=null;
   flag:boolean=false;
+  templates:boolean=true;
 
   constructor(private route:ActivatedRoute,private router:Router,private dataService:DataService,private remoteService:RemoteService,private remoteStorage:RemoteStorageService) {
     if(this.route.snapshot.queryParams.next!=undefined){
       this.flag=true;
+    }
+    else if(this.route.snapshot.queryParams['my_content']){
+      this.templates=false;
     }
    }
 
@@ -33,7 +37,7 @@ export class ProjectsComponent implements OnInit {
       description:new FormControl('',Validators.required),
     });
     // fetching previous data
-    this.dataService.get(this.flag).subscribe(
+    this.dataService.get(this.flag,!this.templates).subscribe(
       (res)=>{
         this.projects=[];
         for(let value of res['projects'])
@@ -52,7 +56,7 @@ export class ProjectsComponent implements OnInit {
     }
     this.projectForm.reset();
     console.log(this.projects);
-    this.dataService.set({'projects':this.projects},this.flag);
+    this.dataService.set({'projects':this.projects},this.flag,!this.templates);
   }
 
   editMe(index){
@@ -63,7 +67,7 @@ export class ProjectsComponent implements OnInit {
 
   deleteMe(index){
     this.projects.splice(index,1);
-    this.dataService.set({'projects':this.projects},this.flag);
+    this.dataService.set({'projects':this.projects},this.flag,!this.templates);
   }
   
   reorder(obj){
@@ -80,7 +84,7 @@ export class ProjectsComponent implements OnInit {
         this.projects.splice(obj.index+1,0,tempData);
       }
     }
-    this.dataService.set({'projects':this.projects},this.flag);
+    this.dataService.set({'projects':this.projects},this.flag,!this.templates);
   }
 
   nextRoute(){
@@ -94,6 +98,9 @@ export class ProjectsComponent implements OnInit {
       catch(err){
         window.alert(err);
       }
+    }
+    else if(!this.templates){
+      this.router.navigate(['/resume','skills'],{queryParams:{'my_content':true}});
     }
     else{
     this.router.navigate(['/resume','skills']);

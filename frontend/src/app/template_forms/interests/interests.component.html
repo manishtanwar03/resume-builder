@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col s4">
+            <div class="col s4" *ngIf='templates'>
                 <div class="preview">
                     <app-preview-template [flag]="flag" [location]="'preview'"></app-preview-template>
                 </div>
@@ -41,8 +41,10 @@
 <div class="navigation-back" *ngIf="!flag">
     <a class="btn-floating btn-large waves-effect waves-light teal" routerLink="/dashboard"><i class="material-icons">home</i></a>
 </div>
-
-<div class="navigation-next" *ngIf="!flag">
+<div class="navigation-next" *ngIf="!flag && !templates">
+    <button class="waves-effect pulse btn-large green" (click)="saveMyContent()">Save</button>
+</div>
+<div class="navigation-next" *ngIf="!flag && templates">
     <button class="waves-effect pulse btn-large green" (click)="nextRoute()">Done</button>
 </div>
 <div class="navigation-next" *ngIf="flag">

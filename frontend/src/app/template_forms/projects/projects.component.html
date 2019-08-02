@@ -68,7 +68,7 @@
                         <app-data-slider (move)='reorder($event)' [data]='projects' [isEdit]='isEdit' (editMe)='editMe($event)' (deleteMe)='deleteMe($event)'></app-data-slider>
                     </div>
                 </div>
-                <div class="col s4">
+                <div class="col s4" *ngIf='templates'>
                     <div class="preview">
                         <app-preview-template [flag]="flag" [location]="'preview'"></app-preview-template>
                     </div>
