@@ -1,0 +1,35 @@
+.title{
+    border-bottom:1px solid #b7b7b7;
+    font-size:30px;
+    padding:10px 15px;
+    padding-bottom:10px;
+}
+.form{
+    width:100%;
+    /* border:1px solid red; */
+    border-bottom:1px solid #b7b7b7;
+    padding:10px 50px;
+    padding-top:50px;
+}
+.form .email{
+    float:left;
+}
+.form button{
+    margin-left:50px;
+}
+
+.people{
+    font-size:16px;
+    margin:0 !important;
+    margin-top:10px !important;
+}
+.people{
+    height:300px;
+    overflow:auto !important;
+}
+li{
+    padding:15px !important;
+}
+.people i{
+    cursor: pointer;
+}
