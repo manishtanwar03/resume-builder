@@ -9,6 +9,7 @@ import { FiltersComponent } from '../shared/filters/filters.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SavedResumesComponent } from './saved-resumes/saved-resumes.component';
 import { SharedModule } from '../shared/shared.module';
+import { SharedResumesComponent } from './shared-resumes/shared-resumes.component';
 
 
 
@@ -17,6 +18,7 @@ import { SharedModule } from '../shared/shared.module';
         DashboardComponent,
         NavbarComponent,
         SavedResumesComponent,
+        SharedResumesComponent,
     ],
     imports:[
         CommonModule,

@@ -105,7 +105,13 @@ section {
     margin: 120px 50px;
     z-index: 100;
 }
-
+.share_button{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 190px 50px;
+    z-index: 100;
+}
 .download_button {
     position: fixed;
     bottom: 0;

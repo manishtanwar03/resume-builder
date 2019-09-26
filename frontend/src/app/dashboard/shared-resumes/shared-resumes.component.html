@@ -1,0 +1,29 @@
+<div class="resumes">
+    <h1>Shared with me</h1>
+    <h3 *ngIf="resumes?.length<1">You have not created any resume yet,<br> choose a template and let's get started.</h3>
+    <!-- resume templates -->
+    <div class="saved-resumes" *ngIf="resumes?.length>0">
+        <div class="row">
+            <div class="template-container" *ngFor="let resume of resumes;let i=index">
+                <div class="loader z-depth-3" [ngStyle]="{'display':resume['loading']?'flex':'none'}">
+                    <app-loader></app-loader>
+                </div>
+                <app-preview-template [resumeId]="resume._id" [location]="'saved'" class="template" (loadingStatus)="loadingStatus(i)" [ngStyle]="{'display':resume['loading']?'none':'block'}"></app-preview-template>
+                <div class="overlay" [ngStyle]="{'display':resume['loading']?'none':'block'}">
+                    <div class="controls">
+                        <div class="text">Modified: {{ resume?.modified_on | titlecase }}</div>
+                    </div>
+                    <!-- <div class="delete">
+                                <a class="btn-floating red"><i class="material-icons">delete</i></a>
+                            </div> -->
+                    <div class="buttons">
+                        <div class="links">
+                            <a class="btn-floating teal" [routerLink]="['/resume',resume._id]"><i class="material-icons">create</i></a>
+                            <a class="btn-floating red" (click)="deleteMe(resume._id,i)"><i class="material-icons">delete</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

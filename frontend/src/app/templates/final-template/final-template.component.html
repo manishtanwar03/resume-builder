@@ -304,8 +304,11 @@
     <div class="download_button" *ngIf="loadingStatus">
         <button mz-button mz-tooltip [tooltip]="'Download Resume'" [position]="'left'" [delay]="'0'" type='button' class="btn-floating btn-large waves-effect waves-light green" kendo-button (click)="pdf.saveAs('resume.pdf')"><i class="material-icons">file_download</i></button>
     </div>
+    <div class="share_button">
+            <a mz-button mz-tooltip [tooltip]="'Share Resume'" [position]="'left'" [delay]="'0'" class="btn-floating btn-large waves-effect waves-light blue" (click)="shareResume()"><i class="material-icons">share</i></a>
+    </div>
     <div class="save_button">
-        <a mz-button mz-tooltip [tooltip]="'Save Changes'" [position]="'left'" [delay]="'0'" class="btn-floating btn-large waves-effect waves-light teal pulse" (click)="saveChanges()"><i class="material-icons">save</i></a>
+        <button mz-button mz-tooltip [tooltip]="'Save Changes'" [position]="'left'" [delay]="'0'" class="btn-floating btn-large waves-effect waves-light teal pulse" (click)="saveChanges()"><i class="material-icons">save</i></button>
     </div>
 </section>
 

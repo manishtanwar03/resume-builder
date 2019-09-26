@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { RemoteService } from 'src/app/services/remote.service';
 import { DataService } from 'src/app/services/data.service';
+import { MzModalService } from 'ngx-materialize';
+import { SharedDetailsComponent } from './../shared-details/shared-details.component';
 
 @Component({
   selector: 'app-final-template',
@@ -14,7 +16,8 @@ export class FinalTemplateComponent implements OnInit {
   template='functional';
   loadingStatus:boolean=false;
   font=null;
-  constructor(private route:ActivatedRoute,private router:Router,private remoteService:RemoteService,private dataService:DataService) { 
+  constructor(private route:ActivatedRoute,private router:Router,private remoteService:RemoteService,
+    private dataService:DataService,private modalService: MzModalService) { 
   }
 
   async ngOnInit() {
@@ -47,4 +50,8 @@ export class FinalTemplateComponent implements OnInit {
       this.router.navigate(['/resume',this.resume['_id']]);
     }
   }
+
+  shareResume(){
+    this.modalService.open(SharedDetailsComponent);
+  } 
 }
