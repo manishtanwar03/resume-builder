@@ -4,9 +4,9 @@
     <!-- resume templates -->
     <div class="saved-resumes" *ngIf="resumes?.length>0">
         <div class="row">
-            <div class="template-container z-depth-3" style='background-color:#303d46'>
+            <!-- <div class="template-container z-depth-3" style='background-color:#303d46'>
                 <ng-content></ng-content>
-            </div>
+            </div> -->
             <div class="template-container" *ngFor="let resume of resumes;let i=index">
                 <div class="loader z-depth-3" [ngStyle]="{'display':resume['loading']?'flex':'none'}">
                     <app-loader></app-loader>

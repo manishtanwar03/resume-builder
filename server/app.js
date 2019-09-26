@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const resume = require('./routes/resume');
 const user = require('./routes/user'); //2   telling server to use user route 
 const cors = require('cors');
+const content = require('./routes/content');
 
 const port = process.env.PORT // port server will listen on
 
@@ -16,7 +17,8 @@ mongoose.connect(process.env.DB_HOST, { useNewUrlParser: true }) // this returns
 
 app.use('/user', user); //2
 app.use('/resume', resume);
+// app.user('/content', content);
 
 app.listen(port, function() { //1.
-    console.log("Server running on localhost:" + port);
+    console.log("Server running on Port: " + port);
 });

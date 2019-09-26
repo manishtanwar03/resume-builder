@@ -18,6 +18,8 @@ async function addUser(req, res) {
             // 2. saving document
             let user = new User(req.body);
             let result = await user.save();
+            //creating blank content document
+            let content = new content();
 
             // 3. creating token
             let payload = { subject: result._id }
@@ -48,9 +50,9 @@ async function authUser(req, res) {
                 res.status(200).send({ token })
             } else {
                 // if passwords doesn't match
-                
+
                 res.status(402).send('invalid email or password')
-                
+
             }
         }
     } catch (error) {
