@@ -1,11 +1,13 @@
 const Resume = require('../models/resume');
-
+const ShareResumeConstructor =  require('./share-resume')['createShareResumeDocument'];
+const generateLink = require('../helper/common')['generateLink'];
 
 async function addResume(req, res) {
     try {
         req.body.modified_on = Date.now();
         let resume = new Resume(req.body);
         let result = await resume.save();
+        ShareResumeConstructor(result._id,req.body.user,generateLink(result._id),generateLink(result._id));
         res.status(200).send({ 'resume': result._id });
     } catch (error) {
         console.log("Error occurred in addResume ", error);

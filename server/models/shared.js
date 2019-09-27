@@ -4,22 +4,29 @@ const mongoose = require('mongoose');
 const Shared = new mongoose.Schema({
     resume:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'Resume'
+        ref:'ResumeDetails',
+        required:true
     },
-    shared_by:{
+    owner:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'User'
+        ref:'User',
+        required:true
     },
     shared_with:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
     }],
-    is_public:{
+    private_link:{
+        type:String,
+        default:""
+    },
+    is_public_active:{
         type:Boolean,
         default:false
     },
-    link:{
+    public_link:{
         type:String,
+        default:""
     },
 });
 
