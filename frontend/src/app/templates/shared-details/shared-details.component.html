@@ -5,17 +5,19 @@
     <mz-modal-content>
         <!-- form starts -->
         <div class="form">
-            <div class="row">
-                <div class="input-field col s8 email">
-                    <input id="email" type="email" class="validate">
-                    <label class="active" for="email">Email Address</label>
+            <form [formGroup]="shareForm" (ngSubmit)="addPerson()">
+                <div class="row">
+                    <div class="input-field col s8 email">
+                        <input id="email" type="email" class="validate" formControlName='email'>
+                        <label class="active" for="email">Email Address</label>
+                    </div>
+                    <div class="input-field col s4 button">
+                        <button class="btn waves-effect btn-large" type="submit" name="action" [disabled]="!shareForm.valid">Share
+                            <i class="material-icons right">add</i>
+                        </button>
+                    </div>
                 </div>
-                <div class="input-field col s4 button">
-                    <button class="btn waves-effect btn-large" type="submit" name="action">Share
-                        <i class="material-icons right">add</i>
-                    </button>
-                </div>
-            </div>
+            </form>
         </div>
         <!-- form ends -->
         <!-- shared with -->

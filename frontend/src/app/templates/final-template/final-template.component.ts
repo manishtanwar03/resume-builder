@@ -5,6 +5,7 @@ import { RemoteService } from 'src/app/services/remote.service';
 import { DataService } from 'src/app/services/data.service';
 import { MzModalService } from 'ngx-materialize';
 import { SharedDetailsComponent } from './../shared-details/shared-details.component';
+import { ShareResumeService } from 'src/app/services/share-resume.service';
 
 @Component({
   selector: 'app-final-template',
@@ -17,7 +18,7 @@ export class FinalTemplateComponent implements OnInit {
   loadingStatus:boolean=false;
   font=null;
   constructor(private route:ActivatedRoute,private router:Router,private remoteService:RemoteService,
-    private dataService:DataService,private modalService: MzModalService) { 
+    private dataService:DataService,private modalService: MzModalService,private shareResumeService:ShareResumeService) { 
   }
 
   async ngOnInit() {
@@ -52,6 +53,7 @@ export class FinalTemplateComponent implements OnInit {
   }
 
   shareResume(){
+    this.shareResumeService.setId(this.resume['_id']);
     this.modalService.open(SharedDetailsComponent);
   } 
 }

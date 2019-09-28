@@ -10,6 +10,7 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { FinalTemplateComponent } from './final-template/final-template.component';
 import { SharedModule } from '../shared/shared.module';
 import { SharedDetailsComponent } from './shared-details/shared-details.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 @NgModule({
     declarations:[
         TemplateComponent,
@@ -23,7 +24,9 @@ import { SharedDetailsComponent } from './shared-details/shared-details.componen
         PDFExportModule,
         SharedModule,
         MzModalModule,
-        MzTooltipModule
+        MzTooltipModule,
+        ReactiveFormsModule,
+        FormsModule
     ],
     exports:[
         TemplateComponent,
