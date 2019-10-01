@@ -23,4 +23,10 @@ export class ShareResumeService {
   shareWithPerson(data){
    return  this.http.post(this._shareURL+'share-resume',data);
   }
+  getPeopleData(id){
+    return this.http.get(this._shareURL+'share-resume/'+id);
+  }
+  removePerson(data){
+    return this.http.post(this._shareURL+'share-resume/removePerson',data);
+  }
 }

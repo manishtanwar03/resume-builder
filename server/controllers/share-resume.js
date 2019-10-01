@@ -18,7 +18,7 @@ async function getData(req, res) {
         console.log(req.body.email)
         let person = await User.findOne({ email: req.body.email });
         console.log(person);
-        let result = await Shared.find({ owner: "5d8c486a595b4d004cefe325" }).populate('resume');
+        let result = await Shared.find({ owner: "5d8c486a595b4d004cefe325" }).populate('Resume');
         res.send(result);
     }
     catch (error) {
@@ -41,15 +41,28 @@ async function shareResume(req, res) {
 }
 async function getSharedData(req, res) {
     try {
-        let result = await Shared.findOne({ owner: req.body.user, resume: req.body.resume });
-        console.log(result);
-        res.send("Done");
+        console.log(req.params.resumeId);
+        let result = await Shared.findOne({ owner: req.body.user, resume: req.params.resumeId },"shared_with").populate('shared_with','email');
+        res.status(200).send(result['shared_with']);
     }
     catch (error) {
         console.log("Error occured in getSharedData ", error);
+        res.status(500).send("Something went wrong");
+    }
+}
+async function removePerson(req,res){
+    try{
+        let result = await Shared.findOneAndUpdate({owner:req.body.user,resume:req.body.resume},{$pull:{"shared_with":req.body.person_id}});
+        res.status(200).send("Done");
+    }
+    catch(error){
+        console.log("Error occurred in RemovePerson ",error);
+        res.status(500).send("Something Went Wrong");
     }
 }
 
 module.exports.createShareResumeDocument = createShareResumeDocument;
 module.exports.getData = getData;
 module.exports.shareResume = shareResume;
+module.exports.getSharedData = getSharedData;
+module.exports.removePerson = removePerson;

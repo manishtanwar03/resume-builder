@@ -21,32 +21,14 @@
         </div>
         <!-- form ends -->
         <!-- shared with -->
-        <ul class="collection people">
-            <li class="collection-item">
-                <div>Alvin<a class="secondary-content"><i class="material-icons">close</i></a></div>
-            </li>
-            <li class="collection-item">
-                <div>Alvin<a class="secondary-content"><i class="material-icons">close</i></a></div>
-            </li>
-            <li class="collection-item">
-                <div>Alvin<a class="secondary-content"><i class="material-icons">close</i></a></div>
-            </li>
-            <li class="collection-item">
-                <div>Alvin<a class="secondary-content"><i class="material-icons">close</i></a></div>
-            </li>
-            <li class="collection-item">
-                <div>Alvin<a class="secondary-content"><i class="material-icons">close</i></a></div>
-            </li>
-            <li class="collection-item">
-                <div>Alvin<a class="secondary-content"><i class="material-icons">close</i></a></div>
-            </li>
-            <li class="collection-item">
-                <div>Alvin<a class="secondary-content"><i class="material-icons">close</i></a></div>
-            </li>
-            <li class="collection-item">
-                <div>Alvin<a class="secondary-content"><i class="material-icons">close</i></a></div>
+        <ul class="collection people" *ngIf="!loadingStatus">
+            <li class="collection-item" *ngFor="let person of people;let i=index">
+                <div>{{ person?.email }}<a class="secondary-content"><i class="material-icons" (click)="removeMe(person,i)">close</i></a></div>
             </li>
         </ul>
+        <div class="loader" *ngIf="loadingStatus">
+            <app-loader></app-loader>
+        </div>
         <!-- shared with ends -->
     </mz-modal-content>
     <mz-modal-footer>
