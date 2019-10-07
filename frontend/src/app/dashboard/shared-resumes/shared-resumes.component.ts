@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShareResumeService } from 'src/app/services/share-resume.service';
 
 @Component({
   selector: 'app-shared-resumes',
@@ -8,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 export class SharedResumesComponent implements OnInit {
   resumes =null;
   loading=0;
-  constructor() { }
+  constructor(private shareService:ShareResumeService) { }
 
-  ngOnInit() {
+ async ngOnInit() {
+   try{
+     let data = await this.shareService.fetchSharedResumes();
+     console.log(data);
+     if(data){
+      this.resumes = data.map((resume)=>{
+        resume['loading']=true;
+        return resume;
+      });
+     }
   }
-
+  catch(error){
+    console.log(error);
+  }
+ }
 }

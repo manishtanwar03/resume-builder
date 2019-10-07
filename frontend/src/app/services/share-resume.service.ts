@@ -20,6 +20,9 @@ export class ShareResumeService {
   }
 
   //fetch data
+  fetchSharedResumes(){
+    return this.http.get<[]>(this._shareURL).toPromise();
+  }
   shareWithPerson(data){
    return  this.http.post(this._shareURL+'share-resume',data);
   }

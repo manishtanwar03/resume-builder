@@ -15,10 +15,9 @@ async function createShareResumeDocument(resumeId, userId, public_link, private_
 
 async function getData(req, res) {
     try {
-        console.log(req.body.email)
-        let person = await User.findOne({ email: req.body.email });
-        console.log(person);
-        let result = await Shared.find({ owner: "5d8c486a595b4d004cefe325" }).populate('Resume');
+        let result = await Shared.find({"shared_with":{$in:[req.body.user]}},["resume","owner"]).populate("owner","email");
+        // let owner_mail = await User.findById(result['owner'],"email");
+        console.log(result);
         res.send(result);
     }
     catch (error) {
@@ -41,7 +40,6 @@ async function shareResume(req, res) {
 }
 async function getSharedData(req, res) {
     try {
-        console.log(req.params.resumeId);
         let result = await Shared.findOne({ owner: req.body.user, resume: req.params.resumeId },"shared_with").populate('shared_with','email');
         res.status(200).send(result['shared_with']);
     }
@@ -60,7 +58,21 @@ async function removePerson(req,res){
         res.status(500).send("Something Went Wrong");
     }
 }
+//load shared resume
+async function loadResume(req,res){
+    try{
+        let resume = await Shared.findOneAndUpdate({resume:req.params.id,shared_with:{$in:[req.body.user]}}).populate("resume");
+        if(resume)
+            res.status(200).send(resume);
+        else
+            res.status(400).send("Unauthorized Acces");
+    }
+    catch(error){
+        console.log("Error occurres in ShareResume" + error);
+        res.status(500).send("Something went wrong");
 
+    }
+}
 module.exports.createShareResumeDocument = createShareResumeDocument;
 module.exports.getData = getData;
 module.exports.shareResume = shareResume;

@@ -22,8 +22,10 @@ export class PreviewTemplateComponent implements OnInit {
     if(this.resumeId){
       this.resume = await this.remoteService.loadOneResume(this.resumeId);
       this.template=this.resume['template'];
-      // this.loadingStatus.emit(true);
       setTimeout(()=>this.loadingStatus.emit(true),800);
+    }
+    else if(this.resumeId && this.location=='shared'){
+      
     }
     else{
       this.dataService.get(this.flag).subscribe(
