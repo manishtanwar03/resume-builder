@@ -32,4 +32,7 @@ export class ShareResumeService {
   removePerson(data){
     return this.http.post(this._shareURL+'share-resume/removePerson',data);
   }
+  loadShared(id){
+    return this.http.get(this._shareURL+id).toPromise();
+  }
 }

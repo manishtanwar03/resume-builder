@@ -1,6 +1,7 @@
 const Shared = require('../models/shared');
-const Resume = require('../models/resume');
 const User = require('../models/user');
+const mongoose = require('mongoose');
+
 
 //create blank shareResumeModel Document
 async function createShareResumeDocument(resumeId, userId, public_link, private_link) {
@@ -16,8 +17,6 @@ async function createShareResumeDocument(resumeId, userId, public_link, private_
 async function getData(req, res) {
     try {
         let result = await Shared.find({"shared_with":{$in:[req.body.user]}},["resume","owner"]).populate("owner","email");
-        // let owner_mail = await User.findById(result['owner'],"email");
-        console.log(result);
         res.send(result);
     }
     catch (error) {
@@ -61,14 +60,15 @@ async function removePerson(req,res){
 //load shared resume
 async function loadResume(req,res){
     try{
-        let resume = await Shared.findOneAndUpdate({resume:req.params.id,shared_with:{$in:[req.body.user]}}).populate("resume");
-        if(resume)
-            res.status(200).send(resume);
+        let resume = await Shared.findOneAndUpdate({resume:req.params.resumeId}).populate("resume");
+        if(resume['shared_with'].indexOf(req.body.user)>=0){
+            res.status(200).send(resume["resume"]);
+        }
         else
             res.status(400).send("Unauthorized Acces");
     }
     catch(error){
-        console.log("Error occurres in ShareResume" + error);
+        console.log("Error occurres in LoadResume" + error);
         res.status(500).send("Something went wrong");
 
     }
@@ -78,3 +78,4 @@ module.exports.getData = getData;
 module.exports.shareResume = shareResume;
 module.exports.getSharedData = getSharedData;
 module.exports.removePerson = removePerson;
+module.exports.loadResume = loadResume;

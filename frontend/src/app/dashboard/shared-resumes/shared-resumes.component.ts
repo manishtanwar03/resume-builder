@@ -13,17 +13,23 @@ export class SharedResumesComponent implements OnInit {
 
  async ngOnInit() {
    try{
+    //  let loadingObj = {'loading'}
      let data = await this.shareService.fetchSharedResumes();
      console.log(data);
      if(data){
-      this.resumes = data.map((resume)=>{
-        resume['loading']=true;
+      this.resumes = data.map((resume:{})=>{
+        resume["loading"] = true;
         return resume;
       });
+      console.log(this.resumes);
      }
   }
   catch(error){
     console.log(error);
   }
  }
+
+ loadingStatus(index){
+   this.resumes[index]['loading']=false;
+}
 }

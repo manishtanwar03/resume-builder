@@ -12,9 +12,14 @@ const app = express(); //1.instance of express
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(process.env.DB_HOST, { useNewUrlParser: true }) // this returns promise
-    .then(() => console.log("Connected to Mongodb"))
-    .catch(() => console.log("Could not connect to Mongodb"));
+
+mongoose.connect("mongodb://localhost/resume_builder", { useNewUrlParser:true })  // this returns promise
+    .then(()=> console.log("Connected to Mongodb"))
+     .catch(()=> console.log("Could not connect to Mongodb"));
+
+// mongoose.connect(process.env.DB_HOST, { useNewUrlParser: true })
+//     .then(() => console.log("Connected to Mongodb"))
+//     .catch(() => console.log("Could not connect to Mongodb"));
 
 app.use('/user', user); //2
 app.use('/resume', resume);

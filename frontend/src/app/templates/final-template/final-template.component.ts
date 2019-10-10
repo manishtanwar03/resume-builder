@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { RemoteService } from 'src/app/services/remote.service';
@@ -17,12 +17,19 @@ export class FinalTemplateComponent implements OnInit {
   template='functional';
   loadingStatus:boolean=false;
   font=null;
+  view:boolean=false;
   constructor(private route:ActivatedRoute,private router:Router,private remoteService:RemoteService,
     private dataService:DataService,private modalService: MzModalService,private shareResumeService:ShareResumeService) { 
   }
 
   async ngOnInit() {
-    this.resume = await this.remoteService.loadOneResume(this.route.snapshot.params.id)
+    if(this.route.snapshot.queryParams['shared']){
+        this.view=true;
+        this.resume = await this.shareResumeService.loadShared(this.route.snapshot.params.id);
+    }
+    else{
+      this.resume = await this.remoteService.loadOneResume(this.route.snapshot.params.id)
+    }
     this.template = this.resume['template'];
     this.dataService.set(this.resume,true);
     setTimeout(()=>this.loadingStatus=true,1200);

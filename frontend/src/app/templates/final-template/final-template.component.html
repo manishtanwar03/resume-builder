@@ -1,5 +1,5 @@
 <!-- filters -->
-<app-filters [active]="resume?.filter?.index" [currentFont]="resume?.font" (filter)="updateFilter($event)" (font)="setFont($event)" *ngIf="loadingStatus"></app-filters>
+<app-filters [active]="resume?.filter?.index" [currentFont]="resume?.font" (filter)="updateFilter($event)" (font)="setFont($event)" *ngIf="loadingStatus && !view"></app-filters>
 <div class="loader" *ngIf="!loadingStatus">
     <app-loader></app-loader>
 </div>
@@ -8,7 +8,7 @@
         <section *ngIf="template=='functional'" [class]="'functional '+resume?.font">
             <section class="resume z-depth-3">
                 <!-- basic information -->
-                <div mz-button mz-tooltip [tooltip]="'Click To Edit'" [position]="'left'" [delay]="'0'" class="basic_information" [ngStyle]="{'background':resume?.filter?.heading}" (click)="goTo('basic-information')">
+                <div mz-button mz-tooltip [tooltip]="view?'Add Comment':'Click To Edit'" [position]="'left'" [delay]="'0'" class="basic_information" [ngStyle]="{'background':resume?.filter?.heading}" (click)="goTo('basic-information')">
                     <div class="heading">
                         <h1 *ngIf="!resume?.basicInformation?.firstName">Manish Tanwar</h1>
                         <h1 *ngIf="resume?.basicInformation?.firstName || resume?.basicInformation?.lastName">
@@ -44,7 +44,7 @@
                         <div class="row">
                             <div class="col s12">
                                 <!-- if work history present -->
-                                <div mz-button mz-tooltip [tooltip]="'Click To Edit'" [position]="'left'" class="base" *ngIf="resume?.workHistory && resume?.workHistory?.length>0" (click)="goTo('work-history')">
+                                <div mz-button mz-tooltip [tooltip]="view?'Add Comment':'Click To Edit'" [position]="'left'" class="base" *ngIf="resume?.workHistory && resume?.workHistory?.length>0" (click)="goTo('work-history')">
                                     <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">WORK EXPERIENCE</h1>
                                     <div class="entry" *ngFor="let work of resume?.workHistory">
                                         <h1 *ngIf="work?.job_title">{{ work?.job_title|titlecase }}</h1>
@@ -63,7 +63,7 @@
                         <!-- education -->
                         <div class="row">
                             <div class="col s12">
-                                <div mz-button mz-tooltip [tooltip]="'Click To Edit'" [position]="'left'" class="base" *ngIf="resume?.education && resume?.education?.length>0" (click)="goTo('education')">
+                                <div mz-button mz-tooltip [tooltip]="view?'Add Comment':'Click To Edit'" [position]="'left'" class="base" *ngIf="resume?.education && resume?.education?.length>0" (click)="goTo('education')">
                                     <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">Education</h1>
                                     <div class="entry" *ngFor="let school of resume?.education">
                                         <h1 *ngIf="school?.schoolName">{{ school?.schoolName |titlecase}} <span *ngIf="school?.location" [ngStyle]="{'color':resume?.filter?.subheading}">| {{school?.location|titlecase}}</span></h1>
@@ -82,7 +82,7 @@
                         <!-- interests -->
                         <div class="row">
                             <div class="col s12">
-                                <div mz-button mz-tooltip [tooltip]="'Click To Edit'" [position]="'left'" class="base" *ngIf="resume?.interests && resume?.interests?.length>0" (click)="goTo('interests')">
+                                <div mz-button mz-tooltip [tooltip]="view?'Add Comment':'Click To Edit'" [position]="'left'" class="base" *ngIf="resume?.interests && resume?.interests?.length>0" (click)="goTo('interests')">
                                     <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">INTERESTS</h1>
                                     <!-- interests here -->
                                     <div class="list">
@@ -98,7 +98,7 @@
                         <!-- personal projects -->
                         <div class="row">
                             <div class="col s12">
-                                <div mz-button mz-tooltip [tooltip]="'Click To Edit'" [position]="'right'" class="base" *ngIf="resume?.projects && resume?.projects.length>0" (click)="goTo('projects')">
+                                <div mz-button mz-tooltip [tooltip]="view?'Add Comment':'Click To Edit'" [position]="'right'" class="base" *ngIf="resume?.projects && resume?.projects.length>0" (click)="goTo('projects')">
                                     <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">PERSONAL PROJECTS</h1>
                                     <div class="entry" *ngFor="let project of resume?.projects">
                                         <h1 *ngIf="project?.projectTitle">{{ project?.projectTitle|titlecase }}</h1>
@@ -116,7 +116,7 @@
                         <!-- skills -->
                         <div class="row">
                             <div class="col s12">
-                                <div mz-button mz-tooltip [tooltip]="'Click To Edit'" [position]="'right'" class="base" class="base" *ngIf="resume?.skills && resume?.skills?.length>0" (click)="goTo('skills')">
+                                <div mz-button mz-tooltip [tooltip]="view?'Add Comment':'Click To Edit'" [position]="'right'" class="base" class="base" *ngIf="resume?.skills && resume?.skills?.length>0" (click)="goTo('skills')">
                                     <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">SKILLS</h1>
                                     <!-- skills here -->
                                     <div class="list">
@@ -128,7 +128,7 @@
                         <!-- languages -->
                         <div class="row">
                             <div class="col s12">
-                                <div mz-button mz-tooltip [tooltip]="'Click To Edit'" [position]="'right'" class="base" class="base" *ngIf="resume?.languages && resume?.languages?.length>0">
+                                <div mz-button mz-tooltip [tooltip]="view?'Add Comment':'Click To Edit'" [position]="'right'" class="base" class="base" *ngIf="resume?.languages && resume?.languages?.length>0">
                                     <h1 [ngStyle]="{'color':resume?.filter?.subheading,'border-color':resume?.filter?.subheading}">LANGUAGES</h1>
                                     <!-- languages here -->
                                     <div class="languages">
@@ -154,7 +154,7 @@
         <section class="simple" *ngIf="template=='simple'">
             <section class="resume z-depth-3">
                 <!-- basic information -->
-                <div class="basic_information" mz-button mz-tooltip [tooltip]="'Click To Edit'" [position]="'left'" [delay]="'0'" (click)="goTo('basic-information')">
+                <div class="basic_information" mz-button mz-tooltip [tooltip]="view?'Add Comment':'Click To Edit'" [position]="'left'" [delay]="'0'" (click)="goTo('basic-information')">
                     <div class="heading">
                         <h1 *ngIf="!resume?.basicInformation?.firstName">Manish Tanwar</h1>
                         <h1 *ngIf="resume?.basicInformation?.firstName || resume?.basicInformation?.lastName">
@@ -211,7 +211,7 @@
                         <div class="row">
                             <div class="col s12">
                                 <!-- if education present -->
-                                <div class="base" *ngIf="resume?.education?.length>0" mz-button mz-tooltip [tooltip]="'Click To Edit'" [position]="'left'" [delay]="'0'" (click)="goTo( 'education') ">
+                                <div class="base" *ngIf="resume?.education?.length>0" mz-button mz-tooltip [tooltip]="view?'Add Comment':'Click To Edit'" [position]="'left'" [delay]="'0'" (click)="goTo( 'education') ">
                                     <h1 [ngStyle]="{'color':resume?.filter?.heading}">Education</h1>
                                     <div class="entry" *ngFor="let school of resume?.education">
                                         <h1 *ngIf="school?.schoolName">{{ school?.schoolName |titlecase }} <span *ngIf="school?.location" style="margin-left:6px;" [ngStyle]="{'color':resume?.filter?.heading}">| {{school?.location |titlecase}}</span></h1>
@@ -232,7 +232,7 @@
                         <div class="row ">
                             <div class="col s12 ">
                                 <!-- if projects present -->
-                                <div class="base " *ngIf="resume?.projects?.length>0" mz-button mz-tooltip [tooltip]="'Click To Edit'" [position]="'left'" [delay]="'0'" (click)="goTo('projects')">
+                                <div class="base " *ngIf="resume?.projects?.length>0" mz-button mz-tooltip [tooltip]="view?'Add Comment':'Click To Edit'" [position]="'left'" [delay]="'0'" (click)="goTo('projects')">
                                     <h1 [ngStyle]="{'color':resume?.filter?.heading}">PERSONAL PROJECTS</h1>
                                     <div class="entry" *ngFor="let project of resume?.projects">
                                         <h1 *ngIf="project?.projectTitle">{{ project?.projectTitle |titlecase }}</h1>
@@ -256,7 +256,7 @@
                         <div class="row">
                             <div class="col s12">
                                 <!-- if present -->
-                                <div class="base" *ngIf="resume?.interests?.length>0" mz-button mz-tooltip [tooltip]="'Click To Edit'" [position]="'right'" [delay]="'0'" (click)="goTo('interests')">
+                                <div class="base" *ngIf="resume?.interests?.length>0" mz-button mz-tooltip [tooltip]="view?'Add Comment':'Click To Edit'" [position]="'right'" [delay]="'0'" (click)="goTo('interests')">
                                     <h1 [ngStyle]="{'color':resume?.filter?.heading}">INTERESTS</h1>
                                     <!-- interests here -->
                                     <div class="list">
@@ -269,7 +269,7 @@
                         <div class="row">
                             <div class="col s12">
                                 <!-- if skill present -->
-                                <div class="base" *ngIf="resume?.skills?.length>0" mz-button mz-tooltip [tooltip]="'Click To Edit'" [position]="'right'" [delay]="'0'" (click)="goTo('skills')">
+                                <div class="base" *ngIf="resume?.skills?.length>0" mz-button mz-tooltip [tooltip]="view?'Add Comment':'Click To Edit'" [position]="'right'" [delay]="'0'" (click)="goTo('skills')">
                                     <h1 [ngStyle]="{'color':resume?.filter?.heading}">SKILLS</h1>
                                     <!-- skills here -->
                                     <div class="list">
@@ -282,7 +282,7 @@
                         <div class="row">
                             <div class="col s12">
                                 <!-- if language present -->
-                                <div class="base" *ngIf="resume?.languages?.length>0" mz-button mz-tooltip [tooltip]="'Click To Edit'" [position]="'right'" [delay]="'0'" (click)="goTo('languages')">
+                                <div class="base" *ngIf="resume?.languages?.length>0" mz-button mz-tooltip [tooltip]="view?'Add Comment':'Click To Edit'" [position]="'right'" [delay]="'0'" (click)="goTo('languages')">
                                     <h1 [ngStyle]="{'color':resume?.filter?.heading}">LANGUAGES</h1>
                                     <!-- languages here -->
                                     <div class="languages">

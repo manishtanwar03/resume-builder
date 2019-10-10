@@ -8,7 +8,7 @@
                 <div class="loader z-depth-3" [ngStyle]="{'display':resume['loading']?'flex':'none'}">
                     <app-loader></app-loader>
                 </div>
-                <app-preview-template [resumeId]="resume.resume" [location]="'saved'" class="template" (loadingStatus)="loadingStatus(i)" [ngStyle]="{'display':resume['loading']?'none':'block'}"></app-preview-template>
+                <app-preview-template [resumeId]="resume.resume" [location]="'shared'" class="template" (loadingStatus)="loadingStatus(i)" [ngStyle]="{'display':resume['loading']?'none':'block'}"></app-preview-template>
                 <div class="overlay" [ngStyle]="{'display':resume['loading']?'none':'block'}">
                     <div class="controls">
                         <div class="text">Shared By : {{ resume?.owner?.email | titlecase }}</div>
@@ -18,7 +18,7 @@
                             </div> -->
                     <div class="buttons">
                         <div class="links">
-                            <a class="btn-floating teal" [routerLink]="['/resume',resume.resume]"><i class="material-icons">create</i></a>
+                            <a class="btn-floating teal" [routerLink]="['/resume',resume.resume]" [queryParams]="{'shared':'true'}"><i class="material-icons">create</i></a>
                             <!-- <a class="btn-floating red" (click)="deleteMe(resume._id,i)"><i class="material-icons">delete</i></a> -->
                         </div>
                     </div>
